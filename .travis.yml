@@ -1,0 +1,9 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: PA/7GmvP3E9/A+X/t5Y0ag8x9Qc5VveTfkpuXMnUhmQQmth+Q6wxVHU3onZGYbX2/xbekpMZghg1He3y8cSidNu+pc2VokgAWmFXTPT9wodyIFpKnhCqW+SaLn08DJ0acHS4X4C8tctNlzq4BHKUNQr7DpPWKAveW2nvRIlivKA4LyBRkIfG7MNPx+fbFIR6gCfAsuE8twmAxd1zzC5EXMTIGoOR3Bo09rN/L5W/NcxtKeIuJddY3LBKZzo27sXM/eYTudejDrbrdtwANaEYsy8jvED05/4igeNXFglfRL4mZOibhhB8pUiiDFpcVu9vep391G/CfdyHf37F2ydZyqDZ1pm6spsdLAIT01hCQPA6egArLT7ssj/1OjRMZDd8tJdJab4CL7uIVCuxQkzJ/3k+XgzPnk73VvH+bUUJfTMZqAjZF6iG6Njulj81gujQvs+l3pzVfb7ZdpL9WI2tbsYvQrat7qC7f4J+/pAb6SFmXRTEzVHLXBD+9MmonoxrT+2T8wrQspnpsyH5zFcv3z14M0+l4a7QUZ0XEcWwU51e9f/S5HzKyjjMg+RMdUisLWNnFsmJQeEYCfrv8IiIc5+51EW/VU727fUfvhIshdha4dAiUnedVi7IlZ/mIXhocRpIaOGH6qSuwYjcpf3F+PAeB5qCCtpGZO53Ah2vG/E=
+  app: revuer
+  on:
+    repo: drichards211/revuer
