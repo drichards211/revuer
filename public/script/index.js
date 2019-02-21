@@ -55,14 +55,14 @@ function handleFormSubmit() {
   })
 }
 
-function userSignIn(email, pass) {
+function userSignIn(email, pword) {
   console.log("userSignIn() ran")
-  console.log(`User email = ${email}, User Password = ${pass}`)
+  console.log(`User email = ${email}, User Password = ${pword}`)
 }
 
-function userSignUp(email, pass) {
+function userSignUp(email, pword) {
   console.log("userSignUp() ran")
-  console.log(`User email = ${email}, User Password = ${pass}`)
+  console.log(`User email = ${email}, User Password = ${pword}`)
 }
 
 
