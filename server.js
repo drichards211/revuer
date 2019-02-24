@@ -44,7 +44,25 @@ app.use('*', (req, res) => {
 
 let server
 
-function runServer() {
+function runServer(databaseUrl, port = PORT) {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(databaseUrl, err => {
+      if (err) {
+        return reject(err)
+      }
+      server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port}`)
+        resolve()
+      })
+        .on('error', err => {
+          mongoose.disconnect()
+          reject(err)
+        })
+    })
+  })
+}
+
+/* function runServer() {
   return new Promise((resolve, reject) => {
     mongoose.connect(DATABASE_URL, { useMongoClient: true }, err => {
       if (err) {
@@ -62,7 +80,7 @@ function runServer() {
     })
   })
 }
-
+ */
 function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
