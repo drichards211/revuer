@@ -9,18 +9,45 @@
   <!-- Google Fonts -->
 
   <!-- STYLESHEETS ========================================= -->
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" /> -->
   
   <!-- SCRIPTS ============================================= -->
-  <!-- <script src="main.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="script/index.js"></script>
 </head>
 
 <body>
   
   <!-- MAIN CONTENT ============================================ -->
   <main role="main">
-    <h1>Hello World!</h1>
+    <div class="row">
+      <section role="region" class="col-12" aria-live="assertive">
+        <div class="main-container">
+          <div class="video-screen">
+            <h1>revuer</h1>
+            <p class="js-test">animated text goes here</p>
+            <div class="user-forms">
+            </div>
+          </div>
+          <div class="dynamic-buttons">
+            <h4>dynamic buttons go here</h4>
+            <button class="ticket" id="sign-in">sign-in</button>
+            <button class="ticket" id="sign-up">sign-up</button>
+            <button class="ticket" id="preview">preview</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  
   </main>
+  <nav role="navigation">
+    <div class="chair-buttons">
+      <h4>chair buttons go here</h4>
+      <button id="chair-1">chair 1</button>
+      <button id="chair-2">chair 2</button>
+      <button id="chair-3">chair 3</button>
+    </div>
+  </nav>
 
 </body>
 </html>
