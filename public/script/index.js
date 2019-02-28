@@ -34,16 +34,17 @@ function handleFormSubmit() {
   $('.signin-form').submit(function(event) {
     console.log('sign-in form submitted')
     event.preventDefault()
-    const userEmail = $('#email').val()
+    const username = $('#username').val()
     const userPass =  $('#password').val()
-    userSignIn(userEmail, userPass)
+    userSignIn(username, userPass)
   })
   $('.signup-form').submit(function(event) {
     console.log('sign-up form submitted')
     event.preventDefault()
     const userEmail = $('#email').val()
+    const username = $('#username').val()
     const userPass =  $('#password').val()
-    userSignUp(userEmail, userPass)
+    userSignUp(userEmail, username, userPass)
   })
   $('.movie-search-form').submit(function(event) {
     console.log('movie-search-form submitted')
@@ -55,14 +56,14 @@ function handleFormSubmit() {
   })
 }
 
-function userSignIn(email, pword) {
+function userSignIn(username, pword) {
   console.log("userSignIn() ran")
-  console.log(`User email = ${email}, User Password = ${pword}`)
+  console.log(`Username = ${username}, User Password = ${pword}`)
 }
 
-function userSignUp(email, pword) {
+function userSignUp(email, username, pword) {
   console.log("userSignUp() ran")
-  console.log(`User email = ${email}, User Password = ${pword}`)
+  console.log(`User email = ${email}, Username = ${username}, User Password = ${pword}`)
 }
 
 
@@ -72,8 +73,8 @@ function renderSignInForm() {
     `<div class="signin-box">
       <form class="signin-form" action="#">
         <h2>Sign in</h2>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="user@domain.com"/>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="myusername"/>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" placeholder="1234passw0rd"/>
         <button type="submit">Sign in</button>
@@ -89,6 +90,8 @@ function renderSignUpForm() {
         <h2>Sign up</h2>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="user@domain.com"/>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="mynewusername"/>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" placeholder="1234passw0rd"/>
         <button type="submit">Sign up</button>
