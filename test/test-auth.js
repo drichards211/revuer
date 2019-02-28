@@ -13,17 +13,13 @@ const {JWT_SECRET, TEST_DATABASE_URL} = require('../config') // DR
 
 const expect = chai.expect
 
-// This let's us make HTTP requests
-// in our tests.
-// see: https://github.com/chaijs/chai-http
 chai.use(chaiHttp)
 
 describe('Auth endpoints', function () {
+  const userEmail = 'exampleEmail'
   const username = 'exampleUser'
   const password = 'examplePass'
-  const firstName = 'Example'
-  const lastName = 'User'
-
+  
   before(function () {
     return runServer(TEST_DATABASE_URL)
   })
@@ -35,10 +31,9 @@ describe('Auth endpoints', function () {
   beforeEach(function() {
     return User.hashPassword(password).then(password =>
       User.create({
+        userEmail,
         username,
-        password,
-        firstName,
-        lastName
+        password
       })
     )
   })
@@ -112,9 +107,8 @@ describe('Auth endpoints', function () {
             algorithm: ['HS256']
           })
           expect(payload.user).to.deep.equal({
-            username,
-            firstName,
-            lastName
+            userEmail,
+            username
           })
         })
     })
@@ -141,8 +135,6 @@ describe('Auth endpoints', function () {
       const token = jwt.sign(
         {
           username,
-          firstName,
-          lastName
         },
         'wrongSecret',
         {
@@ -171,9 +163,7 @@ describe('Auth endpoints', function () {
       const token = jwt.sign(
         {
           user: {
-            username,
-            firstName,
-            lastName
+            username
           },
           exp: Math.floor(Date.now() / 1000) - 10 // Expired ten seconds ago
         },
@@ -204,9 +194,7 @@ describe('Auth endpoints', function () {
       const token = jwt.sign(
         {
           user: {
-            username,
-            firstName,
-            lastName
+            username
           }
         },
         JWT_SECRET,
@@ -231,9 +219,7 @@ describe('Auth endpoints', function () {
             algorithm: ['HS256']
           })
           expect(payload.user).to.deep.equal({
-            username,
-            firstName,
-            lastName
+            username
           })
           expect(payload.exp).to.be.at.least(decoded.exp)
         })
