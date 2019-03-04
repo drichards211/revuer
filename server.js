@@ -29,6 +29,7 @@ passport.use(jwtStrategy)
 
 app.use('/api/users/', usersRouter)
 app.use('/api/auth/', authRouter)
+// eventually add endpoint: app.use('/api/movies/', moviesRouter)
 
 const jwtAuth = passport.authenticate('jwt', { session: false })
 

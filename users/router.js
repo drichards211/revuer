@@ -4,6 +4,12 @@ const bodyParser = require('body-parser')
 const {User} = require('./models')
 const router = express.Router()
 const jsonParser = bodyParser.json()
+const passport = require('passport');
+const { router: authRouter, localStrategy, jwtStrategy } = require('../auth/strategies');
+
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 // Post to register a new user
 router.post('/', jsonParser, (req, res) => {
