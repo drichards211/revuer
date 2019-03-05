@@ -5,6 +5,10 @@ const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
 const UserSchema = mongoose.Schema({
+  userEmail: {
+    type: String,
+    required: true,
+  },
   username: {
     type: String,
     required: true,
@@ -14,15 +18,12 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  firstName: {type: String, default: ''},
-  lastName: {type: String, default: ''}
 })
 
 UserSchema.methods.serialize = function() {
   return {
     username: this.username || '',
-    firstName: this.firstName || '',
-    lastName: this.lastName || ''
+    userEmail: this.userEmail || ''
   }
 }
 
