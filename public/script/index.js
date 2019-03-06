@@ -65,8 +65,7 @@ function handleFormSubmit() {
 
 function userSignIn(username, pword, firstTime) {
   console.log("userSignIn() ran")
-  /* console.log(`Username = ${username}, User Password = ${pword}`) */
-  /* let bearer; */
+  let success
   const signInData = {
     "username": `${username}`,
     "password": `${pword}`
@@ -79,32 +78,40 @@ function userSignIn(username, pword, firstTime) {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => {
-    if (response.ok){ 
-      return response.json()
-    } 
-    throw new Error(response.statusText)
-  })
-  .then(response => {
-    localStorage.setItem('auth', response.authToken)
-    localStorage.setItem('user', username)     
-  })
-  .then(response => {
-    /* const {reason, message, location} = response */
-    if (firstTime === true) {
-      welcomeUser(username, true)
+  .then(res => {
+    if (res.ok){ 
+      console.log("response OK")
+      success = true
+      return res.json()
+    } else if (res.status === 401) {
+        console.log("res.status === 401")
+        success = false
+        handleSignInError(res)
     } else {
-      welcomeUser(username)
+        console.log("final else-statement reached")
+        throw new Error(res.statusText)
+    }
+  })
+  .then(res => {
+    if (success === true) {
+      console.log("Sign-in successful")
+      localStorage.setItem('auth', res.authToken)
+      localStorage.setItem('user', username)
+      if (firstTime === true) {
+        welcomeUser(username, true)
+      } else {
+        welcomeUser(username)
+      }
     }
   })
   .catch(err => {
-    console.log(err)
+    console.log("userSignIn() encountered an error")
   })
 }
 
 function userSignUp(email, username, pword) {
   console.log("userSignUp() ran")
-  /* console.log(`User email = ${email}, Username = ${username}, User Password = ${pword}`) */
+  let success
   const signUpData = {
     "userEmail": `${email}`,
     "username": `${username}`,
@@ -118,52 +125,42 @@ function userSignUp(email, username, pword) {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => {
-    if (response.ok){ 
-      return response.json()
-    } 
-    throw new Error(response.statusText)
-  })
-  .then(results => {
-    console.log("success!")
-    userSignIn(username, pword, true)
-    const {reason, message, location} = results
-    console.log(message)
-  })
-    
-    /* if (response.ok) { 
-      return response.json()
+  .then(res => {
+    if (res.ok) { 
+      console.log("response OK")
+      success = true
+      return res.json()
+    } else if (res.status === 422) {
+        console.log("res.status === 422")
+        success = false
+        return res.json()
     } else {
-      console.log(response.sendStatus) */
-      /* throw new Error(response.sendStatus) */
-    
-    
-  
-  /* .then(responseJson => {  */
-    /* if (response.status === 422){
-      console.log(responseJson) */
-      /* const {reason, message, location} = response.body
-      console.log(message) */
-    /* } */
-    /* return response.json();
-    console.log(response.json);
-    welcomeNewUser(username)
-  }) */
+        throw new Error(res.statusText)
+    }
+  })
+  .then(res => {
+    if (success === true) {
+      userSignIn(username, pword, true)
+    } else {
+        console.log(res)
+        handleSignUpError(res)
+    }
+  })
   .catch(err => {
-    console.log(err)
+    console.log("userSignUp() encountered an unexpected error")
   })
 }
 
-/* function getWebToken(signInData) {
-  console.log("getWebToken() ran")
-  fetch('endpoint', {
+function handleSignUpError(results) {
+  console.log("handleSignUpError() ran")
+  console.log(results.location + " " + results.message)
+}
 
-  }
+function handleSignInError() {
+  console.log("handleSignInError() ran")
+  console.log("Incorrect username or password")
+}
 
-  )
-} */
-
-  
 function welcomeUser(user, firstTime) {
 /* Renders custom welcome screen after successful sign-in*/
   console.log("welcomeUser() ran")
