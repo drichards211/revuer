@@ -23,12 +23,35 @@ function handleUserNav() {
     } 
     if (`${$(this).prop('id')}` === 'chair-2') {
       console.log("chair-2 button pressed")
+      chairTwo()
     } 
     if (`${$(this).prop('id')}` === 'chair-3') {
       console.log("chair-3 button pressed")
     } 
   })
 }
+
+function chairTwo() {
+  const userToken = localStorage.getItem('auth')
+  fetch('/api/protected', {
+    method: 'GET',
+    /* body: JSON.stringify(signInData), */
+    headers: {
+      /* 'Accept': 'application/json', */
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${userToken}`
+    }
+  })
+  .then(res => {
+    return res.json()
+  })
+  .then(res => {
+    console.log(res)
+  })
+}
+
+/* localStorage.setItem('auth', res.authToken)
+      localStorage.setItem('user', username) */
 
 function handleFormSubmit() {
 /* Listens for user form submissions, and passes values to appropriate functions */
@@ -147,6 +170,7 @@ function userSignUp(email, username, pword) {
     }
   })
   .catch(err => {
+    console.log(err)
     console.log("userSignUp() encountered an unexpected error")
   })
 }
@@ -197,9 +221,9 @@ function renderSignInForm() {
       <form class="signin-form" action="#">
         <h2>Sign in</h2>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username"/>
+        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" required/>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password"/>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" required/>
         <button type="submit">Sign in</button>
       </form>
     </div>`)
@@ -212,13 +236,13 @@ function renderSignUpForm() {
       <form class="signup-form" action="#">
         <h2>Sign up</h2>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="user@domain.com"/>
+        <input type="email" name="email" id="email" placeholder="user@domain.com" required/>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username"/>
+        <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password"/>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password" required/>
         <label for="password">Re-enter password</label>
-        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password"/>
+        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" required/>
         <button type="submit">Sign up</button>
       </form>
     </div>`)
