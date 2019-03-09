@@ -3,13 +3,12 @@ const previewLibrary = [
     "title": "Ghostbusters",
     "viewed": "1988-01-19",
     "rating": "thumbsUp",
-    "ownCopy": [true, 
-      {
-       "format": ["Bluray", "LD"]
-      }
-    ],
+    "ownCopy": true,
+    "format": ["Bluray", "LD"], 
     "viewingNotes": "A comedy classic. They don't make them like this anymore. Acting is somehow irreverant and believable at the same time; a true feat.",
-    "userName": "guest"
+    "userName": "guest",
+    "author": { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    "created"
   },
   {
     "title": "Star Trek II",

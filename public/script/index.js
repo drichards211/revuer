@@ -43,6 +43,18 @@ function handleUserNav() {
 
 function viewLibrary() {
   const userToken = localStorage.getItem('auth')
+  $('.video-screen').html(
+    `<h2>Library</>`
+  )
+  if (userName !== "guest") {
+    
+  } else {
+    // guest
+  }
+}
+  
+  
+function testProtected() {
   fetch('/api/protected', {
     method: 'GET',
     /* body: JSON.stringify(signInData), */

@@ -106,8 +106,13 @@ function moreApiResults() {
     })
 }
 
-function addMovieDetails() {
+function addMovieDetails(movieData) {
   console.log("addMovieDetails() ran")
+  // update DOM with details form
+  // jQuery listen for submit
+  // fetch call (possibly a different function)
+  // Movie.create({userName: "44sdhjhba", name: 'Star wars', })
+
 
 }
 
