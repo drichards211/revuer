@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const passport = require('passport')
 const { PORT, DATABASE_URL } = require('./config')
+const { OMDB_API_KEY } = require('./config')
 const { router: usersRouter } = require('./users')
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth')
 
@@ -33,10 +34,18 @@ app.use('/api/auth/', authRouter)
 
 const jwtAuth = passport.authenticate('jwt', { session: false })
 
+// Test endpoint for protected access: 
 app.get('/api/protected', jwtAuth, (req, res) => {
   console.log(req.user) // logs to the server console
   return res.json({
-    data: 'rosebud'
+    data: 'potato'
+  })
+})
+
+// Endpoint to retrieve the OMDB API Key:
+app.get('/api/omdbapikey', jwtAuth, (req, res) => {
+  return res.json({
+    data: `${OMDB_API_KEY}`
   })
 })
 

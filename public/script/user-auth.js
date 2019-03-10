@@ -36,6 +36,7 @@ function userSignIn(username, pword, firstTime) {
       console.log("Sign-in successful")
       localStorage.setItem('auth', responseJson.authToken)
       userName = username
+      getOmbdApiKey()
       /* localStorage.setItem('user', username) */
       if (firstTime === true) {
         welcomeUser(username, true)
@@ -170,4 +171,23 @@ function renderPreviewInfo() {
       <p>Please click any of the chair buttons below to continue.</p>`
     )
   renderChairButtons() // in index.js
+}
+
+function getOmbdApiKey() {
+// retrieve protected OMDB API key from server and write to localStorage:
+  console.log("getOmdbApiKey() ran")
+  const userToken = localStorage.getItem('auth')
+    fetch('/api/omdbapikey', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+      }
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(responseJson => {
+      localStorage.setItem('omdbApiKey', responseJson.data)
+    })
 }

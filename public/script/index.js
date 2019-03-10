@@ -29,32 +29,105 @@ function handleUserNav() {
     } 
     // "View your library" button pressed:
     if (`${$(this).prop('id')}` === 'chair-2') {
-      console.log("chair-2 button pressed")
+      console.log("\"View your library\" button pressed")
       viewLibrary()
       handleFormSubmit()
     } 
     // "About revuer" button pressed:
     if (`${$(this).prop('id')}` === 'chair-3') {
-      console.log("chair-3 button pressed")
+      console.log("\"About revuer\" button pressed")
       aboutRevuer()
     }
   })
 }
 
 function viewLibrary() {
+  console.log("viewLibrary() ran")
   const userToken = localStorage.getItem('auth')
+  const thumbsUp = "^" // update this to contain html "thumbsUp" IMG
+  const thumbsDown = "v" // update this to contain html "thumbsDown" IMG
+  const complicated = ":/" // update this to contain html "complicated" IMG
+
   $('.video-screen').html(
-    `<h2>Library</>`
+    `<h2>Library</h2>
+    <div class="movie-list">
+    </div>`
   )
-  if (userName !== "guest") {
-    
+  if (userName !== "Guest") {
+    // Display user library results:
+    handleLibraryNav()
+
   } else {
-    // guest
+    // Display Sample Library for "guest":
+    for (let i = 0; i < previewLibrary.length; i++) {
+      const rating = eval(`${previewLibrary[i].rating}`)
+      $('.movie-list').append(
+        `<button id="movie-detail-${i}">
+          ${previewLibrary[i].title} ${rating}
+        </button>`
+      )
+    }
+    handleLibraryNav()
   }
 }
-  
+
+function handleLibraryNav() {
+  console.log('handleLibraryNav() running')
+  $('body').on('click', 'button', function(event) {
+    // "movie-detail-0" button pressed:
+    for (let i = 0; i < 10; i++) {
+      if (`${$(this).prop('id')}` === `movie-detail-${i}`) {
+        console.log(`"movie-detail-${i}" button pressed`)
+      } 
+    }
+  })
+}
+
+function viewLibraryDetail() {
+  console.log("viewLibraryDetail() ran")
+
+}
+
+function oldTestProtected() {
+  const userToken = localStorage.getItem('auth')
+    fetch('/api/protected', {
+      method: 'GET',
+      /* body: JSON.stringify(signInData), */
+      headers: {
+        /* 'Accept': 'application/json', */
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+      }
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(responseJson => {
+      console.log(responseJson)
+    })
+}
+
+
+
+
+  /* fetch('/api/protected', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${userToken}`
+    }
+  })
+  .then(res => {
+    return res.json()
+  })
+  .then(responseJson => {
+    localStorage.setItem('omdbApiKey', responseJson.authToken)
+  }) */
+  // localStorage.setItem('auth', responseJson.authToken)
+
   
 function testProtected() {
+  console.log("testProtected() ran")
   fetch('/api/protected', {
     method: 'GET',
     /* body: JSON.stringify(signInData), */
@@ -114,6 +187,16 @@ function renderChairButtons() {
   <button id="chair-1">Add a movie</button>
   <button id="chair-2">View your library</button>
   <button id="chair-3">About revuer</button>`
+  )
+}
+
+function aboutRevuer() {
+  console.log("aboutRevuer() ran")
+  $('.video-screen').html(
+    `<div class="about-revuer">
+      <h2>About revuer</h2>
+      <p>This is placeholder text about revuer</p>
+    </div>`
   )
 }
 
