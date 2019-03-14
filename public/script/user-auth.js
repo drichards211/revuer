@@ -137,7 +137,15 @@ function renderSignInForm() {
         <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" required/>
         <button type="submit">Sign in</button>
       </form>
-    </div>`)
+    </div>`
+  )
+  $('.signin-form').submit(function(event) {
+    console.log('sign-in form submitted')
+    event.preventDefault()
+    const username = $('#username').val()
+    const userPass =  $('#password').val()
+    userSignIn(username, userPass)
+  })
 }
 
 function renderSignUpForm() {
@@ -156,7 +164,21 @@ function renderSignUpForm() {
         <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" required/>
         <button type="submit">Sign up</button>
       </form>
-    </div>`)
+    </div>`
+  )
+  $('.signup-form').submit(function(event) {
+    console.log('sign-up form submitted')
+    event.preventDefault()
+    const userEmail = $('#email').val()
+    const username = $('#username').val()
+    const userPass =  $('#password').val()
+    const userPass2 =  $('#password2').val()
+    if (userPass === userPass2) {
+      userSignUp(userEmail, username, userPass) // in user-auth.js
+    } else if (userPass !== userPass2) {
+        alert("Passwords don't match")
+      }
+  })
 }
 
 function renderPreviewInfo() {

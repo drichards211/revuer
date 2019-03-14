@@ -8,13 +8,11 @@ function handleUserNav() {
     if (`${$(this).prop('id')}` === 'sign-in') {
       console.log("sign-in button pressed")
       renderSignInForm() // in user-auth.js
-      handleFormSubmit()
     } 
     // sign-up button pressed:
     if (`${$(this).prop('id')}` === 'sign-up') {
       console.log("sign-up button pressed")
       renderSignUpForm() // in user-auth.js
-      handleFormSubmit()
     } 
     // preview button pressed:
     if (`${$(this).prop('id')}` === 'preview') {
@@ -25,13 +23,11 @@ function handleUserNav() {
     if (`${$(this).prop('id')}` === 'chair-1') {
       console.log("\"Add a movie\" button pressed")
       addMovie() // in add-movie.js
-      handleFormSubmit()
     } 
     // "View your library" button pressed:
     if (`${$(this).prop('id')}` === 'chair-2') {
       console.log("\"View your library\" button pressed")
       viewLibrary()
-      handleFormSubmit()
     } 
     // "About revuer" button pressed:
     if (`${$(this).prop('id')}` === 'chair-3') {
@@ -55,8 +51,7 @@ function viewLibrary() {
   )
   if (userName !== "Guest") {
     // Display user library results:
-    handleLibraryNav()
-
+    
   } else {
     // Display Sample Library for "guest":
     for (let i = 0; i < previewLibrary.length; i++) {
@@ -67,7 +62,6 @@ function viewLibrary() {
         </button>`
       )
     }
-    handleLibraryNav()
   }
 }
 
@@ -201,7 +195,7 @@ function aboutRevuer() {
 }
 
 function updateDOMTest() {
-  console.log("updateDOMTest ran")
+  console.log("updateDOMTest() ran")
   $('.js-test').append(
     `<p>This is new text rendered by index.js</p>`)
 }
@@ -209,4 +203,6 @@ function updateDOMTest() {
 $(function() {
   updateDOMTest()
   handleUserNav()
+  handleLibraryNav()
+  /* handleFormSubmit() */
 })

@@ -75,7 +75,8 @@ function renderFirstApiResult(results) {
       `<img src="${Poster}" alt="image of ${Title} poster">`
     )
   }
-  $('body').on('click', 'button', function(event) {
+  $('body').one('click', 'button', function(event) {
+    event.preventDefault()
     if (`${$(this).prop('id')}` === 'movie-correct') {
       console.log("\"Yes\" button pressed")
       addMovieDetails(results[0])  
@@ -85,6 +86,7 @@ function renderFirstApiResult(results) {
       renderMoreApiResults(results)
     }
   })
+  
 }
 
 function renderMoreApiResults(results) {
@@ -114,7 +116,7 @@ function renderMoreApiResults(results) {
   $('.movie-API-box-1').append(
     `<button class="no" id="movie-not-here">I don't see my movie listed</button>`
   )
-  $('body').on('click', 'button', function(event) {
+  $('body').one('click', 'button', function(event) {
     for (let i = 1; i < 10; i++) {
       if (`${$(this).prop('id')}` === `movie-correct-${i}`) {
         console.log(`#${i} movie is correct`)
@@ -125,9 +127,9 @@ function renderMoreApiResults(results) {
       if (`${$(this).prop('id')}` === 'movie-not-here') {
         console.log("No movies are correct")
         suggestNewSearch()
-      }  
-    })
-  }
+      }
+  })
+}
     
 function addMovieDetails(movie) {
   console.log("addMovieDetails() ran")
