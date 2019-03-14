@@ -23,12 +23,10 @@ function addMovie() {
 function searchOMDB(title) {
 // Search OMDB API by Title, returns multiple results:
   console.log("searchOMDB() ran")
-  let results
   const apiKey = localStorage.getItem('omdbApiKey')
   const fetchUrl = `http://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=${title}`
-  console.log(fetchUrl)
-  
-  fetch(`http://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=${title}`)
+    
+  fetch(fetchUrl)
     .then(response => {
       if (response.ok) {
         return response.json()
@@ -40,7 +38,7 @@ function searchOMDB(title) {
       if (responseJson.Response === "True") {
       console.log("Movie(s) found")
       console.log(responseJson)
-      results = responseJson.Search
+      const results = responseJson.Search
       renderFirstApiResult(results)
       } else {
           console.log("No movies found")
@@ -60,18 +58,23 @@ function lookupOMDB() {
 
 function renderFirstApiResult(results) {
   console.log("renderFirstApiResult() ran")
-  /* const firstResult = results[0] */
   const { Poster, Title, Year, imdbID } = results[0]
   $('.video-screen').html(
     `<div class="movie-API-box-1">
       <h2>Is this your movie?</h2>
       <p>${Title} -- ${Year}</p>
-      <img src="${Poster}" alt="image of ${Title} poster">
+      <div class="poster-frame"></div>
       <p>
       <button class="yes" id="movie-correct">Yes</button>
       <button class="no" id="movie-incorrect">No</button>
       </p>
-    </div>`)
+    </div>`
+  )
+  if (Poster !== "N/A") {
+    $('.poster-frame').append(
+      `<img src="${Poster}" alt="image of ${Title} poster">`
+    )
+  }
   $('body').on('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'movie-correct') {
       console.log("\"Yes\" button pressed")
@@ -79,38 +82,46 @@ function renderFirstApiResult(results) {
     }
     if (`${$(this).prop('id')}` === 'movie-incorrect') {
       console.log("\"No\" button pressed")
-      renderMoreApiResults()
+      renderMoreApiResults(results)
     }
   })
 }
 
-function renderMoreApiResults() {
+function renderMoreApiResults(results) {
   console.log("renderMoreApiResults() ran")
+  console.log(results)
   $('.video-screen').html(
     `<div class="movie-API-box-1">
       <h2>Sorry about that.</h2>
       <h2>Is it one of these?</h2>
-      <button class="yes" id="movie-correct-0">Yes</button>
-      <button class="yes" id="movie-correct-1">Yes</button>
-      <button class="yes" id="movie-correct-2">Yes</button>
-      <button class="yes" id="movie-correct-3">Yes</button>
-      <button class="yes" id="movie-correct-4">Yes</button>
-      <button class="yes" id="movie-correct-5">Yes</button>
-      <button class="yes" id="movie-correct-6">Yes</button>
-      <button class="yes" id="movie-correct-7">Yes</button>
-      <button class="yes" id="movie-correct-8">Yes</button>
-      <button class="yes" id="movie-correct-9">Yes</button>
-      <button class="no" id="movie-not-here">I don't see my movie listed</button>
-    </div>`)
-    const movieData = "temporary"
-    $('body').on('click', 'button', function(event) {
-      for (let i = 0; i < 10; i++) {
-        if (`${$(this).prop('id')}` === `movie-correct-${i}`) {
-          console.log(`#${i} movie is correct`)
-          // update movieData with correct API ID and title 
-          addMovieDetails(movieData)
-        }
+    </div>`
+  )
+  for (let i = 1; i < results.length; i++) {
+    const { Poster, Title, Year, imdbID } = results[i]
+    $('.movie-API-box-1').append(
+      `<p>${Title} -- ${Year}</p>
+      <div class="poster-frame-${i}"></div>
+      <p>
+      <button class="yes" id="movie-correct-${i}">Yes</button>
+      </p>`
+    )
+    if (Poster !== "N/A") {
+      $(`.poster-frame-${i}`).append(
+        `<img src="${Poster}" alt="image of ${Title} poster">`
+      )
+    } 
+  }
+  $('.movie-API-box-1').append(
+    `<button class="no" id="movie-not-here">I don't see my movie listed</button>`
+  )
+  $('body').on('click', 'button', function(event) {
+    for (let i = 1; i < 10; i++) {
+      if (`${$(this).prop('id')}` === `movie-correct-${i}`) {
+        console.log(`#${i} movie is correct`)
+        // update movieData with correct API ID and title 
+        addMovieDetails(results[i])
       }
+    }
       if (`${$(this).prop('id')}` === 'movie-not-here') {
         console.log("No movies are correct")
         suggestNewSearch()
@@ -118,9 +129,9 @@ function renderMoreApiResults() {
     })
   }
     
-function addMovieDetails(movieData) {
+function addMovieDetails(movie) {
   console.log("addMovieDetails() ran")
-  console.log(movieData)
+  console.log(movie)
   // update DOM with details form
   // jQuery listen for submit
   // fetch call (possibly a different function)
