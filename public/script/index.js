@@ -142,6 +142,8 @@ function testProtected() {
 /* localStorage.setItem('auth', res.authToken)
       localStorage.setItem('user', username) */
 
+
+// THIS FUNCTION IS DEPRACATED. PLEASE DELETE:
 function handleFormSubmit() {
 /* Listens for user form submissions, and passes values to appropriate functions */
   console.log('handleFormSubmit() running')

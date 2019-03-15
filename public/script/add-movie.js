@@ -86,7 +86,6 @@ function renderFirstApiResult(results) {
       renderMoreApiResults(results)
     }
   })
-  
 }
 
 function renderMoreApiResults(results) {
@@ -134,9 +133,59 @@ function renderMoreApiResults(results) {
 function addMovieDetails(movie) {
   console.log("addMovieDetails() ran")
   console.log(movie)
-  // update DOM with details form
-  // jQuery listen for submit
-  // fetch call (possibly a different function)
+  const { Poster, Title, Year, imdbID } = movie
+  $('.video-screen').html(
+    `<div class="movie-API-box-1">
+      <h2>Add your details</h2>
+      <p>${Title} -- ${Year}</p>
+      <div class="poster-frame"></div>
+    </div>
+    <div class="movie-details-box">
+      <form class="movie-submit-form" action="#"><br>
+        <label for="viewed">When did you watch it?</label>
+          <input type="date" name="viewed" id="viewed" required/>
+        <br><br>
+        <label for="rating">What did you think of it?</label><br>
+          <input type="radio" name="rating" value="thumbsUp" id="thumbs-up" checked required> Thumbs up<br>
+          <input type="radio" name="rating" value="thumbsDown" id="thumbs-down"> Thumbs down<br>
+          <input type="radio" name="rating" value="complicated" id="complicated"> It's complicated<br><br>
+        <label for="ownCopy">Do you own a copy?</label><br>
+          <input type="radio" name="ownCopy" value="yes" id="own-yes" checked required> Yes<br>
+          <input type="radio" name="ownCopy" value="no" id="own-no"> No<br><br>
+        <label for="format">Which format(s)? (Leave blank if none)</label><br>
+          <input type="checkbox" name="format" value="vhs" id="format-vhs"> VHS<br>
+          <input type="checkbox" name="format" value="laserDisc" id="format-laserdisc"> LaserDisc<br>
+          <input type="checkbox" name="format" value="dvd" id="format-dvd"> DVD<br>
+          <input type="checkbox" name="format" value="bluRay" id="format-bluray"> Blu-ray<br>
+          <input type="checkbox" name="format" value="digitalCopy" id="format-digitalcopy"> Digital Copy<br><br>
+        <label for="viewingNotes">Viewing Notes</label><br>
+          <textarea name="viewingNotes" id="viewingNotes" rows="10" cols="72" maxlength="10000" placeholder="Type any notes you'd like, up to 10,000 characters. Enjoy re-vueing your favorite moments."></textarea>
+        <br><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>`
+  )
+  if (Poster !== "N/A") {
+    $('.poster-frame').append(
+      `<img src="${Poster}" alt="image of ${Title} poster">`
+    )
+  }
+  handleMovieSubmit()
+}
+
+function handleMovieSubmit() {
+  let newMovie
+  $('.movie-post-form').submit(function(event) {
+    console.log('movie-submit-form submitted')
+    event.preventDefault()
+  })
+  
+  postMovieToDb(newMovie)
+}
+
+
+function postMovieToDb(newMovie) {
+// fetch call
   // Movie.create({userName: "44sdhjhba", name: 'Star wars', })
 }
 
