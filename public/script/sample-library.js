@@ -26,46 +26,46 @@ const previewLibrary = [
   {
     "title": "Waking Ned Devine",
     "imdbId": "tt0166396",
-    "viewed": "2001-04-16",
+    "viewed": "1988-01-19T00:00:00.000+00:00",
     "rating": "complicated",
-    "ownCopy": [false],
+    "ownCopy": false,
     "viewingNotes": "Watched this at my best friend's house on DVD. 60\" Mitsubishi projection TV. Entertaining overall, with lots of surpising, funny moments. The end, particularly, had a big pay-off. Pacing is slow, and there are some dull moments. Upon second viewinga year later, it isn't as funny knowing how the film is going to end. I wouldn't purchase this movie to own, but I might watch it again sometime when I've forgotten more of the jokes and plot.",
-    "author_id": "12345",
+    "author_id": "000000000000000000000000",
     "userName": "Guest",
-    "created": "2019-03-09" 
+    "created": "2019-03-16T03:11:39.094+00:00" 
   },
   {
     "title": "The Lion King",
     "imdbId": "tt0110357",
-    "viewed": "1996-05-21",
+    "viewed": "1988-01-19T00:00:00.000+00:00",
     "rating": "thumbsUp",
     "ownCopy": true,
     "format": ["DVD", "Blu-ray"],
     "viewingNotes": "Very good animated offering at the end of the golden era of Disney animation, shortly before they transitioned to all-computer art. Majestic, visually, from beginning to end with an excellent soundscape by Hans Zimmer.",
-    "author_id": "12345",
+    "author_id": "000000000000000000000000",
     "userName": "Guest",
-    "created": "2019-03-09" 
+    "created": "2019-03-16T03:11:39.094+00:00" 
   },
   {
     "title": "Cloud Atlas",
     "imdbId": "tt1371111",
-    "viewed": "2018-08-29",
+    "viewed": "1988-01-19T00:00:00.000+00:00",
     "rating": "thumbsDown",
-    "ownCopy": [false],
+    "ownCopy": false,
     "viewingNotes": "I'm certain someone thought this would be a good idea for a movie. But, in the end, I just didn't care about the characters.",
-    "author_id": "12345",
+    "author_id": "000000000000000000000000",
     "userName": "Guest",
-    "created": "2019-03-09" 
+    "created": "2019-03-16T03:11:39.094+00:00" 
   },
   {
     "title": "The Martian",
     "imdbId": "tt3659388",
-    "viewed": "2017-10-19",
+    "viewed": "1988-01-19T00:00:00.000+00:00",
     "rating": "thumbsUp",
-    "ownCopy": [false],
+    "ownCopy": false,
     "viewingNotes": "Watched this on an airplane flight. Fun from start to finish. My only nitpick is the \"rocketman\" scene near the end of the movie. Completely unrealistic, obviously added by the filmmaker to make the end more exciting, but all it does is make the more intelligent members of the audience groan inwardly.",
-    "author_id": "12345",
+    "author_id": "000000000000000000000000",
     "userName": "Guest",
-    "created": "2019-03-09" 
+    "created": "2019-03-16T03:11:39.094+00:00" 
   },
 ]

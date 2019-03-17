@@ -33,9 +33,9 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
     .then(foundMovie => {
       if (foundMovie) {
         console.log(`FOUND MOVIE = ${foundMovie}`)
-        const message = 'Movie already exists'
-        console.error(message)
-        return res.status(400).send(message);
+        const errMessage = 'Movie already exists'
+        console.error(errMessage)
+        return res.status(400).send(errMessage);
       
       } else {
         // Locate User's _.id value:

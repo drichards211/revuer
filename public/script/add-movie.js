@@ -130,10 +130,10 @@ function renderMoreApiResults(results) {
   })
 }
     
-function addMovieDetails(movie) {
+function addMovieDetails(omdbMovie) {
   console.log("addMovieDetails() ran")
-  console.log(movie)
-  const { Poster, Title, Year, imdbID } = movie
+  console.log(omdbMovie)
+  const { Poster, Title, Year, imdbID } = omdbMovie
   $('.video-screen').html(
     `<div class="movie-API-box-1">
       <h2>Add your details</h2>
@@ -146,12 +146,12 @@ function addMovieDetails(movie) {
           <input type="date" name="viewed" id="viewed" required/>
         <br><br>
         <label for="rating">What did you think of it?</label><br>
-          <input type="radio" name="rating" value="thumbsUp" id="thumbs-up" checked required> Thumbs up<br>
-          <input type="radio" name="rating" value="thumbsDown" id="thumbs-down"> Thumbs down<br>
-          <input type="radio" name="rating" value="complicated" id="complicated"> It's complicated<br><br>
+          <input type="radio" name="rating" value="thumbsUp" checked required> Thumbs up<br>
+          <input type="radio" name="rating" value="thumbsDown"> Thumbs down<br>
+          <input type="radio" name="rating" value="complicated"> It's complicated<br><br>
         <label for="ownCopy">Do you own a copy?</label><br>
-          <input type="radio" name="ownCopy" value="yes" id="own-yes" checked required> Yes<br>
-          <input type="radio" name="ownCopy" value="no" id="own-no"> No<br><br>
+          <input type="radio" name="ownCopy" value="true" checked required> Yes<br>
+          <input type="radio" name="ownCopy" value="false"> No<br><br>
         <label for="format">Which format(s)? (Leave blank if none)</label><br>
           <input type="checkbox" name="format" value="vhs" id="format-vhs"> VHS<br>
           <input type="checkbox" name="format" value="laserDisc" id="format-laserdisc"> LaserDisc<br>
@@ -170,21 +170,42 @@ function addMovieDetails(movie) {
       `<img src="${Poster}" alt="image of ${Title} poster">`
     )
   }
-  handleMovieSubmit()
+  handleMovieSubmit(omdbMovie)
 }
 
-function handleMovieSubmit() {
-  let newMovie
-  $('.movie-post-form').submit(function(event) {
+function handleMovieSubmit(omdbMovie) {
+  console.log(`handleMovieSubmit(running)`)
+  let userMovie = {}
+  // Preserves character returns inside "textarea":
+  $.valHooks.textarea = {
+    get: function( elem ) {
+      return elem.value.replace( /\r?\n/g, "\r\n" );
+    }
+  };
+  $('.movie-submit-form').submit(function(event) {
     console.log('movie-submit-form submitted')
     event.preventDefault()
+    userMovie.title = omdbMovie.Title
+    userMovie.imdbId = omdbMovie.imdbID
+    userMovie.viewed = $('#viewed').val()
+    userMovie.rating = $('input[type=radio][name=rating]:checked').val()
+    $('input[type=radio][name=ownCopy]:checked').val(function() { 
+      // write boolean to .ownCopy instead of string:
+      if (this.value === "true") {
+        userMovie.ownCopy = true
+      } else {
+        userMovie.ownCopy = false
+      }
+    })
+    userMovie.format = $('input[type=checkbox][name=format]:checked').val()
+    userMovie.viewingNotes = $('#viewingNotes').val()
+    console.log(userMovie)
+    postMovieToDb(userMovie)
   })
-  
-  postMovieToDb(newMovie)
 }
 
-
 function postMovieToDb(newMovie) {
+  console.log(`postMovieToDb() ran`)
 // fetch call
   // Movie.create({userName: "44sdhjhba", name: 'Star wars', })
 }
