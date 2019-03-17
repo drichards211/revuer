@@ -206,10 +206,38 @@ function handleMovieSubmit(omdbMovie) {
 
 function postMovieToDb(newMovie) {
   console.log(`postMovieToDb() ran`)
-// fetch call
-  // Movie.create({userName: "44sdhjhba", name: 'Star wars', })
-}
+  const userToken = localStorage.getItem('auth')
+  fetch('/api/movies/', {
+    method: 'POST',
+    body: JSON.stringify(newMovie),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${userToken}`
+    }
+  })
+    .then(res => {
+      if (res.ok) {
+        console.log("response OK")
+        return res.json()
+      } else {
+        throw new Error(res.statusText)
+      }
+    })
+    .then(responseJson => {
+      console.log("New movie created successfully")
+      console.log(responseJson)
+      // add html to DOM:
+        // "${movieName} has been added to your library.
+        // Button: View new movie => library-detail page
+        // Button: Add another movie => add-movie page
+        // Button: View your library => view-library page
+    })
+    .catch(err => {
+      console.log(err)
+    })
 
+}
+  
 function suggestNewSearch() {
   console.log("suggestNewSearch() ran")
 }

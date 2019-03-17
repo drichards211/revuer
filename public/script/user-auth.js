@@ -18,7 +18,7 @@ function userSignIn(username, pword, firstTime) {
     }
   })
   .then(res => {
-    if (res.ok){ 
+    if (res.ok) { 
       console.log("response OK")
       success = true
       return res.json()
