@@ -19,50 +19,26 @@ function handleUserNav() {
       console.log("preview button pressed")
       renderPreviewInfo() // in user-auth.js
     }
-    // "Add a movie" button pressed:
     if (`${$(this).prop('id')}` === 'chair-1') {
+      console.log("\"Home\" button pressed")
+      renderHomePage()
+    } 
+    // "Add a movie" button pressed:
+    if (`${$(this).prop('id')}` === 'chair-2') {
       console.log("\"Add a movie\" button pressed")
       addMovie() // in add-movie.js
     } 
     // "View your library" button pressed:
-    if (`${$(this).prop('id')}` === 'chair-2') {
+    if (`${$(this).prop('id')}` === 'chair-3') {
       console.log("\"View your library\" button pressed")
-      viewLibrary()
+      viewLibrary() // in view-library.js
     } 
     // "About revuer" button pressed:
-    if (`${$(this).prop('id')}` === 'chair-3') {
+    if (`${$(this).prop('id')}` === 'chair-4') {
       console.log("\"About revuer\" button pressed")
       aboutRevuer()
     }
   })
-}
-
-function viewLibrary() {
-  console.log("viewLibrary() ran")
-  const userToken = localStorage.getItem('auth')
-  const thumbsUp = "^" // update this to contain html "thumbsUp" IMG
-  const thumbsDown = "v" // update this to contain html "thumbsDown" IMG
-  const complicated = ":/" // update this to contain html "complicated" IMG
-
-  $('.video-screen').html(
-    `<h2>Library</h2>
-    <div class="movie-list">
-    </div>`
-  )
-  if (userName !== "Guest") {
-    // Display user library results:
-    
-  } else {
-    // Display Sample Library for "guest":
-    for (let i = 0; i < previewLibrary.length; i++) {
-      const rating = eval(`${previewLibrary[i].rating}`)
-      $('.movie-list').append(
-        `<button id="movie-detail-${i}">
-          ${previewLibrary[i].title} ${rating}
-        </button>`
-      )
-    }
-  }
 }
 
 function handleLibraryNav() {
@@ -77,9 +53,27 @@ function handleLibraryNav() {
   })
 }
 
-function viewLibraryDetail() {
-  console.log("viewLibraryDetail() ran")
-
+function renderHomePage() {
+  console.log("renderHomePage() ran")
+  if (userName === undefined) {
+    $('.video-screen').html(
+      `<h1>revuer</h1>
+      <p class="js-test">animated text goes here</p>
+      <div class="user-forms"></div>`
+    )
+    $('.dynamic-buttons').html(
+      `<h4>dynamic buttons go here</h4>
+        <button class="ticket" id="sign-in">sign-in</button>
+        <button class="ticket" id="sign-up">sign-up</button>
+        <button class="ticket" id="preview">preview</button>`
+    )
+  } else if (userName !== "Guest") {
+    welcomeUser(userName) // in user-auth.js
+  } else {
+    welcomeUser(userName, true) // in user-auth.js
+  }
+  
+  
 }
 
 function oldTestProtected() {
@@ -100,9 +94,6 @@ function oldTestProtected() {
       console.log(responseJson)
     })
 }
-
-
-
 
   /* fetch('/api/protected', {
     method: 'GET',
@@ -180,14 +171,16 @@ function handleFormSubmit() {
 function renderChairButtons() {
   $('.chair-buttons').html(
   `<h4>chair buttons go here</h4>
-  <button id="chair-1">Add a movie</button>
-  <button id="chair-2">View your library</button>
-  <button id="chair-3">About revuer</button>`
+  <button class="chair" id="chair-1">Home</button>
+  <button class="chair" id="chair-2">Add a movie</button>
+  <button class="chair" id="chair-3">View your library</button>
+  <button class="chair" id="chair-4">About revuer</button>`
   )
 }
 
 function aboutRevuer() {
   console.log("aboutRevuer() ran")
+  $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="about-revuer">
       <h2>About revuer</h2>

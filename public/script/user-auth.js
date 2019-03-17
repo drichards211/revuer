@@ -150,6 +150,7 @@ function renderSignInForm() {
 
 function renderSignUpForm() {
   console.log("renderSignUpForm() ran")
+  $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="signup-box">
       <form class="signup-form" action="#">

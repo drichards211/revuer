@@ -2,6 +2,7 @@
 
 function addMovie() {
   console.log("addMovie() running")
+  $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="movie-find-box">
       <form class="movie-find-form" action="#">
@@ -206,6 +207,12 @@ function handleMovieSubmit(omdbMovie) {
 
 function postMovieToDb(newMovie) {
   console.log(`postMovieToDb() ran`)
+  // Do not allow "Guest" to post:
+  if (userName === "Guest") {
+    console.log("Guest attempting to post movie")
+    renderSuccessMessage(newMovie.title, true)
+  } else {
+  // Authorized users may post to db:  
   const userToken = localStorage.getItem('auth')
   fetch('/api/movies/', {
     method: 'POST',
@@ -226,18 +233,65 @@ function postMovieToDb(newMovie) {
     .then(responseJson => {
       console.log("New movie created successfully")
       console.log(responseJson)
-      // add html to DOM:
-        // "${movieName} has been added to your library.
-        // Button: View new movie => library-detail page
-        // Button: Add another movie => add-movie page
-        // Button: View your library => view-library page
+      renderSuccessMessage(responseJson.title)
     })
     .catch(err => {
       console.log(err)
     })
-
+  }
 }
-  
+
+function renderSuccessMessage(movieTitle, guest) {
+  console.log("renderSuccessMessage() ran")
+  if (guest === true) {
+  // Display customized message and buttons for "Guest" account:
+    $('.video-screen').html(
+      `<div class="success-message">
+        <p>Please sign up for an account if you'd like to add</p>
+        <h2>${movieTitle}</h2> 
+        <p>to your library.</p>
+        <p>You can also click "View your library" to read some sample revues.`
+    )
+    $('.dynamic-buttons').html(
+      `<h4>dynamic buttons go here</h4>
+      <button class="ticket" id="sign-up">Sign-up</button>
+      <button class="film" id="film-3">View your library</button>`
+    )
+    $('.dynamic-buttons').one('click', 'button', function(event) {
+      if (`${$(this).prop('id')}` === 'sign-up') {
+        console.log('"Sign-up" button clicked')
+        renderSignUpForm() // in user-auth.js
+      }
+      if (`${$(this).prop('id')}` === 'film-3') {
+        console.log('"View your library" film button clicked')
+        viewLibrary() // in view-library.js
+      }
+    })
+  } else {
+  // Render success message for registered users:
+    $('.video-screen').html(
+      `<div class="success-message">
+        <h2>${movieTitle}</h2> 
+        <p>has been added to your library.</p>`
+    )
+    $('.dynamic-buttons').html(
+        `<h4>dynamic buttons go here</h4>
+        <button class="film" id="film-1">View your movie</button>
+        <button class="film" id="film-2">Add another movie</button>`
+    )
+    $('.dynamic-buttons').one('click', 'button', function(event) {
+      if (`${$(this).prop('id')}` === 'film-1') {
+        console.log('"View your movie" button clicked')
+        viewLibraryDetail(movieTitle) // in view-library.js
+      }
+      if (`${$(this).prop('id')}` === 'film-2') {
+        console.log('"Add another movie" button clicked')
+        viewLibrary() // in view-library.js
+      }
+    })
+  }
+}
+
 function suggestNewSearch() {
   console.log("suggestNewSearch() ran")
 }
