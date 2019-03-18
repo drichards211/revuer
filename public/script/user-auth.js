@@ -34,17 +34,39 @@ function userSignIn(username, pword, firstTime) {
   .then(responseJson => {
     if (success === true) {
       console.log("Sign-in successful")
-      localStorage.setItem('auth', responseJson.authToken)
+      console.log(`username = ${username}`)
       userName = username
       getOmbdApiKey()
       /* localStorage.setItem('user', username) */
-      if (firstTime === true) {
-        welcomeUser(username, true)
-      } else {
-        welcomeUser(username)
+      if (username === "Guest") {
+        renderPreviewInfo()
+      } else { 
+        localStorage.setItem('auth', responseJson.authToken)
+        if (firstTime) {
+          if (previewLibrary.length > 6) {
+            addGuestMoviesToDb() // in add-movie.js
+            welcomeUser(username, firstTime, true)
+          } else {
+            welcomeUser(username, firstTime)
+          }
+        } else {
+          welcomeUser(username)
+        }
       }
     }
   })
+  /* .then(res => {
+    if (firstTime === true) {
+      if (previewLibrary.length > 6) {
+        addGuestMoviesToDb() // in add-movie.js
+        welcomeUser(username, true, true)
+      } else {
+        welcomeUser(username, true)
+      }
+    } else {
+      welcomeUser(username)
+    }
+  }) */
   .catch(err => {
     console.log("userSignIn() encountered an error")
     // ok to use an alert here
@@ -105,24 +127,37 @@ function handleSignInError() {
   console.log("Incorrect username or password")
 }
 
-function welcomeUser(user, firstTime) {
+function welcomeUser(user, firstTime, addMovies) {
 /* Renders custom welcome screen after successful sign-in*/
   console.log("welcomeUser() ran")
   $('.dynamic-buttons').empty()
   renderChairButtons()
-  if (firstTime === true) {
+  if (firstTime) {
     $('.video-screen').html(
-      `<div class="welcome-messsage">
+      `<div class="welcome-message">
           <h2>Welcome to revuer, ${user}!</h2>
           <p>Please click any of the chair buttons below to continue.</p>
-          <p>Have fun revue-ing your movie experiences!</p>
-      `)
-  } else {
-    $('.video-screen').html(
-      `<div class="welcome-messsage">
-          <h2>Welcome back ${user}!</h2>
-      `)
-  }
+          <p>Have fun revue-ing your movie experiences!</p><br>`
+      )
+      if (addMovies) {
+        console.log("Adding additional welcome message")
+        const plural = previewLibrary.length > 7 ? "movies have" : "movie has";
+        $('.welcome-message').append(
+          `<p>Your ${plural} been added to your library.</p>`
+        )
+      }
+      if (userName === "Guest") {
+        $('.dynamic-buttons').html(
+          `<h4>dynamic buttons go here</h4>
+          <button class="ticket" id="sign-up">sign-up</button>`
+        )
+      }
+    } else {
+      $('.video-screen').html(
+        `<div class="welcome-messsage">
+            <h2>Welcome back ${user}!</h2>
+        `)
+    }
 }
 
 function renderSignInForm() {
@@ -184,7 +219,6 @@ function renderSignUpForm() {
 
 function renderPreviewInfo() {
   console.log("renderPreviewInfo() ran")
-  userName = "Guest"
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="preview-info">
@@ -212,5 +246,9 @@ function getOmbdApiKey() {
     })
     .then(responseJson => {
       localStorage.setItem('omdbApiKey', responseJson.data)
+    })
+    .catch(err => {
+      console.log("getOmdbApiKey() encountered an error")
+      console.log(err)
     })
 }

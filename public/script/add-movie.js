@@ -1,13 +1,14 @@
 'use strict'
 
-function addMovie() {
+function addMovie(oldSearch) {
   console.log("addMovie() running")
+  const placeholder = oldSearch || "eg: Titanic"
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="movie-find-box">
       <form class="movie-find-form" action="#">
         <label for="movietitle">Search movie title</label>
-        <input type="text" name="movietitle" id="movietitle" placeholder="eg: Titanic" required/>
+        <input type="text" name="movietitle" id="movietitle" placeholder="${placeholder}" required/>
         <button type="submit">Search</button>
       </form>
     </div>`)
@@ -19,6 +20,17 @@ function addMovie() {
     const formatTitle = searchTitle.trim().replace(/\s\s+/g, ' ').split(' ').join('+');
     searchOMDB(formatTitle)
   })
+}
+
+function addGuestMoviesToDb() {
+  console.log("addGuestMoviesToDb() ran")
+  let totalMovies = previewLibrary.length - 6
+  console.log(`Total movies to add = ${totalMovies}`)
+  for (let i = previewLibrary.length - 1; i > 5; i--) {
+    let movie = previewLibrary[i]
+    console.log(`Posting a movie`)
+    postMovieToDb(movie, true)
+  }
 }
 
 function searchOMDB(title) {
@@ -40,24 +52,24 @@ function searchOMDB(title) {
       console.log("Movie(s) found")
       console.log(responseJson)
       const results = responseJson.Search
-      renderFirstApiResult(results)
+      renderFirstApiResult(results, title)
       } else {
           console.log("No movies found")
-          suggestNewSearch()
+          suggestNewSearch(title)
       }
     })
     .catch(err => {
       console.log(`OMDB API failed to fetch: ${err}`)
-      suggestNewSearch()
+      suggestNewSearch(title)
     })
   }
     
 function lookupOMDB() {
   // Search OMDB API by "IMDB ID", returns one result:
-  console.log("retrieveOMDB() ran")
+  console.log("lookupOMDB() ran")
 }
 
-function renderFirstApiResult(results) {
+function renderFirstApiResult(results, searchTitle) {
   console.log("renderFirstApiResult() ran")
   const { Poster, Title, Year, imdbID } = results[0]
   $('.video-screen').html(
@@ -84,12 +96,12 @@ function renderFirstApiResult(results) {
     }
     if (`${$(this).prop('id')}` === 'movie-incorrect') {
       console.log("\"No\" button pressed")
-      renderMoreApiResults(results)
+      renderMoreApiResults(results, searchTitle)
     }
   })
 }
 
-function renderMoreApiResults(results) {
+function renderMoreApiResults(results, searchTitle) {
   console.log("renderMoreApiResults() ran")
   console.log(results)
   $('.video-screen').html(
@@ -101,11 +113,8 @@ function renderMoreApiResults(results) {
   for (let i = 1; i < results.length; i++) {
     const { Poster, Title, Year, imdbID } = results[i]
     $('.movie-API-box-1').append(
-      `<p>${Title} -- ${Year}</p>
-      <div class="poster-frame-${i}"></div>
-      <p>
-      <button class="yes" id="movie-correct-${i}">Yes</button>
-      </p>`
+      `<p>${Title} -- ${Year} <button class="yes" id="movie-correct-${i}">Yes</button></p>
+      <div class="poster-frame-${i}">This movie poster is not available</div><br>`
     )
     if (Poster !== "N/A") {
       $(`.poster-frame-${i}`).append(
@@ -126,7 +135,7 @@ function renderMoreApiResults(results) {
     }
       if (`${$(this).prop('id')}` === 'movie-not-here') {
         console.log("No movies are correct")
-        suggestNewSearch()
+        suggestNewSearch(searchTitle)
       }
   })
 }
@@ -205,11 +214,13 @@ function handleMovieSubmit(omdbMovie) {
   })
 }
 
-function postMovieToDb(newMovie) {
+function postMovieToDb(newMovie, silent) {
   console.log(`postMovieToDb() ran`)
-  // Do not allow "Guest" to post:
+  // Do not allow "Guest" to post to db. Add to client previewLibrary instead:
   if (userName === "Guest") {
     console.log("Guest attempting to post movie")
+    previewLibrary.push(newMovie)
+    console.log(previewLibrary)
     renderSuccessMessage(newMovie.title, true)
   } else {
   // Authorized users may post to db:  
@@ -233,7 +244,10 @@ function postMovieToDb(newMovie) {
     .then(responseJson => {
       console.log("New movie created successfully")
       console.log(responseJson)
-      renderSuccessMessage(responseJson.title)
+      if (silent !== true) {
+        renderSuccessMessage(responseJson.title)
+      }
+      
     })
     .catch(err => {
       console.log(err)
@@ -247,24 +261,24 @@ function renderSuccessMessage(movieTitle, guest) {
   // Display customized message and buttons for "Guest" account:
     $('.video-screen').html(
       `<div class="success-message">
-        <p>Please sign up for an account if you'd like to add</p>
-        <h2>${movieTitle}</h2> 
-        <p>to your library.</p>
-        <p>You can also click "View your library" to read some sample revues.`
+      <h2>${movieTitle}</h2> 
+      <p>has been added to your virtual library.</p>
+      <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
     )
     $('.dynamic-buttons').html(
       `<h4>dynamic buttons go here</h4>
-      <button class="ticket" id="sign-up">Sign-up</button>
-      <button class="film" id="film-3">View your library</button>`
+      <button class="film" id="film-1">View your movie</button>
+      <button class="film" id="film-2">Add another movie</button>
+      <button class="ticket" id="sign-up">Sign-up</button>`
     )
     $('.dynamic-buttons').one('click', 'button', function(event) {
-      if (`${$(this).prop('id')}` === 'sign-up') {
-        console.log('"Sign-up" button clicked')
-        renderSignUpForm() // in user-auth.js
+      if (`${$(this).prop('id')}` === 'film-1') {
+        console.log('"View your movie" button clicked')
+        viewLibraryDetail(movieTitle) // in view-library.js
       }
-      if (`${$(this).prop('id')}` === 'film-3') {
-        console.log('"View your library" film button clicked')
-        viewLibrary() // in view-library.js
+      if (`${$(this).prop('id')}` === 'film-2') {
+        console.log('"Add another movie" button clicked')
+        addMovie()
       }
     })
   } else {
@@ -286,12 +300,26 @@ function renderSuccessMessage(movieTitle, guest) {
       }
       if (`${$(this).prop('id')}` === 'film-2') {
         console.log('"Add another movie" button clicked')
-        viewLibrary() // in view-library.js
+        addMovie()
       }
     })
   }
 }
 
-function suggestNewSearch() {
+function suggestNewSearch(oldSearch) {
   console.log("suggestNewSearch() ran")
+  $('.dynamic-buttons').empty()
+  $('.video-screen').html(
+    `<p>We couldn't find any movies with that title.</p>`
+  )
+  $('.dynamic-buttons').html(
+    `<h4>dynamic buttons go here</h4>
+    <p>Please <button class="film" id="film-2">Add another movie</button> to try again.</p>`
+  )
+  $('.dynamic-buttons').one('click', 'button', function(event) {
+    if (`${$(this).prop('id')}` === 'film-2') {
+      console.log('"Add another movie" button clicked')
+      addMovie(oldSearch)
+    }
+  })
 }

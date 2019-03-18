@@ -17,7 +17,7 @@ function handleUserNav() {
     // preview button pressed:
     if (`${$(this).prop('id')}` === 'preview') {
       console.log("preview button pressed")
-      renderPreviewInfo() // in user-auth.js
+      userSignIn("Guest", "1234567890") // in user-auth.js
     }
     if (`${$(this).prop('id')}` === 'chair-1') {
       console.log("\"Home\" button pressed")

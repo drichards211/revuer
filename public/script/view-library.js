@@ -22,7 +22,7 @@ function viewLibrary() {
       $('.movie-list').append(
         `<button id="movie-detail-${i}">
           ${previewLibrary[i].title} ${rating}
-        </button>`
+        </button><br>`
       )
     }
   }
