@@ -16,7 +16,7 @@ async function viewLibrary() {
     // Display user library results:
     let libraryResults = await getMovies()/* .catch((err) => { console.log(err) }) */
     console.log(libraryResults)
-    if (libraryResults.length > 1) {
+    if (libraryResults.length > 0) {
       for (let i = 0; i < libraryResults.length; i++)
       $('.movie-list').append(
         `<button id="movie-detail-${i}">

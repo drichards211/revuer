@@ -15,7 +15,6 @@ const MovieSchema = mongoose.Schema({
   format: [{ type: String }],
   viewingNotes: { type: String },
   user_id: { type: Schema.Types.ObjectId, ref: 'User' },
-  userName: { type: String, required: true },
   created: { type: Date, default: Date.now, required: true }
 });
 
@@ -27,10 +26,8 @@ MovieSchema.methods.serialize = function() {
     ownCopy: this.ownCopy,
     format: this.format,
     viewingNotes: this.viewingNotes,
-    /* user_id: this.user_id, */
-    userName: this.userName,
+    user_id: this.user_id,
     created: this.created,
-    /* test: "potato" */
   };
 }
 

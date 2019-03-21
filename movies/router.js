@@ -51,7 +51,6 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
               format: req.body.format,
               viewingNotes: req.body.viewingNotes,
               user_id: foundUser._id,
-              userName: req.user.username,
               created: req.body.created
             })
             .then(createdMovie => {
@@ -78,7 +77,7 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
   })
 })
 
-// GET all movies from a specific user:
+// GET all movies for a specific user:
 router.get('/', jwtAuth, jsonParser, (req, res) => {
   console.log(req.user) // logs to the server console
   User.findOne({username: req.user.username})
