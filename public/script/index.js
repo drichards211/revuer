@@ -19,6 +19,12 @@ function handleUserNav() {
       console.log("preview button pressed")
       userSignIn("Guest", "1234567890") // in user-auth.js
     }
+    // "Manage your account" button pressed:
+    if (`${$(this).prop('id')}` === 'manage-acct') {
+      console.log("\"Manage account\" button pressed")
+      manageUserAccount() // in user-auth.js
+    } 
+    // "Home" button pressed:
     if (`${$(this).prop('id')}` === 'chair-1') {
       console.log("\"Home\" button pressed")
       renderHomePage()
@@ -62,10 +68,9 @@ function renderHomePage() {
       <div class="user-forms"></div>`
     )
     $('.dynamic-buttons').html(
-      `<h4>dynamic buttons go here</h4>
-        <button class="ticket" id="sign-in">sign-in</button>
-        <button class="ticket" id="sign-up">sign-up</button>
-        <button class="ticket" id="preview">preview</button>`
+      `<button class="ticket" id="sign-in">sign-in</button>
+      <button class="ticket" id="sign-up">sign-up</button>
+      <button class="ticket" id="preview">preview</button>`
     )
   } else if (userName !== "Guest") {
     welcomeUser(userName) // in user-auth.js
@@ -170,7 +175,7 @@ function handleFormSubmit() {
 
 function renderChairButtons() {
   $('.chair-buttons').html(
-  `<h4>chair buttons go here</h4>
+  `<h4>chair buttons:</h4>
   <button class="chair" id="chair-1">Home</button>
   <button class="chair" id="chair-2">Add a movie</button>
   <button class="chair" id="chair-3">View your library</button>

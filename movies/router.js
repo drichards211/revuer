@@ -16,7 +16,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false })
 // Post to create a new movie:
 router.post('/', jwtAuth, jsonParser, (req, res) => {
   console.log(req.user) // logs to the server console
-  const requiredFields = ['title', 'imdbId', 'viewed', 'rating', 'ownCopy']
+  const requiredFields = ['title', 'imdbId', 'rating', 'ownCopy']
   const missingField = requiredFields.find(field => !(field in req.body))
   
   // Make certain all required fields are included:
@@ -46,7 +46,6 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
             Movie.create({
               title: req.body.title,
               imdbId: req.body.imdbId,
-              viewed: req.body.viewed,
               rating: req.body.rating,
               ownCopy: req.body.ownCopy,
               format: req.body.format,
@@ -73,6 +72,29 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
           })
       }
     })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({ error: 'Something went wrong' });
+  })
+})
+
+// GET all movies from a specific user:
+router.get('/', jwtAuth, jsonParser, (req, res) => {
+  console.log(req.user) // logs to the server console
+  User.findOne({username: req.user.username})
+    .then(foundUser => {
+      console.log(`FOUND USER = ${foundUser}`)
+      Movie.find({user_id: foundUser._id})
+        .then(foundMovies => {
+          if (foundMovies) {
+            console.log(`FOUND MOVIES = ${foundMovies}`)
+            res.json(foundMovies)
+          } else {
+            res.status(500).json({ error: 'There are no movies' });
+          }
+          
+        })
+      })
   .catch(err => {
     console.error(err);
     res.status(500).json({ error: 'Something went wrong' });

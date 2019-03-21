@@ -114,11 +114,15 @@ function renderMoreApiResults(results, searchTitle) {
     const { Poster, Title, Year, imdbID } = results[i]
     $('.movie-API-box-1').append(
       `<p>${Title} -- ${Year} <button class="yes" id="movie-correct-${i}">Yes</button></p>
-      <div class="poster-frame-${i}">This movie poster is not available</div><br>`
+      <div class="poster-frame-${i}"></div><br>`
     )
-    if (Poster !== "N/A") {
+    if (Poster === "N/A") {
       $(`.poster-frame-${i}`).append(
-        `<img src="${Poster}" alt="image of ${Title} poster">`
+        `<p>This movie poster is not available</p>`
+      )
+    } else {
+      $(`.poster-frame-${i}`).append(
+      `<img src="${Poster}" alt="image of ${Title} poster">`
       )
     } 
   }
@@ -152,9 +156,6 @@ function addMovieDetails(omdbMovie) {
     </div>
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
-        <label for="viewed">When did you watch it?</label>
-          <input type="date" name="viewed" id="viewed" required/>
-        <br><br>
         <label for="rating">What did you think of it?</label><br>
           <input type="radio" name="rating" value="thumbsUp" checked required> Thumbs up<br>
           <input type="radio" name="rating" value="thumbsDown"> Thumbs down<br>
@@ -266,9 +267,8 @@ function renderSuccessMessage(movieTitle, guest) {
       <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
     )
     $('.dynamic-buttons').html(
-      `<h4>dynamic buttons go here</h4>
-      <button class="film" id="film-1">View your movie</button>
-      <button class="film" id="film-2">Add another movie</button>
+      `<button class="film" id="film-1">View your movie</button>
+      <button class="film" id="film-2">Add another one</button>
       <button class="ticket" id="sign-up">Sign-up</button>`
     )
     $('.dynamic-buttons').one('click', 'button', function(event) {
@@ -277,7 +277,7 @@ function renderSuccessMessage(movieTitle, guest) {
         viewLibraryDetail(movieTitle) // in view-library.js
       }
       if (`${$(this).prop('id')}` === 'film-2') {
-        console.log('"Add another movie" button clicked')
+        console.log('"Add another one" button clicked')
         addMovie()
       }
     })
@@ -289,9 +289,8 @@ function renderSuccessMessage(movieTitle, guest) {
         <p>has been added to your library.</p>`
     )
     $('.dynamic-buttons').html(
-        `<h4>dynamic buttons go here</h4>
-        <button class="film" id="film-1">View your movie</button>
-        <button class="film" id="film-2">Add another movie</button>`
+        `<button class="film" id="film-1">View your movie</button>
+        <button class="film" id="film-2">Add another one</button>`
     )
     $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
@@ -299,7 +298,7 @@ function renderSuccessMessage(movieTitle, guest) {
         viewLibraryDetail(movieTitle) // in view-library.js
       }
       if (`${$(this).prop('id')}` === 'film-2') {
-        console.log('"Add another movie" button clicked')
+        console.log('"Add another one" button clicked')
         addMovie()
       }
     })
@@ -313,12 +312,11 @@ function suggestNewSearch(oldSearch) {
     `<p>We couldn't find any movies with that title.</p>`
   )
   $('.dynamic-buttons').html(
-    `<h4>dynamic buttons go here</h4>
-    <p>Please <button class="film" id="film-2">Add another movie</button> to try again.</p>`
+    `<p>Please <button class="film" id="film-2">Add a movie</button> to try again.</p>`
   )
   $('.dynamic-buttons').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-2') {
-      console.log('"Add another movie" button clicked')
+      console.log('"Add a movie" button clicked')
       addMovie(oldSearch)
     }
   })

@@ -148,16 +148,22 @@ function welcomeUser(user, firstTime, addMovies) {
       }
       if (userName === "Guest") {
         $('.dynamic-buttons').html(
-          `<h4>dynamic buttons go here</h4>
-          <button class="ticket" id="sign-up">sign-up</button>`
+          `<button class="ticket" id="sign-up">sign-up</button>`
         )
       }
     } else {
       $('.video-screen').html(
         `<div class="welcome-messsage">
             <h2>Welcome back ${user}!</h2>
-        `)
+      `)
+      $('.dynamic-buttons').html(
+        `<button class="ticket" id="manage-acct">Manage account</button>`
+      )
     }
+}
+
+function manageUserAccount() {
+  console.log("manageUserAccount() ran")
 }
 
 function renderSignInForm() {
