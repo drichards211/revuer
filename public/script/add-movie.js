@@ -37,7 +37,7 @@ function searchOMDB(title) {
 // Search OMDB API by Title, returns multiple results:
   console.log("searchOMDB() ran")
   const apiKey = localStorage.getItem('omdbApiKey')
-  const fetchUrl = `http://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=${title}`
+  const fetchUrl = `https://www.omdbapi.com/?apikey=${apiKey}&type=movie&s=${title}`
     
   fetch(fetchUrl)
     .then(response => {
