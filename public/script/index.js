@@ -7,7 +7,8 @@ function handleUserNav() {
     // sign-in button pressed:
     if (`${$(this).prop('id')}` === 'sign-in') {
       console.log("sign-in button pressed")
-      renderSignInForm() // in user-auth.js
+      userSignIn("drichards211", "1234567890")
+      /* renderSignInForm() */ // in user-auth.js
     } 
     // sign-up button pressed:
     if (`${$(this).prop('id')}` === 'sign-up') {
@@ -51,9 +52,10 @@ function handleLibraryNav() {
   console.log('handleLibraryNav() running')
   $('body').on('click', 'button', function(event) {
     // "movie-detail-0" button pressed:
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100; i++) {
       if (`${$(this).prop('id')}` === `movie-detail-${i}`) {
         console.log(`"movie-detail-${i}" button pressed`)
+        viewLibraryDetail(libraryResults[i].imdbId, i)
       } 
     }
   })

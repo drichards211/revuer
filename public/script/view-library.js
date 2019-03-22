@@ -1,6 +1,7 @@
 'use strict'
+let libraryResults
 
-async function viewLibrary() {
+async function viewLibrary(a, b, c) {
   console.log("viewLibrary() ran")
   const userToken = localStorage.getItem('auth')
   const thumbsUp = "^" // update this to contain html "thumbsUp" IMG
@@ -14,7 +15,8 @@ async function viewLibrary() {
   )
   if (userName !== "Guest") {
     // Display user library results:
-    let libraryResults = await getMovies()/* .catch((err) => { console.log(err) }) */
+    libraryResults = await getMovies()/* .catch((err) => { console.log(err) }) */
+    console.log("await completed, promise returned")
     console.log(libraryResults)
     if (libraryResults.length > 0) {
       for (let i = 0; i < libraryResults.length; i++)
@@ -49,10 +51,53 @@ async function viewLibrary() {
   }
 }
 
-function viewLibraryDetail(movieTitle) {
+async function viewLibraryDetail(imdbId, index) {
   console.log("viewLibraryDetail() ran")
-  console.log(`movieTitle = ${movieTitle}`)
+  let omdbMovie = await lookupOMDB(imdbId) // in add-movie.js
+  console.log("await completed, promise returned")
+  const { Actors, Awards, Director, Genre, Plot, Production, Poster, Runtime, Title, Year } = omdbMovie
+  const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
+  const thumbsUp = "Thumbs Up", thumbsDown = "Thumbs Down", complicated = "It's Complicated"
+  const renderFormats = function() { 
+    if (format.length === 0) {
+      return `None`
+    } else {
+      let rendered = ``
+      for (let i = 0; i < format.length; i++) {
+        if (i < format.length - 1) {
+        rendered += (format[i] + `, `)
+        } else {
+          rendered += (format[i])
+        }
+      }     
+      return rendered
+    }
+  }
   $('.dynamic-buttons').empty()
+  $('.video-screen').html(
+    `<div class="movie-API-box-1">
+      <p>${Title} -- ${Year}</p>
+      <div class="poster-frame"></div>
+      <p>Rating: ${eval(rating)}</p>
+      <p>${viewingNotes}</p>
+      <p>Formats owned: ${renderFormats()}</p>
+    </div>`
+  )
+  if (Poster !== "N/A") {
+    $('.poster-frame').append(
+      `<img src="${Poster}" alt="image of ${Title} poster">`
+    )
+  }
+  $('.dynamic-buttons').html(
+    `<p><button class="film" id="film-4">Return to Library</button></p>`
+  )
+  $('.dynamic-buttons').one('click', 'button', function(event) {
+    if (`${$(this).prop('id')}` === 'film-4') {
+      console.log('"Return to Library" button clicked')
+      viewLibrary()
+    }
+  })
+  
 }
 
 function getSandwich() {
@@ -61,7 +106,6 @@ function getSandwich() {
       resolve('This is a sandwich');
     }, 2000);
   });
-  
 }
 
 function getMovies() {

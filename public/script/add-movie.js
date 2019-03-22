@@ -64,9 +64,30 @@ function searchOMDB(title) {
     })
   }
     
-function lookupOMDB() {
-  // Search OMDB API by "IMDB ID", returns one result:
+function lookupOMDB(movieId) {
+  // Search OMDB API by "IMDB ID", return one result:
   console.log("lookupOMDB() ran")
+  return new Promise(resolve => {
+    const apiKey = localStorage.getItem('omdbApiKey')
+    const fetchUrl = `https://www.omdbapi.com/?apikey=${apiKey}&type=movie&i=${movieId}`
+  
+    fetch(fetchUrl)
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+            throw new Error(response.statusText)
+        }
+      })
+      .then(responseJson => {
+        console.log("Movie found")
+        console.log(responseJson)
+        resolve(responseJson)
+      })
+      .catch(err => {
+        console.log(`OMDB API failed to fetch: ${err}`)
+      })
+  })
 }
 
 function renderFirstApiResult(results, searchTitle) {
@@ -164,11 +185,11 @@ function addMovieDetails(omdbMovie) {
           <input type="radio" name="ownCopy" value="true" checked required> Yes<br>
           <input type="radio" name="ownCopy" value="false"> No<br><br>
         <label for="format">Which format(s)? (Leave blank if none)</label><br>
-          <input type="checkbox" name="format" value="vhs" id="format-vhs"> VHS<br>
-          <input type="checkbox" name="format" value="laserDisc" id="format-laserdisc"> LaserDisc<br>
-          <input type="checkbox" name="format" value="dvd" id="format-dvd"> DVD<br>
-          <input type="checkbox" name="format" value="bluRay" id="format-bluray"> Blu-ray<br>
-          <input type="checkbox" name="format" value="digitalCopy" id="format-digitalcopy"> Digital Copy<br><br>
+          <input type="checkbox" name="format" value="VHS" id="format-vhs"> VHS<br>
+          <input type="checkbox" name="format" value="LaserDisc" id="format-laserdisc"> LaserDisc<br>
+          <input type="checkbox" name="format" value="DVD" id="format-dvd"> DVD<br>
+          <input type="checkbox" name="format" value="Blu-ray" id="format-bluray"> Blu-ray<br>
+          <input type="checkbox" name="format" value="Digital Copy" id="format-digitalcopy"> Digital Copy<br><br>
         <label for="viewingNotes">Viewing Notes</label><br>
           <textarea name="viewingNotes" id="viewingNotes" rows="10" cols="72" maxlength="10000" placeholder="Type any notes you'd like, up to 10,000 characters. Enjoy re-vueing your favorite moments."></textarea>
         <br><br>
@@ -208,7 +229,10 @@ function handleMovieSubmit(omdbMovie) {
         userMovie.ownCopy = false
       }
     })
-    userMovie.format = $('input[type=checkbox][name=format]:checked').val()
+    userMovie.format = $('input[type=checkbox][name=format]:checked').map(function(_, el) {
+      return $(el).val();
+    }).get();
+    /* userMovie.format = $('input[type=checkbox][name=format]:checked').val() */
     userMovie.viewingNotes = $('#viewingNotes').val()
     console.log(userMovie)
     postMovieToDb(userMovie)
