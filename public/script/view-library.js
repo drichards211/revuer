@@ -20,7 +20,7 @@ async function viewLibrary() {
       for (let i = 0; i < libraryResults.length; i++)
       $('.movie-list').append(
         `<button id="movie-detail-${i}">
-            ${libraryResults[i].title}
+            ${libraryResults[i].title} ${eval(libraryResults[i].rating)}
         </button><br>`
       )
     } else {
@@ -40,10 +40,9 @@ async function viewLibrary() {
   } else {
     // Display Sample Library for "guest":
     for (let i = 0; i < previewLibrary.length; i++) {
-      const rating = eval(`${previewLibrary[i].rating}`)
       $('.movie-list').append(
         `<button id="movie-detail-${i}">
-          ${previewLibrary[i].title} ${rating}
+          ${previewLibrary[i].title} ${eval(previewLibrary[i].rating)}
         </button><br>`
       )
     }
