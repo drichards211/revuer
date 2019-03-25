@@ -32,15 +32,16 @@ async function viewLibrary(a, b, c) {
       $('.dynamic-buttons').html(
         `<p><button class="film" id="film-2">Add a movie</button> to your library.</p>`
       )
-      $('.dynamic-buttons').one('click', 'button', function(event) {
+      /* $('.dynamic-buttons').one('click', 'button', function(event) {
         if (`${$(this).prop('id')}` === 'film-2') {
           console.log('"Add a movie" button clicked')
           addMovie()
         }
-      })
+      }) */
     }
   } else {
     // Display Sample Library for "guest":
+    libraryResults = previewLibrary
     for (let i = 0; i < previewLibrary.length; i++) {
       $('.movie-list').append(
         `<button id="movie-detail-${i}">
@@ -91,12 +92,12 @@ async function viewLibraryDetail(imdbId, index) {
   $('.dynamic-buttons').html(
     `<p><button class="film" id="film-4">Return to Library</button></p>`
   )
-  $('.dynamic-buttons').one('click', 'button', function(event) {
+  /* $('.dynamic-buttons').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-4') {
       console.log('"Return to Library" button clicked')
       viewLibrary()
     }
-  })
+  }) */
   
 }
 

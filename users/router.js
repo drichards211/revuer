@@ -62,7 +62,8 @@ router.post('/', jsonParser, (req, res) => {
 
   const sizedFields = {
     username: {
-      min: 1
+      min: 1,
+      max: 72
     },
     password: {
       min: 10,

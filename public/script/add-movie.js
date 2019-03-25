@@ -295,7 +295,7 @@ function renderSuccessMessage(movieTitle, guest) {
       <button class="film" id="film-2">Add another one</button>
       <button class="ticket" id="sign-up">Sign-up</button>`
     )
-    $('.dynamic-buttons').one('click', 'button', function(event) {
+    /* $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         viewLibraryDetail(movieTitle) // in view-library.js
@@ -304,7 +304,7 @@ function renderSuccessMessage(movieTitle, guest) {
         console.log('"Add another one" button clicked')
         addMovie()
       }
-    })
+    }) */
   } else {
   // Render success message for registered users:
     $('.video-screen').html(
@@ -316,7 +316,7 @@ function renderSuccessMessage(movieTitle, guest) {
         `<button class="film" id="film-1">View your movie</button>
         <button class="film" id="film-2">Add another one</button>`
     )
-    $('.dynamic-buttons').one('click', 'button', function(event) {
+    /* $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         viewLibraryDetail(movieTitle) // in view-library.js
@@ -325,7 +325,7 @@ function renderSuccessMessage(movieTitle, guest) {
         console.log('"Add another one" button clicked')
         addMovie()
       }
-    })
+    }) */
   }
 }
 

@@ -7,8 +7,8 @@ function handleUserNav() {
     // sign-in button pressed:
     if (`${$(this).prop('id')}` === 'sign-in') {
       console.log("sign-in button pressed")
-      userSignIn("drichards211", "1234567890")
-      /* renderSignInForm() */ // in user-auth.js
+      /* userSignIn("drichards211", "1234567890") */
+      renderSignInForm() // in user-auth.js
     } 
     // sign-up button pressed:
     if (`${$(this).prop('id')}` === 'sign-up') {
@@ -44,6 +44,21 @@ function handleUserNav() {
     if (`${$(this).prop('id')}` === 'chair-4') {
       console.log("\"About revuer\" button pressed")
       aboutRevuer()
+    }
+    if (`${$(this).prop('id')}` === 'film-1') {
+      console.log('"View your movie" button clicked')
+      viewLibraryDetail(movieTitle) // in view-library.js
+    }
+    if (`${$(this).prop('id')}` === 'film-2') {
+      console.log('"Add a movie" button clicked')
+      addMovie()
+    }
+    if (`${$(this).prop('id')}` === 'film-3') {
+      console.log('"Reserved" button pressed')
+    }
+    if (`${$(this).prop('id')}` === 'film-4') {
+      console.log('"Return to library" button pressed')
+      viewLibrary()
     }
   })
 }
