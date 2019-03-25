@@ -169,6 +169,7 @@ function addMovieDetails(omdbMovie) {
   console.log("addMovieDetails() ran")
   console.log(omdbMovie)
   const { Poster, Title, Year, imdbID } = omdbMovie
+  $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="movie-API-box-1">
       <h2>Add your details</h2>
@@ -223,16 +224,12 @@ function handleMovieSubmit(omdbMovie) {
     userMovie.rating = $('input[type=radio][name=rating]:checked').val()
     $('input[type=radio][name=ownCopy]:checked').val(function() { 
       // write boolean to .ownCopy instead of string:
-      if (this.value === "true") {
-        userMovie.ownCopy = true
-      } else {
-        userMovie.ownCopy = false
-      }
+      userMovie.ownCopy = this.value === "true" ? true : false
     })
+    // Propagate array from multiple checkboxes:
     userMovie.format = $('input[type=checkbox][name=format]:checked').map(function(_, el) {
       return $(el).val();
     }).get();
-    /* userMovie.format = $('input[type=checkbox][name=format]:checked').val() */
     userMovie.viewingNotes = $('#viewingNotes').val()
     console.log(userMovie)
     postMovieToDb(userMovie)

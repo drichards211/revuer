@@ -7,7 +7,7 @@ function handleUserNav() {
     // sign-in button pressed:
     if (`${$(this).prop('id')}` === 'sign-in') {
       console.log("sign-in button pressed")
-      /* userSignIn("drichards211", "1234567890") */
+      userSignIn("drichards211", "1234567890")
       renderSignInForm() // in user-auth.js
     } 
     // sign-up button pressed:
@@ -53,9 +53,10 @@ function handleUserNav() {
       console.log('"Add a movie" button clicked')
       addMovie()
     }
-    if (`${$(this).prop('id')}` === 'film-3') {
-      console.log('"Reserved" button pressed')
-    }
+    /* if (`${$(this).prop('id')}` === 'film-3') {
+      console.log('"Edit this movie" button pressed')
+      editMovie(omdbMovie, index) // in edit-movie.js
+    } */
     if (`${$(this).prop('id')}` === 'film-4') {
       console.log('"Return to library" button pressed')
       viewLibrary()

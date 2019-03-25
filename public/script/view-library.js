@@ -90,8 +90,16 @@ async function viewLibraryDetail(imdbId, index) {
     )
   }
   $('.dynamic-buttons').html(
-    `<p><button class="film" id="film-4">Return to Library</button></p>`
+    `<p><button class="film" id="film-4">Return to Library</button></p>
+    <p><button class="film" id="film-3">Edit this movie</button></p>`
   )
+  $('.dynamic-buttons').one('click', 'button', function(event) {
+      if (`${$(this).prop('id')}` === 'film-3') {
+        console.log('"Edit this movie" button pressed')
+        editMovie(omdbMovie, index) // in edit-movie.js
+      }
+  })
+
   /* $('.dynamic-buttons').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-4') {
       console.log('"Return to Library" button clicked')
