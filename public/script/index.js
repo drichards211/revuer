@@ -7,7 +7,7 @@ function handleUserNav() {
     // sign-in button pressed:
     if (`${$(this).prop('id')}` === 'sign-in') {
       console.log("sign-in button pressed")
-      userSignIn("drichards211", "1234567890")
+      /* userSignIn("drichards211", "1234567890") */
       renderSignInForm() // in user-auth.js
     } 
     // sign-up button pressed:
