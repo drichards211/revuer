@@ -1,5 +1,12 @@
 'use strict'
 let libraryResults
+let libraryPrefs = {
+  currentPage: 0,
+  currentDetailPage: 0,
+  resultsPerPage: 10,
+  sortType: "created",
+  sortDirection: "ascending"
+}
 
 async function viewLibrary(a, b, c) {
   console.log("viewLibrary() ran")
