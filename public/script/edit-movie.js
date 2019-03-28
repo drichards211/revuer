@@ -27,9 +27,11 @@ function editMovie(omdbMovie, index) {
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
         <label for="rating">What did you think of it?</label><br>
-          <input type="radio" name="rating" value="thumbsUp" ${checkRating("thumbsUp")} required> Thumbs up<br>
-          <input type="radio" name="rating" value="thumbsDown" ${checkRating("thumbsDown")}> Thumbs down<br>
-          <input type="radio" name="rating" value="complicated" ${checkRating("complicated")}> It's complicated<br><br>
+          <input type="radio" name="rating" value="lovedIt" ${checkRating("lovedIt")} required> Loved it<br>
+          <input type="radio" name="rating" value="likedIt" ${checkRating("likedIt")}> Liked it<br>
+          <input type="radio" name="rating" value="complicated" ${checkRating("complicated")}> It's complicated<br>
+          <input type="radio" name="rating" value="dislikedIt" ${checkRating("dislikedIt")}> Disliked it<br>
+          <input type="radio" name="rating" value="hatedIt" ${checkRating("hatedIt")}> Hated it<br><br>
         <label for="ownCopy">Do you own a copy?</label><br>
           <input type="radio" name="ownCopy" value="true" ${checkOwnCopy(true)} required> Yes<br>
           <input type="radio" name="ownCopy" value="false" ${checkOwnCopy(false)}> No<br><br>

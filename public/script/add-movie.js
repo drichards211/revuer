@@ -325,7 +325,7 @@ async function renderSuccessMessage(movieTitle, imdbId, guest) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         if (libraryResults.length === 0) {
-          libraryResults = getMovies()
+          /* libraryResults = getMovies() */
           viewLibraryDetail(imdbId, 0) // in view-library.js  
         } else {
           viewLibraryDetail(imdbId, libraryResults.length - 1)
