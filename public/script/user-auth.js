@@ -36,12 +36,11 @@ function userSignIn(username, pword, firstTime) {
       console.log("Sign-in successful")
       console.log(`username = ${username}`)
       userName = username
+      localStorage.setItem('auth', responseJson.authToken)
       getOmbdApiKey()
-      /* localStorage.setItem('user', username) */
       if (username === "Guest") {
         renderPreviewInfo()
       } else { 
-        localStorage.setItem('auth', responseJson.authToken)
         if (firstTime) {
           if (previewLibrary.length > 6) {
             addGuestMoviesToDb() // in add-movie.js
@@ -265,6 +264,7 @@ function getOmbdApiKey() {
     })
     .then(responseJson => {
       localStorage.setItem('omdbApiKey', responseJson.data)
+      console.log("omdbApiKey successfully written into local storage")
     })
     .catch(err => {
       console.log("getOmdbApiKey() encountered an error")

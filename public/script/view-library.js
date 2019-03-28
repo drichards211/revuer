@@ -11,9 +11,7 @@ let libraryPrefs = {
 async function viewLibrary(a, b, c) {
   console.log("viewLibrary() ran")
   const userToken = localStorage.getItem('auth')
-  const thumbsUp = "^" // update this to contain html "thumbsUp" IMG
-  const thumbsDown = "v" // update this to contain html "thumbsDown" IMG
-  const complicated = ":/" // update this to contain html "complicated" IMG
+  const lovedIt = "<3", likedIt = "^", complicated = ":/", dislikedIt = "v", hatedIt = ":(" // update these to contain html displaying appropriate image fonts
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<h2>Library</h2>
@@ -25,7 +23,7 @@ async function viewLibrary(a, b, c) {
     libraryResults = previewLibrary
   } else {
     // Retrieve user's library from DB:
-    libraryResults = await getMovies()/* .catch((err) => { console.log(err) }) */
+    libraryResults = await getMovies()
     console.log("await completed, promise returned")
     console.log(libraryResults)
   }
@@ -52,9 +50,19 @@ async function viewLibraryDetail(imdbId, index) {
   console.log("viewLibraryDetail() ran")
   let omdbMovie = await lookupOMDB(imdbId) // in add-movie.js
   console.log("await completed, promise returned")
+  if (userName === "Guest") {
+    // Propagate "Guest" library with temporary values:
+    libraryResults = previewLibrary
+  } else {
+    // Retrieve user's library from DB:
+    libraryResults = await getMovies()
+    console.log("await completed, promise returned")
+    console.log(libraryResults)
+  }
   const { Actors, Awards, Director, Genre, Plot, Production, Poster, Runtime, Title, Year } = omdbMovie
   const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
-  const thumbsUp = "Thumbs Up", thumbsDown = "Thumbs Down", complicated = "It's Complicated"
+  const lovedIt = "Loved it", likedIt = "Liked it", complicated = "It's complicated", dislikedIt = "Disliked it", hatedIt = "Hated it" // update these to contain html displaying appropriate image fonts
+  /* const thumbsUp = "Thumbs Up", thumbsDown = "Thumbs Down", complicated = "It's Complicated" */
   const renderFormats = function() { 
     if (format.length === 0) {
       return `None`
@@ -114,6 +122,7 @@ function getSandwich() {
 }
 
 function getMovies() {
+  console.log("getMovies() ran")
   return new Promise(resolve => {
     const userToken = localStorage.getItem('auth')
       fetch('/api/movies', {

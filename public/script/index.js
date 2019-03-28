@@ -45,10 +45,10 @@ function handleUserNav() {
       console.log("\"About revuer\" button pressed")
       aboutRevuer()
     }
-    if (`${$(this).prop('id')}` === 'film-1') {
+    /* if (`${$(this).prop('id')}` === 'film-1') {
       console.log('"View your movie" button clicked')
       viewLibraryDetail(movieTitle) // in view-library.js
-    }
+    } */
     if (`${$(this).prop('id')}` === 'film-2') {
       console.log('"Add a movie" button clicked')
       addMovie()

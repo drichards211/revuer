@@ -179,9 +179,11 @@ function addMovieDetails(omdbMovie) {
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
         <label for="rating">What did you think of it?</label><br>
-          <input type="radio" name="rating" value="thumbsUp" checked required> Thumbs up<br>
-          <input type="radio" name="rating" value="thumbsDown"> Thumbs down<br>
-          <input type="radio" name="rating" value="complicated"> It's complicated<br><br>
+          <input type="radio" name="rating" value="lovedIt" checked required> Loved it<br>
+          <input type="radio" name="rating" value="likedIt"> Liked it<br>
+          <input type="radio" name="rating" value="complicated"> It's complicated<br>
+          <input type="radio" name="rating" value="dislikedIt"> Disliked it<br>
+          <input type="radio" name="rating" value="hatedIt"> Hated it<br><br>
         <label for="ownCopy">Do you own a copy?</label><br>
           <input type="radio" name="ownCopy" value="true" checked required> Yes<br>
           <input type="radio" name="ownCopy" value="false"> No<br><br>
@@ -243,7 +245,7 @@ function postMovieToDb(newMovie, silent) {
     console.log("Guest attempting to post movie")
     previewLibrary.push(newMovie)
     console.log(previewLibrary)
-    renderSuccessMessage(newMovie.title, true)
+    renderSuccessMessage(newMovie.title, newMovie.imdbId, true)
   } else {
   // Authorized users may post to db:  
   const userToken = localStorage.getItem('auth')
@@ -267,7 +269,7 @@ function postMovieToDb(newMovie, silent) {
       console.log("New movie created successfully")
       console.log(responseJson)
       if (silent !== true) {
-        renderSuccessMessage(responseJson.title)
+        renderSuccessMessage(responseJson.title, newMovie.imdbId)
       }
       
     })
@@ -277,7 +279,7 @@ function postMovieToDb(newMovie, silent) {
   }
 }
 
-function renderSuccessMessage(movieTitle, guest) {
+async function renderSuccessMessage(movieTitle, imdbId, guest) {
   console.log("renderSuccessMessage() ran")
   if (guest === true) {
   // Display customized message and buttons for "Guest" account:
@@ -292,6 +294,12 @@ function renderSuccessMessage(movieTitle, guest) {
       <button class="film" id="film-2">Add another one</button>
       <button class="ticket" id="sign-up">Sign-up</button>`
     )
+    $('body').on('click', 'button', function(event) {
+      if (`${$(this).prop('id')}` === 'film-1') {
+        console.log('"View your movie" button clicked')
+        viewLibraryDetail(imdbId, previewLibrary.length - 1 ) // in view-library.js
+      }
+    })
     /* $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
@@ -313,16 +321,17 @@ function renderSuccessMessage(movieTitle, guest) {
         `<button class="film" id="film-1">View your movie</button>
         <button class="film" id="film-2">Add another one</button>`
     )
-    /* $('.dynamic-buttons').one('click', 'button', function(event) {
+    $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
-        viewLibraryDetail(movieTitle) // in view-library.js
+        if (libraryResults.length === 0) {
+          libraryResults = getMovies()
+          viewLibraryDetail(imdbId, 0) // in view-library.js  
+        } else {
+          viewLibraryDetail(imdbId, libraryResults.length - 1)
+        }
       }
-      if (`${$(this).prop('id')}` === 'film-2') {
-        console.log('"Add another one" button clicked')
-        addMovie()
-      }
-    }) */
+    })
   }
 }
 
