@@ -219,7 +219,7 @@ function updateDOMTest() {
 }
 
 $(function() {
-  updateDOMTest()
+  /* updateDOMTest() */
   handleUserNav()
   handleLibraryNav()
   /* handleFormSubmit() */

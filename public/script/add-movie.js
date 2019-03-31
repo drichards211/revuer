@@ -6,6 +6,7 @@ function addMovie(oldSearch) {
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="movie-find-box">
+      <h2>Add a movie</h2>
       <form class="movie-find-form" action="#">
         <label for="movietitle">Search movie title</label>
         <input type="text" name="movietitle" id="movietitle" placeholder="${placeholder}" required/>
@@ -23,12 +24,12 @@ function addMovie(oldSearch) {
 }
 
 function addGuestMoviesToDb() {
+// Identify the movies created by a new registered user when they were still a guest, and add each to the DB:
   console.log("addGuestMoviesToDb() ran")
-  let totalMovies = previewLibrary.length - 6
-  console.log(`Total movies to add = ${totalMovies}`)
+  console.log(`Total movies to add = ${previewLibrary.length - 6}`)
   for (let i = previewLibrary.length - 1; i > 5; i--) {
     let movie = previewLibrary[i]
-    console.log(`Posting a movie`)
+    console.log(`Posting the movie: ${movie.title}`)
     postMovieToDb(movie, true)
   }
 }
@@ -127,7 +128,6 @@ function renderMoreApiResults(results, searchTitle) {
   console.log(results)
   $('.video-screen').html(
     `<div class="movie-API-box-1">
-      <h2>Sorry about that.</h2>
       <h2>Is it one of these?</h2>
     </div>`
   )

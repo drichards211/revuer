@@ -174,7 +174,11 @@ function manageUserAccount() {
 
 function renderSignInForm() {
   console.log("renderSignInForm() ran")
-  $('.dynamic-buttons').empty()
+  $('.dynamic-buttons').html(
+    `<button class="ticket" id="sign-in">sign-in</button>
+    <button class="ticket" id="sign-up">sign-up</button>
+    <button class="ticket" id="preview">preview</button>`
+  )
   $('.video-screen').html(
     `<div class="signin-box">
       <form class="signin-form" action="#">
@@ -186,7 +190,7 @@ function renderSignInForm() {
         <button type="submit">Sign in</button>
       </form>
       <div class="form-errors"></div>
-    </div>`
+    </div><br>`
   )
   $('.signin-form').submit(function(event) {
     console.log('sign-in form submitted')
@@ -199,7 +203,11 @@ function renderSignInForm() {
 
 function renderSignUpForm() {
   console.log("renderSignUpForm() ran")
-  $('.dynamic-buttons').empty()
+  $('.dynamic-buttons').html(
+    `<button class="ticket" id="sign-in">sign-in</button>
+    <button class="ticket" id="sign-up">sign-up</button>
+    <button class="ticket" id="preview">preview</button>`
+  )
   $('.video-screen').html(
     `<div class="signup-box">
       <form class="signup-form" action="#">
@@ -215,7 +223,7 @@ function renderSignUpForm() {
         <button type="submit">Sign up</button>
       </form>
       <div class="form-errors"></div>
-    </div>`
+    </div><br>`
   )
   $('.signup-form').submit(function(event) {
     console.log('sign-up form submitted')
