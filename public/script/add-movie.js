@@ -218,7 +218,7 @@ function handleMovieSubmit(omdbMovie) {
     }
   };
   $('.movie-submit-form').submit(function(event) {
-    console.log('movie-submit-form submitted')
+    console.log('"Submit" button pressed')
     event.preventDefault()
     userMovie.title = omdbMovie.Title
     userMovie.imdbId = omdbMovie.imdbID
@@ -294,7 +294,7 @@ async function renderSuccessMessage(movieTitle, imdbId, guest) {
       <button class="film" id="film-2">Add another one</button>
       <button class="ticket" id="sign-up">Sign-up</button>`
     )
-    $('body').on('click', 'button', function(event) {
+    $('body').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         viewLibraryDetail(imdbId, previewLibrary.length - 1 ) // in view-library.js

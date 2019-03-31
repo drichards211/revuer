@@ -56,7 +56,7 @@ function editMovie(omdbMovie, index) {
   $('.dynamic-buttons').html(
     `<p><button class="film" id="film-5">Cancel</button></p>`
   )
-  $('body').on('click', 'button', function(event) {
+  $('body').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-5') {
       console.log('"Cancel" button pressed')
       viewLibraryDetail(imdbID, index)

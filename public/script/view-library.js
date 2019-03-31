@@ -12,21 +12,16 @@ async function viewLibrary(a, b, c) {
   console.log("viewLibrary() ran")
   const userToken = localStorage.getItem('auth')
   const lovedIt = "<3", likedIt = "^", complicated = ":/", dislikedIt = "v", hatedIt = ":(" // update these to contain html displaying appropriate image fonts
+  
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<h2>Library</h2>
     <div class="movie-list">
     </div>`
   )
-  if (userName === "Guest") {
-    // Propagate "Guest" library with temporary values:
-    libraryResults = previewLibrary
-  } else {
-    // Retrieve user's library from DB:
-    libraryResults = await getMovies()
-    console.log("await completed, promise returned")
-    console.log(libraryResults)
-  }
+  
+  await updateLibraryResults()
+  
   // Display user library results:
   if (libraryResults.length > 0) {
     for (let i = 0; i < libraryResults.length; i++)
@@ -48,36 +43,30 @@ async function viewLibrary(a, b, c) {
 
 async function viewLibraryDetail(imdbId, index) {
   console.log("viewLibraryDetail() ran")
+  // Retrieve detailed movie information from the OMDB:
   let omdbMovie = await lookupOMDB(imdbId) // in add-movie.js
-  console.log("await completed, promise returned")
-  if (userName === "Guest") {
-    // Propagate "Guest" library with temporary values:
-    libraryResults = previewLibrary
-  } else {
-    // Retrieve user's library from DB:
-    libraryResults = await getMovies()
-    console.log("await completed, promise returned")
-    console.log(libraryResults)
-  }
-  const { Actors, Awards, Director, Genre, Plot, Production, Poster, Runtime, Title, Year } = omdbMovie
-  const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
-  const lovedIt = "Loved it", likedIt = "Liked it", complicated = "It's complicated", dislikedIt = "Disliked it", hatedIt = "Hated it" // update these to contain html displaying appropriate image fonts
-  /* const thumbsUp = "Thumbs Up", thumbsDown = "Thumbs Down", complicated = "It's Complicated" */
-  const renderFormats = function() { 
-    if (format.length === 0) {
-      return `None`
-    } else {
-      let rendered = ``
-      for (let i = 0; i < format.length; i++) {
-        if (i < format.length - 1) {
-        rendered += (format[i] + `, `)
-        } else {
-          rendered += (format[i])
-        }
-      }     
-      return rendered
+    console.log("await lookupOMDB() promise returned")
+    const { Actors, Awards, Director, Genre, Plot, Production, Poster, Runtime, Title, Year } = omdbMovie
+  
+  await updateLibraryResults()
+    const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
+    const lovedIt = "Loved it", likedIt = "Liked it", complicated = "It's complicated", dislikedIt = "Disliked it", hatedIt = "Hated it" // update these to contain html displaying appropriate image fonts
+    // Convert the contents of the "format" array into a nicely rendered string:
+    const renderFormats = function() { 
+      if (format.length === 0) {
+        return `None`
+      } else {
+        let rendered = ``
+        for (let i = 0; i < format.length; i++) {
+          if (i < format.length - 1) {
+          rendered += (format[i] + `, `)
+          } else {
+            rendered += (format[i])
+          }
+        }     
+        return rendered
+      }
     }
-  }
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="movie-API-box-1">
@@ -103,14 +92,20 @@ async function viewLibraryDetail(imdbId, index) {
         editMovie(omdbMovie, index) // in edit-movie.js
       }
   })
+}
 
-  /* $('.dynamic-buttons').one('click', 'button', function(event) {
-    if (`${$(this).prop('id')}` === 'film-4') {
-      console.log('"Return to Library" button clicked')
-      viewLibrary()
-    }
-  }) */
-  
+async function updateLibraryResults() {
+  // Update local libraryResults variable with values from DB:
+  console.log(`updateLibraryResults() ran`)
+  if (userName === "Guest") {
+    // Propagate "Guest" library with temporary values:
+    libraryResults = previewLibrary
+  } else {
+    // Retrieve user's library from DB:
+    libraryResults = await getMovies()
+      console.log("await getMovies() promise returned")
+      console.log(libraryResults)
+  }
 }
 
 function getSandwich() {
