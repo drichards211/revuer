@@ -10,18 +10,14 @@ let libraryPrefs = {
 
 async function viewLibrary(a, b, c) {
   console.log("viewLibrary() ran")
-  const userToken = localStorage.getItem('auth')
   const lovedIt = "<3", likedIt = "^", complicated = ":/", dislikedIt = "v", hatedIt = ":(" // update these to contain html displaying appropriate image fonts
-  
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<h2>Library</h2>
     <div class="movie-list">
     </div>`
   )
-  
   await updateLibraryResults()
-  
   // Display user library results:
   if (libraryResults.length > 0) {
     for (let i = 0; i < libraryResults.length; i++)
@@ -51,8 +47,8 @@ async function viewLibraryDetail(imdbId, index) {
   await updateLibraryResults()
     const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
     const lovedIt = "Loved it", likedIt = "Liked it", complicated = "It's complicated", dislikedIt = "Disliked it", hatedIt = "Hated it" // update these to contain html displaying appropriate image fonts
-    // Convert the contents of the "format" array into a nicely rendered string:
     const renderFormats = function() { 
+    // Convert the contents of the "format" array into a nicely rendered string:
       if (format.length === 0) {
         return `None`
       } else {
@@ -83,8 +79,8 @@ async function viewLibraryDetail(imdbId, index) {
     )
   }
   $('.dynamic-buttons').html(
-    `<p><button class="film" id="film-4">Return to Library</button></p>
-    <p><button class="film" id="film-3">Edit this movie</button></p>`
+    `<p><button class="film" id="film-3">Edit this movie</button></p>
+    <p><button class="film" id="film-4">Return to Library</button></p>`
   )
   $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-3') {

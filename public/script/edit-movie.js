@@ -25,7 +25,7 @@ function editMovie(omdbMovie, index) {
       <div class="poster-frame"></div>
     </div>
     <div class="movie-details-box">
-      <form class="movie-submit-form" action="#"><br>
+      <form class="movie-edit-form" action="#"><br>
         <label for="rating">What did you think of it?</label><br>
           <input type="radio" name="rating" value="lovedIt" ${checkRating("lovedIt")} required> Loved it<br>
           <input type="radio" name="rating" value="likedIt" ${checkRating("likedIt")}> Liked it<br>
@@ -54,19 +54,24 @@ function editMovie(omdbMovie, index) {
     )
   }
   $('.dynamic-buttons').html(
-    `<p><button class="film" id="film-5">Cancel</button></p>`
+    `<p><button class="film" id="film-6">Delete</button></p>
+    <p><button class="film" id="film-5">Cancel</button></p>`
   )
   $('body').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-5') {
       console.log('"Cancel" button pressed')
       viewLibraryDetail(imdbID, index)
     }
+    if (`${$(this).prop('id')}` === 'film-6') {
+      console.log('"Delete" button pressed')
+      handleMovieDelete(imdbID, index)
+    }
   })
   
-  handleMovieEdit(omdbMovie)
+  handleMovieEdit(omdbMovie, index)
 }
 
-function handleMovieEdit(omdbMovie) {
+function handleMovieEdit(omdbMovie, index) {
   console.log(`handleMovieEdit(running)`)
   let userMovie = {}
   // Preserves character returns inside "textarea":
@@ -75,9 +80,11 @@ function handleMovieEdit(omdbMovie) {
       return elem.value.replace( /\r?\n/g, "\r\n" );
     }
   };
-  $('.movie-submit-form').submit(function(event) {
-    console.log('movie-submit-form submitted')
+  $('.movie-edit-form').submit(function(event) {
+    console.log('movie-edit-form submitted')
     event.preventDefault()
+    userMovie._id = libraryResults[index]._id
+    userMovie.user_id = libraryResults[index].user_id
     userMovie.title = omdbMovie.Title
     userMovie.imdbId = omdbMovie.imdbID
     userMovie.viewed = $('#viewed').val()
@@ -92,24 +99,24 @@ function handleMovieEdit(omdbMovie) {
     }).get();
     userMovie.viewingNotes = $('#viewingNotes').val()
     console.log(userMovie)
-    /* updateMovieToDb(userMovie) */
+    updateMovieInDb(userMovie, index)
   })
 }
 
-function updateMovieToDb(newMovie, silent) {
-  console.log(`postMovieToDb() ran`)
+function updateMovieInDb(editedMovie, index) {
+  console.log(`updateMovieInDb() ran`)
   // Do not allow "Guest" to post to db. Add to client previewLibrary instead:
   if (userName === "Guest") {
-    console.log("Guest attempting to post movie")
-    previewLibrary.push(newMovie)
+    console.log("Guest attempting to edit movie")
+    previewLibrary[index] = editedMovie
     console.log(previewLibrary)
-    renderSuccessMessage(newMovie.title, true)
+    renderEditMessage(editedMovie, index, true)
   } else {
-  // Authorized users may post to db:  
+  // Authorized users may PUT to db:  
   const userToken = localStorage.getItem('auth')
-  fetch('/api/movies/', {
-    method: 'POST',
-    body: JSON.stringify(newMovie),
+  fetch(`/api/movies/${editedMovie._id}`, {
+    method: 'PUT',
+    body: JSON.stringify(editedMovie),
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${userToken}`
@@ -118,18 +125,11 @@ function updateMovieToDb(newMovie, silent) {
     .then(res => {
       if (res.ok) {
         console.log("response OK")
-        return res.json()
+        console.log("Movie updated successfully")
+        renderEditMessage(editedMovie, index)
       } else {
         throw new Error(res.statusText)
       }
-    })
-    .then(responseJson => {
-      console.log("New movie created successfully")
-      console.log(responseJson)
-      if (silent !== true) {
-        renderSuccessMessage(responseJson.title)
-      }
-      
     })
     .catch(err => {
       console.log(err)
@@ -137,3 +137,46 @@ function updateMovieToDb(newMovie, silent) {
   }
 }
 
+async function renderEditMessage(editedMovie, index, guest) {
+  console.log("renderEditMessage() ran")
+  if (guest === true) {
+  // Display customized message and buttons for "Guest" account:
+    $('.video-screen').html(
+      `<div class="success-message">
+      <h2>${editedMovie.title}</h2> 
+      <p>has been updated in your virtual library.</p>
+      <p>If you'd like to save your changes permanently, please sign-up for an account.</p>`
+    )
+    $('.dynamic-buttons').html(
+      `<button class="film" id="film-1">View your movie</button>
+      <button class="ticket" id="sign-up">Sign-up</button>`
+    )
+    $('body').one('click', 'button', function(event) {
+      if (`${$(this).prop('id')}` === 'film-1') {
+        console.log('"View your movie" button clicked')
+        viewLibraryDetail(editedMovie.imdbId, index) // in view-library.js
+      }
+    })
+  } else {
+  // Render success message for registered users:
+    $('.video-screen').html(
+      `<div class="success-message">
+        <h2>${editedMovie.title}</h2> 
+        <p>has been successfully updated.</p>`
+    )
+    $('.dynamic-buttons').html(
+        `<button class="film" id="film-1">View your movie</button>`
+    )
+    $('.dynamic-buttons').one('click', 'button', function(event) {
+      if (`${$(this).prop('id')}` === 'film-1') {
+        console.log('"View your movie" button clicked')
+        viewLibraryDetail(editedMovie.imdbId, index)
+        }
+    })
+    
+  }
+}
+
+function handleMovieDelete() {
+  console.log(`handleMovieDelete() ran`)
+}
