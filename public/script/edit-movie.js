@@ -54,9 +54,13 @@ function editMovie(omdbMovie, index) {
     )
   }
   $('.dynamic-buttons').html(
-    `<p><button class="film" id="film-6">Delete</button></p>
-    <p><button class="film" id="film-5">Cancel</button></p>`
+    `<p><button class="film" id="film-5">Cancel</button></p>`
   )
+  if (userName !== "Guest") {
+    $('.dynamic-buttons').prepend(
+      `<p><button class="film" id="film-6">Delete</button></p>`
+    )
+  }
   $('body').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-5') {
       console.log('"Cancel" button pressed')
@@ -64,7 +68,7 @@ function editMovie(omdbMovie, index) {
     }
     if (`${$(this).prop('id')}` === 'film-6') {
       console.log('"Delete" button pressed')
-      handleMovieDelete(imdbID, index)
+      handleMovieDelete(omdbMovie, index)
     }
   })
   
@@ -177,6 +181,40 @@ async function renderEditMessage(editedMovie, index, guest) {
   }
 }
 
-function handleMovieDelete() {
+function handleMovieDelete(omdbMovie, index) {
   console.log(`handleMovieDelete() ran`)
+  // Add code here for "Are you sure? Y/N" message and buttons
+  deleteMovieInDb(omdbMovie, index)
+}
+
+function deleteMovieInDb(omdbMovie, index) {
+  console.log(`deleteMovieInDb() ran`)
+  const userToken = localStorage.getItem('auth')
+
+  fetch(`/api/movies/${libraryResults[index]._id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${userToken}`
+    }
+  })
+    .then(res => {
+      if (res.ok) {
+        console.log("response OK")
+        console.log("Movie deleted successfully")
+        $('.video-screen').html(
+          `<div class="success-message">
+            <h2>${libraryResults[index].title}</h2> 
+            <p>has been successfully deleted.</p>`
+        )
+        $('.dynamic-buttons').html(
+            `<button class="film" id="film-4">Return to library</button>`
+        )
+      } else {
+        throw new Error(res.statusText)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }

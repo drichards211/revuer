@@ -139,4 +139,13 @@ router.put('/:id', jwtAuth, jsonParser, (req, res) => {
     .catch(err => res.status(500).json({ message: "Internal server error" }));
 });
 
+// Delete a movie by id:
+router.delete('/:id', jwtAuth, jsonParser, (req, res) => {
+  Movie.findByIdAndRemove(req.params.id)
+    .then(deletedMovie => {
+      console.log(`Deleted movie: \`${req.params.id}\``);
+      res.status(204).end();
+    });
+})
+
 module.exports = {router}
