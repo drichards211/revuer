@@ -281,6 +281,7 @@ function postMovieToDb(newMovie, silent) {
 
 async function renderSuccessMessage(movieTitle, imdbId, guest) {
   console.log("renderSuccessMessage() ran")
+  await updateLibraryResults()
   if (guest === true) {
   // Display customized message and buttons for "Guest" account:
     $('.video-screen').html(
@@ -297,7 +298,7 @@ async function renderSuccessMessage(movieTitle, imdbId, guest) {
     $('body').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
-        viewLibraryDetail(imdbId, previewLibrary.length - 1 ) // in view-library.js
+        viewLibraryDetail(imdbId, libraryResults.length - 1) // in view-library.js
       }
     })
     /* $('.dynamic-buttons').one('click', 'button', function(event) {
