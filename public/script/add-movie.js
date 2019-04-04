@@ -245,7 +245,7 @@ function postMovieToDb(newMovie, silent) {
     console.log("Guest attempting to post movie")
     previewLibrary.push(newMovie)
     console.log(previewLibrary)
-    renderSuccessMessage(newMovie.title, newMovie.imdbId, true)
+    renderSuccessMessage(newMovie, true)
   } else {
   // Authorized users may post to db:  
   const userToken = localStorage.getItem('auth')
@@ -269,7 +269,7 @@ function postMovieToDb(newMovie, silent) {
       console.log("New movie created successfully")
       console.log(responseJson)
       if (silent !== true) {
-        renderSuccessMessage(responseJson.title, newMovie.imdbId)
+        renderSuccessMessage(newMovie)
       }
       
     })
@@ -279,14 +279,16 @@ function postMovieToDb(newMovie, silent) {
   }
 }
 
-async function renderSuccessMessage(movieTitle, imdbId, guest) {
+async function renderSuccessMessage(newMovie, guest) {
   console.log("renderSuccessMessage() ran")
+  const { imdbId, title } = newMovie
+  const index = libraryResults.length
   await updateLibraryResults()
-  if (guest === true) {
+    if (guest === true) {
   // Display customized message and buttons for "Guest" account:
     $('.video-screen').html(
       `<div class="success-message">
-      <h2>${movieTitle}</h2> 
+      <h2>${title}</h2> 
       <p>has been added to your virtual library.</p>
       <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
     )
@@ -298,24 +300,14 @@ async function renderSuccessMessage(movieTitle, imdbId, guest) {
     $('body').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
-        viewLibraryDetail(imdbId, libraryResults.length - 1) // in view-library.js
+        viewLibraryDetail(imdbId, index - 1) // in view-library.js
       }
     })
-    /* $('.dynamic-buttons').one('click', 'button', function(event) {
-      if (`${$(this).prop('id')}` === 'film-1') {
-        console.log('"View your movie" button clicked')
-        viewLibraryDetail(movieTitle) // in view-library.js
-      }
-      if (`${$(this).prop('id')}` === 'film-2') {
-        console.log('"Add another one" button clicked')
-        addMovie()
-      }
-    }) */
   } else {
   // Render success message for registered users:
     $('.video-screen').html(
       `<div class="success-message">
-        <h2>${movieTitle}</h2> 
+        <h2>${title}</h2> 
         <p>has been added to your library.</p>`
     )
     $('.dynamic-buttons').html(
@@ -325,11 +317,11 @@ async function renderSuccessMessage(movieTitle, imdbId, guest) {
     $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
-        if (libraryResults.length === 0) {
+        if (index === 0) {
           /* libraryResults = getMovies() */
           viewLibraryDetail(imdbId, 0) // in view-library.js  
         } else {
-          viewLibraryDetail(imdbId, libraryResults.length - 1)
+          viewLibraryDetail(imdbId, index - 1)
         }
       }
     })
