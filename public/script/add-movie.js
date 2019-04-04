@@ -282,8 +282,8 @@ function postMovieToDb(newMovie, silent) {
 async function renderSuccessMessage(newMovie, guest) {
   console.log("renderSuccessMessage() ran")
   const { imdbId, title } = newMovie
-  const index = libraryResults.length
   await updateLibraryResults()
+    const index = libraryResults.length
     if (guest === true) {
   // Display customized message and buttons for "Guest" account:
     $('.video-screen').html(
