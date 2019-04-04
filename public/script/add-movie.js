@@ -6,6 +6,7 @@ function addMovie(oldSearch) {
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="movie-find-box">
+      <h2>Add a movie</h2>
       <form class="movie-find-form" action="#">
         <label for="movietitle">Search movie title</label>
         <input type="text" name="movietitle" id="movietitle" placeholder="${placeholder}" required/>
@@ -23,12 +24,12 @@ function addMovie(oldSearch) {
 }
 
 function addGuestMoviesToDb() {
+// Identify the movies created by a new registered user when they were still a guest, and add each to the DB:
   console.log("addGuestMoviesToDb() ran")
-  let totalMovies = previewLibrary.length - 6
-  console.log(`Total movies to add = ${totalMovies}`)
+  console.log(`Total movies to add = ${previewLibrary.length - 6}`)
   for (let i = previewLibrary.length - 1; i > 5; i--) {
     let movie = previewLibrary[i]
-    console.log(`Posting a movie`)
+    console.log(`Posting the movie: ${movie.title}`)
     postMovieToDb(movie, true)
   }
 }
@@ -64,9 +65,30 @@ function searchOMDB(title) {
     })
   }
     
-function lookupOMDB() {
-  // Search OMDB API by "IMDB ID", returns one result:
+function lookupOMDB(movieId) {
+  // Search OMDB API by "IMDB ID", return one result:
   console.log("lookupOMDB() ran")
+  return new Promise(resolve => {
+    const apiKey = localStorage.getItem('omdbApiKey')
+    const fetchUrl = `https://www.omdbapi.com/?apikey=${apiKey}&type=movie&i=${movieId}`
+  
+    fetch(fetchUrl)
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        } else {
+            throw new Error(response.statusText)
+        }
+      })
+      .then(responseJson => {
+        console.log("Movie found")
+        console.log(responseJson)
+        resolve(responseJson)
+      })
+      .catch(err => {
+        console.log(`OMDB API failed to fetch: ${err}`)
+      })
+  })
 }
 
 function renderFirstApiResult(results, searchTitle) {
@@ -106,7 +128,6 @@ function renderMoreApiResults(results, searchTitle) {
   console.log(results)
   $('.video-screen').html(
     `<div class="movie-API-box-1">
-      <h2>Sorry about that.</h2>
       <h2>Is it one of these?</h2>
     </div>`
   )
@@ -148,6 +169,7 @@ function addMovieDetails(omdbMovie) {
   console.log("addMovieDetails() ran")
   console.log(omdbMovie)
   const { Poster, Title, Year, imdbID } = omdbMovie
+  $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<div class="movie-API-box-1">
       <h2>Add your details</h2>
@@ -157,18 +179,20 @@ function addMovieDetails(omdbMovie) {
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
         <label for="rating">What did you think of it?</label><br>
-          <input type="radio" name="rating" value="thumbsUp" checked required> Thumbs up<br>
-          <input type="radio" name="rating" value="thumbsDown"> Thumbs down<br>
-          <input type="radio" name="rating" value="complicated"> It's complicated<br><br>
+          <input type="radio" name="rating" value="lovedIt" checked required> Loved it<br>
+          <input type="radio" name="rating" value="likedIt"> Liked it<br>
+          <input type="radio" name="rating" value="complicated"> It's complicated<br>
+          <input type="radio" name="rating" value="dislikedIt"> Disliked it<br>
+          <input type="radio" name="rating" value="hatedIt"> Hated it<br><br>
         <label for="ownCopy">Do you own a copy?</label><br>
           <input type="radio" name="ownCopy" value="true" checked required> Yes<br>
           <input type="radio" name="ownCopy" value="false"> No<br><br>
         <label for="format">Which format(s)? (Leave blank if none)</label><br>
-          <input type="checkbox" name="format" value="vhs" id="format-vhs"> VHS<br>
-          <input type="checkbox" name="format" value="laserDisc" id="format-laserdisc"> LaserDisc<br>
-          <input type="checkbox" name="format" value="dvd" id="format-dvd"> DVD<br>
-          <input type="checkbox" name="format" value="bluRay" id="format-bluray"> Blu-ray<br>
-          <input type="checkbox" name="format" value="digitalCopy" id="format-digitalcopy"> Digital Copy<br><br>
+          <input type="checkbox" name="format" value="VHS" id="format-vhs"> VHS<br>
+          <input type="checkbox" name="format" value="LaserDisc" id="format-laserdisc"> LaserDisc<br>
+          <input type="checkbox" name="format" value="DVD" id="format-dvd"> DVD<br>
+          <input type="checkbox" name="format" value="Blu-ray" id="format-bluray"> Blu-ray<br>
+          <input type="checkbox" name="format" value="Digital Copy" id="format-digitalcopy"> Digital Copy<br><br>
         <label for="viewingNotes">Viewing Notes</label><br>
           <textarea name="viewingNotes" id="viewingNotes" rows="10" cols="72" maxlength="10000" placeholder="Type any notes you'd like, up to 10,000 characters. Enjoy re-vueing your favorite moments."></textarea>
         <br><br>
@@ -194,7 +218,7 @@ function handleMovieSubmit(omdbMovie) {
     }
   };
   $('.movie-submit-form').submit(function(event) {
-    console.log('movie-submit-form submitted')
+    console.log('"Submit" button pressed')
     event.preventDefault()
     userMovie.title = omdbMovie.Title
     userMovie.imdbId = omdbMovie.imdbID
@@ -202,13 +226,12 @@ function handleMovieSubmit(omdbMovie) {
     userMovie.rating = $('input[type=radio][name=rating]:checked').val()
     $('input[type=radio][name=ownCopy]:checked').val(function() { 
       // write boolean to .ownCopy instead of string:
-      if (this.value === "true") {
-        userMovie.ownCopy = true
-      } else {
-        userMovie.ownCopy = false
-      }
+      userMovie.ownCopy = this.value === "true" ? true : false
     })
-    userMovie.format = $('input[type=checkbox][name=format]:checked').val()
+    // Propagate array from multiple checkboxes:
+    userMovie.format = $('input[type=checkbox][name=format]:checked').map(function(_, el) {
+      return $(el).val();
+    }).get();
     userMovie.viewingNotes = $('#viewingNotes').val()
     console.log(userMovie)
     postMovieToDb(userMovie)
@@ -222,7 +245,7 @@ function postMovieToDb(newMovie, silent) {
     console.log("Guest attempting to post movie")
     previewLibrary.push(newMovie)
     console.log(previewLibrary)
-    renderSuccessMessage(newMovie.title, true)
+    renderSuccessMessage(newMovie, true)
   } else {
   // Authorized users may post to db:  
   const userToken = localStorage.getItem('auth')
@@ -246,7 +269,7 @@ function postMovieToDb(newMovie, silent) {
       console.log("New movie created successfully")
       console.log(responseJson)
       if (silent !== true) {
-        renderSuccessMessage(responseJson.title)
+        renderSuccessMessage(newMovie)
       }
       
     })
@@ -256,13 +279,16 @@ function postMovieToDb(newMovie, silent) {
   }
 }
 
-function renderSuccessMessage(movieTitle, guest) {
+async function renderSuccessMessage(newMovie, guest) {
   console.log("renderSuccessMessage() ran")
-  if (guest === true) {
+  const { imdbId, title } = newMovie
+  const index = libraryResults.length
+  await updateLibraryResults()
+    if (guest === true) {
   // Display customized message and buttons for "Guest" account:
     $('.video-screen').html(
       `<div class="success-message">
-      <h2>${movieTitle}</h2> 
+      <h2>${title}</h2> 
       <p>has been added to your virtual library.</p>
       <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
     )
@@ -271,21 +297,17 @@ function renderSuccessMessage(movieTitle, guest) {
       <button class="film" id="film-2">Add another one</button>
       <button class="ticket" id="sign-up">Sign-up</button>`
     )
-    $('.dynamic-buttons').one('click', 'button', function(event) {
+    $('body').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
-        viewLibraryDetail(movieTitle) // in view-library.js
-      }
-      if (`${$(this).prop('id')}` === 'film-2') {
-        console.log('"Add another one" button clicked')
-        addMovie()
+        viewLibraryDetail(imdbId, index - 1) // in view-library.js
       }
     })
   } else {
   // Render success message for registered users:
     $('.video-screen').html(
       `<div class="success-message">
-        <h2>${movieTitle}</h2> 
+        <h2>${title}</h2> 
         <p>has been added to your library.</p>`
     )
     $('.dynamic-buttons').html(
@@ -295,11 +317,12 @@ function renderSuccessMessage(movieTitle, guest) {
     $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
-        viewLibraryDetail(movieTitle) // in view-library.js
-      }
-      if (`${$(this).prop('id')}` === 'film-2') {
-        console.log('"Add another one" button clicked')
-        addMovie()
+        if (index === 0) {
+          /* libraryResults = getMovies() */
+          viewLibraryDetail(imdbId, 0) // in view-library.js  
+        } else {
+          viewLibraryDetail(imdbId, index - 1)
+        }
       }
     })
   }

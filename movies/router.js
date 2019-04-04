@@ -100,4 +100,52 @@ router.get('/', jwtAuth, jsonParser, (req, res) => {
   })
 })
  
+// PUT to edit a preexisting movie:
+router.put('/:id', jwtAuth, jsonParser, (req, res) => {
+  console.log(req.user) // logs to the server console
+  console.log(req.body)
+  const requiredFields = ['_id', 'rating', 'ownCopy', 'format', 'viewingNotes', 'user_id']
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+  console.log(req.body._id)
+  if (!(req.params.id && req.body._id && req.params.id === req.body._id)) {
+    const message =
+      `Request path id (${req.params.id}) and request body id ` +
+      `(${req.body._id}) must match`;
+    console.error(message);
+    return res.status(400).json({ message: message });
+  }
+
+  const toUpdate = {};
+  const updateableFields = ['rating', 'ownCopy', 'format', 'viewingNotes']
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      toUpdate[field] = req.body[field];
+    }
+  });
+  console.log(toUpdate)
+  
+  Movie  
+  .findByIdAndUpdate(req.params.id, { $set: toUpdate })
+    .then(updatedPost => {
+      res.status(204).end()
+    })
+    .catch(err => res.status(500).json({ message: "Internal server error" }));
+});
+
+// Delete a movie by id:
+router.delete('/:id', jwtAuth, jsonParser, (req, res) => {
+  Movie.findByIdAndRemove(req.params.id)
+    .then(deletedMovie => {
+      console.log(`Deleted movie: \`${req.params.id}\``);
+      res.status(204).end();
+    });
+})
+
 module.exports = {router}

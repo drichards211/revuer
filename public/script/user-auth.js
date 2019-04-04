@@ -36,12 +36,11 @@ function userSignIn(username, pword, firstTime) {
       console.log("Sign-in successful")
       console.log(`username = ${username}`)
       userName = username
+      localStorage.setItem('auth', responseJson.authToken)
       getOmbdApiKey()
-      /* localStorage.setItem('user', username) */
       if (username === "Guest") {
         renderPreviewInfo()
       } else { 
-        localStorage.setItem('auth', responseJson.authToken)
         if (firstTime) {
           if (previewLibrary.length > 6) {
             addGuestMoviesToDb() // in add-movie.js
@@ -120,11 +119,17 @@ function userSignUp(email, username, pword) {
 function handleSignUpError(results) {
   console.log("handleSignUpError() ran")
   console.log(results.location + " " + results.message)
+  $('.form-errors').html(
+    `<p>${results.message}</p>`
+  )
 }
 
 function handleSignInError() {
   console.log("handleSignInError() ran")
   console.log("Incorrect username or password")
+  $('.form-errors').html(
+    `<p>Incorrect username or password</p>`
+  )
 }
 
 function welcomeUser(user, firstTime, addMovies) {
@@ -148,7 +153,8 @@ function welcomeUser(user, firstTime, addMovies) {
       }
       if (userName === "Guest") {
         $('.dynamic-buttons').html(
-          `<button class="ticket" id="sign-up">sign-up</button>`
+          `<button class="ticket" id="sign-up">sign-up</button>
+          <button class="ticket" id="sign-in">sign-in</button>`
         )
       }
     } else {
@@ -168,17 +174,23 @@ function manageUserAccount() {
 
 function renderSignInForm() {
   console.log("renderSignInForm() ran")
+  $('.dynamic-buttons').html(
+    `<button class="ticket" id="sign-in">sign-in</button>
+    <button class="ticket" id="sign-up">sign-up</button>
+    <button class="ticket" id="preview">preview</button>`
+  )
   $('.video-screen').html(
     `<div class="signin-box">
       <form class="signin-form" action="#">
         <h2>Sign in</h2>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" required/>
+        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required/>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" required/>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" minlength="10" maxlength="72" required/>
         <button type="submit">Sign in</button>
       </form>
-    </div>`
+      <div class="form-errors"></div>
+    </div><br>`
   )
   $('.signin-form').submit(function(event) {
     console.log('sign-in form submitted')
@@ -191,7 +203,11 @@ function renderSignInForm() {
 
 function renderSignUpForm() {
   console.log("renderSignUpForm() ran")
-  $('.dynamic-buttons').empty()
+  $('.dynamic-buttons').html(
+    `<button class="ticket" id="sign-in">sign-in</button>
+    <button class="ticket" id="sign-up">sign-up</button>
+    <button class="ticket" id="preview">preview</button>`
+  )
   $('.video-screen').html(
     `<div class="signup-box">
       <form class="signup-form" action="#">
@@ -201,12 +217,13 @@ function renderSignUpForm() {
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password" required/>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/>
         <label for="password">Re-enter password</label>
-        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" required/>
+        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/>
         <button type="submit">Sign up</button>
       </form>
-    </div>`
+      <div class="form-errors"></div>
+    </div><br>`
   )
   $('.signup-form').submit(function(event) {
     console.log('sign-up form submitted')
@@ -218,7 +235,10 @@ function renderSignUpForm() {
     if (userPass === userPass2) {
       userSignUp(userEmail, username, userPass) // in user-auth.js
     } else if (userPass !== userPass2) {
-        alert("Passwords don't match")
+      $('.form-errors').html(
+        `<p>Passwords don't match</p>`  
+      )
+      /* alert("Passwords don't match") */
       }
   })
 }
@@ -252,6 +272,7 @@ function getOmbdApiKey() {
     })
     .then(responseJson => {
       localStorage.setItem('omdbApiKey', responseJson.data)
+      console.log("omdbApiKey successfully written into local storage")
     })
     .catch(err => {
       console.log("getOmdbApiKey() encountered an error")

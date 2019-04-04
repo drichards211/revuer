@@ -7,6 +7,7 @@ function handleUserNav() {
     // sign-in button pressed:
     if (`${$(this).prop('id')}` === 'sign-in') {
       console.log("sign-in button pressed")
+      /* userSignIn("drichards211", "1234567890") */
       renderSignInForm() // in user-auth.js
     } 
     // sign-up button pressed:
@@ -44,6 +45,22 @@ function handleUserNav() {
       console.log("\"About revuer\" button pressed")
       aboutRevuer()
     }
+    /* if (`${$(this).prop('id')}` === 'film-1') {
+      console.log('"View your movie" button clicked')
+      viewLibraryDetail(movieTitle) // in view-library.js
+    } */
+    if (`${$(this).prop('id')}` === 'film-2') {
+      console.log('"Add a movie" button clicked')
+      addMovie()
+    }
+    /* if (`${$(this).prop('id')}` === 'film-3') {
+      console.log('"Edit this movie" button pressed')
+      editMovie(omdbMovie, index) // in edit-movie.js
+    } */
+    if (`${$(this).prop('id')}` === 'film-4') {
+      console.log('"Return to library" button pressed')
+      viewLibrary()
+    }
   })
 }
 
@@ -51,9 +68,10 @@ function handleLibraryNav() {
   console.log('handleLibraryNav() running')
   $('body').on('click', 'button', function(event) {
     // "movie-detail-0" button pressed:
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100; i++) {
       if (`${$(this).prop('id')}` === `movie-detail-${i}`) {
         console.log(`"movie-detail-${i}" button pressed`)
+        viewLibraryDetail(libraryResults[i].imdbId, i)
       } 
     }
   })
@@ -201,7 +219,7 @@ function updateDOMTest() {
 }
 
 $(function() {
-  updateDOMTest()
+  /* updateDOMTest() */
   handleUserNav()
   handleLibraryNav()
   /* handleFormSubmit() */
