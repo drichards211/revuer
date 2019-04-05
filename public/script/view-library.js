@@ -9,6 +9,7 @@ let libraryPrefs = {
 }
 
 async function viewLibrary(a, b, c) {
+// Display user's library:
   console.log("viewLibrary() ran")
   const lovedIt = "<3", likedIt = "^", complicated = ":/", dislikedIt = "v", hatedIt = ":(" // update these to contain html displaying appropriate image fonts
   $('.dynamic-buttons').empty()
@@ -18,14 +19,21 @@ async function viewLibrary(a, b, c) {
     </div>`
   )
   await updateLibraryResults()
-  // Display user library results:
+  // Iterate through array and display each result:
   if (libraryResults.length > 0) {
-    for (let i = 0; i < libraryResults.length; i++)
-    $('.movie-list').append(
-      `<button id="movie-detail-${i}">
-          ${libraryResults[i].title} ${eval(libraryResults[i].rating)}
-      </button><br>`
-    )
+    for (let i = 0; i < libraryResults.length; i++) {
+      $('.movie-list').append(
+        `<button id="movie-detail-${i}">
+            ${libraryResults[i].title} ${eval(libraryResults[i].rating)}
+        </button><br>`
+      )
+      $('body').one('click', 'button', function(event) {
+        if (`${$(this).prop('id')}` === `movie-detail-${i}`) {
+          console.log(`"movie-detail-${i}" button pressed`)
+          viewLibraryDetail(libraryResults[i].imdbId, i)
+        } 
+      })
+    }
   } else {
     // If library is empty: 
     $('.movie-list').append(
@@ -38,17 +46,18 @@ async function viewLibrary(a, b, c) {
 }
 
 async function viewLibraryDetail(imdbId, index) {
+// Display a single movie in detail:
   console.log("viewLibraryDetail() ran")
   // Retrieve detailed movie information from the OMDB:
   let omdbMovie = await lookupOMDB(imdbId) // in add-movie.js
     console.log("await lookupOMDB() promise returned")
     const { Actors, Awards, Director, Genre, Plot, Production, Poster, Runtime, Title, Year } = omdbMovie
-  
+  // Retrieve user's movie detail from the db:
   await updateLibraryResults()
     const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
     const lovedIt = "Loved it", likedIt = "Liked it", complicated = "It's complicated", dislikedIt = "Disliked it", hatedIt = "Hated it" // update these to contain html displaying appropriate image fonts
     const renderFormats = function() { 
-    // Convert the contents of the "format" array into a nicely rendered string:
+    // Convert the contents of the "format" array into a user-friendly string:
       if (format.length === 0) {
         return `None`
       } else {
@@ -91,7 +100,7 @@ async function viewLibraryDetail(imdbId, index) {
 }
 
 async function updateLibraryResults() {
-  // Update local libraryResults variable with values from DB:
+// Update local libraryResults variable with values from DB:
   console.log(`updateLibraryResults() ran`)
   if (userName === "Guest") {
     // Propagate "Guest" library with temporary values:
@@ -105,6 +114,7 @@ async function updateLibraryResults() {
 }
 
 function getSandwich() {
+// Irreverent testing function which returns a promise:  
   return new Promise(resolve => {
     setTimeout(() => {
       resolve('This is a sandwich');
@@ -113,6 +123,7 @@ function getSandwich() {
 }
 
 function getMovies() {
+// Retrieve all of the user's movies from the db: 
   console.log("getMovies() ran")
   return new Promise(resolve => {
     const userToken = localStorage.getItem('auth')
@@ -144,7 +155,3 @@ function getMovies() {
   })
     
 }
-
-
-
-// Movie.find({userName: "7aausvdgvjhads"}).populate({path: 'userName'})

@@ -1,13 +1,12 @@
 'use strict'
 
 function handleUserNav() {
-  /* Listens for any user button presses and calls appropriate function(s) */
+  /* Listens for user button presses and calls appropriate functions */
   console.log('handleUserNav() running')
   $('body').on('click', 'button', function(event) {
     // sign-in button pressed:
     if (`${$(this).prop('id')}` === 'sign-in') {
       console.log("sign-in button pressed")
-      /* userSignIn("drichards211", "1234567890") */
       renderSignInForm() // in user-auth.js
     } 
     // sign-up button pressed:
@@ -30,7 +29,7 @@ function handleUserNav() {
       console.log("\"Home\" button pressed")
       renderHomePage()
     } 
-    // "Add a movie" button pressed:
+    // "Add a movie" chair button pressed:
     if (`${$(this).prop('id')}` === 'chair-2') {
       console.log("\"Add a movie\" button pressed")
       addMovie() // in add-movie.js
@@ -45,34 +44,15 @@ function handleUserNav() {
       console.log("\"About revuer\" button pressed")
       aboutRevuer()
     }
-    /* if (`${$(this).prop('id')}` === 'film-1') {
-      console.log('"View your movie" button clicked')
-      viewLibraryDetail(movieTitle) // in view-library.js
-    } */
+    // "Add a movie" dynamic button pressed:
     if (`${$(this).prop('id')}` === 'film-2') {
       console.log('"Add a movie" button clicked')
       addMovie()
     }
-    /* if (`${$(this).prop('id')}` === 'film-3') {
-      console.log('"Edit this movie" button pressed')
-      editMovie(omdbMovie, index) // in edit-movie.js
-    } */
+    // "Return to library" button pressed:
     if (`${$(this).prop('id')}` === 'film-4') {
       console.log('"Return to library" button pressed')
       viewLibrary()
-    }
-  })
-}
-
-function handleLibraryNav() {
-  console.log('handleLibraryNav() running')
-  $('body').on('click', 'button', function(event) {
-    // "movie-detail-0" button pressed:
-    for (let i = 0; i < 100; i++) {
-      if (`${$(this).prop('id')}` === `movie-detail-${i}`) {
-        console.log(`"movie-detail-${i}" button pressed`)
-        viewLibraryDetail(libraryResults[i].imdbId, i)
-      } 
     }
   })
 }
@@ -90,57 +70,20 @@ function renderHomePage() {
       <button class="ticket" id="sign-up">sign-up</button>
       <button class="ticket" id="preview">preview</button>`
     )
-  } else if (userName !== "Guest") {
-    welcomeUser(userName) // in user-auth.js
-  } else {
+  } else if (userName === "Guest") {
     welcomeUser(userName, true) // in user-auth.js
+  } else {
+    welcomeUser(userName) // in user-auth.js
   }
-  
-  
 }
 
-function oldTestProtected() {
-  const userToken = localStorage.getItem('auth')
-    fetch('/api/protected', {
-      method: 'GET',
-      /* body: JSON.stringify(signInData), */
-      headers: {
-        /* 'Accept': 'application/json', */
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${userToken}`
-      }
-    })
-    .then(res => {
-      return res.json()
-    })
-    .then(responseJson => {
-      console.log(responseJson)
-    })
-}
-
-  /* fetch('/api/protected', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${userToken}`
-    }
-  })
-  .then(res => {
-    return res.json()
-  })
-  .then(responseJson => {
-    localStorage.setItem('omdbApiKey', responseJson.authToken)
-  }) */
-  // localStorage.setItem('auth', responseJson.authToken)
-
-  
 function testProtected() {
+// Test user access to protected server endpoints:
   console.log("testProtected() ran")
+  const userToken = localStorage.getItem('auth')
   fetch('/api/protected', {
     method: 'GET',
-    /* body: JSON.stringify(signInData), */
     headers: {
-      /* 'Accept': 'application/json', */
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${userToken}`
     }
@@ -150,44 +93,6 @@ function testProtected() {
   })
   .then(responseJson => {
     console.log(responseJson)
-  })
-}
-
-/* localStorage.setItem('auth', res.authToken)
-      localStorage.setItem('user', username) */
-
-
-// THIS FUNCTION IS DEPRACATED. PLEASE DELETE:
-function handleFormSubmit() {
-/* Listens for user form submissions, and passes values to appropriate functions */
-  console.log('handleFormSubmit() running')
-  $('.signin-form').submit(function(event) {
-    console.log('sign-in form submitted')
-    event.preventDefault()
-    const username = $('#username').val()
-    const userPass =  $('#password').val()
-    userSignIn(username, userPass) // in user-auth.js
-  })
-  $('.signup-form').submit(function(event) {
-    console.log('sign-up form submitted')
-    event.preventDefault()
-    const userEmail = $('#email').val()
-    const username = $('#username').val()
-    const userPass =  $('#password').val()
-    const userPass2 =  $('#password2').val()
-    if (userPass === userPass2) {
-      userSignUp(userEmail, username, userPass) // in user-auth.js
-    } else if (userPass !== userPass2) {
-        alert("Passwords don't match")
-      }
-  })
-  $('.movie-search-form').submit(function(event) {
-    console.log('movie-search-form submitted')
-    event.preventDefault()
-  })
-  $('.movie-post-form').submit(function(event) {
-    console.log('movie-post-form submitted')
-    event.preventDefault()
   })
 }
 
@@ -202,6 +107,7 @@ function renderChairButtons() {
 }
 
 function aboutRevuer() {
+// Display general information about the revuer app:
   console.log("aboutRevuer() ran")
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
@@ -213,14 +119,12 @@ function aboutRevuer() {
 }
 
 function updateDOMTest() {
+// Tests live updating of html:
   console.log("updateDOMTest() ran")
   $('.js-test').append(
     `<p>This is new text rendered by index.js</p>`)
 }
 
 $(function() {
-  /* updateDOMTest() */
   handleUserNav()
-  handleLibraryNav()
-  /* handleFormSubmit() */
 })

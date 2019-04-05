@@ -1,6 +1,7 @@
 'use strict'
 
 function addMovie(oldSearch) {
+// Render a search form so the user can add a movie:
   console.log("addMovie() running")
   const placeholder = oldSearch || "eg: Titanic"
   $('.dynamic-buttons').empty()
@@ -24,7 +25,7 @@ function addMovie(oldSearch) {
 }
 
 function addGuestMoviesToDb() {
-// Identify the movies created by a new registered user when they were still a guest, and add each to the DB:
+// Identify the movies created by a user when they were still a guest, and add each to the DB:
   console.log("addGuestMoviesToDb() ran")
   console.log(`Total movies to add = ${previewLibrary.length - 6}`)
   for (let i = previewLibrary.length - 1; i > 5; i--) {
@@ -66,7 +67,7 @@ function searchOMDB(title) {
   }
     
 function lookupOMDB(movieId) {
-  // Search OMDB API by "IMDB ID", return one result:
+// Search OMDB API by "IMDB ID", return one result:
   console.log("lookupOMDB() ran")
   return new Promise(resolve => {
     const apiKey = localStorage.getItem('omdbApiKey')
@@ -92,6 +93,7 @@ function lookupOMDB(movieId) {
 }
 
 function renderFirstApiResult(results, searchTitle) {
+// Display first OMDB search result to the user:
   console.log("renderFirstApiResult() ran")
   const { Poster, Title, Year, imdbID } = results[0]
   $('.video-screen').html(
@@ -124,6 +126,7 @@ function renderFirstApiResult(results, searchTitle) {
 }
 
 function renderMoreApiResults(results, searchTitle) {
+// Display 10 more OMDB results to the user: 
   console.log("renderMoreApiResults() ran")
   console.log(results)
   $('.video-screen').html(
@@ -154,7 +157,6 @@ function renderMoreApiResults(results, searchTitle) {
     for (let i = 1; i < 10; i++) {
       if (`${$(this).prop('id')}` === `movie-correct-${i}`) {
         console.log(`#${i} movie is correct`)
-        // update movieData with correct API ID and title 
         addMovieDetails(results[i])
       }
     }
@@ -166,6 +168,7 @@ function renderMoreApiResults(results, searchTitle) {
 }
     
 function addMovieDetails(omdbMovie) {
+// Render a form for submitting movie details: 
   console.log("addMovieDetails() ran")
   console.log(omdbMovie)
   const { Poster, Title, Year, imdbID } = omdbMovie
@@ -209,9 +212,10 @@ function addMovieDetails(omdbMovie) {
 }
 
 function handleMovieSubmit(omdbMovie) {
+// Create a userMovie object from submitted form data:
   console.log(`handleMovieSubmit(running)`)
   let userMovie = {}
-  // Preserves character returns inside "textarea":
+  // Preserves character returns inside "textarea" field:
   $.valHooks.textarea = {
     get: function( elem ) {
       return elem.value.replace( /\r?\n/g, "\r\n" );
@@ -239,9 +243,10 @@ function handleMovieSubmit(omdbMovie) {
 }
 
 function postMovieToDb(newMovie, silent) {
+// Post newMovie object to DB:
   console.log(`postMovieToDb() ran`)
-  // Do not allow "Guest" to post to db. Add to client previewLibrary instead:
   if (userName === "Guest") {
+  // Do not allow "Guest" to post to db. Add to client previewLibrary instead:
     console.log("Guest attempting to post movie")
     previewLibrary.push(newMovie)
     console.log(previewLibrary)
@@ -280,31 +285,32 @@ function postMovieToDb(newMovie, silent) {
 }
 
 async function renderSuccessMessage(newMovie, guest) {
+// Display message to user when movie successfully created:  
   console.log("renderSuccessMessage() ran")
   const { imdbId, title } = newMovie
   await updateLibraryResults()
     const index = libraryResults.length
     if (guest === true) {
-  // Display customized message and buttons for "Guest" account:
-    $('.video-screen').html(
-      `<div class="success-message">
-      <h2>${title}</h2> 
-      <p>has been added to your virtual library.</p>
-      <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
-    )
-    $('.dynamic-buttons').html(
-      `<button class="film" id="film-1">View your movie</button>
-      <button class="film" id="film-2">Add another one</button>
-      <button class="ticket" id="sign-up">Sign-up</button>`
-    )
-    $('body').one('click', 'button', function(event) {
-      if (`${$(this).prop('id')}` === 'film-1') {
-        console.log('"View your movie" button clicked')
-        viewLibraryDetail(imdbId, index - 1) // in view-library.js
-      }
-    })
+    // Display customized message and buttons for "Guest" account:
+      $('.video-screen').html(
+        `<div class="success-message">
+        <h2>${title}</h2> 
+        <p>has been added to your virtual library.</p>
+        <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
+      )
+      $('.dynamic-buttons').html(
+        `<button class="film" id="film-1">View your movie</button>
+        <button class="film" id="film-2">Add another one</button>
+        <button class="ticket" id="sign-up">Sign-up</button>`
+      )
+      $('body').one('click', 'button', function(event) {
+        if (`${$(this).prop('id')}` === 'film-1') {
+          console.log('"View your movie" button clicked')
+          viewLibraryDetail(imdbId, index - 1) // in view-library.js
+        }
+      })
   } else {
-  // Render success message for registered users:
+  // Render success message for registered user:
     $('.video-screen').html(
       `<div class="success-message">
         <h2>${title}</h2> 
@@ -318,10 +324,9 @@ async function renderSuccessMessage(newMovie, guest) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         if (index === 0) {
-          /* libraryResults = getMovies() */
-          viewLibraryDetail(imdbId, 0) // in view-library.js  
+          viewLibraryDetail(imdbId, 0) // in view-library.js
         } else {
-          viewLibraryDetail(imdbId, index - 1)
+          viewLibraryDetail(imdbId, index - 1) // in view-library.js
         }
       }
     })
