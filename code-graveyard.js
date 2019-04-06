@@ -11,3 +11,11 @@
 
 
 // Movie.find({userName: "7aausvdgvjhads"}).populate({path: 'userName'})
+
+
+// Snazzy method to populate full user-info from Movie document:
+              /* Movie.findOne({_id: createdMovie._id})
+              .populate({path: 'user_id'}) // mongoose method
+              .then(foundMovie => {
+                res.status(201).json(foundMovie())
+              }) */

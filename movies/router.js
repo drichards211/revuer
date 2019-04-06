@@ -55,14 +55,6 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
             })
             .then(createdMovie => {
               res.status(201).json(createdMovie.serialize())
-              
-              // Snazzy method to populate full user-info from Movie document:
-              /* Movie.findOne({_id: createdMovie._id})
-              .populate({path: 'user_id'}) // mongoose method
-              .then(foundMovie => {
-                res.status(201).json(foundMovie())
-              }) */
-
             })
             .catch(err => {
               console.error(err);
@@ -100,7 +92,7 @@ router.get('/', jwtAuth, jsonParser, (req, res) => {
   })
 })
  
-// PUT to edit a preexisting movie:
+// Edit a preexisting movie:
 router.put('/:id', jwtAuth, jsonParser, (req, res) => {
   console.log(req.user) // logs to the server console
   console.log(req.body)

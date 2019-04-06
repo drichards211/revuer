@@ -40,35 +40,21 @@ function userSignIn(username, pword, firstTime) {
       getOmbdApiKey()
       if (username === "Guest") {
         renderPreviewInfo()
-      } else { 
-        if (firstTime) {
-          if (previewLibrary.length > 6) {
-            addGuestMoviesToDb() // in add-movie.js
-            welcomeUser(username, firstTime, true)
-          } else {
-            welcomeUser(username, firstTime)
-          }
+      } 
+      if (firstTime) {
+        if (previewLibrary.length > 6) {
+          addGuestMoviesToDb() // in add-movie.js
+          welcomeUser(username, firstTime, true)
         } else {
-          welcomeUser(username)
+          welcomeUser(username, firstTime)
         }
+      } else {
+        welcomeUser(username)
       }
     }
   })
-  /* .then(res => {
-    if (firstTime === true) {
-      if (previewLibrary.length > 6) {
-        addGuestMoviesToDb() // in add-movie.js
-        welcomeUser(username, true, true)
-      } else {
-        welcomeUser(username, true)
-      }
-    } else {
-      welcomeUser(username)
-    }
-  }) */
   .catch(err => {
     console.log("userSignIn() encountered an error")
-    // ok to use an alert here
   })
 }
 
@@ -102,7 +88,7 @@ function userSignUp(email, username, pword) {
     }
   })
   .then(res => {
-    if (success === true) {
+    if (success) {
       userSignIn(username, pword, true)
     } else {
         console.log(res)
@@ -112,11 +98,11 @@ function userSignUp(email, username, pword) {
   .catch(err => {
     console.log(err)
     console.log("userSignUp() encountered an unexpected error")
-    // ok to use an alert here
   })
 }
 
 function handleSignUpError(results) {
+// Display error to user if sign-up unsuccessful:
   console.log("handleSignUpError() ran")
   console.log(results.location + " " + results.message)
   $('.form-errors').html(
@@ -125,6 +111,7 @@ function handleSignUpError(results) {
 }
 
 function handleSignInError() {
+// Display error to user if sign-in unsuccessful:
   console.log("handleSignInError() ran")
   console.log("Incorrect username or password")
   $('.form-errors').html(
@@ -133,7 +120,7 @@ function handleSignInError() {
 }
 
 function welcomeUser(user, firstTime, addMovies) {
-/* Renders custom welcome screen after successful sign-in*/
+// Render custom welcome screen after successful sign-in: 
   console.log("welcomeUser() ran")
   $('.dynamic-buttons').empty()
   renderChairButtons()
@@ -238,8 +225,7 @@ function renderSignUpForm() {
       $('.form-errors').html(
         `<p>Passwords don't match</p>`  
       )
-      /* alert("Passwords don't match") */
-      }
+    }
   })
 }
 

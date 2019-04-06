@@ -8,8 +8,8 @@ const ObjectId = Schema.ObjectId;
 mongoose.Promise = global.Promise
 
 const MovieSchema = mongoose.Schema({
-  title: { type: String, required: true, },
-  imdbId: {type: String, required: true },
+  title: { type: String, required: true },
+  imdbId: { type: String, required: true },
   rating: { type: String, required: true },
   ownCopy: { type: Boolean, required: true },
   format: [{ type: String }],
@@ -33,4 +33,3 @@ MovieSchema.methods.serialize = function() {
 
 const Movie = mongoose.model('Movie', MovieSchema)
 module.exports = {Movie}
-

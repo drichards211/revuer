@@ -25,7 +25,7 @@ function addMovie(oldSearch) {
 }
 
 function addGuestMoviesToDb() {
-// Identify the movies created by a user when they were still a guest, and add each to the DB:
+// Identify any movies created by a guest; add them to the DB when they register:
   console.log("addGuestMoviesToDb() ran")
   console.log(`Total movies to add = ${previewLibrary.length - 6}`)
   for (let i = previewLibrary.length - 1; i > 5; i--) {
