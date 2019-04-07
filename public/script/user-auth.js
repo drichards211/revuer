@@ -88,7 +88,7 @@ function userSignUp(email, username, pword) {
     }
   })
   .then(res => {
-    if (success) {
+    if (success === true) {
       userSignIn(username, pword, true)
     } else {
         console.log(res)

@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  font-size: 13.5px;
+  min-width: 320px; /* prevents layout from breaking on tiny screens */
+}
+.movie-find-form {
+  
+}
+.movie-button {
+  font-family: 'wagner';
+}
+@font-face {
+  font-family: wagner;
+  src: url(wagner-zip-change.ttf);
+  font-style: normal;
+}
+
+#movietitle {
+  font-family: 'Special Elite', cursive;
+  font-size: 200%;
+}
+::placeholder {
+  font-family: 'Special Elite', cursive;
+  text-overflow: ellipsis;
+}

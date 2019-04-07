@@ -9,7 +9,7 @@ function addMovie(oldSearch) {
     `<div class="movie-find-box">
       <h2>Add a movie</h2>
       <form class="movie-find-form" action="#">
-        <label for="movietitle">Search movie title</label>
+        <label for="movietitle">Title:</label>
         <input type="text" name="movietitle" id="movietitle" placeholder="${placeholder}" required/>
         <button type="submit">Search</button>
       </form>
@@ -273,7 +273,7 @@ function postMovieToDb(newMovie, silent) {
     .then(responseJson => {
       console.log("New movie created successfully")
       console.log(responseJson)
-      if (silent !== true) {
+      if (silent === false) {
         renderSuccessMessage(newMovie)
       }
       
@@ -290,7 +290,7 @@ async function renderSuccessMessage(newMovie, guest) {
   const { imdbId, title } = newMovie
   await updateLibraryResults()
     const index = libraryResults.length
-    if (guest === true) {
+    if (guest) {
     // Display customized message and buttons for "Guest" account:
       $('.video-screen').html(
         `<div class="success-message">

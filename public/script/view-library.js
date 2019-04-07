@@ -11,7 +11,7 @@ let libraryPrefs = {
 async function viewLibrary(a, b, c) {
 // Display user's library:
   console.log("viewLibrary() ran")
-  const lovedIt = "<3", likedIt = "^", complicated = ":/", dislikedIt = "v", hatedIt = ":(" // update these to contain html displaying appropriate image fonts
+  const lovedIt = `<i class="fas fa-heart"></i>`, likedIt = `<i class="far fa-thumbs-up"></i>`, complicated = `<i class="far fa-meh"></i>`, dislikedIt = `<i class="far fa-thumbs-down"></i>`, hatedIt = `<i class="fas fa-skull-crossbones"></i>`
   $('.dynamic-buttons').empty()
   $('.video-screen').html(
     `<h2>Library</h2>
@@ -23,8 +23,8 @@ async function viewLibrary(a, b, c) {
   if (libraryResults.length > 0) {
     for (let i = 0; i < libraryResults.length; i++) {
       $('.movie-list').append(
-        `<button id="movie-detail-${i}">
-            ${libraryResults[i].title} ${eval(libraryResults[i].rating)}
+        `<button id="movie-detail-${i}" class="movie-button">
+          ${eval(libraryResults[i].rating)} &nbsp ${libraryResults[i].title.toUpperCase()}
         </button><br>`
       )
       $('body').one('click', 'button', function(event) {
