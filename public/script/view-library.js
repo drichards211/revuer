@@ -24,7 +24,7 @@ async function viewLibrary(a, b, c) {
     for (let i = 0; i < libraryResults.length; i++) {
       $('.movie-list').append(
         `<button id="movie-detail-${i}" class="movie-button">
-          ${eval(libraryResults[i].rating)} &nbsp ${libraryResults[i].title.toUpperCase()}
+          ${eval(libraryResults[i].rating)} ${libraryResults[i].title.toUpperCase()}
         </button><br>`
       )
       $('body').one('click', 'button', function(event) {
