@@ -8,7 +8,7 @@ function editMovie(omdbMovie, index) {
   
   // Propagate form with pre-existing values:
   const checkRating = radioValue => {
-    return rating === radioValue ? "checked" : ""
+    return rating === radioValue ? "checked autofocus" : ""
   }
   const checkOwnCopy = radioValue => {
     return ownCopy === radioValue ? "checked" : ""

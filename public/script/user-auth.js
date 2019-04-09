@@ -171,7 +171,7 @@ function renderSignInForm() {
       <form class="signin-form" action="#">
         <h2>Sign in</h2>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required/>
+        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required autofocus/>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" minlength="10" maxlength="72" required/>
         <button type="submit">Sign in</button>
@@ -200,7 +200,7 @@ function renderSignUpForm() {
       <form class="signup-form" action="#">
         <h2>Sign up</h2>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="user@domain.com" required/>
+        <input type="email" name="email" id="email" placeholder="user@domain.com" required autofocus/>
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/>
         <label for="password">Password</label>

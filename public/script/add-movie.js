@@ -10,7 +10,7 @@ function addMovie(oldSearch) {
       <h2>Add a movie</h2>
       <form class="movie-find-form" action="#">
         <label for="movietitle">Title:</label>
-        <input type="text" name="movietitle" id="movietitle" placeholder="${placeholder}" required/>
+        <input type="text" name="movietitle" id="movietitle" placeholder="${placeholder}" required autofocus/>
         <button type="submit">Search</button>
       </form>
     </div>`)
@@ -102,7 +102,7 @@ function renderFirstApiResult(results, searchTitle) {
       <p>${Title} -- ${Year}</p>
       <div class="poster-frame"></div>
       <p>
-      <button class="yes" id="movie-correct">Yes</button>
+      <button class="yes" id="movie-correct" autofocus>Yes</button>
       <button class="no" id="movie-incorrect">No</button>
       </p>
     </div>`
@@ -182,7 +182,7 @@ function addMovieDetails(omdbMovie) {
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
         <label for="rating">What did you think of it?</label><br>
-          <input type="radio" name="rating" value="lovedIt" checked required> Loved it<br>
+          <input type="radio" name="rating" value="lovedIt" checked required autofocus> Loved it<br>
           <input type="radio" name="rating" value="likedIt"> Liked it<br>
           <input type="radio" name="rating" value="complicated"> It's complicated<br>
           <input type="radio" name="rating" value="dislikedIt"> Disliked it<br>
