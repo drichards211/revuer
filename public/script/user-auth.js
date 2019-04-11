@@ -38,9 +38,6 @@ function userSignIn(username, pword, firstTime) {
       userName = username
       localStorage.setItem('auth', responseJson.authToken)
       getOmbdApiKey()
-      if (username === "Guest") {
-        renderPreviewInfo()
-      } 
       if (firstTime) {
         if (previewLibrary.length > 6) {
           addGuestMoviesToDb() // in add-movie.js
@@ -48,9 +45,11 @@ function userSignIn(username, pword, firstTime) {
         } else {
           welcomeUser(username, firstTime)
         }
-      } else {
+      } else if (username !== "Guest") {
         welcomeUser(username)
-      }
+      } else {
+        renderPreviewInfo()
+      } 
     }
   })
   .catch(err => {
