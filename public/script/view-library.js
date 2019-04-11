@@ -24,9 +24,10 @@ async function viewLibrary(a, b, c) {
     for (let i = 0; i < libraryResults.length; i++) {
       $('.movie-list').append(
         `<button id="movie-detail-${i}" class="movie-button">
-          ${eval(libraryResults[i].rating)} ${libraryResults[i].title.toUpperCase()}
+        <span class="rating-icon">${eval(libraryResults[i].rating)}</span><span class="movie-title">${libraryResults[i].title.toUpperCase()}</span>
         </button><br>`
       )
+      /* ▬ ${libraryResults[i].year} */
       $('body').one('click', 'button', function(event) {
         if (`${$(this).prop('id')}` === `movie-detail-${i}`) {
           console.log(`"movie-detail-${i}" button pressed`)

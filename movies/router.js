@@ -16,7 +16,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false })
 // Post to create a new movie:
 router.post('/', jwtAuth, jsonParser, (req, res) => {
   console.log(req.user) // logs to the server console
-  const requiredFields = ['title', 'imdbId', 'rating', 'ownCopy']
+  const requiredFields = ['title', 'imdbId', 'year', 'rating', 'ownCopy']
   const missingField = requiredFields.find(field => !(field in req.body))
   
   // Make certain all required fields are included:
@@ -29,13 +29,18 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
     })
   }
   // Make certain movie doesn't already exist:
-  Movie.findOne({userName: req.user.username, imdbId: req.body.imdbId})
-    .then(foundMovie => {
+  const foundMovie = Movie.findOne({userName: req.user.username, imdbId: req.body.imdbId})
+  /* Movie.findOne({userName: req.user.username, imdbId: req.body.imdbId})
+    .then(foundMovie => { */
       if (foundMovie) {
         console.log(`FOUND MOVIE = ${foundMovie}`)
         const errMessage = 'Movie already exists'
         console.error(errMessage)
-        return res.status(400).send(errMessage);
+        return res.status(422).json({
+          code: 422,
+          reason: 'DuplicationError',
+          message: 'This movie already exists in your library'
+        })
       
       } else {
         // Locate User's _.id value:
@@ -46,6 +51,7 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
             Movie.create({
               title: req.body.title,
               imdbId: req.body.imdbId,
+              year: req.body.year,
               rating: req.body.rating,
               ownCopy: req.body.ownCopy,
               format: req.body.format,
@@ -62,11 +68,11 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
             })
           })
       }
-    })
+    /* })
   .catch(err => {
     console.error(err);
     res.status(500).json({ error: 'Something went wrong' });
-  })
+  }) */
 })
 
 // GET all movies for a specific user:

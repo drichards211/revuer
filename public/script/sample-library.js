@@ -2,6 +2,7 @@ const previewLibrary = [
   {
     "title": "Ghostbusters",
     "imdbId": "tt0087332",
+    "year" : "1984",
     "rating": "lovedIt",
     "ownCopy": true,
     "format": ["Bluray", "LD"], 
@@ -12,6 +13,7 @@ const previewLibrary = [
   {
     "title": "Star Trek II",
     "imdbId": "tt0084726",
+    "year" : "1982",
     "rating": "lovedIt",
     "ownCopy": true, 
     "format": ["Blu-ray"],
@@ -22,6 +24,7 @@ const previewLibrary = [
   {
     "title": "Waking Ned Devine",
     "imdbId": "tt0166396",
+    "year" : "1998",
     "rating": "likedIt",
     "ownCopy": false,
     "format": [],
@@ -32,6 +35,7 @@ const previewLibrary = [
   {
     "title": "The Lion King",
     "imdbId": "tt0110357",
+    "year" : "1994",
     "rating": "lovedIt",
     "ownCopy": true,
     "format": ["DVD", "Blu-ray"],
@@ -42,6 +46,7 @@ const previewLibrary = [
   {
     "title": "Cloud Atlas",
     "imdbId": "tt1371111",
+    "year" : "2012",
     "rating": "dislikedIt",
     "ownCopy": false,
     "format": [],
@@ -52,6 +57,7 @@ const previewLibrary = [
   {
     "title": "The Martian",
     "imdbId": "tt3659388",
+    "year" : "2015",
     "rating": "likedIt",
     "ownCopy": false,
     "format": [],

@@ -8,12 +8,30 @@ html, body {
 .movie-find-form {
   
 }
+.movie-list {
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
+}
 .movie-button {
   font-family: 'wagner';
+  font-size: 175%;
   letter-spacing: 3px;
-  word-spacing: 8px;
+  word-spacing: 5px; /*8px*/
+  text-align: center;
   cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
 }
+.rating-icon {
+  float: left;
+}
+.fa-heart {
+  color: rgba(255, 0, 0, 0.8);
+}
+/* .movie-title {
+  text-align: center;
+} */
 @font-face {
   font-family: wagner;
   src: url(wagner-zip-change.ttf);

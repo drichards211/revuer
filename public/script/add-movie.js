@@ -201,6 +201,7 @@ function addMovieDetails(omdbMovie) {
         <br><br>
         <button type="submit">Submit</button>
       </form>
+      <div class="form-errors"></div>
     </div>`
   )
   if (Poster !== "N/A") {
@@ -226,6 +227,7 @@ function handleMovieSubmit(omdbMovie) {
     event.preventDefault()
     userMovie.title = omdbMovie.Title
     userMovie.imdbId = omdbMovie.imdbID
+    userMovie.year = omdbMovie.Year
     userMovie.viewed = $('#viewed').val()
     userMovie.rating = $('input[type=radio][name=rating]:checked').val()
     $('input[type=radio][name=ownCopy]:checked').val(function() { 
@@ -245,6 +247,7 @@ function handleMovieSubmit(omdbMovie) {
 function postMovieToDb(newMovie, silent) {
 // Post newMovie object to DB:
   console.log(`postMovieToDb() ran`)
+  let success
   if (userName === "Guest") {
   // Do not allow "Guest" to post to db. Add to client previewLibrary instead:
     console.log("Guest attempting to post movie")
@@ -266,15 +269,24 @@ function postMovieToDb(newMovie, silent) {
       if (res.ok) {
         console.log("response OK")
         return res.json()
+      } else if (res.status === 422) {
+        console.log("res.status === 422")
+        success = false
+        return res.json()
       } else {
         throw new Error(res.statusText)
       }
     })
     .then(responseJson => {
+      if (success === true) {
       console.log("New movie created successfully")
       console.log(responseJson)
-      if (silent === false) {
-        renderSuccessMessage(newMovie)
+        if (!silent) {
+          renderSuccessMessage(newMovie)
+        }
+      } else {
+        console.log(responseJson)
+        handlePostMovieError(responseJson)
       }
       
     })
@@ -284,6 +296,13 @@ function postMovieToDb(newMovie, silent) {
   }
 }
 
+function handlePostMovieError(res) {
+  console.log(`handlePostMovieError() ran`)
+  $('.form-errors').html(
+    `<p>${res.message}</p>`
+  )
+
+}
 async function renderSuccessMessage(newMovie, guest) {
 // Display message to user when movie successfully created:  
   console.log("renderSuccessMessage() ran")
