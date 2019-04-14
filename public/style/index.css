@@ -4,6 +4,24 @@
 html, body {
   font-size: 13.5px;
   min-width: 320px; /* prevents layout from breaking on tiny screens */
+  color: white;
+  background-color: black;
+}
+.video-screen {
+  width: 80%;
+  height: calc(80vw / 2.28);
+  margin: auto;
+  text-align: center;
+  color: black;
+  background-color: white;
+  /* border-style: solid; */
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
+}
+nav {
+  color: white;
+  background-color: black;
 }
 .chair-buttons {
   position: fixed;
@@ -11,6 +29,9 @@ html, body {
   width: 100%;
   /* text-align: center; */
   
+}
+.hidden {
+  display: none;
 }
 .chair {
   /* display:block; */
@@ -57,6 +78,9 @@ button:active {
   
 }
 .movie-list {
+  width: 65%;
+  margin: auto;
+  text-align: center;
   -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
   -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
   box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
@@ -69,10 +93,11 @@ button:active {
   text-align: center;
   cursor: pointer;
   background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid gray;
   width: 100%;
 }
 .rating-icon {
-  float: left;
+  /* float: left; */
 }
 .fa-heart {
   color: rgba(255, 0, 0, 0.8);

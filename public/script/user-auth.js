@@ -121,10 +121,11 @@ function handleSignInError() {
 function welcomeUser(user, firstTime, addMovies) {
 // Render custom welcome screen after successful sign-in: 
   console.log("welcomeUser() ran")
-  $('.dynamic-buttons').empty()
+  emptyTheContainers() // in index.js
+  /* $('.dynamic-buttons').empty() */
   renderChairButtons()
   if (firstTime) {
-    $('.video-screen').html(
+    $('.video-screen').removeClass('hidden').html(
       `<div class="welcome-message">
           <h2>Welcome to revuer, ${user}!</h2>
           <p>Please click any of the chair buttons below to continue.</p>
@@ -144,7 +145,7 @@ function welcomeUser(user, firstTime, addMovies) {
         )
       }
     } else {
-      $('.video-screen').html(
+      $('.video-screen').removeClass('hidden').html(
         `<div class="welcome-messsage">
             <h2>Welcome back ${user}!</h2>
       `)
@@ -165,7 +166,7 @@ function renderSignInForm() {
     <button class="ticket" id="sign-up">sign-up</button>
     <button class="ticket" id="preview">preview</button>`
   )
-  $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
     `<div class="signin-box">
       <form class="signin-form" action="#">
         <h2>Sign in</h2>
@@ -194,7 +195,7 @@ function renderSignUpForm() {
     <button class="ticket" id="sign-up">sign-up</button>
     <button class="ticket" id="preview">preview</button>`
   )
-  $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
     `<div class="signup-box">
       <form class="signup-form" action="#">
         <h2>Sign up</h2>
@@ -230,8 +231,9 @@ function renderSignUpForm() {
 
 function renderPreviewInfo() {
   console.log("renderPreviewInfo() ran")
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  emptyTheContainers() // in index.js
+  /* $('.dynamic-buttons').empty() */
+  $('.video-screen').removeClass('hidden').html(
     `<div class="preview-info">
       <h2>Welcome Guest!</h2>
       <p>This is a sneak preview of revuer.</p>

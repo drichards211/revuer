@@ -60,7 +60,8 @@ function handleUserNav() {
 function renderHomePage() {
   console.log("renderHomePage() ran")
   if (userName === undefined) {
-    $('.video-screen').html(
+    emptyTheContainers()
+    $('.video-screen').removeClass('hidden').html(
       `<h1>revuer</h1>
       <p class="js-test">animated text goes here</p>
       <div class="user-forms"></div>`
@@ -98,8 +99,7 @@ function testProtected() {
 
 function renderChairButtons() {
   $('.chair-buttons').html(
-  `<h4>chair buttons:</h4>
-  <button class="chair" id="chair-1">Home</button>
+  `<button class="chair" id="chair-1">Home</button>
   <button class="chair" id="chair-2">Add a movie</button>
   <button class="chair" id="chair-3">View library</button>
   <button class="chair" id="chair-4">About revuer</button>`
@@ -109,8 +109,9 @@ function renderChairButtons() {
 function aboutRevuer() {
 // Display general information about the revuer app:
   console.log("aboutRevuer() ran")
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  emptyTheContainers()
+  /* $('.dynamic-buttons').empty() */
+  $('.video-screen').removeClass('hidden').html(
     `<div class="about-revuer">
       <h2>About revuer</h2>
       <p>This is placeholder text about revuer</p>
@@ -123,6 +124,12 @@ function updateDOMTest() {
   console.log("updateDOMTest() ran")
   $('.js-test').append(
     `<p>This is new text rendered by index.js</p>`)
+}
+
+function emptyTheContainers() {
+  $('.video-screen').empty().addClass('hidden')
+  $('.dynamic-buttons').empty()
+  $('.movie-marquee').empty()
 }
 
 $(function() {

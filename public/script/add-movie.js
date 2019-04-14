@@ -4,8 +4,9 @@ function addMovie(oldSearch) {
 // Render a search form so the user can add a movie:
   console.log("addMovie() running")
   const placeholder = oldSearch || "eg: Titanic"
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  emptyTheContainers() // in index.js
+  /* $('.dynamic-buttons').empty() */
+  $('.movie-marquee').html(
     `<div class="movie-find-box">
       <h2>Add a movie</h2>
       <form class="movie-find-form" action="#">
@@ -96,7 +97,7 @@ function renderFirstApiResult(results, searchTitle) {
 // Display first OMDB search result to the user:
   console.log("renderFirstApiResult() ran")
   const { Poster, Title, Year, imdbID } = results[0]
-  $('.video-screen').html(
+  $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Is this your movie?</h2>
       <p>${Title} -- ${Year}</p>
@@ -129,7 +130,7 @@ function renderMoreApiResults(results, searchTitle) {
 // Display 10 more OMDB results to the user: 
   console.log("renderMoreApiResults() ran")
   console.log(results)
-  $('.video-screen').html(
+  $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Is it one of these?</h2>
     </div>`
@@ -172,8 +173,9 @@ function addMovieDetails(omdbMovie) {
   console.log("addMovieDetails() ran")
   console.log(omdbMovie)
   const { Poster, Title, Year, imdbID } = omdbMovie
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  /* $('.dynamic-buttons').empty() */
+  emptyTheContainers() // in index.js
+  $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Add your details</h2>
       <p>${Title} -- ${Year}</p>
@@ -311,7 +313,8 @@ async function renderSuccessMessage(newMovie, guest) {
     const index = libraryResults.length
     if (guest) {
     // Display customized message and buttons for "Guest" account:
-      $('.video-screen').html(
+      emptyTheContainers() // in index.js
+      $('.video-screen').removeClass('hidden').html(
         `<div class="success-message">
         <h2>${title}</h2> 
         <p>has been added to your virtual library.</p>
@@ -330,7 +333,8 @@ async function renderSuccessMessage(newMovie, guest) {
       })
   } else {
   // Render success message for registered user:
-    $('.video-screen').html(
+    emptyTheContainers() // in index.js
+    $('.video-screen').removeClass('hidden').html(
       `<div class="success-message">
         <h2>${title}</h2> 
         <p>has been added to your library.</p>`
@@ -354,8 +358,9 @@ async function renderSuccessMessage(newMovie, guest) {
 
 function suggestNewSearch(oldSearch) {
   console.log("suggestNewSearch() ran")
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  /* $('.dynamic-buttons').empty() */
+  emptyTheContainers() // in index.js
+  $('.video-screen').removeClass('hidden').html(
     `<p>We couldn't find any movies with that title.</p>`
   )
   $('.dynamic-buttons').html(

@@ -17,8 +17,9 @@ function editMovie(omdbMovie, index) {
     return format.includes(checkboxValue) === true ? "checked" : "" 
   }
   
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  emptyTheContainers() // in index.js
+  /* $('.dynamic-buttons').empty() */
+  $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Edit this movie</h2>
       <p>${Title} -- ${Year}</p>
@@ -143,9 +144,10 @@ function updateMovieInDb(editedMovie, index) {
 
 async function renderEditMessage(editedMovie, index, guest) {
   console.log("renderEditMessage() ran")
+  emptyTheContainers() // in index.js
   if (guest === true) {
   // Display customized message and buttons for "Guest" account:
-    $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
       `<div class="success-message">
       <h2>${editedMovie.title}</h2> 
       <p>has been updated in your virtual library.</p>
@@ -163,7 +165,7 @@ async function renderEditMessage(editedMovie, index, guest) {
     })
   } else {
   // Render success message for registered users:
-    $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
       `<div class="success-message">
         <h2>${editedMovie.title}</h2> 
         <p>has been successfully updated.</p>`
@@ -202,7 +204,7 @@ function deleteMovieInDb(omdbMovie, index) {
       if (res.ok) {
         console.log("response OK")
         console.log("Movie deleted successfully")
-        $('.video-screen').html(
+        $('.video-screen').removeClass('hidden').html(
           `<div class="success-message">
             <h2>${libraryResults[index].title}</h2> 
             <p>has been successfully deleted.</p>`

@@ -12,11 +12,12 @@ async function viewLibrary(a, b, c) {
 // Display user's library:
   console.log("viewLibrary() ran")
   const lovedIt = `<i class="fas fa-heart"></i>`, likedIt = `<i class="far fa-thumbs-up"></i>`, complicated = `<i class="far fa-meh"></i>`, dislikedIt = `<i class="far fa-thumbs-down"></i>`, hatedIt = `<i class="fas fa-skull-crossbones"></i>`
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  emptyTheContainers() // in index.js
+  /* $('.dynamic-buttons').empty()
+  $('.video-screen').empty() */
+  $('.movie-marquee').append(
     `<h2>Library</h2>
-    <div class="movie-list">
-    </div>`
+      <div class="movie-list"></div>`
   )
   await updateLibraryResults()
   // Iterate through array and display each result:
@@ -24,7 +25,7 @@ async function viewLibrary(a, b, c) {
     for (let i = 0; i < libraryResults.length; i++) {
       $('.movie-list').append(
         `<button id="movie-detail-${i}" class="movie-button">
-        <span class="rating-icon">${eval(libraryResults[i].rating)}</span><span class="movie-title">${libraryResults[i].title.toUpperCase()}</span>
+        <span class="rating-icon">${eval(libraryResults[i].rating)}&nbsp</span><span class="movie-title">${libraryResults[i].title.toUpperCase()}</span>
         </button><br>`
       )
       /* ▬ ${libraryResults[i].year} */
@@ -73,8 +74,9 @@ async function viewLibraryDetail(imdbId, index) {
         return rendered
       }
     }
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  /* $('.dynamic-buttons').empty() */
+  emptyTheContainers() // in index.js
+  $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <p>${Title} -- ${Year}</p>
       <div class="poster-frame"></div>
