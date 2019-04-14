@@ -128,16 +128,18 @@ function updateDOMTest() {
 
 function playCountdown() {
   $('.video-screen').html(
-    `<video autoplay width="100%" height="auto"> 
-    <source src="/image/film-leader-countdown.mp4" type="video/mp4">
+    `<video autoplay width="100%" height="calc(80vw * .5625)"> 
+    <source src="/image/film-leader-countdown-sound.mp4" type="video/mp4">
     <video>`
   )
   setTimeout(function() { 
     $('.video-screen').html(
-      `<h1>revuer</h1>
-       <p class="js-test">animated text goes here</p>
-       <div class="user-forms">
-       </div>`
+      `<img src="image/still-frame.jpg" alt="movie still frame" style="width:100%;height:auto;">
+      <div class="video-text">
+        <h1>revuer</h1>
+        <p class="js-test">animated text goes here</p>
+        <div class="user-forms"></div>
+      </div>`
     ) 
   }, 5000);
   
