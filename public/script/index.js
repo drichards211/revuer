@@ -101,7 +101,7 @@ function renderChairButtons() {
   `<h4>chair buttons:</h4>
   <button class="chair" id="chair-1">Home</button>
   <button class="chair" id="chair-2">Add a movie</button>
-  <button class="chair" id="chair-3">View your library</button>
+  <button class="chair" id="chair-3">View library</button>
   <button class="chair" id="chair-4">About revuer</button>`
   )
 }

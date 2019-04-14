@@ -188,8 +188,8 @@ function addMovieDetails(omdbMovie) {
           <input type="radio" name="rating" value="dislikedIt"> Disliked it<br>
           <input type="radio" name="rating" value="hatedIt"> Hated it<br><br>
         <label for="ownCopy">Do you own a copy?</label><br>
-          <input type="radio" name="ownCopy" value="true" checked required> Yes<br>
-          <input type="radio" name="ownCopy" value="false"> No<br><br>
+          <input type="radio" name="ownCopy" value="true" required> Yes<br>
+          <input type="radio" name="ownCopy" value="false" checked> No<br><br>
         <label for="format">Which format(s)? (Leave blank if none)</label><br>
           <input type="checkbox" name="format" value="VHS" id="format-vhs"> VHS<br>
           <input type="checkbox" name="format" value="LaserDisc" id="format-laserdisc"> LaserDisc<br>
