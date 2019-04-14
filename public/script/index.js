@@ -126,6 +126,31 @@ function updateDOMTest() {
     `<p>This is new text rendered by index.js</p>`)
 }
 
+function playCountdown() {
+  $('.video-screen').html(
+    `<video autoplay width="100%" height="auto"> 
+    <source src="/image/film-leader-countdown.mp4" type="video/mp4">
+    <video>`
+  )
+  setTimeout(function() { 
+    $('.video-screen').html(
+      `<h1>revuer</h1>
+       <p class="js-test">animated text goes here</p>
+       <div class="user-forms">
+       </div>`
+    ) 
+  }, 5000);
+  
+  // Use this event listener instead of setTimeout in case video is slow to load:
+  /* document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+  function myHandler(e) {
+      // What you want to do after the event
+  } */
+  // Add a nice, grainy, still image for the default .video-screen display
+  // fade-in reviewer text. Add animated transitions
+
+}
+
 function emptyTheContainers() {
   $('.video-screen').empty().addClass('hidden')
   $('.dynamic-buttons').empty()
@@ -134,4 +159,5 @@ function emptyTheContainers() {
 
 $(function() {
   handleUserNav()
+  playCountdown()
 })

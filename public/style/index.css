@@ -9,7 +9,7 @@ html, body {
 }
 .video-screen {
   width: 80%;
-  height: calc(80vw / 2.28);
+  height: calc(80vw * .5625);
   margin: auto;
   text-align: center;
   color: black;
