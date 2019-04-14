@@ -1,4 +1,5 @@
 'use strict'
+let textAnimate
 
 function handleUserNav() {
   /* Listens for user button presses and calls appropriate functions */
@@ -128,33 +129,69 @@ function updateDOMTest() {
 
 function playCountdown() {
   $('.video-screen').html(
-    `<video autoplay width="100%" height="calc(80vw * .5625)"> 
-    <source src="/image/film-leader-countdown-sound.mp4" type="video/mp4">
+    `<video autoplay id="film-leader" width="100%" height="calc(80vw * .5625)"> 
+    <source src="/image/film-leader-countdown-4.mp4" type="video/mp4">
     <video>`
   )
-  setTimeout(function() { 
-    $('.video-screen').html(
-      `<img src="image/still-frame.jpg" alt="movie still frame" style="width:100%;height:auto;">
-      <div class="video-text">
+  document.getElementById('film-leader').addEventListener('ended', function() {
+    $('.video-screen').addClass('hidden').html(
+      `<div class="video-text">
         <h1>revuer</h1>
-        <p class="js-test">animated text goes here</p>
+        <p id="welcome-text-1" style="display: block;">animated text 1</p>
+        <p id="welcome-text-2" style="display: none;">animated text 2</p>
+        <p id="welcome-text-3" style="display: none;">animated text 3</p>
+        <p id="welcome-text-4" style="display: none;">animated text 4</p>
+        <p id="welcome-text-5" style="display: none;">animated text 5</p>
         <div class="user-forms"></div>
       </div>`
-    ) 
-  }, 5000);
+    )
+    // <img src="image/still-frame-brighter.jpg" alt="movie still frame" style="width:100%;height:auto;">
+    setTimeout(function() { 
+      $('.video-screen').fadeIn(3000)
+      textAnimate = true
+      animateWelcomeText()
+    }, 800);
+  })
   
-  // Use this event listener instead of setTimeout in case video is slow to load:
-  /* document.getElementById('myVideo').addEventListener('ended',myHandler,false);
-  function myHandler(e) {
-      // What you want to do after the event
-  } */
-  // Add a nice, grainy, still image for the default .video-screen display
-  // fade-in reviewer text. Add animated transitions
-
 }
 
+function animateWelcomeText(index) {
+  let i = index || 1
+  if (textAnimate === false) {
+    console.log(`animateWelcomeText() stopped`)
+  } else {
+    setTimeout(function() {
+      console.log(`animateWelcomeText() loop ${i} of 5`)
+      $(`#welcome-text-${i}`).fadeOut(2000, function() {
+        $(`#welcome-text-${i + 1}`).fadeIn(2000)
+        if (i === 5) {
+          $(`#welcome-text-${1}`).fadeIn(2000)
+          animateWelcomeText(1)
+        } else {
+          animateWelcomeText(i + 1);
+        }
+      })
+    }, 3000);
+  }
+}
+  
+  
+  
+  /* for (let i = 1; i < 6; i++) {
+    (function(index) {
+      let timeout = 3000
+      setTimeout(function() {
+        console.log( `#${index} loop`)
+        $(`.welcome-text-${index}`).fadeOut(2000)
+        $(`.welcome-text-${index + 1}`).fadeIn(2000)
+      }, timeout)
+      timeout = timeout + 3000
+    })
+  } */
+
+    
 function emptyTheContainers() {
-  $('.video-screen').empty().addClass('hidden')
+  $('.video-screen').empty().addClass('hidden').removeAttr('style')
   $('.dynamic-buttons').empty()
   $('.movie-marquee').empty()
 }
