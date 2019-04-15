@@ -270,6 +270,7 @@ function postMovieToDb(newMovie, silent) {
     .then(res => {
       if (res.ok) {
         console.log("response OK")
+        success = true
         return res.json()
       } else if (res.status === 422) {
         console.log("res.status === 422")
