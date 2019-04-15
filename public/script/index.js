@@ -137,7 +137,7 @@ function playCountdown() {
     $('.video-screen').addClass('hidden').html(
       `<div class="video-text">
         <h1>revuer</h1>
-        <p id="welcome-text-1" style="display: block;">animated text 1</p>
+        <p id="welcome-text-1" style="display: none;">animated text 1</p>
         <p id="welcome-text-2" style="display: none;">animated text 2</p>
         <p id="welcome-text-3" style="display: none;">animated text 3</p>
         <p id="welcome-text-4" style="display: none;">animated text 4</p>
@@ -159,13 +159,26 @@ function animateWelcomeText(index) {
   let i = index || 1
   if (textAnimate === false) {
     console.log(`animateWelcomeText() stopped`)
+    // Hide all welcome-text:
+    for (let j = 1; j < 6; j++) {
+      $(`#welcome-text-${j}`).fadeOut(2000)
+    }
+  } else if (i === 1) {
+    console.log(`animateWelcomeText() loop 1 of 5`)
+    $(`#welcome-text-1`).fadeIn(2000, function() {
+      setTimeout(function() {
+        $(`#welcome-text-1`).fadeOut(2000, function() {
+          $(`#welcome-text-2`).fadeIn(2000)
+          animateWelcomeText(2)
+        })
+      }, 1000)
+    })
   } else {
+    console.log(`animateWelcomeText() loop ${i} of 5`)
     setTimeout(function() {
-      console.log(`animateWelcomeText() loop ${i} of 5`)
       $(`#welcome-text-${i}`).fadeOut(2000, function() {
         $(`#welcome-text-${i + 1}`).fadeIn(2000)
         if (i === 5) {
-          $(`#welcome-text-${1}`).fadeIn(2000)
           animateWelcomeText(1)
         } else {
           animateWelcomeText(i + 1);
@@ -191,9 +204,11 @@ function animateWelcomeText(index) {
 
     
 function emptyTheContainers() {
+  console.log('emptyTheContainers() ran')
   $('.video-screen').empty().addClass('hidden').removeAttr('style')
   $('.dynamic-buttons').empty()
   $('.movie-marquee').empty()
+  textAnimate = false
 }
 
 $(function() {

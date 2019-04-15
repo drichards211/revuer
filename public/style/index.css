@@ -23,10 +23,10 @@ html, body {
   box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75); 
 }
 .video-text {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 nav {
   color: white;
