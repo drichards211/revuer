@@ -62,11 +62,7 @@ function renderHomePage() {
   console.log("renderHomePage() ran")
   if (userName === undefined) {
     emptyTheContainers()
-    $('.video-screen').removeClass('hidden').html(
-      `<h1>revuer</h1>
-      <p class="js-test">animated text goes here</p>
-      <div class="user-forms"></div>`
-    )
+    $('.video-screen').removeClass('hidden')
     $('.dynamic-buttons').html(
       `<button class="ticket" id="sign-in">sign-in</button>
       <button class="ticket" id="sign-up">sign-up</button>
@@ -128,8 +124,9 @@ function updateDOMTest() {
 }
 
 function playCountdown() {
+  $('.dynamic-buttons').addClass('keep-below-screen')
   $('.video-screen').html(
-    `<video autoplay id="film-leader" width="100%" height="calc(80vw * .5625)"> 
+    `<video controls autoplay id="film-leader" width="100%" height="auto"> 
     <source src="/image/film-leader-countdown-4.mp4" type="video/mp4">
     <video>`
   )
@@ -145,9 +142,9 @@ function playCountdown() {
         <div class="user-forms"></div>
       </div>`
     )
-    // <img src="image/still-frame-brighter.jpg" alt="movie still frame" style="width:100%;height:auto;">
     setTimeout(function() { 
       $('.video-screen').fadeIn(3000)
+      $('.dynamic-buttons').removeClass('keep-below-screen')
       textAnimate = true
       animateWelcomeText()
     }, 800);
@@ -205,6 +202,7 @@ function animateWelcomeText(index) {
     
 function emptyTheContainers() {
   console.log('emptyTheContainers() ran')
+  $('.dynamic-buttons').removeClass('keep-below-screen')
   $('.video-screen').empty().addClass('hidden').removeAttr('style')
   $('.dynamic-buttons').empty()
   $('.movie-marquee').empty()
