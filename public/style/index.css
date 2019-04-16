@@ -75,6 +75,9 @@ nav {
   font-size: .9rem;
     /* text-indent:-999em;	 */
 }
+.inline {
+  display: inline-block;
+}
 button {
   /* display: inline-block; */
   border: none;
