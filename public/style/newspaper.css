@@ -77,6 +77,21 @@ https://www.silkevoigts.de/
 .newspaper .collumn + .collumn { 
   border-left: 1px solid #2f2f2f;
 }
+.newspaper .collumn .info-box { /*DR*/
+    background-color: #c0bfbb;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 5px 10px 5px;
+    /* border: 1px solid #2f2f2f; */
+    /* border-radius: 2px; */
+    /* border-top: 1px solid #2f2f2f;
+    border-bottom: 1px solid #2f2f2f; */
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    
+
+}
+
 .newspaper .collumn .headline{
     text-align: center;
     line-height: normal;
@@ -97,7 +112,8 @@ https://www.silkevoigts.de/
 .newspaper .collumn .headline.hl2{
     font-weight: 400;
     font-style: italic;
-    font-size: 24px;
+    font-size: 20px; /*DR*/
+    /* font-size: 24px; */
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
@@ -129,7 +145,8 @@ https://www.silkevoigts.de/
 }
 .newspaper .collumn .headline.hl4{
     font-weight: 700;
-    font-size: 12px;
+    font-size: 13px; /*DR*/
+    /* font-size: 12px; */
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
@@ -153,8 +170,9 @@ https://www.silkevoigts.de/
 
 .newspaper .collumn .headline.hl5{
     font-weight: 400;
-    font-size: 38px; /* DR */
+    font-size: 39px; /* DR */
     /* font-size: 42px; */
+    word-break: break-word; /*DR*/
     text-transform: uppercase;
     font-style: italic;
     box-sizing: border-box;
@@ -162,7 +180,8 @@ https://www.silkevoigts.de/
 }
 .newspaper .collumn .headline.hl6{
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px; /*DR*/
+    /* font-size: 18px; */
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }

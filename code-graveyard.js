@@ -18,4 +18,9 @@
               .populate({path: 'user_id'}) // mongoose method
               .then(foundMovie => {
                 res.status(201).json(foundMovie())
-              }) */
+              }) *
+              
+              /
+
+
+              const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]

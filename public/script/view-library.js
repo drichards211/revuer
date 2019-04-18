@@ -53,7 +53,7 @@ async function viewLibraryDetail(imdbId, index) {
   // Retrieve detailed movie information from the OMDB:
   let omdbMovie = await lookupOMDB(imdbId) // in add-movie.js
     console.log("await lookupOMDB() promise returned")
-    const { Actors, Awards, Director, Genre, Plot, Production, Poster, Runtime, Title, Year } = omdbMovie
+    const { Actors, Awards, Director, Genre, Plot, Production, Poster, Released, Runtime, Title, Year } = omdbMovie
   // Retrieve user's movie detail from the db:
   await updateLibraryResults()
     const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
@@ -74,6 +74,31 @@ async function viewLibraryDetail(imdbId, index) {
         return rendered
       }
     }
+    const formatDate = function() {
+      const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      const months = {
+        "Jan": [0, "January"],
+        "Feb": [1, "February"],
+        "Mar": [2, "March"],
+        "Apr": [3, "April"],
+        "May": [4, "May"],
+        "Jun": [5, "June"],
+        "Jul": [6, "July"],
+        "Aug": [7, "August"],
+        "Sep": [8, "September"],
+        "Oct": [9, "October"],
+        "Nov": [10, "November"],
+        "Dec": [11, "December"],
+      }
+      const year = Released.slice(-4)
+      const shortMonth = Released.slice(3,6)
+      const fullMonth = months[shortMonth][1]
+      const day = Released.slice(0,2)
+      const date = new Date(year, months[shortMonth][0], day)
+      const weekday = weekdays[date.getDay()]
+      
+      return `${weekday} ${fullMonth} ${day}, ${year}`
+    }
   /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js
   $('.movie-marquee').html(
@@ -83,22 +108,31 @@ async function viewLibraryDetail(imdbId, index) {
       <header>The Revuer</header>
     </div>
 
-    <div class="subhead">Current Town, State - Current Date</div>
+    <div class="subhead">${formatDate()}</div>
 </div>
 <div class="content">
     <div class="collumns">
         <div class="collumn">
-        <figure class="figure">
-								<img class="media" src="${Poster}" alt="">
-								<figcaption class="figcaption">Placeholder image text.</figcaption>
-				</figure>    
-        <div class="head"><span class="headline hl5">${Title}</span><p><span class="headline hl4">by ${userName}</span></p></div>
-            ${viewingNotes}</p></div>
+          <figure class="figure">
+            <img class="media" src="${Poster}" alt="">
+            <figcaption class="figcaption">${Title} movie poster.</figcaption>
+				  </figure>    
+          <div class="head">
+            <span class="headline hl5">${Title}</span>
+            <p><span class="headline hl4">by ${userName}</span></p>
+          </div>
+          <p>${viewingNotes}</p>
+          <p><div class="info-box">Rating: &nbsp${eval(rating)}<br>
+            Formats owned: &nbsp${renderFormats()}
+            </div>
+          </p>
+          
+        </div>
         <div class="collumn">
-            <div class="head"><span class="headline hl3">IMDB Plot Summary</span><p><span class="headline hl6">Clickable link to IMDB?</span></p></div>
+            <div class="head"><span class="headline hl3">Plot Summary</span><p><span class="headline hl6">OMDB Contributor</span></p></div>
             ${Plot}</p>
-           </div>
-        <div class="collumn"><div class="head"><span class="headline hl1">May the Force be with you</span><p><span class="headline hl2">Let go your conscious self and act on instinct</span></p></div>Partially, but it also obeys your commands. Hey, Luke! May the Force be with you. I have traced the Rebel spies to her. Now she is my only link to finding their secret base.</p>
+            <p>Runtime: &nbsp${Runtime}</p>
+          <div class="head"><span class="headline hl1">An All-Star Cast</span><p><span class="headline hl2">Directed by: ${Director}</span></p></div>Partially, but it also obeys your commands. Hey, Luke! May the Force be with you. I have traced the Rebel spies to her. Now she is my only link to finding their secret base.</p>
 	<figure class="figure">
 								<img class="media" src="http://i.giphy.com/4fDWVPMoSyhgc.gif" alt="">
 								<figcaption class="figcaption">"This time, let go your conscious self and act on instinct."</figcaption>
