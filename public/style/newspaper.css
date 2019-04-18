@@ -78,10 +78,12 @@ https://www.silkevoigts.de/
   border-left: 1px solid #2f2f2f;
 }
 .newspaper .collumn .info-box { /*DR*/
-    background-color: #c0bfbb;
+    /* background-color: #c0bfbb; */
     font-weight: 700;
     font-size: 14px;
     padding: 10px 5px 10px 5px;
+    border-top: 1px solid #2f2f2f;
+    border-bottom: 1px solid #2f2f2f;
     /* border: 1px solid #2f2f2f; */
     /* border-radius: 2px; */
     /* border-top: 1px solid #2f2f2f;
@@ -145,7 +147,7 @@ https://www.silkevoigts.de/
 }
 .newspaper .collumn .headline.hl4{
     font-weight: 700;
-    font-size: 13px; /*DR*/
+    font-size: 14px; /*DR*/
     /* font-size: 12px; */
     box-sizing: border-box;
     padding: 10px 0 10px 0;
@@ -263,6 +265,8 @@ https://www.silkevoigts.de/
 	font-size: 12px;
 }
 .newspaper .media {
+    /* -webkit-filter: sepia(30%) contrast(1) opacity(0.8); */ /*DR color variation*/
+    /* filter: sepia(30%) grayscale(0) contrast(1) opacity(0.8); */ /*DR color variation*/
     -webkit-filter: sepia(80%) contrast(1) opacity(0.8);
     filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);
     mix-blend-mode: multiply;

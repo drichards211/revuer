@@ -53,7 +53,7 @@ async function viewLibraryDetail(imdbId, index) {
   // Retrieve detailed movie information from the OMDB:
   let omdbMovie = await lookupOMDB(imdbId) // in add-movie.js
     console.log("await lookupOMDB() promise returned")
-    const { Actors, Awards, Director, Genre, Plot, Production, Poster, Released, Runtime, Title, Year } = omdbMovie
+    const { Actors, Awards, BoxOffice, Director, Genre, Plot, Production, Poster, Released, Runtime, Title, Year } = omdbMovie
   // Retrieve user's movie detail from the db:
   await updateLibraryResults()
     const { rating, ownCopy, format, viewingNotes } = libraryResults[index]
@@ -75,6 +75,7 @@ async function viewLibraryDetail(imdbId, index) {
       }
     }
     const formatDate = function() {
+    // Format the 'Released' date string into something more verbose:
       const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
       const months = {
         "Jan": [0, "January"],
@@ -96,56 +97,51 @@ async function viewLibraryDetail(imdbId, index) {
       const day = Released.slice(0,2)
       const date = new Date(year, months[shortMonth][0], day)
       const weekday = weekdays[date.getDay()]
-      
       return `${weekday} ${fullMonth} ${day}, ${year}`
     }
   /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js
   $('.movie-marquee').html(
     `<div class ="newspaper">
-    <div class="head">
-    <div class="headerobjectswrapper">
-      <header>The Revuer</header>
-    </div>
-
-    <div class="subhead">${formatDate()}</div>
-</div>
-<div class="content">
-    <div class="collumns">
-        <div class="collumn">
-          <figure class="figure">
-            <img class="media" src="${Poster}" alt="">
-            <figcaption class="figcaption">${Title} movie poster.</figcaption>
-				  </figure>    
-          <div class="head">
-            <span class="headline hl5">${Title}</span>
-            <p><span class="headline hl4">by ${userName}</span></p>
-          </div>
-          <p>${viewingNotes}</p>
-          <p><div class="info-box">Rating: &nbsp${eval(rating)}<br>
-            Formats owned: &nbsp${renderFormats()}
-            </div>
-          </p>
-          
+      <div class="head">
+        <div class="headerobjectswrapper">
+          <header>The Revuer</header>
         </div>
-        <div class="collumn">
-            <div class="head"><span class="headline hl3">Plot Summary</span><p><span class="headline hl6">OMDB Contributor</span></p></div>
-            ${Plot}</p>
-            <p>Runtime: &nbsp${Runtime}</p>
-          <div class="head"><span class="headline hl1">An All-Star Cast</span><p><span class="headline hl2">Directed by: ${Director}</span></p></div>Partially, but it also obeys your commands. Hey, Luke! May the Force be with you. I have traced the Rebel spies to her. Now she is my only link to finding their secret base.</p>
-	<figure class="figure">
-								<img class="media" src="http://i.giphy.com/4fDWVPMoSyhgc.gif" alt="">
-								<figcaption class="figcaption">"This time, let go your conscious self and act on instinct."</figcaption>
-						</figure>
-            <p>Leave that to me. Send a distress signal, and inform the Senate that all on board were killed. <span class="citation">"Don't under&shy;estimate the Force. I suggest you try it again, Luke."</span> This time, let go your conscious self and act on instinct. In my experience, there is no such thing as luck. You're all clear, kid. Let's blow this thing and go home!</p>
-            <p>You don't believe in the Force, do you? Partially, but it also obeys your commands. The plans you refer to will soon be back in our hands. As you wish.</p></div>
-        <div class="collumn"><div class="head"><span class="headline hl3">The buzz of the little world </span><p><span class="headline hl4">A thousand unknown plants</span></p></div><p>I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath</p></div>
-        <div class="collumn"><div class="head"><span class="headline hl1">It wasn't a dream </span><p><span class="headline hl4">by FRANZ KAFKA</span></p></div><p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. </p>
-					
-					<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. </p></div>
-    </div>
-</div>
-</div>`
+        <div class="subhead">${formatDate()}</div>
+      </div>
+      <div class="content">
+        <div class="collumns">
+          <div class="collumn">
+            <figure class="figure">
+              <img class="media" src="${Poster}" alt="">
+              <figcaption class="figcaption">${Title} movie poster.</figcaption>
+            </figure>    
+            <div class="head">
+              <span class="headline hl5">${Title}</span>
+              <p><span class="headline hl4">Movie revue by ${userName}</span></p>
+            </div>
+            <p>${viewingNotes}</p>
+            <p><div class="info-box">Rating: &nbsp${eval(rating)}<br>
+              Formats owned: &nbsp${renderFormats()}
+              </div>
+            </p>
+          </div>
+          <div class="collumn">
+            <div class="head"><span class="headline hl3">Plot Summary</span>
+              <p><span class="headline hl6">OMDB Contributor</span></p>
+            </div>
+            <p>${Plot}</p>
+            <p>${Production}, &nbsp${Year}<br>Runtime: &nbsp${Runtime}</p><br>
+            <div class="head"><span class="headline hl1">All-Star Cast</span>
+              <p><span class="headline hl2">Directed by: ${Director}</span></p>
+            </div>
+            <p>${Actors}</p>
+            <p>${Awards}</p>
+            <p>Box Office: &nbsp${BoxOffice}</p>
+          </div>
+        </div>
+      </div>
+    </div>`
     
     
     
