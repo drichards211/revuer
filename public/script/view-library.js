@@ -139,6 +139,17 @@ async function viewLibraryDetail(imdbId, index) {
             <p>${Awards}</p>
             <p>Box Office: &nbsp${BoxOffice}</p>
           </div>
+          <div class="collumn">
+            <div class="head"><span class="headline hl5">The Nation</span>
+              <p><span class="headline hl6">Hildy Johnson</span></p>
+            </div>
+            <p>Mollis magna dictum nullam massa netus ipsum eleifend suspendisse porta, pellentesque nascetur ridiculus venenatis ligula per purus. Ex venenatis duis praesent ante inceptos augue taciti arcu ridiculus, curae nisl torquent tempor fermentum tristique faucibus accumsan lorem habitant, quis purus vel tempus scelerisque per phasellus non. In vel morbi pulvinar nec maximus adipiscing curae, sem ridiculus porttitor etiam torquent odio, purus ex consectetur pretium facilisi efficitur. Aenean interdum vehicula laoreet suscipit justo malesuada phasellus porttitor per platea sociosqu tristique nisi, pulvinar ullamcorper luctus consequat accumsan nisl semper aliquet tellus libero eget. Faucibus nam montes venenatis massa pharetra vestibulum nullam, purus tristique class tellus at etiam nec, dis et amet eu dictum ipsum. Est rutrum sem egestas curae nisl a vivamus tristique, ante mi ipsum maximus euismod morbi amet, neque mattis habitasse vitae class per velit. Sed volutpat senectus dictum tellus metus et maximus sociosqu quam, eget cursus integer montes nibh interdum habitant quis mattis, potenti velit nascetur ornare aenean nisl dictumst vestibulum.</p>
+          </div>
+          <div class="collumn">
+            <div class="head"><span class="headline hl1">International News</span>
+              <p><span class="headline hl6">Sparky Valentine</span></p>
+              <p>Maximus pharetra sapien nulla felis eros mattis commodo semper, ipsum penatibus rutrum sed placerat iaculis venenatis, justo mauris aliquet ornare donec dictumst conubia. Magnis accumsan inceptos sagittis facilisis sapien nullam parturient sed, fermentum mattis velit erat congue vestibulum sociosqu. Non metus scelerisque pellentesque taciti urna ridiculus odio, montes ac congue facilisi dictumst platea felis, lacus placerat aenean leo lectus suscipit. Praesent sed ipsum tellus est accumsan potenti nulla taciti, suscipit ante hendrerit nascetur turpis pulvinar viverra. Montes maecenas pellentesque arcu aenean elit consectetur suscipit, praesent venenatis lorem bibendum platea lacinia eleifend risus, pretium per quis fames dolor ac. Vulputate molestie nec porta varius ut urna, aenean est donec curae tincidunt lorem, nam eleifend mollis orci nibh. Platea nisi facilisis sagittis interdum tincidunt venenatis class risus, blandit turpis fusce rhoncus erat lobortis ante, dictum ipsum nam cubilia morbi etiam justo. Parturient id amet imperdiet lacinia egestas turpis congue in dis, rhoncus ante odio efficitur feugiat aliquam augue a lobortis, luctus sagittis tincidunt dolor donec magnis viverra venenatis. Turpis orci pharetra quisque maximus ullamcorper hac, inceptos integer in vehicula habitasse nisi, ante felis quis leo magna. Adipiscing praesent ullamcorper nam sodales conubia congue sit imperdiet sed, blandit mus porttitor tellus arcu purus duis morbi facilisis, cras lectus litora quisque natoque tristique suspendisse aliquam.</p>
+          </div>
         </div>
       </div>
     </div>`
