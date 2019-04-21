@@ -179,8 +179,18 @@ async function viewLibraryDetail(imdbId, index) {
     )
   }
   $('.dynamic-buttons').html(
-    `<p><button class="film" id="film-3">Edit this movie</button></p>
-    <p><button class="film" id="film-4">Return to Library</button></p>`
+    `<div class="film-button-wrapper">
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <button class="film" id="film-4">Return to Library</button>
+      <button class="film" id="film-3">Edit this movie</button>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+    </div>`
   )
   $('.dynamic-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-3') {

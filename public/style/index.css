@@ -6,6 +6,7 @@ html, body {
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   color: white;
   background-color: black;
+  transition: all .7s;
 }
 .video-screen {
   position: relative;
@@ -44,11 +45,12 @@ html, body {
   transform: translate(-50%, -50%); */
 }
 .dynamic-buttons {
+  position: relative;
+  overflow: hidden;
   font-family: 'bebas';
-  font-size: 22.5pt;
+  font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
-  margin-top: 2.5rem;
 }
 .keep-below-screen {
   position: absolute;
@@ -124,6 +126,8 @@ button:active {
   width: 13rem;
   height: 6.5rem;
   border: 0;
+  margin-top: 2.5rem;
+  font-size: 22.5pt;
   font-weight: bold;
   color: rgb(14, 14, 14);
 }
@@ -135,6 +139,8 @@ button:active {
   width: 13rem;
   height: 6.5rem;
   border: 0;
+  margin-top: 2.5rem;
+  font-size: 22.5pt;
   font-weight: bold;
   color: rgb(14, 14, 14);
 }
@@ -146,9 +152,30 @@ button:active {
   width: 13rem;
   height: 6.5rem;
   border: 0;
+  margin-top: 2.5rem;
+  font-size: 22.5pt;
   font-weight: bold;
   color: rgb(14, 14, 14);
 }
+.film-button-wrapper {
+  top: 0px;
+  width: 130rem;
+  transform: translateX(calc((130rem - 100vw)* -.5));
+}
+.film {
+  float: left;
+  background:url(../image/film-a1.png);
+  background-repeat: no-repeat;
+  background-size: 13.1rem auto;
+  width: 13rem;
+  height: 12rem;
+  border: 0;
+  font-size: 28pt;
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px #000000;
+}
+
 .movie-find-form {
   
 }
