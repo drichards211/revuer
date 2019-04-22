@@ -159,23 +159,25 @@ button:active {
 }
 .film-button-wrapper {
   top: 0px;
-  width: 130rem;
-  transform: translateX(calc((130rem - 100vw)* -.5));
+  width: 120rem;
+  transform: translateX(calc((120rem - 100vw)* -.5));
 }
 .film {
   float: left;
-  background:url(../image/film-a1.png);
+  background:url(../image/film-medium.png);
   background-repeat: no-repeat;
-  background-size: 13.1rem auto;
-  width: 13rem;
-  height: 12rem;
+  background-size: 12rem auto;
+  width: 12rem;
+  height: 8.97rem;
   border: 0;
-  font-size: 28pt;
+  font-size: 21pt;
   font-weight: normal;
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px #000000;
 }
-
+.news {
+  background-color: #f9f7f1;
+}
 .movie-find-form {
   
 }
