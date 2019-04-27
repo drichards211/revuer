@@ -123,7 +123,7 @@ function welcomeUser(user, firstTime, addMovies) {
   console.log("welcomeUser() ran")
   emptyTheContainers() // in index.js
   /* $('.dynamic-buttons').empty() */
-  renderChairButtons()
+  renderChairButtons("home")
   if (firstTime) {
     $('.video-screen').removeClass('hidden').html(
       `<div class="welcome-message">
@@ -240,7 +240,7 @@ function renderPreviewInfo() {
       <p>A sample library has been created for you.</p>
       <p>Please click any of the chair buttons below to continue.</p>`
     )
-  renderChairButtons() // in index.js
+  renderChairButtons("home") // in index.js
 }
 
 function getOmbdApiKey() {

@@ -28,21 +28,25 @@ function handleUserNav() {
     // "Home" button pressed:
     if (`${$(this).prop('id')}` === 'chair-1') {
       console.log("\"Home\" button pressed")
+      renderChairButtons("home")
       renderHomePage()
     } 
     // "Add a movie" chair button pressed:
     if (`${$(this).prop('id')}` === 'chair-2') {
       console.log("\"Add a movie\" button pressed")
+      renderChairButtons()
       addMovie() // in add-movie.js
     } 
     // "View your library" button pressed:
     if (`${$(this).prop('id')}` === 'chair-3') {
       console.log("\"View your library\" button pressed")
+      renderChairButtons()
       viewLibrary() // in view-library.js
     } 
     // "About revuer" button pressed:
     if (`${$(this).prop('id')}` === 'chair-4') {
       console.log("\"About revuer\" button pressed")
+      renderChairButtons()
       aboutRevuer()
     }
     // "Add a movie" dynamic button pressed:
@@ -94,12 +98,22 @@ function testProtected() {
   })
 }
 
-function renderChairButtons() {
-  $('.chair-buttons').html(
-  `<button class="chair" id="chair-1">Home</button>
-  <button class="chair" id="chair-2">Add a movie</button>
-  <button class="chair" id="chair-3">View library</button>
-  <button class="chair" id="chair-4">About revuer</button>`
+function renderChairButtons(home) {
+  console.log('renderChairButtons() ran')
+  const chairOne = '<button class="chair" id="chair-1">HOME</button>'
+  $('.chair-buttons').empty()
+  if (home) {
+    $('.chair-buttons').html(
+      `<button class="chair" id="chair-4">ABOUT REVUER</button>`  
+    )
+  } else {
+    $('.chair-buttons').html(
+      `<button class="chair" id="chair-1">HOME</button>`  
+    )
+  }
+  $('.chair-buttons').append(
+  `<button class="chair" id="chair-2">ADD A MOVIE</button>
+  <button class="chair" id="chair-3">VIEW LIBRARY</button>`
   )
 }
 
