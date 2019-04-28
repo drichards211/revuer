@@ -28,7 +28,6 @@ function handleUserNav() {
     // "Home" button pressed:
     if (`${$(this).prop('id')}` === 'chair-1') {
       console.log("\"Home\" button pressed")
-      renderChairButtons("home")
       renderHomePage()
     } 
     // "Add a movie" chair button pressed:
@@ -219,6 +218,7 @@ function emptyTheContainers() {
   $('.dynamic-buttons').removeClass('keep-below-screen')
   $('.video-screen').empty().addClass('hidden').removeAttr('style')
   $('.dynamic-buttons').empty()
+  $('.dynamic-buttons').unbind('click', 'button')
   $('.movie-marquee').empty()
   textAnimate = false
 }

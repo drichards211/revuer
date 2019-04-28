@@ -13,8 +13,6 @@ async function viewLibrary(a, b, c) {
   console.log("viewLibrary() ran")
   const lovedIt = `<i class="fas fa-heart"></i>`, likedIt = `<i class="far fa-thumbs-up"></i>`, complicated = `<i class="far fa-meh"></i>`, dislikedIt = `<i class="far fa-thumbs-down"></i>`, hatedIt = `<i class="fas fa-skull-crossbones"></i>`
   emptyTheContainers() // in index.js
-  /* $('.dynamic-buttons').empty()
-  $('.video-screen').empty() */
   $('.movie-marquee').append(
     `<h2>Library</h2>
       <div class="movie-list"></div>`
@@ -99,7 +97,6 @@ async function viewLibraryDetail(imdbId, index) {
       const weekday = weekdays[date.getDay()]
       return `${weekday} ${fullMonth} ${day}, ${year}`
     }
-  /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js
   $('.movie-marquee').html(
     `<div class ="newspaper">

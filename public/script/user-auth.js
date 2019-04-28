@@ -122,7 +122,6 @@ function welcomeUser(user, firstTime, addMovies) {
 // Render custom welcome screen after successful sign-in: 
   console.log("welcomeUser() ran")
   emptyTheContainers() // in index.js
-  /* $('.dynamic-buttons').empty() */
   renderChairButtons("home")
   if (firstTime) {
     $('.video-screen').removeClass('hidden').html(
@@ -232,7 +231,6 @@ function renderSignUpForm() {
 function renderPreviewInfo() {
   console.log("renderPreviewInfo() ran")
   emptyTheContainers() // in index.js
-  /* $('.dynamic-buttons').empty() */
   $('.video-screen').removeClass('hidden').html(
     `<div class="preview-info">
       <h2>Welcome Guest!</h2>
