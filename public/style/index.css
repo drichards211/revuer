@@ -66,6 +66,7 @@ nav {
   position: fixed;
   bottom: 0px;
   width: 100%;
+  /* height: auto; */
   font-size: 0px;
   /* text-align: center; */
   
@@ -76,9 +77,10 @@ nav {
 }
 .chair {
   /* display:block; */
-  width:24%;
-  height:78px;
-  background:url(../image/theater-chair.png) 0 0 no-repeat;
+  width:33%;
+  max-width: 33%;
+  height: calc(33vw / 2.54);
+  background:url(../image/new-chair.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(255, 255, 255);
   font-family: 'Playfair Display SC';
