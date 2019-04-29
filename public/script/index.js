@@ -99,7 +99,6 @@ function testProtected() {
 
 function renderChairButtons(home) {
   console.log('renderChairButtons() ran')
-  const chairOne = '<button class="chair" id="chair-1">HOME</button>'
   $('.chair-buttons').empty()
   if (home) {
     $('.chair-buttons').html(
@@ -112,7 +111,8 @@ function renderChairButtons(home) {
   }
   $('.chair-buttons').append(
   `<button class="chair" id="chair-2">ADD A MOVIE</button>
-  <button class="chair" id="chair-3">VIEW LIBRARY</button>`
+  <button class="chair" id="chair-3">VIEW YOUR<br>LIBRARY</button>
+  <script>$('.chair').fitText();</script>`
   )
 }
 
