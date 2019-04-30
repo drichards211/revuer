@@ -79,13 +79,13 @@ nav {
   float: left;
   width: 20rem;
   max-width: calc(33vw);
-  height: calc(20rem / 2.54);
-  max-height: calc(33vw / 2.54);
+  height: calc(20rem / 2.1);
+  max-height: calc(33vw / 2.1);
   /* starting point */
   /* width: calc(33vw);
   max-width: calc(33vw);
   height: calc(33vw / 2.54); */
-  background:url(../image/new-chair.png) 0 0 no-repeat;
+  background:url(../image/new-chair-2.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(255, 255, 255);
   font-family: 'Playfair Display SC';
