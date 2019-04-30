@@ -218,7 +218,7 @@ function emptyTheContainers() {
   $('.dynamic-buttons').removeClass('keep-below-screen')
   $('.video-screen').empty().addClass('hidden').removeAttr('style')
   $('.dynamic-buttons').empty()
-  $('.dynamic-buttons').unbind('click', 'button')
+  $('.dynamic-buttons').unbind('click')
   $('.movie-marquee').empty()
   textAnimate = false
 }
