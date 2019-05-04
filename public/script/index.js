@@ -102,17 +102,17 @@ function renderChairButtons(home) {
   $('.chair-buttons').empty()
   if (home) {
     $('.chair-buttons').html(
-      `<button class="chair" id="chair-4">ABOUT REVUER</button>`  
+      `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
     )
   } else {
     $('.chair-buttons').html(
-      `<button class="chair" id="chair-1">HOME</button>`  
+      `<button class="chair-plaque" id="chair-1">HOME</button>`  
     )
   }
   $('.chair-buttons').append(
-  `<button class="chair" id="chair-2">ADD A MOVIE</button>
-  <button class="chair" id="chair-3">VIEW YOUR<br>LIBRARY</button>
-  <script>$('.chair').fitText();</script>`
+  `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
+  <button class="chair-plaque" id="chair-3">VIEW YOUR<br>LIBRARY</button>
+  <script>$('.chair-plaque').fitText();</script>`
   )
 }
 

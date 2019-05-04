@@ -93,6 +93,25 @@ nav {
   font-weight: 600;
   padding-top: 2.1em;
 }
+.chair-plaque {
+  /* display:block; */
+  float: left;
+  width: 20rem;
+  max-width: calc(33vw);
+  height: calc(20rem / 2.1);
+  max-height: calc(33vw / 2.1);
+  /* starting point */
+  /* width: calc(33vw);
+  max-width: calc(33vw);
+  height: calc(33vw / 2.54); */
+  background:url(../image/new-chair-2-plaque.png) 0 0 no-repeat;
+  background-size: 100%;
+  color: rgb(84, 73, 73);
+  font-family: 'Playfair Display SC';
+  font-style: normal;
+  font-weight: 600;
+  padding-top: 2.7em;
+}
 .inline {
   display: inline-block;
 }
