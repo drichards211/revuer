@@ -111,7 +111,7 @@ function renderChairButtons(home) {
   }
   $('.chair-buttons').append(
   `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
-  <button class="chair-plaque" id="chair-3">VIEW YOUR<br>LIBRARY</button>
+  <button class="chair-plaque" id="chair-3">VIEW LIBRARY</button>
   <script>$('.chair-plaque').fitText();</script>`
   )
 }

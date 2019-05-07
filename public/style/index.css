@@ -104,13 +104,13 @@ nav {
   /* width: calc(33vw);
   max-width: calc(33vw);
   height: calc(33vw / 2.54); */
-  background:url(../image/new-chair-2-plaque.png) 0 0 no-repeat;
+  background:url(../image/new-chair-2-new-plaque-3.png) 0 0 no-repeat;
   background-size: 100%;
-  color: rgb(84, 73, 73);
+  color: rgb(36, 33, 33);
   font-family: 'Playfair Display SC';
   font-style: normal;
-  font-weight: 600;
-  padding-top: 2.7em;
+  font-weight: bolder;
+  padding-top: 2.4em;
 }
 .inline {
   display: inline-block;
@@ -193,7 +193,7 @@ button:active {
 }
 .film {
   float: left;
-  background:url(../image/film-medium.png);
+  background:url(../image/film-medium-a4.png);
   background-repeat: no-repeat;
   background-size: 12rem auto;
   width: 12rem;
