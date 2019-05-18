@@ -172,7 +172,7 @@ function playCountdown() {
     )
     setTimeout(function() { 
       $('.video-screen').fadeIn(3000)
-      $('.dynamic-buttons').removeClass('keep-below-screen')
+      /* $('.dynamic-buttons').removeClass('keep-below-screen') */
       textAnimate = true
       animateWelcomeText()
     }, 800);
@@ -231,7 +231,7 @@ function animateWelcomeText(index) {
 function emptyTheContainers() {
   console.log('emptyTheContainers() ran')
   $('.dynamic-buttons').removeClass('keep-below-screen')
-  $('.video-screen').empty().addClass('hidden').removeAttr('style')
+  $('.video-screen').empty().addClass('hidden').css({'display': ''}) /* .removeAttr('style') */
   $('.dynamic-buttons').empty()
   $('.dynamic-buttons').unbind('click')
   $('.movie-marquee').empty()
@@ -239,17 +239,22 @@ function emptyTheContainers() {
 }
 
 function manageWindowResize() {
-// The 15 chair buttons automatically resize in css as the viewport shrinks.
-// This function obtains the current width of the .chair selector and updates the 
-// .chair-button-wrapper to keep the buttons centered.
+// The chair buttons and movie-screen automatically resize in css as the viewport shrinks.
+// This function obtains the current width of the .chair and .main selectors and updates the 
+// .chair-button-wrapper to keep the buttons centered and the height of the .video-screen
+// to maintain the 16x9 aspect ratio.
   console.log("manageWindowResize() running")
-  // set initial value: 
-    console.log("centering chair buttons") 
+  // set initial values: 
+    console.log("setting initial theater size") 
+    let initialMainContainerWidth = $('.main-container').css('width')
     let initialChairWidth = $('.chair').css('width')
+    $('.video-screen').css({'height': `calc(${initialMainContainerWidth} * .5625)`})
     $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
-  // update value if window is resized:
+  // update values if window resized:
   window.onresize = function() {
-    console.log("Window size changed... re-centering chair buttons")
+    console.log("Window size changed... resizing theater")
+    let mainContainerWidth = $('.main-container').css('width')
+    $('.video-screen').css({'height': `calc(${mainContainerWidth} * .5625)`})
     let chairWidth = $('.chair').css('width')
     $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
   }

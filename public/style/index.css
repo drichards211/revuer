@@ -9,7 +9,7 @@ html, body {
   transition: all .7s;
 }
 .video-wrapper {
-  padding-bottom: 56.25%;
+  /* padding-bottom: 56.25%; */
 }
 .video-screen {
   position: relative;
