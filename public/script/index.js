@@ -99,20 +99,35 @@ function testProtected() {
 
 function renderChairButtons(home) {
   console.log('renderChairButtons() ran')
-  $('.chair-buttons').empty()
+  $('.chair-button-wrapper').empty()
+  $('.chair-button-wrapper').html(
+    `<div class="chair inline"></div>
+    <div class="chair inline"></div>
+    <div class="chair inline"></div>
+    <div class="chair inline"></div>
+    <div class="chair inline"></div>
+    <div class="chair inline"></div>
+    `
+  )
   if (home) {
-    $('.chair-buttons').html(
+    $('.chair-button-wrapper').append(
       `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
     )
   } else {
-    $('.chair-buttons').html(
+    $('.chair-button-wrapper').append(
       `<button class="chair-plaque" id="chair-1">HOME</button>`  
     )
   }
-  $('.chair-buttons').append(
+  $('.chair-button-wrapper').append(
   `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
   <button class="chair-plaque" id="chair-3">VIEW LIBRARY</button>
-  <script>$('.chair-plaque').fitText();</script>`
+  <script>$('.chair-plaque').fitText();</script>
+  <div class="chair inline"></div>
+  <div class="chair inline"></div>
+  <div class="chair inline"></div>
+  <div class="chair inline"></div>
+  <div class="chair inline"></div>
+  <div class="chair inline"></div>`
   )
 }
 
@@ -223,7 +238,25 @@ function emptyTheContainers() {
   textAnimate = false
 }
 
+function manageWindowResize() {
+// The 15 chair buttons automatically resize in css as the viewport shrinks.
+// This function obtains the current width of the .chair selector and updates the 
+// .chair-button-wrapper to keep the buttons centered.
+  console.log("manageWindowResize() running")
+  // set initial value: 
+    console.log("centering chair buttons") 
+    let initialChairWidth = $('.chair').css('width')
+    $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
+  // update value if window is resized:
+  window.onresize = function() {
+    console.log("Window size changed... re-centering chair buttons")
+    let chairWidth = $('.chair').css('width')
+    $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
+  }
+}
+
 $(function() {
   handleUserNav()
+  manageWindowResize()
   playCountdown()
 })

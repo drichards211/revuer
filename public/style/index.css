@@ -8,13 +8,17 @@ html, body {
   background-color: black;
   transition: all .7s;
 }
+.video-wrapper {
+  padding-bottom: 56.25%;
+}
 .video-screen {
   position: relative;
-  width: 80%;
-  height: calc(80vw * .5625);
+  width: 100%;
+  /* height: calc(80vw * .5625); */
   /* width: 100%;
   height: 100%; */
   margin: auto;
+  /* padding-top: 56.25%; */
   margin-top: 1.25rem;
   text-align: center;
   color: black;
@@ -64,10 +68,11 @@ nav {
 }
 .chair-buttons {
   position: fixed;
+  overflow: hidden;
   bottom: 0px;
   width: 100%;
-  font-size: 0px;
-  /* text-align: center; */
+  font-size: 0px; /*Removes gap between buttons*/
+  text-align: center;
   
 }
 .hidden {
@@ -79,8 +84,8 @@ nav {
   float: left;
   width: 20rem;
   max-width: calc(33vw);
-  height: calc(20rem / 2.1);
-  max-height: calc(33vw / 2.1);
+  height: calc(20rem / 2.2);
+  max-height: calc(33vw / 2.2); /* prevents chairs from floating if screen becomes too tall */
   /* starting point */
   /* width: calc(33vw);
   max-width: calc(33vw);
@@ -98,8 +103,8 @@ nav {
   float: left;
   width: 20rem;
   max-width: calc(33vw);
-  height: calc(20rem / 2.1);
-  max-height: calc(33vw / 2.1);
+  height: calc(20rem / 2.2);
+  max-height: calc(33vw / 2.2); /* prevents chairs from floating if screen becomes too tall */
   /* starting point */
   /* width: calc(33vw);
   max-width: calc(33vw);
@@ -186,6 +191,10 @@ button:active {
   font-weight: bold;
   color: rgb(14, 14, 14);
 }
+.chair-button-wrapper {
+  width: 300rem;
+  transform: translateX(calc((300rem - 100vw)* -.5));
+}
 .film-button-wrapper {
   top: 0px;
   width: 120rem;
@@ -256,4 +265,18 @@ button:active {
 ::placeholder {
   font-family: 'Special Elite', cursive;
   text-overflow: ellipsis;
+}
+.row {
+  max-width: 1000px;
+  min-width: 320px;
+  padding-left: 2.8%;
+  padding-right: 2.8%;
+  margin: 0 auto;
+}
+.col-12 {
+  float: left;
+  padding-left: 4%;
+  padding-right: 4%;
+  width: 100%;
+  margin-bottom: 40%;
 }
