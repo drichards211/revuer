@@ -230,10 +230,10 @@ function animateWelcomeText(index) {
     
 function emptyTheContainers() {
   console.log('emptyTheContainers() ran')
-  $('.dynamic-buttons').removeClass('keep-below-screen')
+  /* $('.dynamic-buttons').removeClass('keep-below-screen') */
   $('.video-screen').empty().addClass('hidden').css({'display': ''}) /* .removeAttr('style') */
-  $('.dynamic-buttons').empty()
-  $('.dynamic-buttons').unbind('click')
+  $('.dynamic-buttons, .film-buttons').empty().unbind('click')
+  /* $('.dynamic-buttons').unbind('click') */
   $('.movie-marquee').empty()
   textAnimate = false
 }

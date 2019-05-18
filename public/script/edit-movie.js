@@ -54,11 +54,11 @@ function editMovie(omdbMovie, index) {
       `<img src="${Poster}" alt="image of ${Title} poster">`
     )
   }
-  $('.dynamic-buttons').html(
+  $('.film-buttons').html(
     `<p><button class="film" id="film-5">Cancel</button></p>`
   )
   if (userName !== "Guest") {
-    $('.dynamic-buttons').prepend(
+    $('.film-buttons').prepend(
       `<p><button class="film" id="film-6">Delete</button></p>`
     )
   }
@@ -153,7 +153,7 @@ async function renderEditMessage(editedMovie, index, guest) {
       <p>has been updated in your virtual library.</p>
       <p>If you'd like to save your changes permanently, please sign-up for an account.</p>`
     )
-    $('.dynamic-buttons').html(
+    $('.film-buttons').html(
       `<button class="film" id="film-1">View your movie</button>
       <button class="ticket" id="sign-up">Sign-up</button>`
     )
@@ -170,10 +170,10 @@ async function renderEditMessage(editedMovie, index, guest) {
         <h2>${editedMovie.title}</h2> 
         <p>has been successfully updated.</p>`
     )
-    $('.dynamic-buttons').html(
+    $('.film-buttons').html(
         `<button class="film" id="film-1">View your movie</button>`
     )
-    $('.dynamic-buttons').one('click', 'button', function(event) {
+    $('.film-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         viewLibraryDetail(editedMovie.imdbId, index)
@@ -209,7 +209,7 @@ function deleteMovieInDb(omdbMovie, index) {
             <h2>${libraryResults[index].title}</h2> 
             <p>has been successfully deleted.</p>`
         )
-        $('.dynamic-buttons').html(
+        $('.film-buttons').html(
             `<button class="film" id="film-4">Return to library</button>`
         )
       } else {

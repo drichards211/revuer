@@ -39,7 +39,7 @@ async function viewLibrary(a, b, c) {
     $('.movie-list').append(
       `<p>There are no movies yet.</p>`
     )
-    $('.dynamic-buttons').html(
+    $('.film-buttons').html(
       `<p><button class="film" id="film-2">Add a movie</button> to your library.</p>`
     )
   }
@@ -175,7 +175,7 @@ async function viewLibraryDetail(imdbId, index) {
       `<img src="${Poster}" alt="image of ${Title} poster">`
     )
   }
-  $('.dynamic-buttons').html(
+  $('.film-buttons').html(
     `<div class="film-button-wrapper">
       <div class="film news"></div>
       <div class="film news"></div>
@@ -189,7 +189,7 @@ async function viewLibraryDetail(imdbId, index) {
       <div class="film news"></div>
     </div>`
   )
-  $('.dynamic-buttons').one('click', 'button', function(event) {
+  $('.film-buttons').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-3') {
         console.log('"Edit this movie" button pressed')
         editMovie(omdbMovie, index) // in edit-movie.js
