@@ -68,7 +68,7 @@ https://www.silkevoigts.de/
     font-size: 14px;
     line-height: 20px;
     width: 17.5%;
-    min-width: 20%; /*DR*/
+    min-width: 30%; /*DR*/
     display: inline-block;
     padding: 0 1% 0 1%;
     vertical-align: top;
@@ -142,7 +142,7 @@ https://www.silkevoigts.de/
 .newspaper .collumn .headline.hl3{
     font-weight: 400;
     font-style: italic;
-    font-size: 36px;
+    font-size: 35.5px;
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
@@ -173,7 +173,7 @@ https://www.silkevoigts.de/
 
 .newspaper .collumn .headline.hl5{
     font-weight: 400;
-    font-size: 39px; /* DR */
+    font-size: 35.5px; /* DR */
     /* font-size: 42px; */
     word-break: break-word; /*DR*/
     text-transform: uppercase;

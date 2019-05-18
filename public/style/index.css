@@ -267,7 +267,7 @@ button:active {
   text-overflow: ellipsis;
 }
 .row {
-  max-width: 1000px;
+  max-width: 1200px;
   min-width: 320px;
   padding-left: 2.8%;
   padding-right: 2.8%;
