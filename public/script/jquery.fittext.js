@@ -11,7 +11,7 @@
 
 (function( $ ){
 
-  $.fn.fitText = function( kompressor, options ) {
+  $.fn.fitText = function( kompressor, compLevel, options ) {
 
     // Setup options
     var compressor = kompressor || 1,
@@ -19,7 +19,7 @@
           'minFontSize' : Number.NEGATIVE_INFINITY,
           'maxFontSize' : Number.POSITIVE_INFINITY
         }, options);
-
+    var compCalc = compLevel || 'compressor * 13.5'
     return this.each(function(){
 
       // Store the object
@@ -27,8 +27,9 @@
 
       // Resizer() resizes items based on the object width divided by the compressor * 10
       var resizer = function () {
-        $this.css('font-size', Math.max(Math.min($this.width() / (compressor*13.5), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
+        $this.css('font-size', Math.max(Math.min($this.width() / (eval(compCalc)), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
       };
+      //compressor*13.5
 
       // Call once to set.
       resizer();

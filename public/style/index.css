@@ -197,16 +197,18 @@ button:active {
 }
 .film-button-wrapper {
   top: 0px;
-  width: 120rem;
-  transform: translateX(calc((120rem - 100vw)* -.5));
+  /* width: 216rem;
+  transform: translateX(calc((216rem - 100vw)* -.5)); */
 }
 .film {
   float: left;
   background:url(../image/film-medium-a4.png);
   background-repeat: no-repeat;
-  background-size: 12rem auto;
+  background-size: cover; /* 12rem auto; */
   width: 12rem;
-  height: 8.97rem;
+  max-width: 33vw;
+  height: calc(12rem / 1.338);/* 8.97rem; */
+  max-height: calc(33vw / 1.338);
   border: 0;
   font-size: 21pt;
   font-weight: normal;

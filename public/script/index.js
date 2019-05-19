@@ -232,31 +232,36 @@ function emptyTheContainers() {
   console.log('emptyTheContainers() ran')
   /* $('.dynamic-buttons').removeClass('keep-below-screen') */
   $('.video-screen').empty().addClass('hidden').css({'display': ''}) /* .removeAttr('style') */
-  $('.dynamic-buttons, .film-buttons').empty().unbind('click')
+  $('.dynamic-buttons, .film-button-wrapper').empty().unbind('click')
   /* $('.dynamic-buttons').unbind('click') */
   $('.movie-marquee').empty()
   textAnimate = false
 }
 
 function manageWindowResize() {
-// The chair buttons and movie-screen automatically resize in css as the viewport shrinks.
-// This function obtains the current width of the .chair and .main selectors and updates the 
-// .chair-button-wrapper to keep the buttons centered and the height of the .video-screen
-// to maintain the 16x9 aspect ratio.
+// The navigation buttons and movie-screen automatically resize in css as the 
+// viewport shrinks. This function determines the current width of these elements 
+// and updates their wrappers to keep the buttons centered, as well as preserving 
+// the 16x9 aspect ratio of the movie-screen.
   console.log("manageWindowResize() running")
-  // set initial values: 
-    console.log("setting initial theater size") 
-    let initialMainContainerWidth = $('.main-container').css('width')
-    let initialChairWidth = $('.chair').css('width')
-    $('.video-screen').css({'height': `calc(${initialMainContainerWidth} * .5625)`})
-    $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
-  // update values if window resized:
+// set initial values: 
+  console.log("setting initial theater size") 
+  let initialMainContainerWidth = $('.main-container').css('width')
+  let initialChairWidth = $('.chair').css('width')
+  let mediaQuery = window.matchMedia("(max-width: 500px)")
+  let initialFilmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
+  $('.video-screen').css({'height': `calc(${initialMainContainerWidth} * .5625)`})
+  $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
+  $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
+// update values if window resized:
   window.onresize = function() {
     console.log("Window size changed... resizing theater")
     let mainContainerWidth = $('.main-container').css('width')
-    $('.video-screen').css({'height': `calc(${mainContainerWidth} * .5625)`})
     let chairWidth = $('.chair').css('width')
+    let filmButtonWidth = $('.film').css('width')
+    $('.video-screen').css({'height': `calc(${mainContainerWidth} * .5625)`})
     $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
+    $('.film-button-wrapper').css({'width': `calc(${filmButtonWidth} * 18)`, 'transform': `translateX(calc(((${filmButtonWidth} * 18) - 100vw)* -.5))`})
   }
 }
 

@@ -321,7 +321,7 @@ async function renderSuccessMessage(newMovie, guest) {
         <p>has been added to your virtual library.</p>
         <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
       )
-      $('.film-buttons').html(
+      $('.film-button-wrapper').html(
         `<button class="film" id="film-1">View your movie</button>
         <button class="film" id="film-2">Add another one</button>
         <button class="ticket" id="sign-up">Sign-up</button>`
@@ -340,11 +340,11 @@ async function renderSuccessMessage(newMovie, guest) {
         <h2>${title}</h2> 
         <p>has been added to your library.</p>`
     )
-    $('.film-buttons').html(
+    $('.film-button-wrapper').html(
         `<button class="film" id="film-1">View your movie</button>
         <button class="film" id="film-2">Add another one</button>`
     )
-    $('.film-buttons').one('click', 'button', function(event) {
+    $('.film-button-wrapper').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         if (index === 0) {
@@ -364,10 +364,10 @@ function suggestNewSearch(oldSearch) {
   $('.video-screen').removeClass('hidden').html(
     `<p>We couldn't find any movies with that title.</p>`
   )
-  $('.film-buttons').html(
+  $('.film-button-wrapper').html(
     `<p>Please <button class="film" id="film-2">Add a movie</button> to try again.</p>`
   )
-  $('.film-buttons').one('click', 'button', function(event) {
+  $('.film-button-wrapper').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-2') {
       console.log('"Add a movie" button clicked')
       addMovie(oldSearch)
