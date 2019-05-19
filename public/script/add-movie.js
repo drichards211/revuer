@@ -322,9 +322,28 @@ async function renderSuccessMessage(newMovie, guest) {
         <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
       )
       $('.film-button-wrapper').html(
-        `<button class="film" id="film-1">View your movie</button>
+        `<div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <button class="film" id="film-1">View your movie</button>
         <button class="film" id="film-2">Add another one</button>
-        <button class="ticket" id="sign-up">Sign-up</button>`
+        <div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
+      )
+      $('.dynamic-buttons').html(
+        `<button class="ticket" id="sign-up">Sign-up</button>`
       )
       $('body').one('click', 'button', function(event) {
         if (`${$(this).prop('id')}` === 'film-1') {
@@ -341,8 +360,25 @@ async function renderSuccessMessage(newMovie, guest) {
         <p>has been added to your library.</p>`
     )
     $('.film-button-wrapper').html(
-        `<button class="film" id="film-1">View your movie</button>
-        <button class="film" id="film-2">Add another one</button>`
+        `<div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <button class="film" id="film-1">View your movie</button>
+        <button class="film" id="film-2">Add another one</button>
+        <div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
     )
     $('.film-button-wrapper').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
@@ -362,10 +398,28 @@ function suggestNewSearch(oldSearch) {
   /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js
   $('.video-screen').removeClass('hidden').html(
-    `<p>We couldn't find any movies with that title.</p>`
+    `<p>We couldn't find any movies with that title.</p>
+    <p>Please click 'Add a movie' to try again.</p>`
   )
   $('.film-button-wrapper').html(
-    `<p>Please <button class="film" id="film-2">Add a movie</button> to try again.</p>`
+    `<div class="film"></div>  
+    <div class="film"></div>  
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <button class="film" id="film-2">Add a movie</button>
+    <div class="film"></div>  
+    <div class="film"></div>  
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
   )
   $('.film-button-wrapper').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-2') {

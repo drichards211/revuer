@@ -18,7 +18,6 @@ function editMovie(omdbMovie, index) {
   }
   
   emptyTheContainers() // in index.js
-  /* $('.dynamic-buttons').empty() */
   $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Edit this movie</h2>
@@ -55,13 +54,32 @@ function editMovie(omdbMovie, index) {
     )
   }
   $('.film-button-wrapper').html(
-    `<p><button class="film" id="film-5">Cancel</button></p>`
+    `<div class="film"></div>  
+    <div class="film"></div>  
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>`
   )
   if (userName !== "Guest") {
-    $('.film-button-wrapper').prepend(
-      `<p><button class="film" id="film-6">Delete</button></p>`
+    $('.film-button-wrapper').append(
+      `<button class="film" id="film-6">Delete</button>`
     )
   }
+  $('.film-button-wrapper').append(
+    `<button class="film" id="film-5">Cancel</button>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
+  )
   $('body').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-5') {
       console.log('"Cancel" button pressed')
@@ -154,8 +172,25 @@ async function renderEditMessage(editedMovie, index, guest) {
       <p>If you'd like to save your changes permanently, please sign-up for an account.</p>`
     )
     $('.film-button-wrapper').html(
-      `<button class="film" id="film-1">View your movie</button>
-      <button class="ticket" id="sign-up">Sign-up</button>`
+      `<div class="film"></div>  
+      <div class="film"></div>  
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <button class="film" id="film-1">View your movie</button>
+      <button class="ticket" id="sign-up">Sign-up</button>
+      <div class="film"></div>  
+      <div class="film"></div>  
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
     )
     $('body').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
@@ -171,7 +206,24 @@ async function renderEditMessage(editedMovie, index, guest) {
         <p>has been successfully updated.</p>`
     )
     $('.film-button-wrapper').html(
-        `<button class="film" id="film-1">View your movie</button>`
+        `<div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <button class="film" id="film-1">View your movie</button>
+        <div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
     )
     $('.film-button-wrapper').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
@@ -209,8 +261,25 @@ function deleteMovieInDb(omdbMovie, index) {
             <h2>${libraryResults[index].title}</h2> 
             <p>has been successfully deleted.</p>`
         )
-        $('.film-buttons').html(
-            `<button class="film" id="film-4">Return to library</button>`
+        $('.film-button-wrapper').html(
+            `<div class="film"></div>  
+            <div class="film"></div>  
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <button class="film" id="film-4">Return to library</button>
+            <div class="film"></div>  
+            <div class="film"></div>  
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
         )
       } else {
         throw new Error(res.statusText)

@@ -40,7 +40,24 @@ async function viewLibrary(a, b, c) {
       `<p>There are no movies yet.</p>`
     )
     $('.film-button-wrapper').html(
-      `<p><button class="film" id="film-2">Add a movie</button> to your library.</p>`
+      `<div class="film"></div>  
+      <div class="film"></div>  
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <p><button class="film" id="film-2">Add a movie</button> to your library.</p>
+      <div class="film"></div>  
+      <div class="film"></div>  
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
     )
   }
 }
