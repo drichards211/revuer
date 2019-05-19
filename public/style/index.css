@@ -157,45 +157,43 @@ button:focus {
 button:active {
   transform: scale(0.99);
 }
-
-#sign-in {
-  background:url(../image/ticket-1.png);
-  background-repeat: no-repeat;
-  background-size: 13.1rem auto;
-  background-color: rgb(13, 172, 212);
+.ticket {
   width: 13rem;
+  max-width: 29vw;
   height: 6.5rem;
+  max-height: calc(29vw / 2);
   border: 0;
   margin-top: 2.5rem;
   font-size: 22.5pt;
   font-weight: bold;
   color: rgb(14, 14, 14);
+}
+#sign-in {
+  background:url(../image/ticket-1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(13, 172, 212);
 }
 #sign-up {
   background:url(../image/ticket-2.png);
   background-repeat: no-repeat;
-  background-size: 13.1rem auto;
+  background-size: cover;
   background-color: rgb(226, 190, 32);
-  width: 13rem;
-  height: 6.5rem;
-  border: 0;
-  margin-top: 2.5rem;
-  font-size: 22.5pt;
-  font-weight: bold;
-  color: rgb(14, 14, 14);
 }
 #preview {
   background:url(../image/ticket-3.png);
   background-repeat: no-repeat;
-  background-size: 13.1rem auto;
+  background-size: cover;
   background-color: rgb(34, 207, 45);
-  width: 13rem;
-  height: 6.5rem;
-  border: 0;
-  margin-top: 2.5rem;
-  font-size: 22.5pt;
-  font-weight: bold;
-  color: rgb(14, 14, 14);
+}
+#manage-acct {
+  background:url(../image/ticket-2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(226, 190, 32);
+  padding-top: .11em;
+  padding-left: .7em;
+  padding-right: .7em;
 }
 .chair-button-wrapper {
   width: 300rem;

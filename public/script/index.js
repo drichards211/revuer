@@ -69,7 +69,8 @@ function renderHomePage() {
     $('.dynamic-buttons').html(
       `<button class="ticket" id="sign-in">sign-in</button>
       <button class="ticket" id="sign-up">sign-up</button>
-      <button class="ticket" id="preview">preview</button>`
+      <button class="ticket" id="preview">preview</button>
+      <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
     )
   } else if (userName === "Guest") {
     welcomeUser(userName, true) // in user-auth.js

@@ -140,7 +140,8 @@ function welcomeUser(user, firstTime, addMovies) {
       if (userName === "Guest") {
         $('.dynamic-buttons').html(
           `<button class="ticket" id="sign-up">sign-up</button>
-          <button class="ticket" id="sign-in">sign-in</button>`
+          <button class="ticket" id="sign-in">sign-in</button>
+          <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
         )
       }
     } else {
@@ -149,7 +150,8 @@ function welcomeUser(user, firstTime, addMovies) {
             <h2>Welcome back ${user}!</h2>
       `)
       $('.dynamic-buttons').html(
-        `<button class="ticket" id="manage-acct">Manage account</button>`
+        `<button class="ticket" id="manage-acct">Manage<br>account</button>
+        <script>$('.ticket').fitText(1, 'compressor * 4.9');</script>`
       )
     }
 }
@@ -163,7 +165,8 @@ function renderSignInForm() {
   $('.dynamic-buttons').html(
     `<button class="ticket" id="sign-in">sign-in</button>
     <button class="ticket" id="sign-up">sign-up</button>
-    <button class="ticket" id="preview">preview</button>`
+    <button class="ticket" id="preview">preview</button>
+    <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
   $('.video-screen').removeClass('hidden').html(
     `<div class="signin-box">
@@ -192,7 +195,8 @@ function renderSignUpForm() {
   $('.dynamic-buttons').html(
     `<button class="ticket" id="sign-in">sign-in</button>
     <button class="ticket" id="sign-up">sign-up</button>
-    <button class="ticket" id="preview">preview</button>`
+    <button class="ticket" id="preview">preview</button>
+    <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
   $('.video-screen').removeClass('hidden').html(
     `<div class="signup-box">

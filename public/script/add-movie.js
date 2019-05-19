@@ -343,7 +343,8 @@ async function renderSuccessMessage(newMovie, guest) {
         <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
       )
       $('.dynamic-buttons').html(
-        `<button class="ticket" id="sign-up">Sign-up</button>`
+        `<button class="ticket" id="sign-up">Sign-up</button>
+        <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
       )
       $('body').one('click', 'button', function(event) {
         if (`${$(this).prop('id')}` === 'film-1') {

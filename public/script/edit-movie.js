@@ -181,7 +181,6 @@ async function renderEditMessage(editedMovie, index, guest) {
       <div class="film"></div>
       <div class="film"></div>
       <button class="film" id="film-1">View your movie</button>
-      <button class="ticket" id="sign-up">Sign-up</button>
       <div class="film"></div>  
       <div class="film"></div>  
       <div class="film"></div>
