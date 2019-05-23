@@ -182,14 +182,16 @@ function playCountdown() {
 }
 
 function animateWelcomeText(index) {
+// Cycle through #welcome-text messages in .video-screen:
   let i = index || 1
   if (textAnimate === false) {
+  // Hide all welcome-text:
     console.log(`animateWelcomeText() stopped`)
-    // Hide all welcome-text:
     for (let j = 1; j < 6; j++) {
       $(`#welcome-text-${j}`).fadeOut(2000)
     }
   } else if (i === 1) {
+  // Start the loop from the beginning:
     console.log(`animateWelcomeText() loop 1 of 5`)
     $(`#welcome-text-1`).fadeIn(2000, function() {
       setTimeout(function() {
@@ -200,13 +202,16 @@ function animateWelcomeText(index) {
       }, 1000)
     })
   } else {
+  // Continue the loop:
     console.log(`animateWelcomeText() loop ${i} of 5`)
     setTimeout(function() {
       $(`#welcome-text-${i}`).fadeOut(2000, function() {
         $(`#welcome-text-${i + 1}`).fadeIn(2000)
         if (i === 5) {
+        // End reached. Restart the loop from the beginning:
           animateWelcomeText(1)
         } else {
+        // Continue the loop:
           animateWelcomeText(i + 1);
         }
       })
