@@ -2,6 +2,8 @@
 newspaper.css
 created by Silke Voigts
 https://www.silkevoigts.de/ 
+
+modifications for revuer by D.R.
 */
 
 .newspaper {
@@ -72,7 +74,8 @@ https://www.silkevoigts.de/
     display: inline-block;
     padding: 0 1% 0 1%;
     vertical-align: top;
-    margin-bottom: 50px;
+    margin-bottom: 20px; /*DR*/
+    /* margin-bottom: 50px;*/
     transition: all .7s;
 }
 .newspaper .collumn + .collumn { 
@@ -266,13 +269,18 @@ https://www.silkevoigts.de/
 	font-size: 12px;
 }
 .newspaper .media {
-    /* -webkit-filter: sepia(30%) contrast(1) opacity(0.8); */ /*DR color variation*/
-    /* filter: sepia(30%) grayscale(0) contrast(1) opacity(0.8); */ /*DR color variation*/
     -webkit-filter: sepia(80%) contrast(1) opacity(0.8);
     filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);
     mix-blend-mode: multiply;
     width: 100%;
 }
+img:hover { /*DR*/
+    -webkit-filter: sepia(30%) contrast(1) opacity(0.8) !important; 
+    filter: sepia(30%) grayscale(0) contrast(1) opacity(0.8) !important;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
 /*________________________________________________________________________________________________________________________________*/
 /*MEDIAQUERIES*/
 @media only all and (max-width: 1300px) {
