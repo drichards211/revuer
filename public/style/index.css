@@ -287,3 +287,22 @@ button:active {
   width: 100%;
   margin-bottom: 40%;
 }
+
+/* SITE-WIDE VIEWPORT RESPONSE ========================== */
+@media only screen and (orientation: portrait) {
+  .video-screen {
+    margin-top: 10rem;
+  }
+  .keep-below-screen {
+    margin-top: 8rem;
+  }
+}
+
+@media only screen and (max-width: 400px) and (orientation: portrait) {
+/*for-small-phone-portrait-only*/
+    
+}
+@media only screen and (max-height: 400px) and (orientation: landscape) {
+/*for-small-phone-landscape-only*/
+}
+
