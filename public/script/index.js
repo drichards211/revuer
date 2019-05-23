@@ -199,12 +199,12 @@ function animateWelcomeText(index) {
     console.log(`animateWelcomeText() loop ${i} of 5`)
     setTimeout(function() {
       $(`#welcome-text-${i}`).fadeOut(2000, function() {
-        $(`#welcome-text-${i + 1}`).fadeIn(2000)
         if (i === 5) {
         // End reached. Restart the loop from the beginning:
           animateWelcomeText(0)
         } else {
         // Continue the loop:
+          $(`#welcome-text-${i + 1}`).fadeIn(2000)
           animateWelcomeText(i + 1);
         }
       })
