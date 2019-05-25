@@ -247,6 +247,16 @@ button:active {
 .news {
   /* background-color: #f9f7f1; */
 }
+.movie-API-box-1 {
+  text-align: center;
+}
+.movie-API-box-1 h2 {
+  font-family: 'EB Garamond';
+  font-size: 2.3em;
+  text-shadow: 2px 2px #000000;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.8em;
+}
 .movie-find-form {
   
 }
@@ -280,6 +290,27 @@ button:active {
   -moz-box-shadow: 0px 0px 0px 2px rgba(255, 244, 222, 0.53), 0px 0px 0px 40px #101115, 0px 0px 0px 40px rgba(0, 0, 0, 0.24), 4px 4px 3px 40px #252020;
   box-shadow: 0px 0px 0px 2px rgba(255, 244, 222, 0.53), 0px 0px 0px 40px #101115, 0px 0px 0px 40px rgba(0, 0, 0, 0.24), 4px 4px 3px 40px #252020;
   position: relative;
+  margin: 40px;
+  /* max-width: 240px; */
+}
+.movie-title-plaque {
+  background-image: url('../image/poster-title-plaque-a1.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 3rem;
+  width: 284px;
+  padding-top: .6rem;
+  padding-bottom: .9rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #242121;
+  margin-top: 2.2rem;
+  margin-bottom: 2.2rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.3rem;
+  font-family: 'Playfair Display SC';
+  font-weight: bold;
 }
 .coming-soon {
   font-size: 42px;
@@ -319,7 +350,7 @@ button:active {
   font-family: 'Special Elite', cursive;
   font-size: 200%;
 }
-::placeholder {
+.movie-find-box ::placeholder {
   font-family: 'Special Elite', cursive;
   text-overflow: ellipsis;
 }
@@ -350,9 +381,24 @@ button:active {
 
 @media only screen and (max-width: 400px) and (orientation: portrait) {
 /*for-small-phone-portrait-only*/
-    
+  .row {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .col-12 {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .movie-poster {
+    max-width: 200px;
+  }
 }
 @media only screen and (max-height: 400px) and (orientation: landscape) {
 /*for-small-phone-landscape-only*/
 }
-
+@media only screen and (max-width: 500px) and (min-width: 400px) and (orientation: portrait) {
+/*for-phone-portrait-only*/
+  .movie-poster {
+    max-width: 260px;
+  }
+}

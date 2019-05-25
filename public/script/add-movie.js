@@ -100,8 +100,8 @@ function renderFirstApiResult(results, searchTitle) {
   $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Is this your movie?</h2>
-      <p>${Title} -- ${Year}</p>
       <div class="poster-frame"></div>
+      <p class="movie-title-plaque">${Title} -- ${Year}</p>
       <p>
       <button class="yes" id="movie-correct" autofocus>Yes</button>
       <button class="no" id="movie-incorrect">No</button>
