@@ -274,7 +274,7 @@ modifications for revuer by D.R.
     mix-blend-mode: multiply;
     width: 100%;
 }
-img:hover { /*DR*/
+.newspaper img:hover { /*DR*/
     -webkit-filter: sepia(30%) contrast(1) opacity(0.8) !important; 
     filter: sepia(30%) grayscale(0) contrast(1) opacity(0.8) !important;
     -webkit-transition: 1s;
