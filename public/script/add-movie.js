@@ -110,7 +110,7 @@ function renderFirstApiResult(results, searchTitle) {
   )
   if (Poster !== "N/A") {
     $('.poster-frame').append(
-      `<img src="${Poster}" alt="image of ${Title} poster">`
+      `<img src="${Poster}" alt="image of ${Title} poster" class="movie-poster">`
     )
   }
   $('body').one('click', 'button', function(event) {
