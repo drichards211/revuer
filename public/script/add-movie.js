@@ -330,8 +330,8 @@ async function renderSuccessMessage(newMovie, guest) {
         <div class="film"></div>
         <div class="film"></div>
         <div class="film"></div>
-        <button class="film" id="film-1">View your movie</button>
-        <button class="film" id="film-2">Add another one</button>
+        <button class="film" id="film-1">View your<br>movie</button>
+        <button class="film" id="film-2">Add another<br>one</button>
         <div class="film"></div>  
         <div class="film"></div>  
         <div class="film"></div>
@@ -369,8 +369,8 @@ async function renderSuccessMessage(newMovie, guest) {
         <div class="film"></div>
         <div class="film"></div>
         <div class="film"></div>
-        <button class="film" id="film-1">View your movie</button>
-        <button class="film" id="film-2">Add another one</button>
+        <button class="film" id="film-1">View your<br>movie</button>
+        <button class="film" id="film-2">Add another<br>one</button>
         <div class="film"></div>  
         <div class="film"></div>  
         <div class="film"></div>
@@ -414,6 +414,7 @@ function suggestNewSearch(oldSearch) {
     <button class="film" id="film-2">Add a movie</button>
     <div class="film"></div>  
     <div class="film"></div>  
+    <div class="film"></div>
     <div class="film"></div>
     <div class="film"></div>
     <div class="film"></div>

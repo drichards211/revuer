@@ -48,9 +48,10 @@ async function viewLibrary(a, b, c) {
       <div class="film"></div>
       <div class="film"></div>
       <div class="film"></div>
-      <p><button class="film" id="film-2">Add a movie</button> to your library.</p>
+      <button class="film" id="film-2">Add a movie</button>
       <div class="film"></div>  
       <div class="film"></div>  
+      <div class="film"></div>
       <div class="film"></div>
       <div class="film"></div>
       <div class="film"></div>

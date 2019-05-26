@@ -153,16 +153,16 @@ function updateDOMTest() {
 }
 
 function playCountdown() {
-  $('.dynamic-buttons').addClass('keep-below-screen')
+  /* $('.video-wrapper').addClass('maintain-size') */
   $('.video-screen').html(
     `<video controls autoplay id="film-leader" width="100%" height="auto"> 
     <source src="/image/film-leader-countdown-4.mp4" type="video/mp4">
     <video>`
   )
   document.getElementById('film-leader').addEventListener('ended', function() {
-    $('.video-screen').addClass('hidden').html(
+    $('.video-screen').html(
       `<div class="video-text">
-        <h1>revuer</h1>
+        <h1 class="title">revuer</h1>
         <p id="welcome-text-1" style="display: none;">animated text 1</p>
         <p id="welcome-text-2" style="display: none;">animated text 2</p>
         <p id="welcome-text-3" style="display: none;">animated text 3</p>
@@ -171,14 +171,16 @@ function playCountdown() {
         <div class="user-forms"></div>
       </div>`
     )
+    $('.title').addClass('hidden')
+    setTimeout(function() {
+      $('.title').fadeIn(3000)
+    }, 1000);
     setTimeout(function() { 
-      $('.video-screen').fadeIn(3000)
-      /* $('.dynamic-buttons').removeClass('keep-below-screen') */
+      /* $('.video-wrapper').removeClass('maintain-size') */
       textAnimate = true
       animateWelcomeText()
-    }, 800);
+    }, 3000);
   })
-  
 }
 
 function animateWelcomeText(index) {
@@ -250,9 +252,10 @@ function manageWindowResize() {
   let mediaQuery = window.matchMedia("(max-width: 500px)")
   let initialFilmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
   $('.video-screen').css({'height': `calc(${initialMainContainerWidth} * .5625)`})
+  /* $('.maintain-size').css({'height': `calc(${initialMainContainerWidth} * .5625)`}) */
   $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
   $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
-  $('.keep-below-screen').css({'top': `calc(${initialMainContainerWidth} * .5625 + 3rem)`})
+  /* $('.keep-below-screen').css({'top': `calc(${initialMainContainerWidth} * .5625 + 1.3rem)`}) */
 // update values if window resized:
   window.onresize = function() {
     console.log("Window size changed... resizing theater")
@@ -260,9 +263,10 @@ function manageWindowResize() {
     let chairWidth = $('.chair').css('width')
     let filmButtonWidth = $('.film').css('width')
     $('.video-screen').css({'height': `calc(${mainContainerWidth} * .5625)`})
+    /* $('.maintain-size').css({'height': `calc(${mainContainerWidth} * .5625)`}) */
     $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
     $('.film-button-wrapper').css({'width': `calc(${filmButtonWidth} * 18)`, 'transform': `translateX(calc(((${filmButtonWidth} * 18) - 100vw)* -.5))`})
-    $('.keep-below-screen').css({'top': `calc(${mainContainerWidth} * .5625 + 3rem)`})
+    /* $('.keep-below-screen').css({'top': `calc(${mainContainerWidth} * .5625 + 3rem)`}) */
   }
 }
 

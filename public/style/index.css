@@ -39,7 +39,12 @@ input {
   max-width: 100%;
 }
 .video-wrapper {
-  /* padding-bottom: 56.25%; */
+  
+}
+.maintain-size {
+  /* width: 100%;
+  margin: auto;
+  margin-top: 1.25rem; */
 }
 .video-screen {
   position: relative;
@@ -78,7 +83,15 @@ input {
   left: 50%;
   transform: translate(-50%, -50%); */
 }
-.dynamic-buttons, .film-buttons {
+.dynamic-buttons {
+  /* overflow: hidden; */
+  font-family: 'bebas';
+  font-size: 0pt; /*Removes gap between buttons*/
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1.7rem;
+}
+.film-buttons {
   position: relative;
   overflow: hidden;
   font-family: 'bebas';
@@ -87,9 +100,9 @@ input {
   text-align: center;
 }
 .keep-below-screen {
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  right: 0;
+  right: 0; */
   
 }
 /* top: calc(80vw * .5625 + 1.25rem); */
@@ -194,28 +207,28 @@ button:active {
   color: rgb(14, 14, 14);
 }
 #sign-in {
-  background:url(../image/ticket-1.png);
+  background:url(../image/ticket-1-colored.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgb(13, 172, 212);
+  /* background-color: rgb(13, 172, 212); */
 }
 #sign-up {
-  background:url(../image/ticket-2.png);
+  background:url(../image/ticket-2-colored.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgb(226, 190, 32);
+  /* background-color: rgb(226, 190, 32); */
 }
 #preview {
-  background:url(../image/ticket-3.png);
+  background:url(../image/ticket-3-colored.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgb(34, 207, 45);
+  /* background-color: rgb(34, 207, 45); */
 }
 #manage-acct {
-  background:url(../image/ticket-2.png);
+  background:url(../image/ticket-4-colored.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgb(122, 70, 207);
+  /* background-color: rgb(122, 70, 207); */
   padding-top: .11em;
   padding-left: .7em;
   padding-right: .7em;
@@ -375,7 +388,7 @@ button:active {
     margin-top: 10rem;
   }
   .keep-below-screen {
-    margin-top: 8rem;
+    /* margin-top: 7rem; */
   }
 }
 
