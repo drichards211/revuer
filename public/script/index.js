@@ -252,21 +252,18 @@ function manageWindowResize() {
   let mediaQuery = window.matchMedia("(max-width: 500px)")
   let initialFilmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
   $('.video-screen').css({'height': `calc(${initialMainContainerWidth} * .5625)`})
-  /* $('.maintain-size').css({'height': `calc(${initialMainContainerWidth} * .5625)`}) */
   $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
   $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
-  /* $('.keep-below-screen').css({'top': `calc(${initialMainContainerWidth} * .5625 + 1.3rem)`}) */
 // update values if window resized:
   window.onresize = function() {
     console.log("Window size changed... resizing theater")
     let mainContainerWidth = $('.main-container').css('width')
     let chairWidth = $('.chair').css('width')
-    let filmButtonWidth = $('.film').css('width')
+    let mediaQuery = window.matchMedia("(max-width: 500px)")
+    let filmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
     $('.video-screen').css({'height': `calc(${mainContainerWidth} * .5625)`})
-    /* $('.maintain-size').css({'height': `calc(${mainContainerWidth} * .5625)`}) */
     $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
     $('.film-button-wrapper').css({'width': `calc(${filmButtonWidth} * 18)`, 'transform': `translateX(calc(((${filmButtonWidth} * 18) - 100vw)* -.5))`})
-    /* $('.keep-below-screen').css({'top': `calc(${mainContainerWidth} * .5625 + 3rem)`}) */
   }
 }
 
