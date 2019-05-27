@@ -130,6 +130,7 @@ function renderMoreApiResults(results, searchTitle) {
 // Display 10 more OMDB results to the user: 
   console.log("renderMoreApiResults() ran")
   console.log(results)
+  window.scrollTo(0, 0)
   $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Is it one of these?</h2>
@@ -138,25 +139,28 @@ function renderMoreApiResults(results, searchTitle) {
   for (let i = 1; i < results.length; i++) {
     const { Poster, Title, Year, imdbID } = results[i]
     $('.movie-API-box-1').append(
-      `<p>${Title} -- ${Year} <button class="yes" id="movie-correct-${i}">Yes</button></p>
-      <div class="poster-frame-${i}"></div><br>`
+      `<div class="poster-frame-${i}"></div><br>
+      <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>`
     )
+    {/* <p class="movie-title-plaque many" id="movie-correct-plaque-${i}">${Title} -- ${Year}</p>` */}
     if (Poster === "N/A") {
       $(`.poster-frame-${i}`).append(
         `<p>This movie poster is not available</p>`
       )
     } else {
       $(`.poster-frame-${i}`).append(
-      `<img src="${Poster}" alt="image of ${Title} poster">`
+      `<input type="image" src="${Poster}" name="saveForm" class="more-movie-posters" id="movie-correct-${i}"/>`
       )
     } 
   }
+  /* <img src="${Poster}" alt="image of ${Title} poster" class="more-movie-posters">` */
   $('.movie-API-box-1').append(
-    `<button class="no" id="movie-not-here">I don't see my movie listed</button>`
+    `<p><button class="no" id="movie-not-here">I don't see my movie listed</button></p>`
   )
-  $('body').one('click', 'button', function(event) {
+  $('body').one('click', 'input', function(event) {
     for (let i = 1; i < 10; i++) {
-      if (`${$(this).prop('id')}` === `movie-correct-${i}`) {
+      if ((`${$(this).prop('id')}` === `movie-correct-${i}`) || 
+        (`${$(this).prop('id')}` === `movie-correct-plaque-${i}`)) {
         console.log(`#${i} movie is correct`)
         addMovieDetails(results[i])
       }
@@ -172,14 +176,15 @@ function addMovieDetails(omdbMovie) {
 // Render a form for submitting movie details: 
   console.log("addMovieDetails() ran")
   console.log(omdbMovie)
+  window.scrollTo(0, 0)
   const { Poster, Title, Year, imdbID } = omdbMovie
   /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js
   $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Add your details</h2>
-      <p>${Title} -- ${Year}</p>
       <div class="poster-frame"></div>
+      <p class="movie-title-plaque">${Title} -- ${Year}</p>
     </div>
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
@@ -208,7 +213,7 @@ function addMovieDetails(omdbMovie) {
   )
   if (Poster !== "N/A") {
     $('.poster-frame').append(
-      `<img src="${Poster}" alt="image of ${Title} poster">`
+      `<img src="${Poster}" alt="image of ${Title} poster" class="movie-poster">`
     )
   }
   handleMovieSubmit(omdbMovie)
