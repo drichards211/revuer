@@ -267,8 +267,26 @@ function manageWindowResize() {
   }
 }
 
+function hideChairs() {
+// Hide the chairs when scrolling while viewport is less than 1000px tall
+  console.log("hideChairs() running")
+  $(window).scroll(function() {
+    let mediaQuery = window.matchMedia("(max-height: 1000px)")
+    if (mediaQuery.matches) {
+      if ($(window).scrollTop() > 50) {
+        console.log("hiding chairs")
+        $('.chair-buttons').addClass('hidden')
+      } else {
+        console.log('showing chairs')
+        $('.chair-buttons').removeClass('hidden')
+      }
+    }
+  })
+}
+  
 $(function() {
   handleUserNav()
   manageWindowResize()
+  hideChairs()
   playCountdown()
 })
