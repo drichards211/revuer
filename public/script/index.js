@@ -268,22 +268,34 @@ function manageWindowResize() {
 }
 
 function hideChairs() {
-// Hide the chairs when scrolling while viewport is less than 1000px tall
+// Hide the chairs when scrolling if viewport is < 700px tall and landscape:
   console.log("hideChairs() running")
+  let lastScrollPosition = 0
+  let showChairs = function() {
+    console.log('showing chairs')
+    $('.chair-buttons').fadeIn()
+    }
   $(window).scroll(function() {
-    let mediaQuery = window.matchMedia("(max-height: 1000px)")
+    let mediaQuery = window.matchMedia("(max-height: 700px) and (orientation: landscape)")
+    let currentScroll = $(this).scrollTop()
     if (mediaQuery.matches) {
-      if ($(window).scrollTop() > 50) {
+      if (currentScroll > lastScrollPosition) {
+      // User is scrolling down: 
         console.log("hiding chairs")
-        $('.chair-buttons').addClass('hidden')
+        $('.chair-buttons').fadeOut()
       } else {
+      // User is scrolling up:
         console.log('showing chairs')
-        $('.chair-buttons').removeClass('hidden')
+        $('.chair-buttons').fadeIn()
       }
+      lastScrollPosition = currentScroll
     }
   })
+  // Restore chair visibility if viewport resized or rotated:
+  window.addEventListener('orientationchange', showChairs)
+  window.addEventListener('resize', showChairs)
 }
-  
+
 $(function() {
   handleUserNav()
   manageWindowResize()
