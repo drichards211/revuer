@@ -128,7 +128,7 @@ async function viewLibraryDetail(imdbId, index) {
         <div class="collumns">
           <div class="collumn">
             <figure class="figure">
-              <img class="media" src="${Poster}" alt="">
+              <img class="media" src="${Poster}" onerror="$(this).hide()" alt="">
               <figcaption class="figcaption">${Title} movie poster.</figcaption>
             </figure>    
             <div class="head">
@@ -190,7 +190,7 @@ async function viewLibraryDetail(imdbId, index) {
     </div>` */
   if (Poster !== "N/A") {
     $('.poster-frame').append(
-      `<img src="${Poster}" alt="image of ${Title} poster">`
+      `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster">`
     )
   }
   $('.film-button-wrapper').html(

@@ -50,7 +50,7 @@ function editMovie(omdbMovie, index) {
   )
   if (Poster !== "N/A") {
     $('.poster-frame').append(
-      `<img src="${Poster}" alt="image of ${Title} poster">`
+      `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster">`
     )
   }
   $('.film-button-wrapper').html(

@@ -110,7 +110,7 @@ function renderFirstApiResult(results, searchTitle) {
   )
   if (Poster !== "N/A") {
     $('.poster-frame').append(
-      `<img src="${Poster}" alt="image of ${Title} poster" class="movie-poster">`
+      `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster" class="movie-poster">`
     )
   }
   $('body').one('click', 'button', function(event) {
@@ -149,7 +149,7 @@ function renderMoreApiResults(results, searchTitle) {
       )
     } else {
       $(`.poster-frame-${i}`).append(
-      `<input type="image" src="${Poster}" name="saveForm" class="more-movie-posters" id="movie-correct-${i}"/>`
+      `<input type="image" src="${Poster}" onerror="$(this).hide()" name="saveForm" class="more-movie-posters" id="movie-correct-${i}"/>`
       )
     } 
   }
@@ -213,7 +213,7 @@ function addMovieDetails(omdbMovie) {
   )
   if (Poster !== "N/A") {
     $('.poster-frame').append(
-      `<img src="${Poster}" alt="image of ${Title} poster" class="movie-poster">`
+      `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster" class="movie-poster">`
     )
   }
   handleMovieSubmit(omdbMovie)
