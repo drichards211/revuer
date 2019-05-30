@@ -130,7 +130,6 @@ function renderMoreApiResults(results, searchTitle) {
 // Display 10 more OMDB results to the user: 
   console.log("renderMoreApiResults() ran")
   console.log(results)
-  window.scrollTo(0, 0)
   $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Is it one of these?</h2>
@@ -176,7 +175,6 @@ function addMovieDetails(omdbMovie) {
 // Render a form for submitting movie details: 
   console.log("addMovieDetails() ran")
   console.log(omdbMovie)
-  window.scrollTo(0, 0)
   const { Poster, Title, Year, imdbID } = omdbMovie
   /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js

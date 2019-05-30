@@ -230,13 +230,14 @@ function animateWelcomeText(index) {
 
     
 function emptyTheContainers() {
+// Hide the .video-screen, remove dynamic buttons, empty the main content window,
+// reset scroll position to (0, 0), and stop any ongoing text-animations.
   console.log('emptyTheContainers() ran')
-  /* $('.dynamic-buttons').removeClass('keep-below-screen') */
-  $('.video-screen').empty().addClass('hidden').css({'display': ''}) /* .removeAttr('style') */
-  $('.dynamic-buttons, .film-button-wrapper').empty().unbind('click')
-  /* $('.dynamic-buttons').unbind('click') */
-  $('.movie-marquee').empty()
   textAnimate = false
+  window.scrollTo(0, 0)
+  $('.video-screen').empty().addClass('hidden').css({'display': ''})
+  $('.dynamic-buttons, .film-button-wrapper').empty().unbind('click')
+  $('.movie-marquee').empty()
 }
 
 function manageWindowResize() {
