@@ -96,6 +96,7 @@ function lookupOMDB(movieId) {
 function renderFirstApiResult(results, searchTitle) {
 // Display first OMDB search result to the user:
   console.log("renderFirstApiResult() ran")
+  emptyTheContainers() // in index.js
   const { Poster, Title, Year, imdbID } = results[0]
   $('.movie-marquee').html(
     `<div class="movie-API-box-1">
@@ -129,6 +130,7 @@ function renderFirstApiResult(results, searchTitle) {
 function renderMoreApiResults(results, searchTitle) {
 // Display 10 more OMDB results to the user: 
   console.log("renderMoreApiResults() ran")
+  emptyTheContainers() // in index.js
   console.log(results)
   $('.movie-marquee').html(
     `<div class="movie-API-box-1">
