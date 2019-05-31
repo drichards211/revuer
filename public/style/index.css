@@ -274,27 +274,59 @@ button:active {
   width: 65%;
   margin: auto;
   text-align: center;
+  background: white;
   -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
   -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
   box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
 }
+.multiplex {
+  font-family: 'marquee';
+  font-size: 400%;
+  color: #ffd400ba;
+  text-align: center;
+  background-color: rgb(192, 7, 7);
+  width: 65%;
+  margin: auto;
+  text-shadow: 0 0 9px #ffd400ba;
+  border-style: dotted;
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, 0.7);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 /* MOVIE MARQUEE viewport adjustments ============================ */
 @media only screen and (max-width: 800px) {
-  .movie-list {
+  .movie-list, .multiplex {
     width: 75%;
   }
 }
 @media only screen and (max-width: 650px) and (orientation: portrait) {
-  .movie-list {
+  .movie-list, .multiplex {
     width: 90%;
   }
 }
 @media only screen and (max-width: 500px) and (orientation: portrait) {
-  .movie-list {
-    width: 100%;
+  .movie-list, .multiplex {
+    width: 95%;
   }
 }
+.library-marquee {
+  margin-top: 2.5rem;
+}
 
+.now-showing-button {
+  font-family: 'wagner';
+  font-size: 300%;
+  color: rgba(255, 0, 0, 0.8);
+  letter-spacing: 3px;
+  word-spacing: 5px; /*8px*/
+  text-align: center;
+  /* cursor: pointer; */
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid gray;
+  width: 100%;
+  /* padding-bottom: 1rem;
+  padding-top: 1rem; */
+}
 .movie-button {
   font-family: 'wagner';
   font-size: 175%;
@@ -304,9 +336,37 @@ button:active {
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid gray;
-  width: 100%;
+  width: 90%;
 }
-
+.movie-button-spacer {
+  /* font-family: 'wagner';
+  letter-spacing: 3px;
+  word-spacing: 5px;
+  text-align: center; */
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid gray;
+  font-size: 175%;
+  width: 90%;
+}
+.lights-top {
+  width: 100%;
+  /* margin-left: -1.2%; */
+  margin-bottom: -3px;
+}
+.lights-left {
+  position: relative;
+  /* margin-right: 100%; */
+  float: left;
+  max-width: 5%;
+  /* clear: both; */
+}
+.lights-right {
+  position: relative;
+  /* margin-left: 100%; */
+  float: right;
+  max-width: 5%;
+  /* clear: both; */
+}
 .poster-frame {
   text-align: center;
   margin-left: auto;
@@ -382,6 +442,16 @@ button:active {
   src: url(bebas-neue.otf);
   font-style: normal;
 }
+@font-face {
+  font-family: marquee;
+  src: url(MARQUEE_.TTF);
+  font-style: normal;
+}
+@font-face {
+  font-family: beadchain;
+  src: url(BEADC___.TTF);
+  font-style: normal;
+} 
 
 #movietitle {
   font-family: 'Special Elite', cursive;
