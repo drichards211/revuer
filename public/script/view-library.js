@@ -18,14 +18,8 @@ async function viewLibrary(a, b, c) {
       <p class="multiplex">REVUER MULTIPLEX</p>
     </div>
     <div class="movie-list">
-      <div class="lights-container-top">
-        <img src="../image/top-lights-a1.png" class="lights-top">
-      </div>
-      <div class="lights-container-left">
-        <img src="../image/left-lights-a1.png" class="lights-left">
-      </div>
-      <div class="lights-container-right">
-        <img src="../image/right-lights-a1.png" class="lights-right">
+      <div class="movie-button-spacer">
+        <span class="movie-title">&nbsp;</span>
       </div>
     </div>`
   )
@@ -53,7 +47,7 @@ async function viewLibrary(a, b, c) {
         } 
       })
     }
-    if (libraryResults.length < 10) {
+    /* if (libraryResults.length < 10) {
       for (let i = 10 - libraryResults.length; i < 10; i++) {
         $('.movie-list').append(
           `<div class="movie-button-spacer">
@@ -61,17 +55,12 @@ async function viewLibrary(a, b, c) {
           </div>`
         )
       }
-    }
+    } */
     $('.movie-list').append(
-    `<div class="lights-container-bottom">
-      <img src="../image/bottom-lights-a1.png" class="lights-top">
-    </div>`
-    )
-    /* $('.movie-list').append(
       `<div class="movie-button-spacer">
         <span class="movie-title">&nbsp;</span>
       </div>`
-    ) */
+    )
   } else {
     // If library is empty: 
     $('.movie-list').append(

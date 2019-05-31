@@ -255,7 +255,7 @@ button:active {
   text-shadow: 2px 2px 2px #000000;
 }
 .news {
-  /* background-color: #f9f7f1; */
+  background-color: #f9f7f1;
 }
 .movie-API-box-1 {
   text-align: center;
@@ -275,23 +275,30 @@ button:active {
   margin: auto;
   text-align: center;
   background: white;
-  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
-  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
-  box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75); 
-}
+  -webkit-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
+  -moz-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
+  box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
+} 
 .multiplex {
   font-family: 'marquee';
   font-size: 400%;
-  color: #ffd400ba;
+  color: #fff900d6;
   text-align: center;
-  background-color: rgb(192, 7, 7);
+  background-color: #ff000029;
+  /* background-color: rgb(75, 0, 195); */
+  /* background-color: rgb(13, 1, 255); */
+  /* background-color: rgb(192, 7, 7); */
   width: 65%;
   margin: auto;
-  text-shadow: 0 0 9px #ffd400ba;
+  text-shadow: 0 0 9px #ffd400;
   border-style: dotted;
-  box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, 0.7);
-  padding-top: 5px;
-  padding-bottom: 5px;
+  border-width: 12px;
+  box-shadow: inset 0px 0px 15px 5px rgba(255, 255, 190, 0.45), 0px 0px 15px 5px rgba(255, 255, 190, 0.51);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 3rem; /* 33px; */
 }
 /* MOVIE MARQUEE viewport adjustments ============================ */
 @media only screen and (max-width: 800px) {
@@ -310,7 +317,7 @@ button:active {
   }
 }
 .library-marquee {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .now-showing-button {
@@ -336,7 +343,7 @@ button:active {
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid gray;
-  width: 90%;
+  width: 100%;
 }
 .movie-button-spacer {
   /* font-family: 'wagner';
@@ -345,8 +352,8 @@ button:active {
   text-align: center; */
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid gray;
-  font-size: 175%;
-  width: 90%;
+  /* font-size: 175%; */
+  width: 100%;
 }
 .lights-top {
   width: 100%;
