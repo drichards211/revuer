@@ -100,6 +100,7 @@ function testProtected() {
 
 function renderChairButtons(home) {
   console.log('renderChairButtons() ran')
+  let mediaQuery = window.matchMedia("(max-width: 500px) and (orientation: portrait)")
   $('.chair-button-wrapper').empty()
   $('.chair-button-wrapper').html(
     `<div class="chair inline"></div>
@@ -128,9 +129,15 @@ function renderChairButtons(home) {
   <div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
-  <script>$('.chair-buttons').fadeIn();
-  $('.chair-plaque').fitText();</script>`
+  <script>$('.chair-buttons').fadeIn();</script>`
   )
+  if (mediaQuery.matches) {
+  // Use larger font size for phone screens in portrait mode:
+    $('.chair-plaque').fitText(1, 'compressor * 8')
+  } else {
+  // Use smaller font size:
+    $('.chair-plaque').fitText()
+  }
 }
 
 function aboutRevuer() {
@@ -256,12 +263,13 @@ function manageWindowResize() {
   $('.video-screen').css({'height': `calc(${initialMainContainerWidth} * .5625)`})
   $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
   $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
-// update values if window resized:
+// Update values if window resized:
   window.onresize = function() {
     console.log("Window size changed... resizing theater")
-    let mainContainerWidth = $('.main-container').css('width')
+    $('.chair-buttons').css({"display": "block"}) 
+    // Chairs must be visible to obtain accurate .css('width')
     let chairWidth = $('.chair').css('width')
-    let mediaQuery = window.matchMedia("(max-width: 500px)")
+    let mainContainerWidth = $('.main-container').css('width')
     let filmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
     $('.video-screen').css({'height': `calc(${mainContainerWidth} * .5625)`})
     $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
@@ -275,8 +283,9 @@ function hideChairs() {
   let lastScrollPosition = 0
   let showChairs = function() {
     console.log('showing chairs')
-    $('.chair-buttons').fadeIn()
-    }
+    $('.chair-buttons').css({"display": "block"}) 
+    renderChairButtons()  // Force re-draw of chair buttons
+  }
   $(window).scroll(function() {
     let mediaQuery = window.matchMedia("(max-height: 700px) and (orientation: landscape)")
     let currentScroll = $(this).scrollTop()

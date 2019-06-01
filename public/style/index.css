@@ -161,6 +161,26 @@ nav {
   font-weight: bolder;
   padding-top: 2.4em;
 }
+@media only screen and (max-width: 500px) and (orientation: portrait) {
+/* For phone portrait */
+  .chair {
+    height: calc(20rem / 1.7);
+    max-height: calc(33vw / 1.7);
+    background:url(../image/chair-taller-a1.png) 0 0 no-repeat;
+    background-size: 100%;
+  }
+  .chair-plaque {
+    height: calc(20rem / 1.7);
+    max-height: calc(33vw / 1.7);
+    background:url(../image/chair-taller-plaque-a1.png) 0 0 no-repeat;
+    background-size: 100%;
+    padding-top: 1.2em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    white-space: normal;
+  }
+}
+
 .inline {
   display: inline-block;
 }
