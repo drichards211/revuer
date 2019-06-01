@@ -302,20 +302,44 @@ button:active {
 }
 /* MOVIE MARQUEE viewport adjustments ============================ */
 @media only screen and (max-width: 800px) {
-  .movie-list, .multiplex {
+  .movie-list {
+    width: 75%;
+  }
+  .multiplex {
     width: 75%;
   }
 }
 @media only screen and (max-width: 650px) and (orientation: portrait) {
-  .movie-list, .multiplex {
+  .movie-list {
+    width: 90%;
+  }
+  .multiplex {
     width: 90%;
   }
 }
 @media only screen and (max-width: 500px) and (orientation: portrait) {
-  .movie-list, .multiplex {
+  .movie-list {
+    width: 95%;
+  }
+  .multiplex {
     width: 95%;
   }
 }
+@media only screen and (max-width: 500px) and (orientation: landscape) {
+  .movie-list {
+    width: 95%;
+  }
+  .multiplex {
+    font-size: 375%;
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 350px) and (orientation: portrait) {
+  .multiplex {
+    font-size: 375%;
+  }
+}
+
 .library-marquee {
   margin-top: 3rem;
 }

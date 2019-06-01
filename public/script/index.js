@@ -122,13 +122,14 @@ function renderChairButtons(home) {
   $('.chair-button-wrapper').append(
   `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
   <button class="chair-plaque" id="chair-3">VIEW LIBRARY</button>
-  <script>$('.chair-plaque').fitText();</script>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
-  <div class="chair inline"></div>`
+  <div class="chair inline"></div>
+  <script>$('.chair-buttons').fadeIn();
+  $('.chair-plaque').fitText();</script>`
   )
 }
 
