@@ -128,13 +128,13 @@ nav {
   float: left;
   width: 20rem;
   max-width: calc(33vw);
-  height: calc(20rem / 2.2);
-  max-height: calc(33vw / 2.2); /* prevents chairs from floating if screen becomes too tall */
+  height: calc(20rem / 2.1);
+  max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
   /* starting point */
   /* width: calc(33vw);
   max-width: calc(33vw);
   height: calc(33vw / 2.54); */
-  background:url(../image/new-chair-2.png) 0 0 no-repeat;
+  background:url(../image/chair-a1.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(255, 255, 255);
   font-family: 'Playfair Display SC';
@@ -147,13 +147,13 @@ nav {
   float: left;
   width: 20rem;
   max-width: calc(33vw);
-  height: calc(20rem / 2.2);
-  max-height: calc(33vw / 2.2); /* prevents chairs from floating if screen becomes too tall */
+  height: calc(20rem / 2.1);
+  max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
   /* starting point */
   /* width: calc(33vw);
   max-width: calc(33vw);
   height: calc(33vw / 2.54); */
-  background:url(../image/new-chair-2-new-plaque-3.png) 0 0 no-repeat;
+  background:url(../image/chair-plaque-a1.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(36, 33, 33);
   font-family: 'Playfair Display SC';
