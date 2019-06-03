@@ -8,12 +8,14 @@ function addMovie(oldSearch) {
   /* $('.dynamic-buttons').empty() */
   $('.movie-marquee').html(
     `<div class="movie-find-box">
-      <h2>Add a movie</h2>
-      <form class="movie-find-form" action="#">
-        <label for="movietitle">Title:</label>
-        <input type="text" name="movietitle" id="movietitle" placeholder="${placeholder}" required autofocus/>
-        <button type="submit">Search</button>
-      </form>
+      <div class="film-cannister">
+        <form class="movie-find-form" action="#">
+          <label for="movietitle">Title:</label>
+          <input type="text" name="movietitle" id="movietitle" placeholder="eg: Titanic" required="" autofocus="" class="film-label">
+          <button type="submit">Search</button>
+        </form>
+        <img src="../image/vector-cannister-single.png" alt="Film Cannister" class="cannister-img">
+      </div>
     </div>`)
   $('.movie-find-form').submit(function(event) {
     console.log('movie-find-form submitted')

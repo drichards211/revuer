@@ -290,6 +290,62 @@ button:active {
 .movie-find-form {
   
 }
+.movie-find-box {
+  margin-top: calc(20vh);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+@media only screen and (max-height: 800px) and (orientation: landscape) {
+  .movie-find-box {
+    margin-top: calc(10vh);
+  }
+}
+@media only screen and (max-height: 450px) and (orientation: landscape) {
+  .movie-find-box {
+    margin-top: calc(2vh);
+  }
+}
+.film-cannister {
+  /* background-image: url('../image/vector-cannister-single.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.cannister-img {
+  position: relative;
+  display: block;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.film-label {
+  position: absolute;
+  width: 200px;
+  top: 51.5%;
+  left: 52%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  z-index: +1;
+}
+#movietitle {
+  font-family: 'Special Elite', cursive;
+  font-size: 200%;
+}
+.movie-find-box ::placeholder {
+  font-family: 'Special Elite', cursive;
+  text-overflow: ellipsis;
+}
 .movie-list {
   width: 65%;
   margin: auto;
@@ -504,14 +560,6 @@ button:active {
   font-style: normal;
 } 
 
-#movietitle {
-  font-family: 'Special Elite', cursive;
-  font-size: 200%;
-}
-.movie-find-box ::placeholder {
-  font-family: 'Special Elite', cursive;
-  text-overflow: ellipsis;
-}
 .row {
   max-width: 1200px;
   min-width: 320px;
