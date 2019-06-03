@@ -7,9 +7,13 @@
   <!-- Responsive viewport tag -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google Fonts -->
-
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Special+Elite|Playfair+Display|Droid+Serif|Lobster|Playball|EB+Garamond|Playfair+Display+SC" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <!-- STYLESHEETS ========================================= -->
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" /> -->
+  <link rel="stylesheet" type="text/css" href="style/normalize.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="style/index.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="style/newspaper.css" />
   
   <!-- SCRIPTS ============================================= -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -19,25 +23,29 @@
   <script type="text/javascript" src="script/edit-movie.js"></script>
   <script type="text/javascript" src="script/view-library.js"></script>
   <script type="text/javascript" src="script/sample-library.js"></script>
+  <script type="text/javascript" src="script/jquery.fittext.js"></script>
 </head>
 
 <body>
+<div class="background-img">
   
   <!-- MAIN CONTENT ============================================ -->
   <main role="main">
+    <div class="film-buttons">
+      <div class="film-button-wrapper"></div>
+    </div>
     <div class="row">
       <section role="region" class="col-12" aria-live="assertive">
         <div class="main-container">
-          <div class="video-screen">
-            <h1>revuer</h1>
-            <p class="js-test">animated text goes here</p>
-            <div class="user-forms">
-            </div>
+          <div class="video-wrapper">
+            <div class="video-screen"></div>
           </div>
+          <div class="movie-marquee"></div>
           <div class="dynamic-buttons">
-            <button class="ticket" id="sign-in">sign-in</button>
-            <button class="ticket" id="sign-up">sign-up</button>
-            <button class="ticket" id="preview">preview</button>
+            <button class="ticket" id="sign-in">SIGN-IN</button>
+            <button class="ticket" id="sign-up">SIGN-UP</button>
+            <button class="ticket" id="preview">PREVIEW</button>
+            <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>
           </div>
         </div>
       </section>
@@ -45,8 +53,27 @@
   
   </main>
   <nav role="navigation">
-    <div class="chair-buttons"></div>
+    <div class="chair-buttons">
+      <div class="chair-button-wrapper">
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+        <div class="chair inline"></div>
+      </div>
+    </div>
   </nav>
 
+</div>
 </body>
 </html>

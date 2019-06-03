@@ -8,7 +8,7 @@ function editMovie(omdbMovie, index) {
   
   // Propagate form with pre-existing values:
   const checkRating = radioValue => {
-    return rating === radioValue ? "checked" : ""
+    return rating === radioValue ? "checked autofocus" : ""
   }
   const checkOwnCopy = radioValue => {
     return ownCopy === radioValue ? "checked" : ""
@@ -17,8 +17,8 @@ function editMovie(omdbMovie, index) {
     return format.includes(checkboxValue) === true ? "checked" : "" 
   }
   
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  emptyTheContainers() // in index.js
+  $('.movie-marquee').html(
     `<div class="movie-API-box-1">
       <h2>Edit this movie</h2>
       <p>${Title} -- ${Year}</p>
@@ -50,17 +50,36 @@ function editMovie(omdbMovie, index) {
   )
   if (Poster !== "N/A") {
     $('.poster-frame').append(
-      `<img src="${Poster}" alt="image of ${Title} poster">`
+      `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster">`
     )
   }
-  $('.dynamic-buttons').html(
-    `<p><button class="film" id="film-5">Cancel</button></p>`
+  $('.film-button-wrapper').html(
+    `<div class="film"></div>  
+    <div class="film"></div>  
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>`
   )
   if (userName !== "Guest") {
-    $('.dynamic-buttons').prepend(
-      `<p><button class="film" id="film-6">Delete</button></p>`
+    $('.film-button-wrapper').append(
+      `<button class="film" id="film-6">Delete</button>`
     )
   }
+  $('.film-button-wrapper').append(
+    `<button class="film" id="film-5">Cancel</button>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <div class="film"></div>
+    <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
+  )
   $('body').one('click', 'button', function(event) {
     if (`${$(this).prop('id')}` === 'film-5') {
       console.log('"Cancel" button pressed')
@@ -143,17 +162,34 @@ function updateMovieInDb(editedMovie, index) {
 
 async function renderEditMessage(editedMovie, index, guest) {
   console.log("renderEditMessage() ran")
+  emptyTheContainers() // in index.js
   if (guest === true) {
   // Display customized message and buttons for "Guest" account:
-    $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
       `<div class="success-message">
       <h2>${editedMovie.title}</h2> 
       <p>has been updated in your virtual library.</p>
       <p>If you'd like to save your changes permanently, please sign-up for an account.</p>`
     )
-    $('.dynamic-buttons').html(
-      `<button class="film" id="film-1">View your movie</button>
-      <button class="ticket" id="sign-up">Sign-up</button>`
+    $('.film-button-wrapper').html(
+      `<div class="film"></div>  
+      <div class="film"></div>  
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <button class="film" id="film-1">View your movie</button>
+      <div class="film"></div>  
+      <div class="film"></div>  
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <div class="film"></div>
+      <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
     )
     $('body').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
@@ -163,15 +199,32 @@ async function renderEditMessage(editedMovie, index, guest) {
     })
   } else {
   // Render success message for registered users:
-    $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
       `<div class="success-message">
         <h2>${editedMovie.title}</h2> 
         <p>has been successfully updated.</p>`
     )
-    $('.dynamic-buttons').html(
-        `<button class="film" id="film-1">View your movie</button>`
+    $('.film-button-wrapper').html(
+        `<div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <button class="film" id="film-1">View your movie</button>
+        <div class="film"></div>  
+        <div class="film"></div>  
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <div class="film"></div>
+        <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
     )
-    $('.dynamic-buttons').one('click', 'button', function(event) {
+    $('.film-button-wrapper').one('click', 'button', function(event) {
       if (`${$(this).prop('id')}` === 'film-1') {
         console.log('"View your movie" button clicked')
         viewLibraryDetail(editedMovie.imdbId, index)
@@ -202,13 +255,30 @@ function deleteMovieInDb(omdbMovie, index) {
       if (res.ok) {
         console.log("response OK")
         console.log("Movie deleted successfully")
-        $('.video-screen').html(
+        $('.video-screen').removeClass('hidden').html(
           `<div class="success-message">
             <h2>${libraryResults[index].title}</h2> 
             <p>has been successfully deleted.</p>`
         )
-        $('.dynamic-buttons').html(
-            `<button class="film" id="film-4">Return to library</button>`
+        $('.film-button-wrapper').html(
+            `<div class="film"></div>  
+            <div class="film"></div>  
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <button class="film" id="film-4">Return to library</button>
+            <div class="film"></div>  
+            <div class="film"></div>  
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <div class="film"></div>
+            <script>$('.film').fitText(1, 'compressor * 5.7');</script>`
         )
       } else {
         throw new Error(res.statusText)

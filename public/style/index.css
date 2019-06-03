@@ -1,0 +1,610 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  font-size: 13.5px;
+  min-width: 320px; /* prevents layout from breaking on tiny screens */
+  color: white;
+  background-color: black;
+  transition: all .7s;
+}
+body:before {
+  content: "";
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100%;
+  background-image: url('../image/theater-stage.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background: linear-gradient(rgb(197, 197, 197),rgba(66, 66, 66, 0)); */
+}
+/* .background-img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  
+} */
+body {
+  
+}
+textarea {
+  max-width: 100%;
+}
+input {
+  max-width: 100%;
+}
+.video-wrapper {
+  
+}
+.maintain-size {
+  /* width: 100%;
+  margin: auto;
+  margin-top: 1.25rem; */
+}
+.video-screen {
+  position: relative;
+  width: 100%;
+  /* height: calc(80vw * .5625); */
+  /* width: 100%;
+  height: 100%; */
+  margin: auto;
+  /* padding-top: 56.25%; */
+  margin-top: 1.25rem;
+  text-align: center;
+  color: black;
+  background-color: rgb(246, 246, 244);
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, 0.75);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75);
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75); 
+  /* background-image: url(..\image\still-frame.jpg); */
+  /* background-color: white; */
+  /* border-style: solid; */
+  
+}
+.film-leader {
+  margin-top: 1.25rem;
+}
+/* NOT CURRENTLY USED */
+.video-glow {
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, 0.75);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75);
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75); 
+}
+
+.video-text {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+.dynamic-buttons {
+  /* overflow: hidden; */
+  font-family: 'bebas';
+  font-size: 0pt; /*Removes gap between buttons*/
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1.7rem;
+}
+.film-buttons {
+  position: relative;
+  overflow: hidden;
+  font-family: 'bebas';
+  font-size: 0pt; /*Removes gap between buttons*/
+  font-weight: bold;
+  text-align: center;
+}
+.keep-below-screen {
+  /* position: absolute;
+  left: 0;
+  right: 0; */
+  
+}
+/* top: calc(80vw * .5625 + 1.25rem); */
+nav {
+  color: white;
+  background-color: black;
+}
+.chair-buttons {
+  position: fixed;
+  overflow: hidden;
+  bottom: 0px;
+  width: 100%;
+  font-size: 0px; /*Removes gap between buttons*/
+  text-align: center;
+  
+}
+.hidden {
+  display: none;
+  /* visibility: hidden; */
+}
+.chair {
+  /* display:block; */
+  float: left;
+  width: 20rem;
+  max-width: calc(33vw);
+  height: calc(20rem / 2.1);
+  max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
+  /* starting point */
+  /* width: calc(33vw);
+  max-width: calc(33vw);
+  height: calc(33vw / 2.54); */
+  background:url(../image/chair-a1.png) 0 0 no-repeat;
+  background-size: 100%;
+  color: rgb(255, 255, 255);
+  font-family: 'Playfair Display SC';
+  font-style: normal;
+  font-weight: 600;
+  padding-top: 2.1em;
+}
+.chair-plaque {
+  /* display:block; */
+  float: left;
+  width: 20rem;
+  max-width: calc(33vw);
+  height: calc(20rem / 2.1);
+  max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
+  /* starting point */
+  /* width: calc(33vw);
+  max-width: calc(33vw);
+  height: calc(33vw / 2.54); */
+  background:url(../image/chair-plaque-a1.png) 0 0 no-repeat;
+  background-size: 100%;
+  color: rgb(36, 33, 33);
+  font-family: 'Playfair Display SC';
+  font-style: normal;
+  font-weight: bolder;
+  padding-top: 2.4em;
+}
+@media only screen and (max-width: 500px) and (orientation: portrait) {
+/* For phone portrait */
+  .chair {
+    height: calc(20rem / 1.7);
+    max-height: calc(33vw / 1.7);
+    background:url(../image/chair-taller-a1.png) 0 0 no-repeat;
+    background-size: 100%;
+  }
+  .chair-plaque {
+    height: calc(20rem / 1.7);
+    max-height: calc(33vw / 1.7);
+    background:url(../image/chair-taller-plaque-a1.png) 0 0 no-repeat;
+    background-size: 100%;
+    padding-top: 1.2em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    white-space: normal;
+  }
+}
+
+.inline {
+  display: inline-block;
+}
+button {
+  border: none;
+  padding: 0rem 0rem;
+  margin: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+input[type="button"] {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: normal; /* allows button text to wrap to multiple lines */
+}
+
+button:hover,
+button:focus {
+  /* background: #0053ba; */
+}
+
+button:focus {
+  /* outline: 1px solid #fff;
+  outline-offset: -4px; */
+}
+
+button:active {
+  transform: scale(0.99);
+}
+.ticket {
+  width: 13rem;
+  max-width: 29vw;
+  height: 6.5rem;
+  max-height: calc(29vw / 2);
+  border: 0;
+  margin-top: 2.5rem;
+  font-size: 22.5pt;
+  font-weight: bold;
+  color: rgb(14, 14, 14);
+}
+#sign-in {
+  background:url(../image/ticket-1-colored.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: rgb(13, 172, 212); */
+}
+#sign-up {
+  background:url(../image/ticket-2-colored.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: rgb(226, 190, 32); */
+}
+#preview {
+  background:url(../image/ticket-3-colored.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: rgb(34, 207, 45); */
+}
+#manage-acct {
+  background:url(../image/ticket-4-colored.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: rgb(122, 70, 207); */
+  padding-top: .11em;
+  padding-left: .7em;
+  padding-right: .7em;
+}
+.chair-button-wrapper {
+  width: 300rem;
+  transform: translateX(calc((300rem - 100vw)* -.5));
+}
+.film-button-wrapper {
+  top: 0px;
+  /* width: 216rem;
+  transform: translateX(calc((216rem - 100vw)* -.5)); */
+}
+.film {
+  float: left;
+  background:url(../image/film-medium-a4.png);
+  background-repeat: no-repeat;
+  background-size: cover; /* 12rem auto; */
+  width: 12rem;
+  max-width: 33vw;
+  height: calc(12rem / 1.338);/* 8.97rem; */
+  max-height: calc(33vw / 1.338);
+  border: 0;
+  font-size: 21pt;
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px #000000;
+}
+.news {
+  background-color: #f9f7f1;
+}
+.movie-API-box-1 {
+  text-align: center;
+}
+.movie-API-box-1 h2 {
+  font-family: 'EB Garamond';
+  font-size: 2.3em;
+  text-shadow: 2px 2px #000000;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.8em;
+}
+.movie-find-form {
+  
+}
+.movie-find-box {
+  margin-top: calc(20vh);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+@media only screen and (max-height: 800px) and (orientation: landscape) {
+  .movie-find-box {
+    margin-top: calc(10vh);
+  }
+}
+@media only screen and (max-height: 450px) and (orientation: landscape) {
+  .movie-find-box {
+    margin-top: calc(2vh);
+  }
+}
+.film-cannister {
+  /* background-image: url('../image/vector-cannister-single.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.cannister-img {
+  position: relative;
+  display: block;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.film-label {
+  position: absolute;
+  width: 200px;
+  top: 51.5%;
+  left: 52%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  z-index: +1;
+}
+#movietitle {
+  font-family: 'Special Elite', cursive;
+  font-size: 200%;
+}
+.movie-find-box ::placeholder {
+  font-family: 'Special Elite', cursive;
+  text-overflow: ellipsis;
+}
+.movie-list {
+  width: 65%;
+  margin: auto;
+  text-align: center;
+  background: white;
+  -webkit-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
+  -moz-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
+  box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
+} 
+.multiplex {
+  font-family: 'marquee';
+  font-size: 400%;
+  color: #fff900d6;
+  text-align: center;
+  background-color: #ff000029;
+  /* background-color: rgb(75, 0, 195); */
+  /* background-color: rgb(13, 1, 255); */
+  /* background-color: rgb(192, 7, 7); */
+  width: 65%;
+  margin: auto;
+  text-shadow: 0 0 9px #ffd400;
+  border-style: dotted;
+  border-width: 12px;
+  box-shadow: inset 0px 0px 15px 5px rgba(255, 255, 190, 0.45), 0px 0px 15px 5px rgba(255, 255, 190, 0.51);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 3rem; /* 33px; */
+}
+/* MOVIE MARQUEE viewport adjustments ============================ */
+@media only screen and (max-width: 800px) {
+  .movie-list {
+    width: 75%;
+  }
+  .multiplex {
+    width: 75%;
+  }
+}
+@media only screen and (max-width: 650px) and (orientation: portrait) {
+  .movie-list {
+    width: 90%;
+  }
+  .multiplex {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 500px) and (orientation: portrait) {
+  .movie-list {
+    width: 95%;
+  }
+  .multiplex {
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 500px) and (orientation: landscape) {
+  .movie-list {
+    width: 95%;
+  }
+  .multiplex {
+    font-size: 375%;
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 350px) and (orientation: portrait) {
+  .multiplex {
+    font-size: 375%;
+  }
+}
+
+.library-marquee {
+  margin-top: 3rem;
+}
+
+.now-showing-button {
+  font-family: 'wagner';
+  font-size: 300%;
+  color: rgba(255, 0, 0, 0.8);
+  letter-spacing: 3px;
+  word-spacing: 5px; /*8px*/
+  text-align: center;
+  /* cursor: pointer; */
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid gray;
+  width: 100%;
+  /* padding-bottom: 1rem;
+  padding-top: 1rem; */
+}
+.movie-button {
+  font-family: 'wagner';
+  font-size: 175%;
+  letter-spacing: 3px;
+  word-spacing: 5px; /*8px*/
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid gray;
+  width: 100%;
+}
+.movie-button-spacer {
+  /* font-family: 'wagner';
+  letter-spacing: 3px;
+  word-spacing: 5px;
+  text-align: center; */
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid gray;
+  /* font-size: 175%; */
+  width: 100%;
+}
+.lights-top {
+  width: 100%;
+  /* margin-left: -1.2%; */
+  margin-bottom: -3px;
+}
+.lights-left {
+  position: relative;
+  /* margin-right: 100%; */
+  float: left;
+  max-width: 5%;
+  /* clear: both; */
+}
+.lights-right {
+  position: relative;
+  /* margin-left: 100%; */
+  float: right;
+  max-width: 5%;
+  /* clear: both; */
+}
+.poster-frame {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.movie-poster {
+  /*picture frame effect*/
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 244, 222, 0.53), 0px 0px 0px 40px #101115, 0px 0px 0px 40px rgba(0, 0, 0, 0.24), 4px 4px 3px 40px #252020;
+  -moz-box-shadow: 0px 0px 0px 2px rgba(255, 244, 222, 0.53), 0px 0px 0px 40px #101115, 0px 0px 0px 40px rgba(0, 0, 0, 0.24), 4px 4px 3px 40px #252020;
+  box-shadow: 0px 0px 0px 2px rgba(255, 244, 222, 0.53), 0px 0px 0px 40px #101115, 0px 0px 0px 40px rgba(0, 0, 0, 0.24), 4px 4px 3px 40px #252020;
+  position: relative;
+  margin: 40px;
+}
+.more-movie-posters {
+  /*vignette effect*/
+  -webkit-box-shadow: inset 0 0 50px #000, inset 0 0 50px #000, inset 0 0 50px #000;
+  -moz-box-shadow: inset 0 0 50px #000, inset 0 0 50px #000, inset 0 0 50px #000;
+  box-shadow: inset 0 0 50px #000, inset 0 0 50px #000, inset 0 0 50px #000;
+}
+.movie-title-plaque {
+  background-image: url('../image/poster-title-plaque-a1.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 3rem;
+  width: 284px;
+  padding-top: .6rem;
+  padding-bottom: .9rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #242121;
+  margin-top: 2.2rem;
+  margin-bottom: 2.2rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.3rem;
+  font-family: 'Playfair Display SC';
+  font-weight: bold;
+}
+.many {
+  margin-top: .5rem;
+  margin-bottom: 5rem;
+}
+.coming-soon {
+  font-size: 42px;
+  position: relative;
+  width: 28.5rem;
+  height: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -1.9rem;
+  /* margin-top: 1rem; */
+  padding-top: .1rem;
+  padding-bottom: .1rem;
+  background-color: #101115;
+}
+
+.rating-icon {
+  /* float: left; */
+}
+.fa-heart {
+  color: rgba(255, 0, 0, 0.8);
+}
+/* .movie-title {
+  text-align: center;
+} */
+@font-face {
+  font-family: wagner;
+  src: url(wagner-zip-change.ttf);
+  font-style: normal;
+}
+@font-face {
+  font-family: bebas;
+  src: url(bebas-neue.otf);
+  font-style: normal;
+}
+@font-face {
+  font-family: marquee;
+  src: url(MARQUEE_.TTF);
+  font-style: normal;
+}
+@font-face {
+  font-family: beadchain;
+  src: url(BEADC___.TTF);
+  font-style: normal;
+} 
+
+.row {
+  max-width: 1200px;
+  min-width: 320px;
+  padding-left: 2.8%;
+  padding-right: 2.8%;
+  margin: 0 auto;
+}
+.col-12 {
+  float: left;
+  padding-left: 4%;
+  padding-right: 4%;
+  width: 100%;
+  margin-bottom: 40%;
+}
+
+/* SITE-WIDE VIEWPORT RESPONSE ========================== */
+@media only screen and (orientation: portrait) {
+  .video-screen {
+    margin-top: 10rem;
+  }
+  .keep-below-screen {
+    /* margin-top: 7rem; */
+  }
+}
+
+@media only screen and (max-width: 400px) and (orientation: portrait) {
+/*for-small-phone-portrait-only*/
+  .row {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .col-12 {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .movie-poster {
+    max-width: 200px;
+  }
+}
+@media only screen and (max-height: 400px) and (orientation: landscape) {
+/*for-small-phone-landscape-only*/
+}
+@media only screen and (max-width: 500px) and (min-width: 400px) and (orientation: portrait) {
+/*for-phone-portrait-only*/
+  .movie-poster {
+    max-width: 260px;
+  }
+}

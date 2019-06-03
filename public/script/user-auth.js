@@ -38,37 +38,22 @@ function userSignIn(username, pword, firstTime) {
       userName = username
       localStorage.setItem('auth', responseJson.authToken)
       getOmbdApiKey()
-      if (username === "Guest") {
-        renderPreviewInfo()
-      } else { 
-        if (firstTime) {
-          if (previewLibrary.length > 6) {
-            addGuestMoviesToDb() // in add-movie.js
-            welcomeUser(username, firstTime, true)
-          } else {
-            welcomeUser(username, firstTime)
-          }
+      if (firstTime) {
+        if (previewLibrary.length > 6) {
+          addGuestMoviesToDb() // in add-movie.js
+          welcomeUser(username, firstTime, true)
         } else {
-          welcomeUser(username)
+          welcomeUser(username, firstTime)
         }
-      }
+      } else if (username !== "Guest") {
+        welcomeUser(username)
+      } else {
+        renderPreviewInfo()
+      } 
     }
   })
-  /* .then(res => {
-    if (firstTime === true) {
-      if (previewLibrary.length > 6) {
-        addGuestMoviesToDb() // in add-movie.js
-        welcomeUser(username, true, true)
-      } else {
-        welcomeUser(username, true)
-      }
-    } else {
-      welcomeUser(username)
-    }
-  }) */
   .catch(err => {
     console.log("userSignIn() encountered an error")
-    // ok to use an alert here
   })
 }
 
@@ -112,11 +97,11 @@ function userSignUp(email, username, pword) {
   .catch(err => {
     console.log(err)
     console.log("userSignUp() encountered an unexpected error")
-    // ok to use an alert here
   })
 }
 
 function handleSignUpError(results) {
+// Display error to user if sign-up unsuccessful:
   console.log("handleSignUpError() ran")
   console.log(results.location + " " + results.message)
   $('.form-errors').html(
@@ -125,6 +110,7 @@ function handleSignUpError(results) {
 }
 
 function handleSignInError() {
+// Display error to user if sign-in unsuccessful:
   console.log("handleSignInError() ran")
   console.log("Incorrect username or password")
   $('.form-errors').html(
@@ -133,12 +119,12 @@ function handleSignInError() {
 }
 
 function welcomeUser(user, firstTime, addMovies) {
-/* Renders custom welcome screen after successful sign-in*/
+// Render custom welcome screen after successful sign-in: 
   console.log("welcomeUser() ran")
-  $('.dynamic-buttons').empty()
-  renderChairButtons()
+  emptyTheContainers() // in index.js
+  renderChairButtons("home")
   if (firstTime) {
-    $('.video-screen').html(
+    $('.video-screen').removeClass('hidden').html(
       `<div class="welcome-message">
           <h2>Welcome to revuer, ${user}!</h2>
           <p>Please click any of the chair buttons below to continue.</p>
@@ -154,16 +140,18 @@ function welcomeUser(user, firstTime, addMovies) {
       if (userName === "Guest") {
         $('.dynamic-buttons').html(
           `<button class="ticket" id="sign-up">sign-up</button>
-          <button class="ticket" id="sign-in">sign-in</button>`
+          <button class="ticket" id="sign-in">sign-in</button>
+          <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
         )
       }
     } else {
-      $('.video-screen').html(
+      $('.video-screen').removeClass('hidden').html(
         `<div class="welcome-messsage">
             <h2>Welcome back ${user}!</h2>
       `)
       $('.dynamic-buttons').html(
-        `<button class="ticket" id="manage-acct">Manage account</button>`
+        `<button class="ticket" id="manage-acct">Manage<br>account</button>
+        <script>$('.ticket').fitText(1, 'compressor * 4.9');</script>`
       )
     }
 }
@@ -177,14 +165,15 @@ function renderSignInForm() {
   $('.dynamic-buttons').html(
     `<button class="ticket" id="sign-in">sign-in</button>
     <button class="ticket" id="sign-up">sign-up</button>
-    <button class="ticket" id="preview">preview</button>`
+    <button class="ticket" id="preview">preview</button>
+    <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
-  $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
     `<div class="signin-box">
       <form class="signin-form" action="#">
         <h2>Sign in</h2>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required/>
+        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required autofocus/>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" minlength="10" maxlength="72" required/>
         <button type="submit">Sign in</button>
@@ -206,14 +195,15 @@ function renderSignUpForm() {
   $('.dynamic-buttons').html(
     `<button class="ticket" id="sign-in">sign-in</button>
     <button class="ticket" id="sign-up">sign-up</button>
-    <button class="ticket" id="preview">preview</button>`
+    <button class="ticket" id="preview">preview</button>
+    <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
-  $('.video-screen').html(
+  $('.video-screen').removeClass('hidden').html(
     `<div class="signup-box">
       <form class="signup-form" action="#">
         <h2>Sign up</h2>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="user@domain.com" required/>
+        <input type="email" name="email" id="email" placeholder="user@domain.com" required autofocus/>
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/>
         <label for="password">Password</label>
@@ -238,22 +228,21 @@ function renderSignUpForm() {
       $('.form-errors').html(
         `<p>Passwords don't match</p>`  
       )
-      /* alert("Passwords don't match") */
-      }
+    }
   })
 }
 
 function renderPreviewInfo() {
   console.log("renderPreviewInfo() ran")
-  $('.dynamic-buttons').empty()
-  $('.video-screen').html(
+  emptyTheContainers() // in index.js
+  $('.video-screen').removeClass('hidden').html(
     `<div class="preview-info">
       <h2>Welcome Guest!</h2>
       <p>This is a sneak preview of revuer.</p>
       <p>A sample library has been created for you.</p>
       <p>Please click any of the chair buttons below to continue.</p>`
     )
-  renderChairButtons() // in index.js
+  renderChairButtons("home") // in index.js
 }
 
 function getOmbdApiKey() {
