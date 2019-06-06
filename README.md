@@ -1,5 +1,5 @@
 # revuer
-Can't keep track of which movies you've seen? Revuer keeps track of every movie you've ever watched.
+Can't keep track of which movies you've seen? Revuer easily tracks every movie you've ever watched. Add ratings, reviews, and unlimited notes.
 
 Databases and spreadsheets can be dull: Revuer creates a virtual theater, visualizing your movie database with real-world objects. The theater becomes interactive: chairs turn into clickable buttons, film canisters become searchable fields, and movies are supplemented by data and images from the Open Movie Database API.
 
