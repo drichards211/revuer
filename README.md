@@ -1,7 +1,8 @@
 # revuer
-Every movie you've ever watched, visualized for quick review.
+Can't keep track of which movies you've seen? Revuer keeps track of every movie you've ever watched.
 
-Databases and spreadsheets can be dull: Revuer creates a virtual theater inside your web browser, visualizing a movie database with real-world objects. Ratings and reviews are represented by a newspaper rendered entirely in CSS. Movie titles are displayed by a lighted theater marquee. Colorful tickets are used for admission, (signing-in or signing-up).
+Databases and spreadsheets can be dull: Revuer creates a virtual theater, visualizing your movie database with real-world objects. The theater becomes interactive: chairs turn into clickable buttons, film canisters become searchable fields, and movies are supplemented by data and images from the Open Movie Database API.
+
 
 ***Please note, Revuer is still under development! Some functionality and styling is missing.
 
