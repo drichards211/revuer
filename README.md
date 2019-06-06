@@ -13,8 +13,11 @@ Features Under Development:
   * [ ] Add 'Cancel' button to addMovieDetails().
   * [ ] Create 'Manage Account' function: Allow user's to change username, change password, add full name (if desired), and delete account.
   * [ ] Add 'Are you sure?' prompt when deleting a movie.
+  * [ ] Add 'sign-out' button to home screen.
   
 Upcoming Features:
+  * [ ] Add sorting options and multi-page display for viewLibrary().
+  * [ ] Allow users to export their database as a spreadsheet or JSON object.
   
 Accessibility (a11y):
   * [ ] Entire page needs to be re-checked for a11y, (ARIA tags, full keyboard control, etc.).
@@ -22,15 +25,20 @@ Accessibility (a11y):
  
 Styling:
   * [ ] Add blank poster if movie poster is unavailable.
+  * [ ] Remove white background from film buttons when newspaper is visible.
   * [ ] Add CSS Grid layout to movie results pages, 3 columns maximum.
   * [ ] Import finalized movie-canister image for addMovie() page.
   * [ ] Allow image to rotate 90 degrees clockwise on phone portrait mode.
   * [ ] Create a CSS 'label' (to contain search form) centered on aforementioned movie-canister image.
+  * [ ] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
   * [ ] Style the 'Yes' and 'No' buttons.
   * [ ] Style the 'sign-up' and 'log-in' forms.
   * [ ] Reduce the size of chairs on phone landscape mode.
+  * [ ] Update movie poster displays with "Now Showing" frame.
+  
     
 Housekeeping:
+  * [ ] Add tests to remaining server endpoints. (User auth is already good).
      
 Troubleshooting:
   * [ ] '#movie-not-here' button doesn't work on renderMoreApiResults().
