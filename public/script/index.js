@@ -171,9 +171,9 @@ function playCountdown() {
     $('.video-screen').html(
       `<div class="video-text">
         <h1 class="title">revuer</h1>
-        <p id="welcome-text-1" style="display: none;">animated text 1</p>
-        <p id="welcome-text-2" style="display: none;">animated text 2</p>
-        <p id="welcome-text-3" style="display: none;">animated text 3</p>
+        <p id="welcome-text-1" style="display: none;">WARNING: Revuer is a work in progress!</p>
+        <p id="welcome-text-2" style="display: none;">Styling, content, and functionality are incomplete.</p>
+        <p id="welcome-text-3" style="display: none;">Please enjoy this demo, and check-out the README.md for more details.</p>
         <p id="welcome-text-4" style="display: none;">animated text 4</p>
         <p id="welcome-text-5" style="display: none;">animated text 5</p>
         <div class="user-forms"></div>

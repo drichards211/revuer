@@ -240,7 +240,8 @@ function renderPreviewInfo() {
       <h2>Welcome Guest!</h2>
       <p>This is a sneak preview of revuer.</p>
       <p>A sample library has been created for you.</p>
-      <p>Please click any of the chair buttons below to continue.</p>`
+      <p>Please click any of the chair buttons below to continue.</p>
+      <p>WARNING: Revuer is a work in progress.`
     )
   renderChairButtons("home") // in index.js
 }
