@@ -14,7 +14,8 @@ function addMovie(oldSearch) {
           <input type="text" name="movietitle" id="movietitle" placeholder="eg: Titanic" required="" autofocus="" class="film-label">
           <button type="submit">Search</button>
         </form>
-        <img src="../image/gold-cannister-dual.png" alt="Film Cannister" class="cannister-img">
+        <img src="../image/gold-cannister.png" alt="Film Cannister" class="cannister-img">
+        <img src="../image/gold-cannister-vertical.png" alt="Film Cannister" class="cannister-vertical-img">
       </div>
     </div>`)
   $('.movie-find-form').submit(function(event) {

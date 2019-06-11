@@ -296,12 +296,32 @@ button:active {
   width: 100%;
   max-width: 100%;
 }
-@media only screen and (max-height: 800px) and (orientation: landscape) {
+@media only screen and (max-width: 900px) {
   .movie-find-box {
-    margin-top: calc(10vh);
+    margin-top: calc(8vh);
+  }
+}
+@media only screen and (max-width: 420px) {
+  .movie-find-box {
+    margin-top: calc(5vh);
+  }
+}
+@media only screen and (max-height: 900px) and (orientation: landscape) {
+  .movie-find-box {
+    margin-top: calc(8vh);
+  }
+}
+@media only screen and (max-height: 900px) and (max-width: 900px) and (orientation: landscape) {
+  .movie-find-box {
+    margin-top: calc(8vh);
   }
 }
 @media only screen and (max-height: 450px) and (orientation: landscape) {
+  .movie-find-box {
+    margin-top: calc(2vh);
+  }
+}
+@media only screen and (max-height: 450px) and (max-width: 900px) and (orientation: landscape) {
   .movie-find-box {
     margin-top: calc(2vh);
   }
@@ -326,6 +346,26 @@ button:active {
   height: auto;
   margin-left: auto;
   margin-right: auto;
+}
+.cannister-vertical-img {
+  position: relative;
+  display: none;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (max-width: 900px) {
+  .cannister-img {
+    display: none;
+  }
+  .cannister-vertical-img {
+    display: block;
+  }
+  /* .movie-find-box {
+    margin-top: calc(10vh);
+  } */
 }
 .film-label {
   position: absolute;
