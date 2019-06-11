@@ -6,7 +6,7 @@ Databases and spreadsheets can be dull: Revuer creates a virtual theater, visual
 
 ***Please note, Revuer is still under development! Some functionality and styling is missing.
 
-Please don your hard-hats and check out the live version [here:](https://revuer.herokuapp.com/)
+Please don your hard-hats and check out the live version: [https://revuer.herokuapp.com/](https://revuer.herokuapp.com/)
 
 Features to be added are listed below, along with required bugfixes and styling notes.
 
@@ -28,7 +28,7 @@ Styling:
   * [ ] Add blank poster if movie poster is unavailable.
   * [ ] Remove white background from film buttons when newspaper is visible.
   * [ ] Add CSS Grid layout to movie results pages, 3 columns maximum.
-  * [ ] Import finalized movie-canister image for addMovie() page.
+  * [X] Import finalized movie-canister image for addMovie() page.
   * [ ] Allow image to rotate 90 degrees clockwise on phone portrait mode.
   * [ ] Create a CSS 'label' (to contain search form) centered on aforementioned movie-canister image.
   * [ ] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
