@@ -42,6 +42,7 @@ Housekeeping:
   * [ ] Add tests to remaining server endpoints. (User auth is already good).
      
 Troubleshooting:
+  * [ ] Chairs don't always center correctly on initial page load in Chrome if devTools turned off.
   * [ ] '#movie-not-here' button doesn't work on renderMoreApiResults().
   * [ ] Android soft-keyboard should be auto-hidden when the search-form is submitted.
   * [ ] '.video-screen' width needs to be reduced slightly on iPad landscape mode.
