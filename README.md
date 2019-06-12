@@ -29,7 +29,7 @@ Styling:
   * [ ] Remove white background from film buttons when newspaper is visible.
   * [ ] Add CSS Grid layout to movie results pages, 3 columns maximum.
   * [X] Import finalized movie-canister image for addMovie() page.
-  * [ ] Allow image to rotate 90 degrees clockwise on phone portrait mode.
+  * [X] Allow image to rotate 90 degrees clockwise on phone portrait mode.
   * [ ] Create a CSS 'label' (to contain search form) centered on aforementioned movie-canister image.
   * [ ] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
   * [ ] Style the 'Yes' and 'No' buttons.
