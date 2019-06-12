@@ -4,7 +4,7 @@ Can't keep track of which movies you've seen? Revuer easily tracks every movie y
 Databases and spreadsheets can be dull: Revuer creates a virtual theater, visualizing your movie database with real-world objects. The theater becomes interactive: chairs turn into clickable buttons, film canisters become searchable fields, and movies are supplemented by data and images from the Open Movie Database API.
 
 
-***Please note, Revuer is still under development! Some functionality and styling is missing.
+***Please note, Revuer is still under development! Some functionality and styling is incomplete.***
 
 Please don your hard-hats and check out the live version: [https://revuer.herokuapp.com/](https://revuer.herokuapp.com/)
 
@@ -27,10 +27,11 @@ Accessibility (a11y):
 Styling:
   * [ ] Add blank poster if movie poster is unavailable.
   * [ ] Remove white background from film buttons when newspaper is visible.
+  * [ ] Replace film button image with photo-realistic version.
   * [ ] Add CSS Grid layout to movie results pages, 3 columns maximum.
   * [X] Import finalized movie-canister image for addMovie() page.
-  * [X] Allow image to rotate 90 degrees clockwise on phone portrait mode.
-  * [ ] Create a CSS 'label' (to contain search form) centered on aforementioned movie-canister image.
+  * [X] Allow canister image to rotate 90 degrees clockwise on phone portrait mode.
+  * [ ] Center and resize the movie search form onto the aforementioned movie-canister image.
   * [ ] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
   * [ ] Style the 'Yes' and 'No' buttons.
   * [ ] Style the 'sign-up' and 'log-in' forms.
