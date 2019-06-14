@@ -10,8 +10,8 @@ function addMovie(oldSearch) {
     `<div class="movie-find-box">
       <div class="film-cannister">
         <form class="movie-find-form" action="#">
-          <label for="movietitle">Add a movie:</label>
-          <textarea name="movietitle" id="movietitle" placeholder="Enter title:" required="" autofocus="" class="film-label" rows="3" cols="15" spellcheck="false"/>
+          <label for="movietitle">Search for movie title:</label>
+          <textarea name="movietitle" id="movietitle" placeholder="eg: Titanic" required="" autofocus="" class="film-label" rows="3" cols="15" spellcheck="false"/>
           <script>$('#movietitle').fitText(1, 'compressor * 7.5');</script>
           <button type="submit" id="movietitle-button">Search</button>
           <script>$('#movietitle-button').fitText(1, 'compressor * 3');</script>
