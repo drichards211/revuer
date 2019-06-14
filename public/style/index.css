@@ -344,7 +344,7 @@ button:active {
 .film-label {
   position: absolute;
   width: 200px;
-  top: 52.9%;
+  top: 53.5%; /* 52.9%; */
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
@@ -371,6 +371,34 @@ button:active {
   font-family: 'Special Elite', cursive;
   font-size: 200%;
   color: #0c0c0c;
+}
+#movietitle-button {
+  position: absolute;
+  left: 50.4%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  top: 66%;
+  /* top: 66.1%; */
+  z-index: +1;
+  font-size: 240%;
+  /* font-size: 179%; */
+  font-family: 'bebas';
+  /* color: rgb(222, 222, 222); */
+  /* background: #ad0000;
+  border: #ad0000; */
+  color: #080808;
+  background: #ae9e46;
+  /* border: transparent; */
+  /* background: #080808;
+    border: #080808; */
+  /* border-style: solid;
+  border-width: 4px; */
+  border-radius: 11px;
+  padding-top: .1rem;
+  padding-left: .2rem;
+  padding-right: .2rem;
+  width: 87px;
+  max-width: 18.7%;
 }
 .movie-find-box ::placeholder {
   font-family: 'Special Elite', cursive;
