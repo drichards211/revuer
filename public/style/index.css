@@ -368,6 +368,7 @@ button:active {
   -moz-text-align-last: center;
   text-align-last: center;
   padding: 0;
+  max-width: 40%;
 }
 .movie-find-form ::placeholder {
   color: rgb(80, 80, 80);

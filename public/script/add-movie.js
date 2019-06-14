@@ -11,7 +11,8 @@ function addMovie(oldSearch) {
       <div class="film-cannister">
         <form class="movie-find-form" action="#">
           <label for="movietitle">Title:</label>
-          <textarea name="movietitle" id="movietitle" placeholder="Enter title - eg: Titanic" required="" autofocus="" class="film-label" rows="3" cols="15"/>
+          <textarea name="movietitle" id="movietitle" placeholder="Enter title:" required="" autofocus="" class="film-label" rows="3" cols="15" spellcheck="false"/>
+          <script>$('#movietitle').fitText(1, 'compressor * 7.5');</script>
           <button type="submit">Search</button>
         </form>
         <img src="../image/gold-canister-single-label.png" alt="Film Cannister" class="cannister-img">
