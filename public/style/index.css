@@ -489,7 +489,12 @@ button:active {
 }
 
 .library-marquee {
-  margin-top: 3rem;
+  margin-top: 10rem;
+}
+@media only screen and (max-height: 760px) {
+  .library-marquee {
+    margin-top: 3rem;
+  }
 }
 
 .now-showing-button {
