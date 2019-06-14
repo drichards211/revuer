@@ -344,7 +344,7 @@ button:active {
 .film-label {
   position: absolute;
   width: 200px;
-  top: 53.5%; /* 52.9%; */
+  top: 52.9%; /* 53%; *//* 53.5%; */ 
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
