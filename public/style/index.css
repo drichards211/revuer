@@ -117,7 +117,7 @@ nav {
   width: 100%;
   font-size: 0px; /*Removes gap between buttons*/
   text-align: center;
-  
+  z-index: +2;  
 }
 .hidden {
   display: none;
@@ -347,40 +347,39 @@ button:active {
   margin-left: auto;
   margin-right: auto;
 }
-.cannister-vertical-img {
-  position: relative;
-  display: none;
-  border-style: none;
-  max-width: 100%;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media only screen and (max-width: 900px) {
-  .cannister-img {
-    display: none;
-  }
-  .cannister-vertical-img {
-    display: block;
-  }
-  /* .movie-find-box {
+/* .movie-find-box {
     margin-top: calc(10vh);
   } */
-}
+
 .film-label {
   position: absolute;
   width: 200px;
-  top: 51.5%;
-  left: 52%;
+  top: 52.9%;
+  left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
   background: transparent;
   border: none;
   z-index: +1;
 }
+.movie-find-form textarea {
+  white-space: normal;
+  text-align: center;
+  -moz-text-align-last: center;
+  text-align-last: center;
+  padding: 0;
+}
+.movie-find-form ::placeholder {
+  color: rgb(80, 80, 80);
+  opacity: 1;
+}
+.movie-find-form ::-ms-input-placeholder {
+  color: rgb(80, 80, 80);
+}
 #movietitle {
   font-family: 'Special Elite', cursive;
   font-size: 200%;
+  color: #0c0c0c;
 }
 .movie-find-box ::placeholder {
   font-family: 'Special Elite', cursive;
