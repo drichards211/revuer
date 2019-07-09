@@ -44,6 +44,7 @@ Housekeeping:
   * [ ] Add tests to remaining server endpoints. (User auth is already good).
      
 Troubleshooting:
+  * [ ] In the movie search textarea, trigger the submit button when the user presses Enter.
   * [ ] Chairs don't always center correctly on initial page load in Chrome if devTools turned off.
   * [ ] '#movie-not-here' button doesn't work on renderMoreApiResults().
   * [ ] Android soft-keyboard should be auto-hidden when the search-form is submitted.
