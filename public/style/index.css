@@ -92,7 +92,7 @@ input {
   font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
-  margin-top: 1.7rem;
+  margin-top: 0.7rem;
 }
 .film-buttons {
   position: relative;
@@ -685,5 +685,11 @@ button:active {
 /*for-phone-portrait-only*/
   .movie-poster {
     max-width: 260px;
+  }
+}
+@media only screen and (max-height: 900px) and (orientation: landscape) {
+  .video-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
