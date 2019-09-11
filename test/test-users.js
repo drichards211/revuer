@@ -435,7 +435,7 @@ describe('/api/user', function () {
       })  */
     }) 
 
-    describe('GET', function () {
+    /* describe('GET', function () {
       it('Should return an empty array initially', function () {
         return chai.request(app).get('/api/users').then(res => {
           expect(res).to.have.status(200) 
@@ -471,6 +471,6 @@ describe('/api/user', function () {
             }) 
           }) 
       }) 
-    }) 
+    }) */ 
   }) 
 }) 
