@@ -147,6 +147,7 @@ nav {
 }
 .chair-plaque {
   /* display:block; */
+  transition: all 0s;
   float: left;
   width: 20rem;
   max-width: calc(33vw);
@@ -216,6 +217,7 @@ button:active {
   transform: scale(0.99);
 }
 .ticket {
+  transition: all 0s;
   width: 13rem;
   max-width: 29vw;
   height: 6.5rem;
