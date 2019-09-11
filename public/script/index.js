@@ -111,19 +111,29 @@ function renderChairButtons(home) {
     <div class="chair inline"></div>
     `
   )
-  if (home) {
+  if (userName === undefined) {
     $('.chair-button-wrapper').append(
-      `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
+      `<div class="chair inline"></div>
+      <div class="chair inline"></div>
+      <div class="chair inline"></div>`
     )
-  } else {
+  } else { 
+    if (home) {
+      $('.chair-button-wrapper').append(
+        `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
+      )
+    } else {
+      $('.chair-button-wrapper').append(
+        `<button class="chair-plaque" id="chair-1">HOME</button>`  
+      )
+    }
     $('.chair-button-wrapper').append(
-      `<button class="chair-plaque" id="chair-1">HOME</button>`  
+      `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
+      <button class="chair-plaque" id="chair-3">VIEW LIBRARY</button>`
     )
   }
   $('.chair-button-wrapper').append(
-  `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
-  <button class="chair-plaque" id="chair-3">VIEW LIBRARY</button>
-  <div class="chair inline"></div>
+  `<div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
@@ -161,11 +171,10 @@ function updateDOMTest() {
 }
 
 function playCountdown() {
-  /* $('.video-wrapper').addClass('maintain-size') */
   $('.video-screen').html(
-    `<video controls autoplay id="film-leader" width="100%" height="auto"> 
+    `<video controls autoplay muted id="film-leader" width="100%" height="auto" playsinline=""> 
     <source src="/image/film-leader-countdown-4.mp4" type="video/mp4">
-    <video>`
+    </video>`
   )
   document.getElementById('film-leader').addEventListener('ended', function() {
     $('.video-screen').html(
@@ -256,11 +265,11 @@ function manageWindowResize() {
   console.log("manageWindowResize() running")
 // set initial values: 
   console.log("setting initial theater size") 
-  let initialMainContainerWidth = $('.main-container').css('width')
+  let initialVideoWrapperWidth = $('.video-wrapper').css('width')
   let initialChairWidth = $('.chair').css('width')
   let mediaQuery = window.matchMedia("(max-width: 500px)")
   let initialFilmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
-  $('.video-screen').css({'height': `calc(${initialMainContainerWidth} * .5625)`})
+  $('.video-screen').css({'height': `calc(${initialVideoWrapperWidth} * .5625)`})
   $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
   $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
 // Update values if window resized:
@@ -269,9 +278,9 @@ function manageWindowResize() {
     $('.chair-buttons').css({"display": "block"}) 
     // Chairs must be visible to obtain accurate .css('width')
     let chairWidth = $('.chair').css('width')
-    let mainContainerWidth = $('.main-container').css('width')
+    let videoWrapperWidth = $('.video-wrapper').css('width')
     let filmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
-    $('.video-screen').css({'height': `calc(${mainContainerWidth} * .5625)`})
+    $('.video-screen').css({'height': `calc(${videoWrapperWidth} * .5625)`})
     $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
     $('.film-button-wrapper').css({'width': `calc(${filmButtonWidth} * 18)`, 'transform': `translateX(calc(((${filmButtonWidth} * 18) - 100vw)* -.5))`})
   }
