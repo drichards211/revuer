@@ -111,19 +111,29 @@ function renderChairButtons(home) {
     <div class="chair inline"></div>
     `
   )
-  if (home) {
+  if (userName === undefined) {
     $('.chair-button-wrapper').append(
-      `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
+      `<div class="chair inline"></div>
+      <div class="chair inline"></div>
+      <div class="chair inline"></div>`
     )
-  } else {
+  } else { 
+    if (home) {
+      $('.chair-button-wrapper').append(
+        `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
+      )
+    } else {
+      $('.chair-button-wrapper').append(
+        `<button class="chair-plaque" id="chair-1">HOME</button>`  
+      )
+    }
     $('.chair-button-wrapper').append(
-      `<button class="chair-plaque" id="chair-1">HOME</button>`  
+      `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
+      <button class="chair-plaque" id="chair-3">VIEW LIBRARY</button>`
     )
   }
   $('.chair-button-wrapper').append(
-  `<button class="chair-plaque" id="chair-2">ADD A MOVIE</button>
-  <button class="chair-plaque" id="chair-3">VIEW LIBRARY</button>
-  <div class="chair inline"></div>
+  `<div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
   <div class="chair inline"></div>
