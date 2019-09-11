@@ -171,11 +171,10 @@ function updateDOMTest() {
 }
 
 function playCountdown() {
-  /* $('.video-wrapper').addClass('maintain-size') */
   $('.video-screen').html(
-    `<video controls autoplay id="film-leader" width="100%" height="auto"> 
+    `<video controls autoplay muted id="film-leader" width="100%" height="auto" playsinline=""> 
     <source src="/image/film-leader-countdown-4.mp4" type="video/mp4">
-    <video>`
+    </video>`
   )
   document.getElementById('film-leader').addEventListener('ended', function() {
     $('.video-screen').html(
