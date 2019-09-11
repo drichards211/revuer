@@ -26,7 +26,7 @@ Accessibility (a11y):
  
 Styling:
   * [ ] Add blank poster if movie poster is unavailable.
-  * [ ] Remove white background from film buttons when newspaper is visible.
+  * [X] Remove white background from film buttons when newspaper is visible.
   * [ ] Replace film button image with photo-realistic version.
   * [ ] Add CSS Grid layout to movie results pages, 3 columns maximum.
   * [X] Import finalized movie-canister image for addMovie() page.
@@ -48,7 +48,7 @@ Troubleshooting:
   * [ ] Chairs don't always center correctly on initial page load in Chrome if devTools turned off.
   * [ ] '#movie-not-here' button doesn't work on renderMoreApiResults().
   * [ ] Android soft-keyboard should be auto-hidden when the search-form is submitted.
-  * [ ] '.video-screen' width needs to be reduced slightly on iPad landscape mode.
+  * [X] '.video-screen' width needs to be reduced slightly on iPad landscape mode.
   * [ ] 'Movie edit screen' persists under some circumstances.
   * [ ] Fix layout if library is empty.
   
