@@ -173,10 +173,18 @@ function updateDOMTest() {
 function playCountdown() {
   $('.video-screen').html(
     `<video controls autoplay muted id="film-leader" width="100%" height="auto" playsinline=""> 
-    <source src="/image/film-leader-countdown-4.mp4" type="video/mp4">
+    <source src="/image/film-leader-countdown-5.mp4" type="video/mp4">
     </video>`
   )
   document.getElementById('film-leader').addEventListener('ended', function() {
+    setTimeout(function() {
+      $('.video-screen').append(
+        `<video autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop=""> 
+        <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+        </video>`
+      )
+    }, 1000);
+    
     $('.video-screen').html(
       `<div class="video-text">
         <h1 class="title">revuer</h1>
