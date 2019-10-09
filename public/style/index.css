@@ -91,7 +91,12 @@ input {
   margin-left: 6.5%;
   margin-right: 6.5%;
 }
-
+.video-text h1 {
+  margin-bottom: -1rem;
+}
+.video-text h2 {
+  margin-bottom: -.25rem;
+}
 .dynamic-buttons {
   /* overflow: hidden; */
   font-family: 'bebas';
@@ -456,9 +461,9 @@ button:active {
   padding-right: 8px;
   margin-bottom: 3rem; /* 33px; */
 }
-.video-text h1 {
+/* .video-text h1 {
   margin-bottom: -1rem;
-}
+} */
 .success-message h2 {
   margin-top: 2.3rem;
   margin-bottom: -.5rem;
@@ -709,6 +714,12 @@ button:active {
 /*for-phone-portrait-only*/
   .movie-poster {
     max-width: 260px;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .video-text {
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
 @media only screen and (max-height: 900px) and (orientation: portrait) {

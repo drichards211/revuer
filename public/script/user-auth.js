@@ -129,7 +129,7 @@ function welcomeUser(user, firstTime, addMovies) {
       <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
       </video>
       <div class="welcome-message video-text">
-        <h2>Welcome to revuer, ${user}!</h2>
+        <h2>Welcome to revuer, ${user}</h2>
         <p>Please click any of the chair buttons below to continue. Have fun revue-ing your movie experiences!</p>`
       )
       {/*  */}
@@ -153,7 +153,7 @@ function welcomeUser(user, firstTime, addMovies) {
         <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
         </video>
         <div class="welcome-messsage video-text">
-          <h2>Welcome back ${user}!</h2>
+          <h2>Welcome back ${user}</h2>
       `)
       $('.dynamic-buttons').html(
         `<button class="ticket" id="manage-acct">Manage<br>account</button>
@@ -246,7 +246,7 @@ function renderPreviewInfo() {
     <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
     </video>
     <div class="preview-info video-text">
-      <h2>Welcome Guest!</h2>
+      <h2>Welcome Guest</h2>
       <p>This is a sneak preview of revuer. A sample library has been created for you.</p>
     </div>`
     )
