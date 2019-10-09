@@ -172,14 +172,14 @@ function updateDOMTest() {
 
 function playCountdown() {
   $('.video-screen').html(
-    `<video controls autoplay muted id="film-leader" width="100%" height="auto" playsinline=""> 
+    `<video autoplay muted id="film-leader" width="100%" height="auto" playsinline=""> 
     <source src="/image/film-leader-countdown-5.mp4" type="video/mp4">
     </video>`
   )
   document.getElementById('film-leader').addEventListener('ended', function() {
     setTimeout(function() {
       $('.video-screen').append(
-        `<video autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop=""> 
+        `<video autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
         <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
         </video>`
       )
