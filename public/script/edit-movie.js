@@ -166,7 +166,10 @@ async function renderEditMessage(editedMovie, index, guest) {
   if (guest === true) {
   // Display customized message and buttons for "Guest" account:
   $('.video-screen').removeClass('hidden').html(
-      `<div class="success-message">
+      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+      <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+      </video>
+      <div class="success-message video-text">
       <h2>${editedMovie.title}</h2> 
       <p>has been updated in your virtual library.</p>
       <p>If you'd like to save your changes permanently, please sign-up for an account.</p>`
@@ -200,7 +203,10 @@ async function renderEditMessage(editedMovie, index, guest) {
   } else {
   // Render success message for registered users:
   $('.video-screen').removeClass('hidden').html(
-      `<div class="success-message">
+      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+        <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+        </video>
+        <div class="success-message video-text">
         <h2>${editedMovie.title}</h2> 
         <p>has been successfully updated.</p>`
     )
@@ -256,7 +262,10 @@ function deleteMovieInDb(omdbMovie, index) {
         console.log("response OK")
         console.log("Movie deleted successfully")
         $('.video-screen').removeClass('hidden').html(
-          `<div class="success-message">
+          `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+            <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+            </video>
+            <div class="success-message video-text">
             <h2>${libraryResults[index].title}</h2> 
             <p>has been successfully deleted.</p>`
         )

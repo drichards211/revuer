@@ -156,7 +156,10 @@ function aboutRevuer() {
   emptyTheContainers()
   /* $('.dynamic-buttons').empty() */
   $('.video-screen').removeClass('hidden').html(
-    `<div class="about-revuer">
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+    </video>
+    <div class="about-revuer video-text">
       <h2>About revuer</h2>
       <p>This is placeholder text about revuer</p>
     </div>`
@@ -171,33 +174,65 @@ function updateDOMTest() {
 }
 
 function playCountdown() {
+  console.log('playCountdown() ran')
   $('.video-screen').html(
-    `<video controls autoplay muted id="film-leader" width="100%" height="auto" playsinline=""> 
-    <source src="/image/film-leader-countdown-4.mp4" type="video/mp4">
+    `<video id="film-leader" autoplay muted width="100%" height="auto" playsinline=""> 
+    <source src="/image/film-leader-countdown-5.mp4" type="video/mp4">
     </video>`
   )
-  document.getElementById('film-leader').addEventListener('ended', function() {
-    $('.video-screen').html(
-      `<div class="video-text">
-        <h1 class="title">revuer</h1>
-        <p id="welcome-text-1" style="display: none;">WARNING: Revuer is a work in progress!</p>
-        <p id="welcome-text-2" style="display: none;">Styling, content, and functionality are incomplete.</p>
-        <p id="welcome-text-3" style="display: none;">Please enjoy this demo, and check-out the README.md for more details.</p>
-        <p id="welcome-text-4" style="display: none;">animated text 4</p>
-        <p id="welcome-text-5" style="display: none;">animated text 5</p>
-        <div class="user-forms"></div>
-      </div>`
+  let playPromise = document.querySelector('#film-leader').play()
+  if (playPromise !== undefined) {
+  // Browser supports media playback promises:
+  console.log('Browser supports media playback promises:')
+    playPromise.then(function() {
+    // Automatic playback STARTED:
+      console.log('Automatic playback STARTED:')
+      console.log('Waiting for countdown video to end:')  
+      document.getElementById('film-leader').addEventListener('ended', function() {
+      // Wait for video to end, then call:
+        playSilentLoop()
+      })
+    }).catch(function(error) {
+    // Automatic playback FAILED. Jump immediately to silent-loop-video:
+      console.log('Automatic playback FAILED, starting silent-loop-video:')
+      playSilentLoop()
+    })
+  } else {
+  // Browser doesn't support playback promises. Advance directly to:
+    console.log('Browser doesn\'t support playback promises, skipping countdown video')
+    playSilentLoop()
+  }
+}
+
+function playSilentLoop() {
+  console.log('playSilentLoop() ran')
+  setTimeout(function() {
+    $('.video-screen').append(
+      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+      <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+      </video>`
     )
-    $('.title').addClass('hidden')
-    setTimeout(function() {
-      $('.title').fadeIn(3000)
-    }, 1000);
-    setTimeout(function() { 
-      /* $('.video-wrapper').removeClass('maintain-size') */
-      textAnimate = true
-      animateWelcomeText()
-    }, 3000);
-  })
+  }, 1000);
+  $('.video-screen').html(
+    `<div class="video-text">
+      <h1 class="title">revuer</h1>
+      <p id="welcome-text-1" style="display: none;">WARNING: Revuer is a work in progress!</p>
+      <p id="welcome-text-2" style="display: none;">Styling, content, and functionality are incomplete.</p>
+      <p id="welcome-text-3" style="display: none;">Please enjoy this demo, and check-out the README.md for more details.</p>
+      <p id="welcome-text-4" style="display: none;">animated text 4</p>
+      <p id="welcome-text-5" style="display: none;">animated text 5</p>
+      <div class="user-forms"></div>
+    </div>`
+  )
+  $('.title').addClass('hidden')
+  setTimeout(function() {
+    $('.title').fadeIn(3000)
+  }, 1000);
+  setTimeout(function() { 
+    /* $('.video-wrapper').removeClass('maintain-size') */
+    textAnimate = true
+    animateWelcomeText()
+  }, 3000);
 }
 
 function animateWelcomeText(index) {

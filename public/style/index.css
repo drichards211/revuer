@@ -56,13 +56,13 @@ input {
   /* padding-top: 56.25%; */
   margin-top: 1.25rem;
   text-align: center;
-  color: black;
-  background-color: rgb(246, 246, 244);
-  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, 0.75);
-  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75);
-  box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75);
-  font-family: 'EB Garamond';
-  font-size: 1.2rem;
+  color: #d6d6d6;
+  background-color: black;
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, 0.75);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
+  box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
+  font-family: 'Silentina'; /* 'EB Garamond'; */
+  font-size: 1.3rem;
   font-weight: 600; 
   /* background-image: url(..\image\still-frame.jpg); */
   /* background-color: white; */
@@ -81,10 +81,21 @@ input {
 }
 
 .video-text {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+  z-index: +1;
+  color: #cecece;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin-left: 6.5%;
+  margin-right: 6.5%;
+}
+.video-text h1 {
+  margin-bottom: -1rem;
+}
+.video-text h2 {
+  margin-bottom: -.25rem;
 }
 .dynamic-buttons {
   /* overflow: hidden; */
@@ -450,6 +461,16 @@ button:active {
   padding-right: 8px;
   margin-bottom: 3rem; /* 33px; */
 }
+/* .video-text h1 {
+  margin-bottom: -1rem;
+} */
+.success-message h2 {
+  margin-top: 2.3rem;
+  margin-bottom: -.5rem;
+}
+.welcome-message h2 {
+  margin-top: 2.3rem;
+}
 /* MOVIE MARQUEE viewport adjustments ============================ */
 @media only screen and (max-width: 800px) {
   .movie-list {
@@ -624,6 +645,11 @@ button:active {
   font-style: normal;
 }
 @font-face {
+  font-family:"Silentina";
+  src: url(silentina-woi-movie.ttf);
+  font-style: normal;
+}
+@font-face {
   font-family: bebas;
   src: url(bebas-neue.otf);
   font-style: normal;
@@ -680,11 +706,25 @@ button:active {
 }
 @media only screen and (max-height: 400px) and (orientation: landscape) {
 /*for-small-phone-landscape-only*/
+  .video-screen {
+    font-size: 1rem;
+  }
 }
 @media only screen and (max-width: 500px) and (min-width: 400px) and (orientation: portrait) {
 /*for-phone-portrait-only*/
   .movie-poster {
     max-width: 260px;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .video-text {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+@media only screen and (max-height: 900px) and (orientation: portrait) {
+  .video-screen {
+    font-size: 1rem;
   }
 }
 @media only screen and (max-height: 900px) and (orientation: landscape) {
