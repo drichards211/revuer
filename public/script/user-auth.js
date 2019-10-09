@@ -179,9 +179,9 @@ function renderSignInForm() {
       <form class="signin-form" action="#">
         <h2>Sign in</h2>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required autofocus/>
+        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required autofocus/><br>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" minlength="10" maxlength="72" required/>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" minlength="10" maxlength="72" required/><br>
         <button type="submit">Sign in</button>
       </form>
       <div class="form-errors"></div>
@@ -209,13 +209,13 @@ function renderSignUpForm() {
       <form class="signup-form" action="#">
         <h2>Sign up</h2>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="user@domain.com" required autofocus/>
+        <input type="email" name="email" id="email" placeholder="user@domain.com" required autofocus/><br>
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/>
+        <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/><br>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/><br>
         <label for="password">Re-enter password</label>
-        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/>
+        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/><br>
         <button type="submit">Sign up</button>
       </form>
       <div class="form-errors"></div>
