@@ -125,11 +125,14 @@ function welcomeUser(user, firstTime, addMovies) {
   renderChairButtons("home")
   if (firstTime) {
     $('.video-screen').removeClass('hidden').html(
-      `<div class="welcome-message">
-          <h2>Welcome to revuer, ${user}!</h2>
-          <p>Please click any of the chair buttons below to continue.</p>
-          <p>Have fun revue-ing your movie experiences!</p><br>`
+      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+      <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+      </video>
+      <div class="welcome-message video-text">
+        <h2>Welcome to revuer, ${user}!</h2>
+        <p>Please click any of the chair buttons below to continue. Have fun revue-ing your movie experiences!</p>`
       )
+      {/*  */}
       if (addMovies) {
         console.log("Adding additional welcome message")
         const plural = previewLibrary.length > 7 ? "movies have" : "movie has";
@@ -146,8 +149,11 @@ function welcomeUser(user, firstTime, addMovies) {
       }
     } else {
       $('.video-screen').removeClass('hidden').html(
-        `<div class="welcome-messsage">
-            <h2>Welcome back ${user}!</h2>
+        `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+        <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+        </video>
+        <div class="welcome-messsage video-text">
+          <h2>Welcome back ${user}!</h2>
       `)
       $('.dynamic-buttons').html(
         `<button class="ticket" id="manage-acct">Manage<br>account</button>
@@ -236,13 +242,15 @@ function renderPreviewInfo() {
   console.log("renderPreviewInfo() ran")
   emptyTheContainers() // in index.js
   $('.video-screen').removeClass('hidden').html(
-    `<div class="preview-info">
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+    </video>
+    <div class="preview-info video-text">
       <h2>Welcome Guest!</h2>
-      <p>This is a sneak preview of revuer.</p>
-      <p>A sample library has been created for you.</p>
-      <p>Please click any of the chair buttons below to continue.</p>
-      <p>WARNING: Revuer is a work in progress.`
+      <p>This is a sneak preview of revuer. A sample library has been created for you.</p>
+    </div>`
     )
+    {/* <p>Please click any of the chair buttons below to continue.</p> */}
   renderChairButtons("home") // in index.js
 }
 

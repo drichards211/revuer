@@ -325,7 +325,10 @@ async function renderSuccessMessage(newMovie, guest) {
     // Display customized message and buttons for "Guest" account:
       emptyTheContainers() // in index.js
       $('.video-screen').removeClass('hidden').html(
-        `<div class="success-message">
+        `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+        <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+        </video>
+        <div class="success-message video-text">
         <h2>${title}</h2> 
         <p>has been added to your virtual library.</p>
         <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
@@ -365,7 +368,10 @@ async function renderSuccessMessage(newMovie, guest) {
   // Render success message for registered user:
     emptyTheContainers() // in index.js
     $('.video-screen').removeClass('hidden').html(
-      `<div class="success-message">
+      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+        <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+        </video>
+        <div class="success-message video-text">
         <h2>${title}</h2> 
         <p>has been added to your library.</p>`
     )
@@ -408,8 +414,13 @@ function suggestNewSearch(oldSearch) {
   /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js
   $('.video-screen').removeClass('hidden').html(
-    `<p>We couldn't find any movies with that title.</p>
-    <p>Please click 'Add a movie' to try again.</p>`
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+      <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+      </video>
+      <div class="video-text">
+      <p>We couldn't find any movies with that title.</p>
+      <p>Please click 'Add a movie' to try again.</p>
+      </div>`
   )
   $('.film-button-wrapper').html(
     `<div class="film"></div>  

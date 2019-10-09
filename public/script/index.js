@@ -156,7 +156,10 @@ function aboutRevuer() {
   emptyTheContainers()
   /* $('.dynamic-buttons').empty() */
   $('.video-screen').removeClass('hidden').html(
-    `<div class="about-revuer">
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+    </video>
+    <div class="about-revuer video-text">
       <h2>About revuer</h2>
       <p>This is placeholder text about revuer</p>
     </div>`
