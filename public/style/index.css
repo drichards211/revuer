@@ -21,30 +21,12 @@ body:before {
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* background: linear-gradient(rgb(197, 197, 197),rgba(66, 66, 66, 0)); */
-}
-/* .background-img {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  
-} */
-body {
-  
 }
 textarea {
   max-width: 100%;
 }
 input {
   max-width: 100%;
-}
-.video-wrapper {
-  
-}
-.maintain-size {
-  /* width: 100%;
-  margin: auto;
-  margin-top: 1.25rem; */
 }
 .video-screen {
   position: relative;
@@ -57,7 +39,7 @@ input {
   -webkit-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, 0.75);
   -moz-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
   box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
-  font-family: 'Silentina'; /* 'EB Garamond'; */
+  font-family: 'Silentina';
   font-size: 1.9rem;
   font-weight: 600; 
 }
@@ -71,7 +53,6 @@ input {
   -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75);
   box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75); 
 }
-
 .video-text {
   z-index: 1;
   height: 100px;
@@ -110,13 +91,6 @@ input {
   font-weight: bold;
   text-align: center;
 }
-.keep-below-screen {
-  /* position: absolute;
-  left: 0;
-  right: 0; */
-  
-}
-/* top: calc(80vw * .5625 + 1.25rem); */
 nav {
   color: white;
   background-color: black;
@@ -132,19 +106,13 @@ nav {
 }
 .hidden {
   display: none;
-  /* visibility: hidden; */
 }
 .chair {
-  /* display:block; */
   float: left;
   width: 20rem;
   max-width: calc(33vw);
   height: calc(20rem / 2.1);
   max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
-  /* starting point */
-  /* width: calc(33vw);
-  max-width: calc(33vw);
-  height: calc(33vw / 2.54); */
   background:url(../image/chair-a1.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(255, 255, 255);
@@ -154,17 +122,12 @@ nav {
   padding-top: 2.1em;
 }
 .chair-plaque {
-  /* display:block; */
   transition: all 0s;
   float: left;
   width: 20rem;
   max-width: calc(33vw);
   height: calc(20rem / 2.1);
   max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
-  /* starting point */
-  /* width: calc(33vw);
-  max-width: calc(33vw);
-  height: calc(33vw / 2.54); */
   background:url(../image/chair-plaque-a1.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(36, 33, 33);
@@ -210,17 +173,6 @@ input[type="button"] {
   cursor: pointer;
   white-space: normal; /* allows button text to wrap to multiple lines */
 }
-
-button:hover,
-button:focus {
-  /* background: #0053ba; */
-}
-
-button:focus {
-  /* outline: 1px solid #fff;
-  outline-offset: -4px; */
-}
-
 button:active {
   transform: scale(0.99);
 }
@@ -269,26 +221,21 @@ button:active {
 }
 .film-button-wrapper {
   top: 0px;
-  /* width: 216rem;
-  transform: translateX(calc((216rem - 100vw)* -.5)); */
 }
 .film {
   float: left;
   background:url(../image/film-medium-a4.png);
   background-repeat: no-repeat;
-  background-size: cover; /* 12rem auto; */
+  background-size: cover;
   width: 12rem;
   max-width: 33vw;
-  height: calc(12rem / 1.338);/* 8.97rem; */
+  height: calc(12rem / 1.338);
   max-height: calc(33vw / 1.338);
   border: 0;
   font-size: 21pt;
   font-weight: normal;
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px #000000;
-}
-.news {
-
 }
 .signin-box, .signup-box {
   background-color: rgba(0, 0, 0, 0.69);
@@ -315,7 +262,6 @@ button:active {
 .movie-find-form {
   text-align: center;
   margin-block-start: 0.5em;
-  /* margin-block-end: 0.8em; */
   margin-bottom: 1.4rem;
 }
 .movie-find-form label {
@@ -352,12 +298,6 @@ button:active {
   }
 }
 .film-cannister {
-  /* background-image: url('../image/vector-cannister-single.png');
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  min-height: 500px;
-  margin-left: auto;
-  margin-right: auto; */
   width: 100%;
   max-width: 100%;
   position: relative;
@@ -372,14 +312,10 @@ button:active {
   margin-left: auto;
   margin-right: auto;
 }
-/* .movie-find-box {
-    margin-top: calc(10vh);
-  } */
-
 .film-label {
   position: absolute;
   width: 200px;
-  top: calc(1.6rem + 52.9%);/* 52.9%; */ /* 53%; *//* 53.5%; */ 
+  top: calc(1.6rem + 52.9%);
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
@@ -413,22 +349,11 @@ button:active {
   right: 50%;
   transform: translate(-50%, -50%);
   top: calc(1.2rem + 66%);
-  /* top: 66%; */
-  /* top: 66.1%; */
   z-index: +1;
   font-size: 240%;
-  /* font-size: 179%; */
   font-family: 'bebas';
-  /* color: rgb(222, 222, 222); */
-  /* background: #ad0000;
-  border: #ad0000; */
   color: #080808;
   background: #ae9e46;
-  /* border: transparent; */
-  /* background: #080808;
-    border: #080808; */
-  /* border-style: solid;
-  border-width: 4px; */
   border-radius: 11px;
   padding-top: .1rem;
   padding-left: .2rem;
@@ -455,9 +380,6 @@ button:active {
   color: #fff900d6;
   text-align: center;
   background-color: #ff000029;
-  /* background-color: rgb(75, 0, 195); */
-  /* background-color: rgb(13, 1, 255); */
-  /* background-color: rgb(192, 7, 7); */
   width: 65%;
   margin: auto;
   text-shadow: 0 0 9px #ffd400;
@@ -468,11 +390,8 @@ button:active {
   padding-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
-  margin-bottom: 3rem; /* 33px; */
+  margin-bottom: 3rem;
 }
-/* .video-text h1 {
-  margin-bottom: -1rem;
-} */
 .success-message h2 {
   margin-top: 2.3rem;
   margin-bottom: -.5rem;
@@ -534,20 +453,17 @@ button:active {
   font-size: 300%;
   color: rgba(255, 0, 0, 0.8);
   letter-spacing: 3px;
-  word-spacing: 5px; /*8px*/
+  word-spacing: 5px;
   text-align: center;
-  /* cursor: pointer; */
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid gray;
   width: 100%;
-  /* padding-bottom: 1rem;
-  padding-top: 1rem; */
 }
 .movie-button {
   font-family: 'wagner';
   font-size: 175%;
   letter-spacing: 3px;
-  word-spacing: 5px; /*8px*/
+  word-spacing: 5px;
   text-align: center;
   cursor: pointer;
   background-color: rgb(255, 255, 255);
@@ -555,33 +471,23 @@ button:active {
   width: 100%;
 }
 .movie-button-spacer {
-  /* font-family: 'wagner';
-  letter-spacing: 3px;
-  word-spacing: 5px;
-  text-align: center; */
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid gray;
-  /* font-size: 175%; */
   width: 100%;
 }
 .lights-top {
   width: 100%;
-  /* margin-left: -1.2%; */
   margin-bottom: -3px;
 }
 .lights-left {
   position: relative;
-  /* margin-right: 100%; */
   float: left;
   max-width: 5%;
-  /* clear: both; */
 }
 .lights-right {
   position: relative;
-  /* margin-left: 100%; */
   float: right;
   max-width: 5%;
-  /* clear: both; */
 }
 .poster-frame {
   text-align: center;
@@ -633,21 +539,15 @@ button:active {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: -1.9rem;
-  /* margin-top: 1rem; */
   padding-top: .1rem;
   padding-bottom: .1rem;
   background-color: #101115;
 }
 
-.rating-icon {
-  /* float: left; */
-}
 .fa-heart {
   color: rgba(255, 0, 0, 0.8);
 }
-/* .movie-title {
-  text-align: center;
-} */
+
 @font-face {
   font-family: wagner;
   src: url(wagner-zip-change.ttf);
