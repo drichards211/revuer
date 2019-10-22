@@ -132,7 +132,6 @@ function welcomeUser(user, firstTime, addMovies) {
         <h2>Welcome to revuer, ${user}</h2>
         <p>Please click any of the chair buttons below to continue. Have fun revue-ing your movie experiences!</p>`
       )
-      {/*  */}
       if (addMovies) {
         console.log("Adding additional welcome message")
         const plural = previewLibrary.length > 7 ? "movies have" : "movie has";
@@ -142,8 +141,8 @@ function welcomeUser(user, firstTime, addMovies) {
       }
       if (userName === "Guest") {
         $('.dynamic-buttons').html(
-          `<button class="ticket" id="sign-up">sign-up</button>
-          <button class="ticket" id="sign-in">sign-in</button>
+          `<button class="ticket" id="sign-in">sign-in</button>
+          <button class="ticket" id="sign-up">sign-up</button>
           <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
         )
       }
@@ -168,20 +167,21 @@ function manageUserAccount() {
 
 function renderSignInForm() {
   console.log("renderSignInForm() ran")
+  emptyTheContainers()
   $('.dynamic-buttons').html(
-    `<button class="ticket" id="sign-in">sign-in</button>
-    <button class="ticket" id="sign-up">sign-up</button>
+    `<button class="ticket" id="sign-up">sign-up</button>
     <button class="ticket" id="preview">preview</button>
     <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
-  $('.video-screen').removeClass('hidden').html(
+  $('.movie-marquee').html(
     `<div class="signin-box">
       <form class="signin-form" action="#">
+        <h1>revuer</h1>
         <h2>Sign in</h2>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required autofocus/>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" minlength="10" maxlength="72" required/>
+        <p><label for="username">Username</label><br>
+        <input type="text" name="username" id="username" placeholder="myusername" autocomplete="username" maxlength="72" required autofocus/></p>
+        <p><label for="password">Password</label><br>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="current-password" minlength="10" maxlength="72" required/><br></p>
         <button type="submit">Sign in</button>
       </form>
       <div class="form-errors"></div>
@@ -198,24 +198,25 @@ function renderSignInForm() {
 
 function renderSignUpForm() {
   console.log("renderSignUpForm() ran")
+  emptyTheContainers()
   $('.dynamic-buttons').html(
     `<button class="ticket" id="sign-in">sign-in</button>
-    <button class="ticket" id="sign-up">sign-up</button>
     <button class="ticket" id="preview">preview</button>
     <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
-  $('.video-screen').removeClass('hidden').html(
+  $('.movie-marquee').html(
     `<div class="signup-box">
       <form class="signup-form" action="#">
+        <h1>revuer</h1>
         <h2>Sign up</h2>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="user@domain.com" required autofocus/>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/>
-        <label for="password">Re-enter password</label>
-        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/>
+        <p><label for="email">Email</label><br>
+        <input type="email" name="email" id="email" placeholder="user@domain.com" required autofocus/><br></p>
+        <label for="username">Username</label><br>
+        <input type="text" name="username" id="username" placeholder="mynewusername" autocomplete="username" required/><br>
+        <p><label for="password">Password</label><br>
+        <input type="password" name="password" id="password" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/></p>
+        <p><label for="password">Re-enter password</label><br>
+        <input type="password" name="password" id="password2" placeholder="1234passw0rd" autocomplete="new-password" minlength="10" maxlength="72" required/></p>
         <button type="submit">Sign up</button>
       </form>
       <div class="form-errors"></div>
