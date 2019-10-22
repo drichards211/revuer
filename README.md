@@ -35,7 +35,8 @@ Styling:
   * [X] Center and resize the movie search form onto the aforementioned movie-canister image.
   * [ ] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
   * [ ] Style the 'Yes' and 'No' buttons.
-  * [ ] Style the 'sign-up' and 'log-in' forms.
+  * [X] Style the 'sign-up' and 'log-in' forms.
+  * [X] Enhance the styling of 'sign-up' and 'log-in' forms, paying special attention to authentication error messages.
   * [ ] Reduce the size of chairs on phone landscape mode.
   * [ ] Update movie poster displays with "Now Showing" frame.
   
@@ -51,4 +52,5 @@ Troubleshooting:
   * [X] '.video-screen' width needs to be reduced slightly on iPad landscape mode.
   * [ ] 'Movie edit screen' persists under some circumstances.
   * [ ] Fix layout if library is empty.
+  * [ ] 'Movie edit screen' persists after successfully deleting a movie. Are the containers being emptied?
   
