@@ -53,25 +53,36 @@ input {
   -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75);
   box-shadow: 0px 0px 15px 5px rgba(255, 255, 227, .75); 
 }
-.video-text {
+.loop-text {
   z-index: 1;
   height: 100px;
   color: #cecece;
   position: absolute;
-  top: 36%;
+  top: 46%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
   margin-left: 6.5%;
   margin-right: 6.5%;
 }
-.video-text h1 {
+.video-text {
+  z-index: 1;
+  color: #cecece;
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin-left: 7.5%;
+  margin-right: 7.5%;
+}
+.video-text h1, .loop-text h1 {
   margin-bottom: -.25rem;
 }
-.video-text h2 {
+.video-text h2, .loop-text h2 {
   margin-bottom: -.25rem;
 }
-.video-text a {
+.video-text a, .loop-text a {
   color: inherit;
 }
 .dynamic-buttons {
@@ -618,9 +629,6 @@ button:active {
   .video-screen {
     font-size: 1rem;
   }
-  .video-text {
-    top: 44%;
-  }
 }
 @media only screen and (max-width: 500px) and (min-width: 400px) and (orientation: portrait) {
 /*for-phone-portrait-only*/
@@ -632,17 +640,24 @@ button:active {
   .video-screen {
     font-size: 1rem;
   }
-  .video-text {
-    top: 44%;
+}
+@media only screen and (min-width: 700px) {
+  .loop-text {
+    top: 36%;
+  }
+}
+@media only screen and (min-width: 700px) and (max-width: 900px) {
+  .video-screen {
+    font-size: 1.4rem;
   }
 }
 @media only screen and (min-width: 800px) {
-  .video-text {
+  .video-text, .loop-text {
     margin-left: 10%;
     margin-right: 10%;
   }
 }
-@media only screen and (max-height: 900px) and (orientation: landscape) {
+@media only screen and (max-height: 900px) and (min-width: 500px) and (orientation: landscape) {
   .video-wrapper {
     margin-left: 10%;
     margin-right: 10%;

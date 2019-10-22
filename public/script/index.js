@@ -214,7 +214,7 @@ function playSilentLoop() {
     )
   }, 1000);
   $('.video-screen').html(
-    `<div class="video-text">
+    `<div class="loop-text">
       <h1 class="title">revuer</h1>
       <p id="welcome-text-1" style="display: none;">Revuer is a work in progress.</p>
       <p id="welcome-text-2" style="display: none;">Styling and functionality are ongoing.</p>
