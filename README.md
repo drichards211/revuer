@@ -36,13 +36,14 @@ Styling:
   * [ ] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
   * [ ] Style the 'Yes' and 'No' buttons.
   * [X] Style the 'sign-up' and 'log-in' forms.
-  * [X] Enhance the styling of 'sign-up' and 'log-in' forms, paying special attention to authentication error messages.
+  * [ ] Enhance the styling of 'sign-up' and 'log-in' forms, paying special attention to authentication error messages.
   * [ ] Reduce the size of chairs on phone landscape mode.
   * [ ] Update movie poster displays with "Now Showing" frame.
   
     
 Housekeeping:
   * [ ] Add tests to remaining server endpoints. (User auth is already good).
+  * [ ] Shrink all images to web size using tinypng or similar.
      
 Troubleshooting:
   * [ ] In the movie search textarea, trigger the submit button when the user presses Enter.
