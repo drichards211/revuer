@@ -121,7 +121,7 @@ nav {
 .chair {
   float: left;
   width: 20rem;
-  max-width: calc(33vw);
+  max-width: calc(33vw); /* shrinks chair buttons if viewport width drops below 810px */
   height: calc(20rem / 2.1);
   max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
   background:url(../image/chair-a1.png) 0 0 no-repeat;
@@ -227,9 +227,18 @@ button:active {
   padding-right: .7em;
 }
 .chair-button-wrapper {
-  width: 300rem;
-  transform: translateX(calc((300rem - 100vw)* -.5));
+  width: calc(33vw * 15); /* width of chair times number of chairs */
+  transform: translateX(calc(((33vw * 15) - 100vw)* -.5)); /* centers the element horizontally */
 }
+@media only screen and (min-width: 810px) {
+/* chairs are always 20rem wide on viewport-widths >= 810px */
+  .chair-button-wrapper {
+  width: 300rem; /* 15 chairs total times 20rem */
+  transform: translateX(calc((300rem - 100vw)* -.5)); /* centers the element horizontally */
+  }
+}
+
+
 .film-button-wrapper {
   top: 0px;
 }
