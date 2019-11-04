@@ -301,22 +301,16 @@ function manageWindowResize() {
 // set initial values: 
   console.log("setting initial theater size") 
   let initialVideoWrapperWidth = $('.video-wrapper').css('width')
-  let initialChairWidth = $('.chair').css('width')
   let mediaQuery = window.matchMedia("(max-width: 500px)")
   let initialFilmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
   $('.video-screen').css({'height': `calc(${initialVideoWrapperWidth} * .5625)`})
-  $('.chair-button-wrapper').css({'transform': `translateX(calc((${initialChairWidth} * 15 - 100vw)* -.5))`})
   $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
 // Update values if window resized:
   window.onresize = function() {
     console.log("Window size changed... resizing theater")
-    $('.chair-buttons').css({"display": "block"}) 
-    // Chairs must be visible to obtain accurate .css('width')
-    let chairWidth = $('.chair').css('width')
     let videoWrapperWidth = $('.video-wrapper').css('width')
     let filmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
     $('.video-screen').css({'height': `calc(${videoWrapperWidth} * .5625)`})
-    $('.chair-button-wrapper').css({'transform': `translateX(calc((${chairWidth} * 15 - 100vw)* -.5))`})
     $('.film-button-wrapper').css({'width': `calc(${filmButtonWidth} * 18)`, 'transform': `translateX(calc(((${filmButtonWidth} * 18) - 100vw)* -.5))`})
   }
 }
