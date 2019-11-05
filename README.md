@@ -12,7 +12,7 @@ Features to be added are listed below, along with required bugfixes and styling 
 
 Features Under Development:
   * [ ] Add 'Cancel' button to addMovieDetails().
-  * [ ] Create 'Manage Account' function: Allow user's to change username, change password, add full name (if desired), and delete account.
+  * [ ] Create 'Manage Account' function: Allow users to change username, change password, add full name (if desired), and delete account.
   * [ ] Add 'Are you sure?' prompt when deleting a movie.
   * [ ] Add 'sign-out' button to home screen.
   
@@ -47,7 +47,7 @@ Housekeeping:
      
 Troubleshooting:
   * [ ] In the movie search textarea, trigger the submit button when the user presses Enter.
-  * [ ] Chairs don't always center correctly on initial page load in Chrome if devTools turned off.
+  * [X] Chairs don't always center correctly on initial page load in Chrome if devTools turned off.
   * [ ] '#movie-not-here' button doesn't work on renderMoreApiResults().
   * [ ] Android soft-keyboard should be auto-hidden when the search-form is submitted.
   * [X] '.video-screen' width needs to be reduced slightly on iPad landscape mode.
