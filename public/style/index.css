@@ -258,6 +258,8 @@ button:active {
   text-shadow: 2px 2px 2px #000000;
 }
 .signin-box, .signup-box {
+  font-family: "Wagner";
+  letter-spacing: 1px;
   background-color: rgba(0, 0, 0, 0.69);
   font-size: 1.4rem;
   width: 90%;
@@ -268,6 +270,28 @@ button:active {
   padding-top: .8rem;
   padding-bottom: 2.5rem;
   text-align: center;
+}
+.signin-box h1, .signup-box h1 {
+  font-family: 'Silentina';
+  font-size: 4rem;
+  margin: 1rem 0rem 2.4rem;
+  color: white;
+}
+.signin-box input, .signup-box input {
+  font-family: 'EB Garamond';
+  margin-top: .2rem;
+  color: black;
+  font-weight: bold;
+  height: 30px;
+}
+.signin-box button, .signup-box button {
+  font-size: 1.7rem;
+  color: white;
+  background: #1037f8;
+  padding-top: .2rem;
+  margin-top: 1.4rem;
+  border-radius: 25px;
+  width: 225px;
 }
 .movie-API-box-1 {
   text-align: center;
