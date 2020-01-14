@@ -7,3 +7,4 @@ deploy:
   app: revuer
   on:
     repo: drichards211/revuer
+  skip_cleanup: true
