@@ -177,9 +177,9 @@ function renderSignInForm() {
     `<div class="signin-box">
       <form class="signin-form" action="#">
         <h1>revuer</h1>
-        <p><label for="username">Username</label><br>
+        <p><label for="username">username</label><br>
         <input type="text" name="username" id="username" placeholder="Your username" autocomplete="username" maxlength="72" required autofocus/></p>
-        <p><label for="password">Password</label><br>
+        <p><label for="password">password</label><br>
         <input type="password" name="password" id="password" placeholder="••••••••" autocomplete="current-password" minlength="10" maxlength="72" required/><br></p>
         <button type="submit">SIGN IN</button>
       </form>
@@ -207,13 +207,13 @@ function renderSignUpForm() {
     `<div class="signup-box">
       <form class="signup-form" action="#">
         <h1>revuer</h1>
-        <p><label for="email">Email</label><br>
+        <p><label for="email">email</label><br>
         <input type="email" name="email" id="email" placeholder="Your email" required autofocus/><br></p>
-        <label for="username">Username</label><br>
+        <label for="username">username</label><br>
         <input type="text" name="username" id="username" placeholder="Your username" autocomplete="username" required/><br>
-        <p><label for="password">Password</label><br>
+        <p><label for="password">password</label><br>
         <input type="password" name="password" id="password" placeholder="••••••••" autocomplete="new-password" minlength="10" maxlength="72" required/></p>
-        <p><label for="password">Re-enter password</label><br>
+        <p><label for="password">re-enter password</label><br>
         <input type="password" name="password" id="password2" placeholder="••••••••" autocomplete="new-password" minlength="10" maxlength="72" required/></p>
         <button type="submit">SIGN UP</button>
       </form>

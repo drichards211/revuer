@@ -258,7 +258,7 @@ button:active {
   text-shadow: 2px 2px 2px #000000;
 }
 .signin-box, .signup-box {
-  font-family: "Wagner";
+  font-family: "Silentina";
   letter-spacing: 1px;
   background-color: rgba(0, 0, 0, 0.69);
   font-size: 1.4rem;
@@ -279,12 +279,13 @@ button:active {
 }
 .signin-box input, .signup-box input {
   font-family: 'EB Garamond';
-  margin-top: .2rem;
+  margin-top: 1.5rem;
   color: black;
   font-weight: bold;
   height: 30px;
 }
 .signin-box button, .signup-box button {
+  font-family: "Wagner";
   font-size: 1.7rem;
   color: white;
   background: #1037f8;
