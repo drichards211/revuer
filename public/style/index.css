@@ -274,7 +274,7 @@ button:active {
 .signin-box h1, .signup-box h1 {
   font-family: 'Silentina';
   font-size: 4rem;
-  margin: 1rem 0rem 2.4rem;
+  margin: 1rem 0rem 1rem;
   color: white;
 }
 .signin-box input, .signup-box input {
