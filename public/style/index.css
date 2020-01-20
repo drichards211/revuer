@@ -259,7 +259,9 @@ button:active {
 .signin-box, .signup-box {
   font-family: "Silentina";
   letter-spacing: 1px;
-  background-color: rgba(0, 0, 0, 0.69);
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 4px white;
+  border-radius: 40px;
   font-size: 1.4rem;
   width: 90%;
   max-width: 375px;
@@ -287,10 +289,10 @@ button:active {
   font-family: "Silentina";
   font-size: 1.7rem;
   color: white;
-  background: #000000;
+  background: rgba(0, 0, 0, 0.5);
   padding-top: .2rem;
   margin-top: 1.4rem;
-  border: solid 2px white;
+  border: solid 1px white;
   border-radius: 25px;
   width: 225px;
 }
