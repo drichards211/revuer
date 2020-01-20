@@ -413,12 +413,18 @@ button:active {
 .movie-list {
   width: 65%;
   margin: auto;
+  margin-top: 8.5vh;
   text-align: center;
   background: white;
   -webkit-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
   -moz-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
   box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
 } 
+@media only screen and (max-height: 760px) {
+  .movie-list {
+    margin-top: 3rem;
+  }
+}
 .multiplex {
   font-family: 'marquee';
   font-size: 400%;
@@ -481,15 +487,6 @@ button:active {
 @media only screen and (max-width: 350px) and (orientation: portrait) {
   .multiplex {
     font-size: 375%;
-  }
-}
-
-.library-marquee {
-  margin-top: 8vh;
-}
-@media only screen and (max-height: 760px) {
-  .library-marquee {
-    margin-top: 3rem;
   }
 }
 
