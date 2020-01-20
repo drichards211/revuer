@@ -5,7 +5,6 @@ html, body {
   font-size: 13.5px;
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   color: white;
-  background-color: black;
   transition: all .7s;
 }
 body:before {
@@ -32,7 +31,7 @@ input {
   position: relative;
   width: 100%;
   margin: auto;
-  margin-top: 1.25rem;
+  margin-top: 2.5rem;
   text-align: center;
   color: #d6d6d6;
   background-color: black;
@@ -91,7 +90,6 @@ input {
   font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
-  margin-top: 0.7rem;
   z-index: 1;
 }
 .film-buttons {
@@ -101,6 +99,7 @@ input {
   font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
+  background-color: black;
 }
 nav {
   color: white;
@@ -121,7 +120,7 @@ nav {
 .chair {
   float: left;
   width: 20rem;
-  max-width: calc(33vw); /* shrinks chair buttons if viewport width drops below 810px */
+  max-width: 33vw; /* shrinks chair buttons if viewport width drops below 810px */
   height: calc(20rem / 2.1);
   max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
   background:url(../image/chair-a1.png) 0 0 no-repeat;
@@ -136,7 +135,7 @@ nav {
   transition: all 0s;
   float: left;
   width: 20rem;
-  max-width: calc(33vw);
+  max-width: 33vw;
   height: calc(20rem / 2.1);
   max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
   background:url(../image/chair-plaque-a1.png) 0 0 no-repeat;
@@ -194,7 +193,7 @@ button:active {
   height: 6.5rem;
   max-height: calc(29vw / 2);
   border: 0;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   font-size: 22.5pt;
   font-weight: bold;
   color: rgb(14, 14, 14);
@@ -318,29 +317,29 @@ button:active {
   
 }
 .movie-find-box {
-  margin-top: calc(13vh);
+  margin-top: 8vh;
   position: relative;
   width: 100%;
   max-width: 100%;
 }
 @media only screen and (max-height: 900px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(8vh);
+    margin-top: 8vh;
   }
 }
 @media only screen and (max-height: 900px) and (max-width: 900px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(8vh);
+    margin-top: 8vh;
   }
 }
 @media only screen and (max-height: 450px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(2vh);
+    margin-top: 6vh;
   }
 }
 @media only screen and (max-height: 450px) and (max-width: 900px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(2vh);
+    margin-top: 6vh;
   }
 }
 .film-cannister {
@@ -486,7 +485,7 @@ button:active {
 }
 
 .library-marquee {
-  margin-top: 10rem;
+  margin-top: 8vh;
 }
 @media only screen and (max-height: 760px) {
   .library-marquee {
@@ -638,7 +637,7 @@ button:active {
 /* SITE-WIDE VIEWPORT RESPONSE ========================== */
 @media only screen and (orientation: portrait) {
   .video-screen {
-    margin-top: 10rem;
+    margin-top: 3rem;
   }
   .keep-below-screen {
     /* margin-top: 7rem; */
@@ -698,5 +697,3 @@ button:active {
     margin-right: 10%;
   }
 }
-/* Travis CI is experiencing some technical difficulties... deployment failures. Making inconsequential changes here to 
-test deployment Potato ONE*/
