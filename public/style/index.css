@@ -15,11 +15,21 @@ body:before {
   width: 100%;
   z-index: -1;
   height: 100%;
-  background-image: url('../image/theater-stage.jpg');
+  background-image: url('../image/theater-stage-1200x1200.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+@media only screen and (max-aspect-ratio: 4/5) {
+  body:before {
+    background-image: url('../image/theater-stage-portrait.jpg');
+  }
+}
+@media only screen and (min-aspect-ratio: 5/4) {
+  body:before {
+    background-image: url('../image/theater-stage-landscape.jpg');
+  }
 }
 textarea {
   max-width: 100%;
