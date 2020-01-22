@@ -27,16 +27,15 @@ Accessibility (a11y):
 Styling:
   * [ ] Add blank poster if movie poster is unavailable.
   * [X] Remove white background from film buttons when newspaper is visible.
-  * [ ] Replace film button image with photo-realistic version.
   * [ ] Add CSS Grid layout to movie results pages, 3 columns maximum.
   * [X] Import finalized movie-canister image for addMovie() page.
   * [X] Allow canister image to rotate 90 degrees clockwise on phone portrait mode.
         -- No longer necessary. Image is now symmetrical.
   * [X] Center and resize the movie search form onto the aforementioned movie-canister image.
-  * [ ] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
+  * [X] Prepare high-resolution background 'theater' image from Blender object and replace low-res placeholder.
   * [ ] Style the 'Yes' and 'No' buttons.
   * [X] Style the 'sign-up' and 'log-in' forms.
-  * [ ] Enhance the styling of 'sign-up' and 'log-in' forms, paying special attention to authentication error messages.
+  * [X] Enhance the styling of 'sign-up' and 'log-in' forms, paying special attention to authentication error messages.
   * [ ] Reduce the size of chairs on phone landscape mode.
   * [ ] Update movie poster displays with "Now Showing" frame.
   
