@@ -14,10 +14,7 @@ async function viewLibrary(a, b, c) {
   const lovedIt = `<i class="fas fa-heart"></i>`, likedIt = `<i class="far fa-thumbs-up"></i>`, complicated = `<i class="far fa-meh"></i>`, dislikedIt = `<i class="far fa-thumbs-down"></i>`, hatedIt = `<i class="fas fa-skull-crossbones"></i>`
   emptyTheContainers() // in index.js
   $('.movie-marquee').append(
-    `<div class="library-marquee">
-      <p class="multiplex">REVUER MULTIPLEX</p>
-    </div>
-    <div class="movie-list">
+    `<div class="movie-list">
       <div class="movie-button-spacer">
         <span class="movie-title">&nbsp;</span>
       </div>

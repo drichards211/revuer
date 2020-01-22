@@ -5,7 +5,6 @@ html, body {
   font-size: 13.5px;
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   color: white;
-  background-color: black;
   transition: all .7s;
 }
 body:before {
@@ -16,11 +15,21 @@ body:before {
   width: 100%;
   z-index: -1;
   height: 100%;
-  background-image: url('../image/theater-stage.jpg');
+  background-image: url('../image/theater-stage-1200x1200.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+@media only screen and (max-aspect-ratio: 4/5) {
+  body:before {
+    background-image: url('../image/theater-stage-portrait.jpg');
+  }
+}
+@media only screen and (min-aspect-ratio: 5/4) {
+  body:before {
+    background-image: url('../image/theater-stage-landscape.jpg');
+  }
 }
 textarea {
   max-width: 100%;
@@ -32,7 +41,7 @@ input {
   position: relative;
   width: 100%;
   margin: auto;
-  margin-top: 1.25rem;
+  margin-top: 2.5rem;
   text-align: center;
   color: #d6d6d6;
   background-color: black;
@@ -91,7 +100,6 @@ input {
   font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
-  margin-top: 0.7rem;
   z-index: 1;
 }
 .film-buttons {
@@ -101,6 +109,7 @@ input {
   font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
+  background-color: black;
 }
 nav {
   color: white;
@@ -121,7 +130,7 @@ nav {
 .chair {
   float: left;
   width: 20rem;
-  max-width: calc(33vw); /* shrinks chair buttons if viewport width drops below 810px */
+  max-width: 33vw; /* shrinks chair buttons if viewport width drops below 810px */
   height: calc(20rem / 2.1);
   max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
   background:url(../image/chair-a1.png) 0 0 no-repeat;
@@ -136,7 +145,7 @@ nav {
   transition: all 0s;
   float: left;
   width: 20rem;
-  max-width: calc(33vw);
+  max-width: 33vw;
   height: calc(20rem / 2.1);
   max-height: calc(33vw / 2.1); /* prevents chairs from floating if screen becomes too tall */
   background:url(../image/chair-plaque-a1.png) 0 0 no-repeat;
@@ -194,7 +203,7 @@ button:active {
   height: 6.5rem;
   max-height: calc(29vw / 2);
   border: 0;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   font-size: 22.5pt;
   font-weight: bold;
   color: rgb(14, 14, 14);
@@ -260,7 +269,9 @@ button:active {
 .signin-box, .signup-box {
   font-family: "Silentina";
   letter-spacing: 1px;
-  background-color: rgba(0, 0, 0, 0.69);
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 4px white;
+  border-radius: 40px;
   font-size: 1.4rem;
   width: 90%;
   max-width: 375px;
@@ -288,10 +299,10 @@ button:active {
   font-family: "Silentina";
   font-size: 1.7rem;
   color: white;
-  background: #000000;
+  background: rgba(0, 0, 0, 0.5);
   padding-top: .2rem;
   margin-top: 1.4rem;
-  border: solid 2px white;
+  border: solid 1px white;
   border-radius: 25px;
   width: 225px;
 }
@@ -318,29 +329,29 @@ button:active {
   
 }
 .movie-find-box {
-  margin-top: calc(13vh);
+  margin-top: 8vh;
   position: relative;
   width: 100%;
   max-width: 100%;
 }
 @media only screen and (max-height: 900px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(8vh);
+    margin-top: 8vh;
   }
 }
 @media only screen and (max-height: 900px) and (max-width: 900px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(8vh);
+    margin-top: 8vh;
   }
 }
 @media only screen and (max-height: 450px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(2vh);
+    margin-top: 6vh;
   }
 }
 @media only screen and (max-height: 450px) and (max-width: 900px) and (orientation: landscape) {
   .movie-find-box {
-    margin-top: calc(2vh);
+    margin-top: 6vh;
   }
 }
 .film-cannister {
@@ -414,12 +425,18 @@ button:active {
 .movie-list {
   width: 65%;
   margin: auto;
+  margin-top: 8.5vh;
   text-align: center;
   background: white;
   -webkit-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
   -moz-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
   box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
 } 
+@media only screen and (max-height: 760px) {
+  .movie-list {
+    margin-top: 3rem;
+  }
+}
 .multiplex {
   font-family: 'marquee';
   font-size: 400%;
@@ -482,15 +499,6 @@ button:active {
 @media only screen and (max-width: 350px) and (orientation: portrait) {
   .multiplex {
     font-size: 375%;
-  }
-}
-
-.library-marquee {
-  margin-top: 10rem;
-}
-@media only screen and (max-height: 760px) {
-  .library-marquee {
-    margin-top: 3rem;
   }
 }
 
@@ -638,7 +646,7 @@ button:active {
 /* SITE-WIDE VIEWPORT RESPONSE ========================== */
 @media only screen and (orientation: portrait) {
   .video-screen {
-    margin-top: 10rem;
+    margin-top: 3rem;
   }
   .keep-below-screen {
     /* margin-top: 7rem; */
@@ -698,5 +706,3 @@ button:active {
     margin-right: 10%;
   }
 }
-/* Travis CI is experiencing some technical difficulties... deployment failures. Making inconsequential changes here to 
-test deployment Potato ONE*/
