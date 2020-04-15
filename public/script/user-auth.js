@@ -125,10 +125,10 @@ function welcomeUser(user, firstTime, addMovies) {
   renderChairButtons("home")
   if (firstTime) {
     $('.video-screen').removeClass('hidden').html(
-      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+      /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
       <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-      </video>
-      <div class="welcome-message video-text">
+      </video> */
+      `<div class="welcome-message video-text">
         <h2>Welcome to revuer, ${user}</h2>
         <p>Please click any of the chair buttons below to continue. Have fun revue-ing your movie experiences!</p>`
       )
@@ -148,10 +148,10 @@ function welcomeUser(user, firstTime, addMovies) {
       }
     } else {
       $('.video-screen').removeClass('hidden').html(
-        `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+        /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
         <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-        </video>
-        <div class="welcome-messsage video-text">
+        </video> */
+        `<div class="welcome-messsage video-text">
           <h2>Welcome back ${user}</h2>
       `)
       $('.dynamic-buttons').html(
@@ -241,10 +241,10 @@ function renderPreviewInfo() {
   console.log("renderPreviewInfo() ran")
   emptyTheContainers() // in index.js
   $('.video-screen').removeClass('hidden').html(
-    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
     <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-    </video>
-    <div class="preview-info video-text">
+    </video> */
+    `<div class="preview-info video-text">
       <h2>Welcome Guest</h2>
       <p>This is a sneak preview of revuer. A sample library has been created for you.</p>
     </div>`

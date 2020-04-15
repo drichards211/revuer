@@ -38,10 +38,13 @@ input {
   max-width: 100%;
 }
 .video-screen {
-  position: relative;
-  width: 100%;
+  position: absolute;
+  width: calc(100vw - 13.6%);
+  max-width: calc(1200px - 13.6%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: auto;
-  margin-top: 2.5rem;
   text-align: center;
   color: #d6d6d6;
   background-color: black;
@@ -65,27 +68,29 @@ input {
 .loop-text {
   z-index: 1;
   height: 100px;
-  color: #cecece;
+  color: #dfdfdf;
   position: absolute;
   top: 46%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
-  margin-left: 6.5%;
-  margin-right: 6.5%;
+  margin-left: 16%;
+  margin-right: 16%;
 }
 .video-text {
   z-index: 1;
-  color: #cecece;
+  color: #dfdfdf;
   position: absolute;
   top: 46%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
-  margin-left: 7.5%;
-  margin-right: 7.5%;
+  margin-left: 16%;
+  margin-right: 16%;
 }
 .video-text h1, .loop-text h1 {
+  font-size: 2.4em; 
+  margin-top: 0rem;
   margin-bottom: -.25rem;
 }
 .video-text h2, .loop-text h2 {
@@ -647,15 +652,6 @@ button:active {
 }
 
 /* SITE-WIDE VIEWPORT RESPONSE ========================== */
-@media only screen and (orientation: portrait) {
-  .video-screen {
-    margin-top: 3rem;
-  }
-  .keep-below-screen {
-    /* margin-top: 7rem; */
-  }
-}
-
 @media only screen and (max-width: 400px) and (orientation: portrait) {
 /*for-small-phone-portrait-only*/
   .row {
@@ -699,13 +695,13 @@ button:active {
 }
 @media only screen and (min-width: 800px) {
   .video-text, .loop-text {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 16%;
+    margin-right: 16%;
   }
 }
 @media only screen and (max-height: 900px) and (min-width: 500px) and (orientation: landscape) {
   .video-wrapper {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 16%;
+    margin-right: 16%;
   }
 }
