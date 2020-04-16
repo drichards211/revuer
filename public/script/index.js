@@ -173,7 +173,7 @@ function updateDOMTest() {
     `<p>This is new text rendered by index.js</p>`)
 }
 
-// Depracated: Movie screen is being discontinued in favor of projecting text
+// Deprecated: Movie screen is being discontinued in favor of projecting text
 // directly on the back wall.
 function playCountdown() {
   console.log('playCountdown() ran')
