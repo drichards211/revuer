@@ -178,6 +178,7 @@ async function viewLibraryDetail(imdbId, index) {
             <p>${Actors}</p>
             <p>${Awards}</p>
             <p>Box Office: &nbsp${BoxOffice}</p>
+            <br>
             <div class="head"><span class="headline hl5">The Nation</span>
               <p><span class="headline hl6">Hildy Johnson</span></p>
             </div>
