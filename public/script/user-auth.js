@@ -39,7 +39,7 @@ function userSignIn(username, pword, firstTime) {
       localStorage.setItem('auth', responseJson.authToken)
       getOmbdApiKey()
       if (firstTime) {
-        if (previewLibrary.length > 6) {
+        if (previewLibrary.length > 8) {
           addGuestMoviesToDb() // in add-movie.js
           welcomeUser(username, firstTime, true)
         } else {
@@ -134,7 +134,7 @@ function welcomeUser(user, firstTime, addMovies) {
       )
       if (addMovies) {
         console.log("Adding additional welcome message")
-        const plural = previewLibrary.length > 7 ? "movies have" : "movie has";
+        const plural = previewLibrary.length > 9 ? "movies have" : "movie has";
         $('.welcome-message').append(
           `<p>Your ${plural} been added to your library.</p>`
         )
