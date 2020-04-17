@@ -58,7 +58,7 @@ modifications for revuer by D.R.
     line-height: 0;
     word-spacing: -.31em;
     display: inline-block;
-    margin: 30px 2% 0 2%;
+    margin: 30px 0% 0 0%;
 
 
 }
@@ -69,17 +69,18 @@ modifications for revuer by D.R.
 .newspaper .collumn{
     font-size: 14px;
     line-height: 20px;
+    text-align: justify;
     width: 17.5%;
     min-width: 30%; /*DR*/
     display: inline-block;
-    padding: 0 1% 0 1%;
+    padding: 0 1.5% 0 1.5%;
     vertical-align: top;
     margin-bottom: 20px; /*DR*/
     /* margin-bottom: 50px;*/
     transition: all .7s;
 }
 .newspaper .collumn + .collumn { 
-  border-left: 1px solid #2f2f2f;
+    border-left: 1px solid #2f2f2f;
 }
 .newspaper .collumn .info-box { /*DR*/
     /* background-color: #c0bfbb; */
@@ -262,7 +263,7 @@ modifications for revuer by D.R.
     margin: 0 auto;
 }
 .newspaper .collumn .figure {
-	  margin: 0 0 20px;
+	margin: 0 0 20px;
 }
 .newspaper .collumn .figcaption{
 	font-style: italic;
@@ -301,6 +302,9 @@ modifications for revuer by D.R.
     .newspaper .collumn{
         width: 47%;
     }
+    .newspaper .content{ /*DR*/
+        margin: 30px 0% 0 0%;
+    }
 
 }
 @media only all and (max-width: 600px) {
@@ -308,9 +312,12 @@ modifications for revuer by D.R.
         width: 100%;
     }
 	.newspaper .collumn + .collumn {
-				border-left: none;
-      	border-bottom: 1px solid #2f2f2f;
-	}
+		border-left: none;
+        border-bottom: 1px solid #2f2f2f;
+    }
+    .newspaper .content{ /*DR*/
+        margin: 6px 2% 0 2%;
+    }
     .newspaper header{
         max-width: 320px;
         font-size: 60px;

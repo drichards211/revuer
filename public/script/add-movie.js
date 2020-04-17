@@ -32,8 +32,8 @@ function addMovie(oldSearch) {
 function addGuestMoviesToDb() {
 // Identify any movies created by a guest; add them to the DB when they register:
   console.log("addGuestMoviesToDb() ran")
-  console.log(`Total movies to add = ${previewLibrary.length - 6}`)
-  for (let i = previewLibrary.length - 1; i > 5; i--) {
+  console.log(`Total movies to add = ${previewLibrary.length - 8}`)
+  for (let i = previewLibrary.length - 1; i > 7; i--) {
     let movie = previewLibrary[i]
     console.log(`Posting the movie: ${movie.title}`)
     postMovieToDb(movie, true)
@@ -325,10 +325,10 @@ async function renderSuccessMessage(newMovie, guest) {
     // Display customized message and buttons for "Guest" account:
       emptyTheContainers() // in index.js
       $('.video-screen').removeClass('hidden').html(
-        `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+        /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
         <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-        </video>
-        <div class="success-message video-text">
+        </video> */
+        `<div class="success-message video-text">
         <h2>${title}</h2> 
         <p>has been added to your virtual library.</p>
         <p>If you'd like to save this movie permanently, please sign-up for an account.</p>`
@@ -368,10 +368,10 @@ async function renderSuccessMessage(newMovie, guest) {
   // Render success message for registered user:
     emptyTheContainers() // in index.js
     $('.video-screen').removeClass('hidden').html(
-      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+      /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
         <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-        </video>
-        <div class="success-message video-text">
+        </video> */
+        `<div class="success-message video-text">
         <h2>${title}</h2> 
         <p>has been added to your library.</p>`
     )
@@ -414,10 +414,10 @@ function suggestNewSearch(oldSearch) {
   /* $('.dynamic-buttons').empty() */
   emptyTheContainers() // in index.js
   $('.video-screen').removeClass('hidden').html(
-    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
       <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-      </video>
-      <div class="video-text">
+      </video> */
+      `<div class="video-text">
       <p>We couldn't find any movies with that title.</p>
       <p>Please click 'Add a movie' to try again.</p>
       </div>`

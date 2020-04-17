@@ -151,6 +151,7 @@ async function viewLibraryDetail(imdbId, index) {
       <div class="content">
         <div class="collumns">
           <div class="collumn">
+          <br>
             <figure class="figure">
               <img class="media" src="${Poster}" onerror="$(this).hide()" alt="">
               <figcaption class="figcaption">${Title} movie poster.</figcaption>
@@ -177,8 +178,7 @@ async function viewLibraryDetail(imdbId, index) {
             <p>${Actors}</p>
             <p>${Awards}</p>
             <p>Box Office: &nbsp${BoxOffice}</p>
-          </div>
-          <div class="collumn">
+            <br>
             <div class="head"><span class="headline hl5">The Nation</span>
               <p><span class="headline hl6">Hildy Johnson</span></p>
             </div>
@@ -187,6 +187,7 @@ async function viewLibraryDetail(imdbId, index) {
           <div class="collumn">
             <div class="head"><span class="headline hl1">International News</span>
               <p><span class="headline hl6">Sparky Valentine</span></p>
+            </div>
               <p>Maximus pharetra sapien nulla felis eros mattis commodo semper, ipsum penatibus rutrum sed placerat iaculis venenatis, justo mauris aliquet ornare donec dictumst conubia. Magnis accumsan inceptos sagittis facilisis sapien nullam parturient sed, fermentum mattis velit erat congue vestibulum sociosqu. Non metus scelerisque pellentesque taciti urna ridiculus odio, montes ac congue facilisi dictumst platea felis, lacus placerat aenean leo lectus suscipit. Praesent sed ipsum tellus est accumsan potenti nulla taciti, suscipit ante hendrerit nascetur turpis pulvinar viverra. Montes maecenas pellentesque arcu aenean elit consectetur suscipit, praesent venenatis lorem bibendum platea lacinia eleifend risus, pretium per quis fames dolor ac. Vulputate molestie nec porta varius ut urna, aenean est donec curae tincidunt lorem, nam eleifend mollis orci nibh. Platea nisi facilisis sagittis interdum tincidunt venenatis class risus, blandit turpis fusce rhoncus erat lobortis ante, dictum ipsum nam cubilia morbi etiam justo. Parturient id amet imperdiet lacinia egestas turpis congue in dis, rhoncus ante odio efficitur feugiat aliquam augue a lobortis, luctus sagittis tincidunt dolor donec magnis viverra venenatis. Turpis orci pharetra quisque maximus ullamcorper hac, inceptos integer in vehicula habitasse nisi, ante felis quis leo magna. Adipiscing praesent ullamcorper nam sodales conubia congue sit imperdiet sed, blandit mus porttitor tellus arcu purus duis morbi facilisis, cras lectus litora quisque natoque tristique suspendisse aliquam.</p>
           </div>
         </div>
