@@ -431,20 +431,19 @@ button:active {
   text-overflow: ellipsis;
 }
 .movie-list {
-  width: 65%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 600px;
   margin: auto;
-  margin-top: 8.5vh;
   text-align: center;
   background: white;
   -webkit-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
   -moz-box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
   box-shadow: 0px 0px 15px 3px rgba(255, 255, 190, 0), 0px 0px 0px 8px #000000b3;
 } 
-@media only screen and (max-height: 760px) {
-  .movie-list {
-    margin-top: 3rem;
-  }
-}
 .multiplex {
   font-family: 'marquee';
   font-size: 400%;
@@ -473,7 +472,7 @@ button:active {
 /* MOVIE MARQUEE viewport adjustments ============================ */
 @media only screen and (max-width: 800px) {
   .movie-list {
-    width: 75%;
+    width: 65%;
   }
   .multiplex {
     width: 75%;
@@ -489,7 +488,7 @@ button:active {
 }
 @media only screen and (max-width: 500px) and (orientation: portrait) {
   .movie-list {
-    width: 95%;
+    width: 90%;
   }
   .multiplex {
     width: 95%;
@@ -497,7 +496,7 @@ button:active {
 }
 @media only screen and (max-width: 500px) and (orientation: landscape) {
   .movie-list {
-    width: 95%;
+    width: 90%;
   }
   .multiplex {
     font-size: 375%;
@@ -648,7 +647,7 @@ button:active {
   padding-left: 4%;
   padding-right: 4%;
   width: 100%;
-  margin-bottom: 40%;
+  margin-bottom: 80%;
 }
 
 /* SITE-WIDE VIEWPORT RESPONSE ========================== */
