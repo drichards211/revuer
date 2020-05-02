@@ -467,7 +467,7 @@ button:active {
 /* MOVIE MARQUEE viewport adjustments ============================ */
 @media only screen and (max-width: 800px) {
   .movie-list {
-    width: 65%;
+    width: 75%;
   }
   .multiplex {
     width: 75%;
@@ -475,7 +475,7 @@ button:active {
 }
 @media only screen and (max-width: 650px) and (orientation: portrait) {
   .movie-list {
-    width: 90%;
+    width: 95%;
   }
   .multiplex {
     width: 90%;
@@ -483,7 +483,7 @@ button:active {
 }
 @media only screen and (max-width: 500px) and (orientation: portrait) {
   .movie-list {
-    width: 90%;
+    width: 95%;
   }
   .multiplex {
     width: 95%;
