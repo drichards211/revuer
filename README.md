@@ -1,12 +1,14 @@
 # revuer
+
+![Screenshots of revuer](public/images/revuer-responsive-11-cropped-tight.jpg)  
+
 Can't keep track of which movies you've seen? Revuer easily tracks every movie you've ever watched. Add ratings, reviews, and unlimited notes.
+
+> A live version of the app is located here: [https://revuer.herokuapp.com/](https://revuer.herokuapp.com/)
 
 Databases and spreadsheets can be dull: Revuer creates a virtual theater, visualizing your movie database with real-world objects. The theater becomes interactive: chairs turn into clickable buttons, film canisters become searchable fields, and movies are supplemented by data and images from the Open Movie Database API.
 
-
-***Please note, Revuer is still under development! Some functionality and styling is incomplete.***
-
-Please don your hard-hats and check out the live version: [https://revuer.herokuapp.com/](https://revuer.herokuapp.com/)
+Tech stack includes: *HTML, CSS, ES6, jQuery, Node/Express.js, Passport.js, MongoDB, Mongoose, Mocha/Chai, Travis CI, Heroku, AJAX, Adobe Photoshop, Blender*
 
 Features to be added are listed below, along with required bugfixes and styling notes.
 
