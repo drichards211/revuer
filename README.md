@@ -1,6 +1,6 @@
 # revuer
 
-![Screenshots of revuer](public/images/revuer-responsive-11-cropped-tight.jpg)  
+![Screenshots of revuer](public/image/revuer-responsive-11-cropped-tight.jpg)  
 
 Can't keep track of which movies you've seen? Revuer easily tracks every movie you've ever watched. Add ratings, reviews, and unlimited notes.
 
