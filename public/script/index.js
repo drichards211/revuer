@@ -220,7 +220,7 @@ function playSilentLoop() {
       <h1 class="title">revuer</h1>
       <p id="welcome-text-1" style="display: none;">Welcome to revuer!</p>
       <p id="welcome-text-2" style="display: none;">Search for movies you've watched.</p>
-      <p id="welcome-text-3" style="display: none;">Add reviews, ratings, and media formats viewed. 
+      <p id="welcome-text-3" style="display: none;">Add reviews, ratings, and formats viewed. 
       <p id="welcome-text-4" style="display: none;">Save it all to your personal library.</p>
       <p id="welcome-text-5" style="display: none;">Please enjoy this demo, and check-out the <a href="https://github.com/drichards211/revuer/blob/master/README.md" target="_blank">README.md</a> for more details.</p>
       <div class="user-forms"></div>
