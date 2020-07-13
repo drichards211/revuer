@@ -1,8 +1,8 @@
 # revuer
-Can't keep track of which movies you've seen? Revuer easily tracks every movie you've ever watched. Add ratings, reviews, and unlimited notes.
-
 
 ![Screenshots of revuer](public/image/revuer-responsive-11-cropped-tight.jpg)  
+
+Can't keep track of which movies you've seen? Revuer easily tracks every movie you've ever watched. Add ratings, reviews, and unlimited notes.
 
 > A live version of the app is located here: [https://revuer.herokuapp.com/](https://revuer.herokuapp.com/)
 
