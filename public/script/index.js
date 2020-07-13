@@ -2,7 +2,7 @@
 let textAnimate
 
 function handleUserNav() {
-  /* Listens for user button presses and calls appropriate functions */
+  /* Listens for user button presses and calls appropriate function(s) */
   console.log('handleUserNav() running')
   $('body').on('click', 'button', function(event) {
     // sign-in button pressed:
@@ -218,11 +218,11 @@ function playSilentLoop() {
   $('.video-screen').html(
     `<div class="loop-text">
       <h1 class="title">revuer</h1>
-      <p id="welcome-text-1" style="display: none;">Revuer is a work in progress.</p>
-      <p id="welcome-text-2" style="display: none;">Styling and functionality are ongoing.</p>
-      <p id="welcome-text-3" style="display: none;">Please enjoy this demo, and check-out the <a href="https://github.com/drichards211/revuer/blob/master/README.md" target="_blank">README.md</a> for more details.</p>
-      <p id="welcome-text-4" style="display: none;">animated text 4</p>
-      <p id="welcome-text-5" style="display: none;">animated text 5</p>
+      <p id="welcome-text-1" style="display: none;">Welcome to revuer!</p>
+      <p id="welcome-text-2" style="display: none;">Search for movies you've watched.</p>
+      <p id="welcome-text-3" style="display: none;">Add reviews, ratings, and media formats viewed. 
+      <p id="welcome-text-4" style="display: none;">Save it all to your personal library.</p>
+      <p id="welcome-text-5" style="display: none;">Please enjoy this demo, and check-out the <a href="https://github.com/drichards211/revuer/blob/master/README.md" target="_blank">README.md</a> for more details.</p>
       <div class="user-forms"></div>
     </div>`
   )
@@ -243,7 +243,7 @@ function animateWelcomeText(index) {
   if (textAnimate === false) {
   // Hide all welcome-text:
     console.log(`animateWelcomeText() stopped`)
-    for (let j = 1; j < 2; j++) {
+    for (let j = 1; j < 4; j++) {
       $(`#welcome-text-${j}`).fadeOut(2000)
     }
   } else if (i === 0) {
@@ -252,10 +252,10 @@ function animateWelcomeText(index) {
     animateWelcomeText(1)
   } else {
   // Continue the loop:
-    console.log(`animateWelcomeText() loop ${i} of 3`)
+    console.log(`animateWelcomeText() loop ${i} of 5`)
     setTimeout(function() {
       $(`#welcome-text-${i}`).fadeOut(2000, function() {
-        if (i === 3) {
+        if (i === 5) {
         // End reached. Restart the loop from the beginning:
           animateWelcomeText(0)
         } else {
@@ -267,22 +267,7 @@ function animateWelcomeText(index) {
     }, 3000);
   }
 }
-  
-  
-  
-  /* for (let i = 1; i < 6; i++) {
-    (function(index) {
-      let timeout = 3000
-      setTimeout(function() {
-        console.log( `#${index} loop`)
-        $(`.welcome-text-${index}`).fadeOut(2000)
-        $(`.welcome-text-${index + 1}`).fadeIn(2000)
-      }, timeout)
-      timeout = timeout + 3000
-    })
-  } */
 
-    
 function emptyTheContainers() {
 // Hide the .video-screen, remove dynamic buttons, empty the main content window,
 // reset scroll position to (0, 0), and stop any ongoing text-animations.
