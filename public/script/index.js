@@ -218,11 +218,11 @@ function playSilentLoop() {
   $('.video-screen').html(
     `<div class="loop-text">
       <h1 class="title">revuer</h1>
-      <p id="welcome-text-1" style="display: none;">Welcome to revuer!</p>
-      <p id="welcome-text-2" style="display: none;">Search for movies you've watched.</p>
-      <p id="welcome-text-3" style="display: none;">Add reviews, ratings, and formats viewed. 
-      <p id="welcome-text-4" style="display: none;">Save it all to your personal library.</p>
-      <p id="welcome-text-5" style="display: none;">Please enjoy this demo, and check-out the <a href="https://github.com/drichards211/revuer/blob/master/README.md" target="_blank">README.md</a> for more details.</p>
+      <p id="welcome-text-1" style="display: none;">Welcome to revuer</p>
+      <p id="welcome-text-2" style="display: none;">Find movies you've watched</p>
+      <p id="welcome-text-3" style="display: none;">Add reviews, ratings, and media</p> 
+      <p id="welcome-text-4" style="display: none;">Save everything to your personal library</p>
+      <p id="welcome-text-5" style="display: none;">RESERVED for future development</p>
       <div class="user-forms"></div>
     </div>`
   )
@@ -243,7 +243,7 @@ function animateWelcomeText(index) {
   if (textAnimate === false) {
   // Hide all welcome-text:
     console.log(`animateWelcomeText() stopped`)
-    for (let j = 1; j < 4; j++) {
+    for (let j = 1; j < 3; j++) {
       $(`#welcome-text-${j}`).fadeOut(2000)
     }
   } else if (i === 0) {
@@ -252,10 +252,10 @@ function animateWelcomeText(index) {
     animateWelcomeText(1)
   } else {
   // Continue the loop:
-    console.log(`animateWelcomeText() loop ${i} of 5`)
+    console.log(`animateWelcomeText() loop ${i} of 4`)
     setTimeout(function() {
       $(`#welcome-text-${i}`).fadeOut(2000, function() {
-        if (i === 5) {
+        if (i === 4) {
         // End reached. Restart the loop from the beginning:
           animateWelcomeText(0)
         } else {
