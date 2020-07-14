@@ -19,13 +19,26 @@ function addMovie(oldSearch) {
         <img src="../image/gold-canister-single-label.png" alt="Film Cannister" class="cannister-img">
       </div>
     </div>`)
-  $('.movie-find-form').submit(function(event) {
-    console.log('movie-find-form submitted')
-    event.preventDefault()
+
+  let submitMovie = () => {
+    console.log('submitMovie() ran')
     const searchTitle = $('#movietitle').val()
     // remove leading and trailing whitespace, convert multiple spaces to single, replace all remaining spaces with '+':
     const formatTitle = searchTitle.trim().replace(/\s\s+/g, ' ').split(' ').join('+');
     searchOMDB(formatTitle)
+  } 
+  
+  // submit form if user presses ENTER key:
+  $('.movie-find-form').keydown(function(event){
+    if(event.keyCode == 13){
+      event.preventDefault()  
+      submitMovie()
+    }
+  })
+  // submit form if user clicks SEARCH button:
+  $('.movie-find-form').submit(function(event) {
+    event.preventDefault()
+    submitMovie()    
   })
 }
 
