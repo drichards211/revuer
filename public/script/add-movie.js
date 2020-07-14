@@ -165,9 +165,6 @@ function renderMoreApiResults(results, searchTitle) {
       `<div class="poster-frame-${i}"></div><br>
       <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>`
     );
-    {
-      /* <p class="movie-title-plaque many" id="movie-correct-plaque-${i}">${Title} -- ${Year}</p>` */
-    }
     if (Poster === "N/A") {
       $(`.poster-frame-${i}`).append(
         `<p>This movie poster is not available</p>`
@@ -178,7 +175,6 @@ function renderMoreApiResults(results, searchTitle) {
       );
     }
   }
-  /* <img src="${Poster}" alt="image of ${Title} poster" class="more-movie-posters">` */
   $(".movie-API-box-1").append(
     `<p><button class="no" id="movie-not-here">I don't see my movie listed</button></p>`
   );
@@ -345,9 +341,6 @@ async function renderSuccessMessage(newMovie, guest) {
     // Display customized message and buttons for "Guest" account:
     emptyTheContainers(); // in index.js
     $(".video-screen").removeClass("hidden").html(
-      /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
-        <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-        </video> */
       `<div class="success-message video-text">
         <h2>${title}</h2> 
         <p>has been added to your virtual library.</p>
@@ -388,9 +381,6 @@ async function renderSuccessMessage(newMovie, guest) {
     // Render success message for registered user:
     emptyTheContainers(); // in index.js
     $(".video-screen").removeClass("hidden").html(
-      /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
-        <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-        </video> */
       `<div class="success-message video-text">
         <h2>${title}</h2> 
         <p>has been added to your library.</p>`
@@ -431,12 +421,8 @@ async function renderSuccessMessage(newMovie, guest) {
 
 function suggestNewSearch(oldSearch) {
   console.log("suggestNewSearch() ran");
-  /* $('.dynamic-buttons').empty() */
   emptyTheContainers(); // in index.js
   $(".video-screen").removeClass("hidden").html(
-    /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
-      <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-      </video> */
     `<div class="video-text">
       <p>We couldn't find any movies with that title.</p>
       <p>Please click 'Add a movie' to try again.</p>
