@@ -126,8 +126,8 @@ function renderFirstApiResult(results, searchTitle) {
       <div class="poster-frame"></div>
       <p class="movie-title-plaque">${Title} -- ${Year}</p>
       <p>
-      <button class="yes" id="movie-correct" autofocus>Yes</button>
-      <button class="no" id="movie-incorrect">No</button>
+      <button class="yes" id="movie-correct">YES</button>
+      <button class="no" id="movie-incorrect">NO</button>
       </p>
     </div>`
   );
