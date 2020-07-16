@@ -261,6 +261,7 @@ function deleteMovieInDb(omdbMovie, index) {
       if (res.ok) {
         console.log("response OK")
         console.log("Movie deleted successfully")
+        emptyTheContainers()
         $('.video-screen').removeClass('hidden').html(
           /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
             <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
