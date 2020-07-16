@@ -179,6 +179,7 @@ function renderMoreApiResults(results, searchTitle) {
     `<p><button class="no" id="movie-not-here">I don't see my movie listed</button></p>`
   );
   $("body").one("click", "input", function (event) {
+    event.preventDefault();
     for (let i = 1; i < 10; i++) {
       if (
         `${$(this).prop("id")}` === `movie-correct-${i}` ||
@@ -188,6 +189,9 @@ function renderMoreApiResults(results, searchTitle) {
         addMovieDetails(results[i]);
       }
     }
+  });
+  $("body").one("click", "button", function (event) {
+    event.preventDefault();
     if (`${$(this).prop("id")}` === "movie-not-here") {
       console.log("No movies are correct");
       suggestNewSearch(searchTitle);
