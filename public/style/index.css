@@ -598,6 +598,9 @@ button:active {
   margin-left: auto;
   margin-right: auto;
 }
+.movie-poster {
+  max-width: 100%;
+}
 .movie-title-plaque {
   background-image: url('../image/poster-title-plaque-a1.png');
   background-repeat: no-repeat;
@@ -690,20 +693,11 @@ button:active {
     padding-left: 2%;
     padding-right: 2%;
   }
-  .movie-poster {
-    max-width: 200px;
-  }
 }
 @media only screen and (max-height: 420px) and (orientation: landscape) {
 /*for-small-phone-landscape-only*/
   .video-screen {
     font-size: 1rem;
-  }
-}
-@media only screen and (max-width: 500px) and (min-width: 400px) and (orientation: portrait) {
-/*for-phone-portrait-only*/
-  .movie-poster {
-    max-width: 260px;
   }
 }
 @media only screen and (max-width: 700px) {
