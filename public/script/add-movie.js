@@ -133,7 +133,11 @@ function renderFirstApiResult(results, searchTitle) {
   );
   if (Poster !== "N/A") {
     $(".poster-frame").append(
-      `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster" class="movie-poster">`
+      `<img src="${Poster}" onerror="$(this).hide()" alt="${Title} poster" class="movie-poster">`
+    );
+  } else {
+    $(".poster-frame").append(
+      `<img src="../image/blank-poster.jpg" onerror="$(this).hide()" alt="movie poster unavailable" class="movie-poster">`
     );
   }
   $("body").one("click", "button", function (event) {
@@ -157,21 +161,45 @@ function renderMoreApiResults(results, searchTitle) {
   $(".movie-marquee").html(
     `<div class="movie-API-box-1">
       <h2>Is it one of these?</h2>
+      <div class="poster-row" id="p-row-1"></div>
+      <div class="poster-row" id="p-row-2"></div>
+      <div class="poster-row" id="p-row-3"></div>
     </div>`
   );
   for (let i = 1; i < results.length; i++) {
     const { Poster, Title, Year, imdbID } = results[i];
-    $(".movie-API-box-1").append(
-      `<div class="poster-frame-${i}"></div><br>
-      <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>`
-    );
+    if (i <= 3) {
+      $("#p-row-1").append(
+        `<div class="col-4">
+          <div class="poster-frame-${i}"></div><br>
+          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>
+        </div>`
+      );
+    }
+    if (i > 3 && i <= 6) {
+      $("#p-row-2").append(
+        `<div class="col-4">
+          <div class="poster-frame-${i}"></div><br>
+          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>
+        </div>`
+      );
+    }
+    if (i >= 7) {
+      $("#p-row-3").append(
+        `<div class="col-4">
+          <div class="poster-frame-${i}"></div><br>
+          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>
+        </div>`
+      );
+    }
+    
     if (Poster === "N/A") {
       $(`.poster-frame-${i}`).append(
-        `<p>This movie poster is not available</p>`
+        `<input type="image" src="../image/blank-poster.jpg" onerror="$(this).hide()" alt="movie poster unavailable" name="saveForm" class="more-movie-posters" id="movie-correct-${i}"/>`
       );
     } else {
       $(`.poster-frame-${i}`).append(
-        `<input type="image" src="${Poster}" onerror="$(this).hide()" name="saveForm" class="more-movie-posters" id="movie-correct-${i}"/>`
+        `<input type="image" src="${Poster}" onerror="$(this).hide()" alt="${Title} poster" name="saveForm" class="more-movie-posters" id="movie-correct-${i}"/>`
       );
     }
   }
@@ -239,7 +267,7 @@ function addMovieDetails(omdbMovie) {
   );
   if (Poster !== "N/A") {
     $(".poster-frame").append(
-      `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster" class="movie-poster">`
+      `<img src="${Poster}" onerror="$(this).hide()" alt="${Title} poster" class="movie-poster">`
     );
   }
   handleMovieSubmit(omdbMovie);

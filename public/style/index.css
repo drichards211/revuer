@@ -674,12 +674,30 @@ button:active {
   padding-right: 2.8%;
   margin: 0 auto;
 }
+.poster-row {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.poster-row::before,
+.poster-row::after {
+  display: table;
+  content: '';
+}
+.poster-row::after {
+  clear: both;
+}
 .col-12 {
   float: left;
   padding-left: 4%;
   padding-right: 4%;
   width: 100%;
   margin-bottom: 80%;
+}
+.col-4 {
+  float: left;
+  padding-left: 0%;
+  padding-right: 0%;
+  width: 100%;
 }
 
 /* SITE-WIDE VIEWPORT RESPONSE ========================== */
@@ -719,6 +737,11 @@ button:active {
   .video-text, .loop-text {
     margin-left: 16%;
     margin-right: 16%;
+  }
+  .col-4 {
+    width: 33.33%;
+    padding-left: 4%;
+    padding-right: 4%;
   }
 }
 @media only screen and (max-height: 900px) and (min-width: 500px) and (orientation: landscape) {
