@@ -116,28 +116,32 @@ async function viewLibraryDetail(imdbId, index) {
     }
     const formatDate = function() {
     // Format the 'Released' date string into something more verbose:
-      const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-      const months = {
-        "Jan": [0, "January"],
-        "Feb": [1, "February"],
-        "Mar": [2, "March"],
-        "Apr": [3, "April"],
-        "May": [4, "May"],
-        "Jun": [5, "June"],
-        "Jul": [6, "July"],
-        "Aug": [7, "August"],
-        "Sep": [8, "September"],
-        "Oct": [9, "October"],
-        "Nov": [10, "November"],
-        "Dec": [11, "December"],
+      if (Released === "N/A") {
+        return "Release Date Unavailable"
+      } else {
+        const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        const months = {
+          "Jan": [0, "January"],
+          "Feb": [1, "February"],
+          "Mar": [2, "March"],
+          "Apr": [3, "April"],
+          "May": [4, "May"],
+          "Jun": [5, "June"],
+          "Jul": [6, "July"],
+          "Aug": [7, "August"],
+          "Sep": [8, "September"],
+          "Oct": [9, "October"],
+          "Nov": [10, "November"],
+          "Dec": [11, "December"],
+        }
+        const year = Released.slice(-4)
+        const shortMonth = Released.slice(3,6)
+        const fullMonth = months[shortMonth][1]
+        const day = Released.slice(0,2)
+        const date = new Date(year, months[shortMonth][0], day)
+        const weekday = weekdays[date.getDay()]
+        return `${weekday} ${fullMonth} ${day}, ${year}`
       }
-      const year = Released.slice(-4)
-      const shortMonth = Released.slice(3,6)
-      const fullMonth = months[shortMonth][1]
-      const day = Released.slice(0,2)
-      const date = new Date(year, months[shortMonth][0], day)
-      const weekday = weekdays[date.getDay()]
-      return `${weekday} ${fullMonth} ${day}, ${year}`
     }
   emptyTheContainers() // in index.js
   $('.movie-marquee').html(
