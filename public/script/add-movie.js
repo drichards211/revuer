@@ -204,7 +204,7 @@ function renderMoreApiResults(results, searchTitle) {
     }
   }
   $(".movie-API-box-1").append(
-    `<p><button class="no" id="movie-not-here">I don't see my movie listed</button></p>`
+    `<p><button id="movie-not-here">I don't see my movie listed</button></p>`
   );
   $("body").one("click", "input", function (event) {
     event.preventDefault();
@@ -242,25 +242,26 @@ function addMovieDetails(omdbMovie) {
     </div>
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
-        <label for="rating">What did you think of it?</label><br>
+        <label for="rating" class="questions">What did you think of it?</label><br><br>
           <input type="radio" name="rating" value="lovedIt" checked required autofocus> Loved it<br>
           <input type="radio" name="rating" value="likedIt"> Liked it<br>
           <input type="radio" name="rating" value="complicated"> It's complicated<br>
           <input type="radio" name="rating" value="dislikedIt"> Disliked it<br>
           <input type="radio" name="rating" value="hatedIt"> Hated it<br><br>
-        <label for="ownCopy">Do you own a copy?</label><br>
+        <label for="ownCopy" class="questions">Do you own a copy?</label><br><br>
           <input type="radio" name="ownCopy" value="true" required> Yes<br>
           <input type="radio" name="ownCopy" value="false" checked> No<br><br>
-        <label for="format">Which format(s)? (Leave blank if none)</label><br>
+        <label for="format" class="questions">Which format(s)? (Leave blank if none)</label><br><br>
           <input type="checkbox" name="format" value="VHS" id="format-vhs"> VHS<br>
           <input type="checkbox" name="format" value="LaserDisc" id="format-laserdisc"> LaserDisc<br>
           <input type="checkbox" name="format" value="DVD" id="format-dvd"> DVD<br>
           <input type="checkbox" name="format" value="Blu-ray" id="format-bluray"> Blu-ray<br>
           <input type="checkbox" name="format" value="Digital Copy" id="format-digitalcopy"> Digital Copy<br><br>
-        <label for="viewingNotes">Viewing Notes</label><br>
+        <label for="viewingNotes" class="questions">Viewing Notes</label><br><br>
           <textarea name="viewingNotes" id="viewingNotes" rows="10" cols="72" maxlength="10000" placeholder="Type any notes you'd like, up to 10,000 characters. Enjoy re-vueing your favorite moments."></textarea>
         <br><br>
-        <button type="submit">Submit</button>
+        <button type="submit" class="submit-button">Submit</button>
+        <br><br>
       </form>
       <div class="form-errors"></div>
     </div>`
