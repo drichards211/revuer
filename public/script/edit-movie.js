@@ -21,12 +21,12 @@ function editMovie(omdbMovie, index) {
   $(".movie-marquee").html(
     `<div class="movie-API-box-1">
       <h2>Edit this movie</h2>
-      <p>${Title} -- ${Year}</p>
+      <p class="movie-title-plaque">${Title} -- ${Year}</p>
       <div class="poster-frame"></div>
     </div>
     <div class="movie-details-box">
       <form class="movie-edit-form" action="#"><br>
-        <label for="rating">What did you think of it?</label><br>
+        <label for="rating" class="questions">What did you think of it?</label><br><br>
           <input type="radio" name="rating" value="lovedIt" ${checkRating(
             "lovedIt"
           )} required> Loved it<br>
@@ -42,14 +42,14 @@ function editMovie(omdbMovie, index) {
           <input type="radio" name="rating" value="hatedIt" ${checkRating(
             "hatedIt"
           )}> Hated it<br><br>
-        <label for="ownCopy">Do you own a copy?</label><br>
+        <label for="ownCopy" class="questions">Do you own a copy?</label><br><br>
           <input type="radio" name="ownCopy" value="true" ${checkOwnCopy(
             true
           )} required> Yes<br>
           <input type="radio" name="ownCopy" value="false" ${checkOwnCopy(
             false
           )}> No<br><br>
-        <label for="format">Which format(s)? (Leave blank if none)</label><br>
+        <label for="format" class="questions">Which format(s)? (Leave blank if none)</label><br><br>
           <input type="checkbox" name="format" value="VHS" id="format-vhs" ${checkFormat(
             "VHS"
           )}> VHS<br>
@@ -65,18 +65,19 @@ function editMovie(omdbMovie, index) {
           <input type="checkbox" name="format" value="Digital Copy" id="format-digitalcopy" ${checkFormat(
             "Digital Copy"
           )}> Digital Copy<br><br>
-        <label for="viewingNotes">Viewing Notes</label><br>
+        <label for="viewingNotes" class="questions">Viewing Notes</label><br><br>
           <textarea name="viewingNotes" id="viewingNotes" rows="10" cols="72" maxlength="10000" placeholder="Type any notes you'd like, up to 10,000 characters. Enjoy re-vueing your favorite moments.">${viewingNotes}</textarea>
         <br><br>
-        <button type="submit">Update</button>
+        <button type="submit" class="submit-button">Update</button>
+        <br><br>
       </form>
     </div>`
   );
-  if (Poster !== "N/A") {
+  /* if (Poster !== "N/A") {
     $(".poster-frame").append(
       `<img src="${Poster}" onerror="$(this).hide()" alt="image of ${Title} poster">`
     );
-  }
+  } */
   $(".film-button-wrapper").html(
     `<div class="film"></div>  
     <div class="film"></div>  

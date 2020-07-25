@@ -266,11 +266,11 @@ function addMovieDetails(omdbMovie) {
       <div class="form-errors"></div>
     </div>`
   );
-  if (Poster !== "N/A") {
+  /* if (Poster !== "N/A") {
     $(".poster-frame").append(
       `<img src="${Poster}" onerror="$(this).hide()" alt="${Title} poster" class="movie-poster">`
     );
-  }
+  } */
   handleMovieSubmit(omdbMovie);
 }
 
