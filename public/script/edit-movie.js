@@ -8,7 +8,7 @@ function editMovie(omdbMovie, index) {
 
   // Propagate form with pre-existing values:
   const checkRating = (radioValue) => {
-    return rating === radioValue ? "checked autofocus" : "";
+    return rating === radioValue ? "checked" : "";
   };
   const checkOwnCopy = (radioValue) => {
     return ownCopy === radioValue ? "checked" : "";
@@ -47,7 +47,7 @@ function editMovie(omdbMovie, index) {
             <input type="radio" class="radio-button" name="rating" value="hatedIt" ${checkRating(
               "hatedIt"
             )}>
-            <label for="hatedIt">Hated it</label><br>
+            <label for="hatedIt">Hated it</label><br><br>
           </div>
         <label for="ownCopy" class="questions">Do you own a copy?</label><br><br>
           <input type="radio" name="ownCopy" value="true" ${checkOwnCopy(

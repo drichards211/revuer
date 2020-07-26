@@ -244,7 +244,7 @@ function addMovieDetails(omdbMovie) {
       <form class="movie-submit-form" action="#"><br>
         <label for="rating" class="questions">What did you think of it?</label><br><br>
           <div class="radio-inputs">
-            <input type="radio" class="radio-button" name="rating" value="lovedIt" checked required autofocus>
+            <input type="radio" class="radio-button" name="rating" value="lovedIt" checked required>
             <label for="lovedIt">Loved it</label><br>
             <input type="radio" class="radio-button" name="rating" value="likedIt">
             <label for="likedIt">Liked it</label><br>
@@ -253,7 +253,7 @@ function addMovieDetails(omdbMovie) {
             <input type="radio" class="radio-button" name="rating" value="dislikedIt">
             <label for="dislikedIt">Disliked it</label><br>
             <input type="radio" class="radio-button" name="rating" value="hatedIt">
-            <label for="hatedIt">Hated it</label><br>
+            <label for="hatedIt">Hated it</label><br><br>
           </div>
         <label for="ownCopy" class="questions">Do you own a copy?</label><br><br>
           <input type="radio" name="ownCopy" value="true" required>
