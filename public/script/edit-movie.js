@@ -21,7 +21,7 @@ function editMovie(omdbMovie, index) {
   $(".movie-marquee").html(
     `<div class="movie-API-box-1">
       <h2>Edit this movie</h2>
-      <p class="movie-title-plaque">${Title} -- ${Year}</p>
+      <p class="movie-title-plaque">${Title} — ${Year}</p>
       <div class="poster-frame"></div>
     </div>
     <div class="movie-details-box">
