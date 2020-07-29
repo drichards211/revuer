@@ -120,7 +120,7 @@ function renderChairButtons(home) {
   } else { 
     if (home) {
       $('.chair-button-wrapper').append(
-        `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
+        `<div class="chair inline"></div>`  
       )
     } else {
       $('.chair-button-wrapper').append(
