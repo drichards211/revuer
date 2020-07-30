@@ -383,8 +383,8 @@ button:active {
   margin-bottom: 1rem;
   padding-left: 11px;
   padding-right: 11px;
-  color: black;
-  font-weight: bold;
+  color: white;
+  background: #5959595e;
   height: 30px;
   border-radius: 20px;
 }
@@ -448,9 +448,8 @@ button:active {
 }
 #viewingNotes {
   color: white;
-  background-color: transparent;
+  background-color: #ab00002b;
   padding: 10px;
-  border: solid 1px white;
   border-radius: 13px;
 }
 #viewingNotes ::placeholder {
