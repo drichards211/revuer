@@ -13,7 +13,7 @@ modifications for revuer by D.R.
     background-color: #f9f7f1;
 }
 .newspaper header{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display SC', serif;
     font-weight: 900;
     font-size: 80px;
     text-transform: uppercase;
@@ -94,7 +94,7 @@ modifications for revuer by D.R.
     /* border-top: 1px solid #2f2f2f;
     border-bottom: 1px solid #2f2f2f; */
     font-style: italic;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display SC', serif;
     
 
 }
@@ -102,7 +102,7 @@ modifications for revuer by D.R.
 .newspaper .collumn .headline{
     text-align: center;
     line-height: normal;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display SC', serif;
     display: block;
     margin: 0 auto;
 
@@ -235,7 +235,7 @@ modifications for revuer by D.R.
     padding: 10px 0 10px 0;
 }
 .newspaper .collumn .citation{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display SC', serif;
     font-size: 36px;
     line-height: 44px;
     /*font-style: italic;*/
