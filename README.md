@@ -48,7 +48,7 @@ Troubleshooting:
   * [X] In the movie search textarea, trigger the submit button when the user presses Enter.
   * [X] Chairs don't always center correctly on initial page load in Chrome if devTools turned off.
   * [X] '#movie-not-here' button doesn't work on renderMoreApiResults().
-  * [ ] Android soft-keyboard should be auto-hidden when the search-form is submitted.
+  * [X] Android soft-keyboard should be auto-hidden when the search-form is submitted.
   * [X] '.video-screen' width needs to be reduced slightly on iPad landscape mode.
   * [ ] Fix layout if library is empty.
   * [X] 'Movie edit screen' persists after successfully deleting a movie. Are the containers being emptied?
