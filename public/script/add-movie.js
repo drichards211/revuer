@@ -23,6 +23,8 @@ function addMovie(oldSearch) {
 
   let submitMovie = () => {
     console.log("submitMovie() ran");
+    mobileUserInput = false
+    renderChairButtons() // in index.js
     const searchTitle = $("#movietitle").val();
     // remove leading and trailing whitespace, convert multiple spaces to single, replace all remaining spaces with '+':
     const formatTitle = searchTitle
@@ -45,6 +47,7 @@ function addMovie(oldSearch) {
     event.preventDefault();
     submitMovie();
   });
+  hideMobileChairs() // in index.js
 }
 
 function addGuestMoviesToDb() {
@@ -315,12 +318,14 @@ function handleMovieSubmit(omdbMovie) {
     console.log(userMovie);
     postMovieToDb(userMovie);
   });
+  hideMobileChairs() // in index.js
 }
 
 function postMovieToDb(newMovie, silent) {
   // Post newMovie object to DB:
   console.log(`postMovieToDb() ran`);
   let success;
+  renderChairButtons() // in index.js
   if (userName === "Guest") {
     // Do not allow "Guest" to post to db. Add to client previewLibrary instead:
     console.log("Guest attempting to post movie");

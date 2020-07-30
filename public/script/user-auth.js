@@ -194,6 +194,7 @@ function renderSignInForm() {
     const userPass =  $('#password').val()
     userSignIn(username, userPass)
   })
+  hideMobileChairs() // in index.js
 }
 
 function renderSignUpForm() {
@@ -237,6 +238,7 @@ function renderSignUpForm() {
       )
     }
   })
+  hideMobileChairs() // in index.js
 }
 
 function renderPreviewInfo() {
