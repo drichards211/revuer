@@ -169,7 +169,8 @@ function renderSignInForm() {
   console.log("renderSignInForm() ran")
   emptyTheContainers()
   $('.dynamic-buttons').html(
-    `<button class="ticket" id="sign-up">sign-up</button>
+    `<button class="ticket" id="sign-in">sign-in</button>
+    <button class="ticket" id="sign-up">sign-up</button>
     <button class="ticket" id="preview">preview</button>
     <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
@@ -193,6 +194,7 @@ function renderSignInForm() {
     const userPass =  $('#password').val()
     userSignIn(username, userPass)
   })
+  hideMobileChairs() // in index.js
 }
 
 function renderSignUpForm() {
@@ -200,6 +202,7 @@ function renderSignUpForm() {
   emptyTheContainers()
   $('.dynamic-buttons').html(
     `<button class="ticket" id="sign-in">sign-in</button>
+    <button class="ticket" id="sign-up">sign-up</button>
     <button class="ticket" id="preview">preview</button>
     <script>$('.ticket').fitText(1, 'compressor * 5.7');</script>`
   )
@@ -235,6 +238,7 @@ function renderSignUpForm() {
       )
     }
   })
+  hideMobileChairs() // in index.js
 }
 
 function renderPreviewInfo() {

@@ -21,7 +21,7 @@ function editMovie(omdbMovie, index) {
   $(".movie-marquee").html(
     `<div class="movie-API-box-1">
       <h2>Edit this movie</h2>
-      <p class="movie-title-plaque">${Title} -- ${Year}</p>
+      <p class="movie-title-plaque">${Title} — ${Year}</p>
       <div class="poster-frame"></div>
     </div>
     <div class="movie-details-box">
@@ -124,7 +124,7 @@ function editMovie(omdbMovie, index) {
       handleMovieDelete(omdbMovie, index);
     }
   });
-
+  hideMobileChairs() // in index.js
   handleMovieEdit(omdbMovie, index);
 }
 
@@ -199,6 +199,7 @@ function updateMovieInDb(editedMovie, index) {
 async function renderEditMessage(editedMovie, index, guest) {
   console.log("renderEditMessage() ran");
   emptyTheContainers(); // in index.js
+  renderChairButtons() // in index.js
   if (guest === true) {
     // Display customized message and buttons for "Guest" account:
     $(".video-screen").removeClass("hidden").html(

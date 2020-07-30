@@ -23,6 +23,8 @@ function addMovie(oldSearch) {
 
   let submitMovie = () => {
     console.log("submitMovie() ran");
+    mobileUserInput = false
+    renderChairButtons() // in index.js
     const searchTitle = $("#movietitle").val();
     // remove leading and trailing whitespace, convert multiple spaces to single, replace all remaining spaces with '+':
     const formatTitle = searchTitle
@@ -45,6 +47,7 @@ function addMovie(oldSearch) {
     event.preventDefault();
     submitMovie();
   });
+  hideMobileChairs() // in index.js
 }
 
 function addGuestMoviesToDb() {
@@ -124,7 +127,7 @@ function renderFirstApiResult(results, searchTitle) {
     `<div class="movie-API-box-1">
       <h2>Is this your movie?</h2>
       <div class="poster-frame"></div>
-      <p class="movie-title-plaque">${Title} -- ${Year}</p>
+      <p class="movie-title-plaque">${Title} — ${Year}</p>
       <p>
       <button class="yes" id="movie-correct">YES</button>
       <button class="no" id="movie-incorrect">NO</button>
@@ -172,7 +175,7 @@ function renderMoreApiResults(results, searchTitle) {
       $("#p-row-1").append(
         `<div class="col-4">
           <div class="poster-frame-${i}"></div><br>
-          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>
+          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} — ${Year}"/>
         </div>`
       );
     }
@@ -180,7 +183,7 @@ function renderMoreApiResults(results, searchTitle) {
       $("#p-row-2").append(
         `<div class="col-4">
           <div class="poster-frame-${i}"></div><br>
-          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>
+          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} — ${Year}"/>
         </div>`
       );
     }
@@ -188,7 +191,7 @@ function renderMoreApiResults(results, searchTitle) {
       $("#p-row-3").append(
         `<div class="col-4">
           <div class="poster-frame-${i}"></div><br>
-          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} -- ${Year}"/>
+          <input type="button" class="movie-title-plaque many" id="movie-correct-plaque-${i}" value="${Title} — ${Year}"/>
         </div>`
       );
     }
@@ -238,7 +241,7 @@ function addMovieDetails(omdbMovie) {
     `<div class="movie-API-box-1">
       <h2>Add your details</h2>
       <div class="poster-frame"></div>
-      <p class="movie-title-plaque">${Title} -- ${Year}</p>
+      <p class="movie-title-plaque">${Title} — ${Year}</p>
     </div>
     <div class="movie-details-box">
       <form class="movie-submit-form" action="#"><br>
@@ -315,12 +318,14 @@ function handleMovieSubmit(omdbMovie) {
     console.log(userMovie);
     postMovieToDb(userMovie);
   });
+  hideMobileChairs() // in index.js
 }
 
 function postMovieToDb(newMovie, silent) {
   // Post newMovie object to DB:
   console.log(`postMovieToDb() ran`);
   let success;
+  renderChairButtons() // in index.js
   if (userName === "Guest") {
     // Do not allow "Guest" to post to db. Add to client previewLibrary instead:
     console.log("Guest attempting to post movie");

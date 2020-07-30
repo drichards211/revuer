@@ -1,5 +1,6 @@
 'use strict'
 let textAnimate
+let mobileUserInput = false // true when form :input field is active on mobile display
 
 function handleUserNav() {
   /* Listens for user button presses and calls appropriate function(s) */
@@ -120,7 +121,7 @@ function renderChairButtons(home) {
   } else { 
     if (home) {
       $('.chair-button-wrapper').append(
-        `<button class="chair-plaque" id="chair-4">ABOUT REVUER</button>`  
+        `<div class="chair inline"></div>`  
       )
     } else {
       $('.chair-button-wrapper').append(
@@ -273,6 +274,7 @@ function emptyTheContainers() {
 // reset scroll position to (0, 0), and stop any ongoing text-animations.
   console.log('emptyTheContainers() ran')
   textAnimate = false
+  mobileUserInput = false
   window.scrollTo(0, 0)
   $('.video-screen').empty().addClass('hidden').css({'display': ''})
   $('.dynamic-buttons, .film-button-wrapper').empty().unbind('click')
@@ -306,15 +308,20 @@ function hideChairs() {
 // Hide the chairs when scrolling if viewport is < 700px tall and landscape:
   console.log("hideChairs() running")
   let lastScrollPosition = 0
+  let mobileInputField = function() {
+    return mobileUserInput
+  }
   let showChairs = function() {
-    console.log('showing chairs')
-    $('.chair-buttons').css({"display": "block"}) 
-    renderChairButtons()  // Force re-draw of chair buttons
+    if (!mobileInputField()) { // Only display chairs if :input field is inactive on mobile
+      console.log('showing chairs')
+      $('.chair-buttons').css({"display": "block"}) 
+      renderChairButtons()  // Force re-draw of chair buttons
+    }
   }
   $(window).scroll(function() {
     let mediaQuery = window.matchMedia("(max-height: 700px) and (orientation: landscape)")
     let currentScroll = $(this).scrollTop()
-    if (mediaQuery.matches) {
+    if ((mediaQuery.matches) && (!mobileInputField())) {
       if (currentScroll > lastScrollPosition) {
       // User is scrolling down: 
         console.log("hiding chairs")
@@ -328,8 +335,31 @@ function hideChairs() {
     }
   })
   // Restore chair visibility if viewport resized or rotated:
-  window.addEventListener('orientationchange', showChairs)
+  /* window.addEventListener('orientationchange', showChairs) */
   window.addEventListener('resize', showChairs)
+}
+
+function hideMobileChairs() {
+  // Hide chair buttons if form :input fields have focus on mobile devices. Must call AFTER :input fields are rendered.
+  console.log("hideMobileChairs() running")
+  $("form :input").focus(function(event) {
+    /* Input field has focus; hide chair buttons if soft-keyboard active */
+    event.preventDefault()
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      console.log("Soft-keyboard detected: hiding the chair buttons")
+      mobileUserInput = true
+      $('.chair-buttons').fadeOut()
+    }
+  })
+  $("form :input").blur(function(event) {
+    /* Input field is no longer in focus; restore chair buttons if hidden */
+      event.preventDefault()
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        console.log('Soft-keyboard retracted: restoring the chair buttons')
+        mobileUserInput = false
+        $('.chair-buttons').fadeIn(100)
+      }
+  })
 }
 
 $(function() {

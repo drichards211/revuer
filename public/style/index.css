@@ -34,6 +34,12 @@ body:before {
 textarea {
   max-width: 100%;
 }
+textarea:focus {
+  outline: none;
+}
+textarea:focus::placeholder { 
+  color: transparent;
+}
 input {
   max-width: 100%;
 }
@@ -51,7 +57,7 @@ input {
   -webkit-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, 0.75);
   -moz-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
   box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
-  font-family: 'Silentina';
+  font-family: 'Silentina', serif;
   font-size: 1.9rem;
   font-weight: 600; 
 }
@@ -101,7 +107,7 @@ input {
 }
 .dynamic-buttons {
   position: relative;
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
@@ -110,7 +116,7 @@ input {
 .film-buttons {
   position: relative;
   overflow: hidden;
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 0pt; /*Removes gap between buttons*/
   font-weight: bold;
   text-align: center;
@@ -141,7 +147,7 @@ nav {
   background:url(../image/chair-a1.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(255, 255, 255);
-  font-family: 'Playfair Display SC';
+  font-family: 'Playfair Display SC', serif;
   font-style: normal;
   font-weight: 600;
   padding-top: 2.1em;
@@ -156,7 +162,7 @@ nav {
   background:url(../image/chair-plaque-a1.png) 0 0 no-repeat;
   background-size: 100%;
   color: rgb(36, 33, 33);
-  font-family: 'Playfair Display SC';
+  font-family: 'Playfair Display SC', serif;
   font-style: normal;
   font-weight: bolder;
   padding-top: 2.4em;
@@ -204,7 +210,7 @@ button:active {
   transform: scale(0.99);
 }
 .yes {
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2rem;
   letter-spacing: 1px;
   width: 5rem;
@@ -224,7 +230,7 @@ button:active {
   border: 2px solid #f0cd4f;
 }
 .no {
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2rem;
   letter-spacing: 1px;
   width: 5rem;
@@ -246,7 +252,7 @@ button:active {
   color: black;
 }
 .submit-button {
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2rem;
   letter-spacing: 1px;
   color: black;
@@ -265,7 +271,7 @@ button:active {
   border: 2px solid #f0cd4f;
 }
 #movie-not-here {
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 1.9rem;
   letter-spacing: 1px;
   color: white;
@@ -357,11 +363,10 @@ button:active {
   text-shadow: 2px 2px 2px #000000;
 }
 .signin-box, .signup-box {
-  font-family: "Silentina";
+  font-family: "Silentina", serif;
   letter-spacing: 1px;
   background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 1px 4px white;
-  border-radius: 40px;
+  border-radius: 24px;
   font-size: 1.4rem;
   width: 90%;
   max-width: 375px;
@@ -373,37 +378,56 @@ button:active {
   text-align: center;
 }
 .signin-box h1, .signup-box h1 {
-  font-family: 'Silentina';
-  font-size: 4rem;
+  font-family: 'Silentina', serif;
+  font-size: 4.2rem;
   margin: 1rem 0rem 1rem;
   color: white;
 }
 .signin-box input, .signup-box input {
-  font-family: 'EB Garamond';
+  font-family: 'Droid Serif', serif;
+  font-size: 1.2rem;
+  width: 245px;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-  padding-left: 5px;
-  color: black;
-  font-weight: bold;
-  height: 30px;
-  border-radius: 8px;
-}
-.signin-box button, .signup-box button {
-  font-family: "Silentina";
-  font-size: 1.7rem;
+  padding-left: 11px;
+  padding-right: 11px;
   color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding-top: .2rem;
-  margin-top: 1.4rem;
-  border: solid 1px white;
-  border-radius: 25px;
-  width: 225px;
+  background: #5959595e;
+  height: 30px;
+  border-radius: 20px;
 }
+.signin-box button {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: black;
+  padding: 0.3rem 1rem 0.0rem 1rem;
+  background: #0cacd4;
+  border: 2px solid #0cacd4;
+  border-radius: 23px;
+  transition: 0.4s;
+  margin-top: 0.8rem;
+}
+.signup-box button {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: black;
+  padding: 0.3rem 1rem 0.0rem 1rem;
+  background: #e2be21;
+  border: 2px solid #e2be21;
+  border-radius: 23px;
+  transition: 0.4s;
+  margin-top: 0.8rem;
+}
+
 .movie-API-box-1 {
   text-align: center;
 }
 .movie-API-box-1 h2 {
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2.3em;
   font-weight: normal;
   letter-spacing: 1px;
@@ -418,7 +442,7 @@ button:active {
 }
 .movie-submit-form, .movie-edit-form {
   font-size: 1.5rem;
-  font-family: 'Silentina';
+  font-family: 'Silentina', serif;
 }
 .movie-submit-form ::placeholder {
   color: white;
@@ -432,9 +456,8 @@ button:active {
 }
 #viewingNotes {
   color: white;
-  background-color: transparent;
+  background-color: #ab00002b;
   padding: 10px;
-  border: solid 1px white;
   border-radius: 13px;
 }
 #viewingNotes ::placeholder {
@@ -449,7 +472,7 @@ button:active {
   margin-bottom: 1.4rem;
 }
 .movie-find-form label {
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2.3em;
   font-weight: normal;
   letter-spacing: 1px;
@@ -500,7 +523,7 @@ button:active {
 .film-label {
   position: absolute;
   width: 200px;
-  top: calc(1.6rem + 52.9%);
+  top: calc(1.6rem + 52.2%);
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
@@ -524,7 +547,7 @@ button:active {
   color: black;
 }
 #movietitle {
-  font-family: 'Special Elite', cursive;
+  font-family: 'Permanent Marker', cursive;
   font-size: 200%;
   color: #0c0c0c;
 }
@@ -536,7 +559,7 @@ button:active {
   top: calc(1.2rem + 66%);
   z-index: +1;
   font-size: 240%;
-  font-family: 'bebas';
+  font-family: "Bebas Neue", sans-serif;
   color: #080808;
   border: solid 2px black;
   background: #dbdbdb;
@@ -556,12 +579,12 @@ button:active {
   background: #ae9e46;
 }
 .movie-find-box ::placeholder {
-  font-family: 'Special Elite', cursive;
+  font-family: 'Permanent Marker', cursive;
   color: black;
   text-overflow: ellipsis;
 }
 .movie-find-box ::-ms-input-placeholder {
-  font-family: 'Special Elite', cursive;
+  font-family: 'Permanent Marker', cursive;
   color: black;
   text-overflow: ellipsis;
 }
@@ -643,7 +666,7 @@ button:active {
 }
 
 .now-showing-button {
-  font-family: 'wagner';
+  font-family: 'wagner', sans-serif;
   font-size: 300%;
   color: rgba(255, 0, 0, 0.8);
   letter-spacing: 3px;
@@ -654,7 +677,7 @@ button:active {
   width: 100%;
 }
 .movie-button {
-  font-family: 'wagner';
+  font-family: 'wagner', sans-serif;
   font-size: 175%;
   letter-spacing: 3px;
   word-spacing: 5px;
@@ -707,7 +730,7 @@ button:active {
   margin-left: auto;
   margin-right: auto;
   font-size: 1.3rem;
-  font-family: 'Playfair Display SC';
+  font-family: 'Playfair Display SC', serif;
   font-weight: bold;
 }
 .many {
@@ -731,6 +754,7 @@ button:active {
   color: rgba(255, 0, 0, 0.8);
 }
 
+/* FONTS */
 @font-face {
   font-family: wagner;
   src: url(wagner-zip-change.ttf);
@@ -741,21 +765,6 @@ button:active {
   src: url(silentina-woi-movie.ttf);
   font-style: normal;
 }
-@font-face {
-  font-family: bebas;
-  src: url(bebas-neue.otf);
-  font-style: normal;
-}
-@font-face {
-  font-family: marquee;
-  src: url(MARQUEE_.TTF);
-  font-style: normal;
-}
-@font-face {
-  font-family: beadchain;
-  src: url(BEADC___.TTF);
-  font-style: normal;
-} 
 
 .row {
   max-width: 1200px;
