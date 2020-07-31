@@ -290,10 +290,10 @@ function handleMovieSubmit(omdbMovie) {
   // Create a userMovie object from submitted form data:
   console.log(`handleMovieSubmit(running)`);
   let userMovie = {};
-  // Preserves character returns inside "textarea" field:
+  // Convert character returns inside "textarea" to <br> tags:
   $.valHooks.textarea = {
     get: function (elem) {
-      return elem.value.replace(/\r?\n/g, "\r\n");
+      return elem.value.replace(/\r\n|\r|\n/g,"<br/>");
     },
   };
   $(".movie-submit-form").submit(function (event) {
