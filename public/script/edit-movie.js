@@ -5,6 +5,7 @@ function editMovie(omdbMovie, index) {
   console.log(`index = ${index}`);
   const { Poster, Title, Year, imdbID } = omdbMovie;
   const { rating, ownCopy, format, viewingNotes } = libraryResults[index];
+  const viewingNotesFormatted = viewingNotes.replace(/<br\s?\/?>/g,"\n"); // Remove <br> tags and replace with line breaks
 
   // Propagate form with pre-existing values:
   const checkRating = (radioValue) => {
@@ -80,7 +81,7 @@ function editMovie(omdbMovie, index) {
           )}>
           <label for="Digital Copy">Digital Copy</label><br><br>
         <label for="viewingNotes" class="questions">Viewing Notes</label><br><br>
-          <textarea name="viewingNotes" id="viewingNotes" rows="10" cols="72" maxlength="10000" placeholder="Type any notes you'd like, up to 10,000 characters. Enjoy re-vueing your favorite moments.">${viewingNotes}</textarea>
+          <textarea name="viewingNotes" id="viewingNotes" rows="10" cols="72" maxlength="10000" placeholder="Type any notes you'd like, up to 10,000 characters. Enjoy re-vueing your favorite moments.">${viewingNotesFormatted}</textarea>
         <br><br>
         <button type="submit" class="submit-button">Update</button>
         <br><br>
@@ -131,12 +132,13 @@ function editMovie(omdbMovie, index) {
 function handleMovieEdit(omdbMovie, index) {
   console.log(`handleMovieEdit(running)`);
   let userMovie = {};
-  // Preserves character returns inside "textarea":
+  // Convert character returns inside "textarea" to <br> tags:
   $.valHooks.textarea = {
     get: function (elem) {
-      return elem.value.replace(/\r?\n/g, "\r\n");
+      return elem.value.replace(/\r\n|\r|\n/g,"<br/>");
     },
   };
+  // replace(/\r?\n/g, "\r\n");
   $(".movie-edit-form").submit(function (event) {
     console.log("movie-edit-form submitted");
     event.preventDefault();
