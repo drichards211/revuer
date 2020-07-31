@@ -53,10 +53,10 @@ input {
   margin: auto;
   text-align: center;
   color: #d6d6d6;
-  background-color: black;
+  background-color: #d6d6d6;
   -webkit-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, 0.75);
   -moz-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
-  box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
+  box-shadow: 0px 0px 13px 0px rgb(211 202 162);
   font-family: 'Silentina', serif;
   font-size: 1.9rem;
   font-weight: 600; 
@@ -74,9 +74,9 @@ input {
 .loop-text {
   z-index: 1;
   height: 100px;
-  color: #dfdfdf;
+  color: #e2e2e2;
   position: absolute;
-  top: 46%;
+  top: 50%;
   transform: translateY(-50%);
   left: 0;
   right: 0;

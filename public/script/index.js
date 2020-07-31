@@ -174,8 +174,7 @@ function updateDOMTest() {
     `<p>This is new text rendered by index.js</p>`)
 }
 
-// Deprecated: Movie screen is being discontinued in favor of projecting text
-// directly on the back wall.
+// Testing to see if this feature stays or goes:
 function playCountdown() {
   console.log('playCountdown() ran')
   $('.video-screen').html(
@@ -186,7 +185,7 @@ function playCountdown() {
   let playPromise = document.querySelector('#film-leader').play()
   if (playPromise !== undefined) {
   // Browser supports media playback promises:
-  console.log('Browser supports media playback promises:')
+    console.log('Browser supports media playback promises:')
     playPromise.then(function() {
     // Automatic playback STARTED:
       console.log('Automatic playback STARTED:')
@@ -209,7 +208,14 @@ function playCountdown() {
 
 function playSilentLoop() {
   console.log('playSilentLoop() ran')
-  /*setTimeout(function() {
+  setTimeout(function() {
+    $('.video-screen').append(
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+    </video>`
+  )
+}, 1000);
+  /* setTimeout(function() {
       $('.video-screen').append(
       `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
       <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
@@ -230,7 +236,7 @@ function playSilentLoop() {
   $('.title').addClass('hidden')
   setTimeout(function() {
     $('.title').fadeIn(3000)
-  }, 0);
+  }, 1000);
   setTimeout(function() { 
     /* $('.video-wrapper').removeClass('maintain-size') */
     textAnimate = true
@@ -289,17 +295,17 @@ function manageWindowResize() {
   console.log("manageWindowResize() running")
 // set initial values: 
   console.log("setting initial theater size") 
-  let initialVideoWrapperWidth = $('.video-wrapper').css('width')
+  let initialVideoScreenWidth = $('.video-screen').css('width')
   let mediaQuery = window.matchMedia("(max-width: 500px)")
   let initialFilmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
-  /* $('.video-screen').css({'height': `calc(${initialVideoWrapperWidth} * .5625)`}) */
+  $('.video-screen').css({'height': `calc(${initialVideoScreenWidth} * .5620)`})
   $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
 // Update values if window resized:
   window.onresize = function() {
     console.log("Window size changed... resizing theater")
-    let videoWrapperWidth = $('.video-wrapper').css('width')
+    let videoScreenWidth = $('.video-screen').css('width')
     let filmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
-    /* $('.video-screen').css({'height': `calc(${videoWrapperWidth} * .5625)`}) */
+    $('.video-screen').css({'height': `calc(${videoScreenWidth} * .5620)`})
     $('.film-button-wrapper').css({'width': `calc(${filmButtonWidth} * 18)`, 'transform': `translateX(calc(((${filmButtonWidth} * 18) - 100vw)* -.5))`})
   }
 }
@@ -366,5 +372,5 @@ $(function() {
   handleUserNav()
   manageWindowResize()
   hideChairs()
-  playSilentLoop()
+  playCountdown()
 })
