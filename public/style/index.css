@@ -489,8 +489,10 @@ button:active {
   
 }
 .movie-find-box {
-  margin-top: 8vh;
-  position: relative;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 100%;
 }
