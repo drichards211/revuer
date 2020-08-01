@@ -564,7 +564,7 @@ button:active {
 }
 #movietitle-button {
   position: absolute;
-  left: 50.4%;
+  left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
   top: calc(1.2rem + 66%);
@@ -575,7 +575,7 @@ button:active {
   border: solid 2px black;
   background: #dbdbdb;
   border-radius: 23px;
-  padding: 3px 4px 2px 3px;
+  padding: 3px 3px 2px 3px;
   width: 87px;
   max-width: 18.7%;
   transition: 0.4s;
