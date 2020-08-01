@@ -157,11 +157,11 @@ function aboutRevuer() {
   emptyTheContainers()
   /* $('.dynamic-buttons').empty() */
   $('.video-screen').removeClass('hidden').html(
-    /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
     <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-    </video> */
-    `<div class="about-revuer video-text">
-      <h2>About revuer</h2>
+    </video>
+    <div class="about-revuer video-text blurred-text">
+      <h2 class="blurred-more">About revuer</h2>
       <p>This is placeholder text about revuer</p>
     </div>`
   )
@@ -215,16 +215,9 @@ function playSilentLoop() {
     </video>`
   )
 }, 1000);
-  /* setTimeout(function() {
-      $('.video-screen').append(
-      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
-      <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-      </video>`
-    )
-  }, 1000); */
   $('.video-screen').html(
     `<div class="loop-text blurred-text">
-      <h1 class="title">revuer</h1>
+      <h1 class="title blurred-more">revuer</h1>
       <p id="welcome-text-1" style="display: none;">Welcome to revuer</p>
       <p id="welcome-text-2" style="display: none;">Find movies you've watched</p>
       <p id="welcome-text-3" style="display: none;">Add reviews, ratings, and media</p> 
@@ -341,7 +334,6 @@ function hideChairs() {
     }
   })
   // Restore chair visibility if viewport resized or rotated:
-  /* window.addEventListener('orientationchange', showChairs) */
   window.addEventListener('resize', showChairs)
 }
 

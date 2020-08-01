@@ -53,7 +53,7 @@ input {
   margin: auto;
   text-align: center;
   color: #d6d6d6;
-  background-color: #d6d6d6;
+  background-color: black;
   -webkit-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, 0.75);
   -moz-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
   box-shadow: 0px 0px 13px 0px rgb(211 202 162);
@@ -107,6 +107,10 @@ input {
 }
 .blurred-text {
   color: transparent;
+  text-shadow: 0 0 0.13rem #d8d8d8;
+}
+.blurred-more {
+  color: transparent;
   text-shadow: 0 0 0.16rem #d8d8d8;
 }
 .dynamic-buttons {
@@ -125,6 +129,7 @@ input {
   font-weight: bold;
   text-align: center;
   background-color: black;
+  z-index: +1;
 }
 nav {
   color: white;
@@ -804,8 +809,37 @@ button:active {
 }
 
 /* SITE-WIDE VIEWPORT RESPONSE ========================== */
+@media only screen and (max-height: 420px) and (orientation: landscape) {
+/*for-small-phone-landscape-only*/
+  .video-screen {
+    font-size: 1rem;
+  }
+  .blurred-text {
+    text-shadow: 0 0 0.08rem #d8d8d8;
+  }
+  .blurred-more {
+    text-shadow: 0 0 0.095rem #d8d8d8;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .video-screen {
+    font-size: 1rem;
+  }
+  .blurred-text {
+    text-shadow: 0 0 0.08rem #d8d8d8;
+  }
+  .blurred-more {
+    text-shadow: 0 0 0.095rem #d8d8d8;
+  }
+  .loop-text {
+    top: 55%;
+  }
+}
 @media only screen and (max-width: 400px) and (orientation: portrait) {
 /*for-small-phone-portrait-only*/
+  .video-screen {
+    font-size: 1rem;
+  }
   .row {
     padding-left: 2%;
     padding-right: 2%;
@@ -815,26 +849,20 @@ button:active {
     padding-right: 2%;
   }
 }
-@media only screen and (max-height: 420px) and (orientation: landscape) {
-/*for-small-phone-landscape-only*/
-  .video-screen {
-    font-size: 0.9rem;
+@media only screen and (max-width: 360px) and (orientation: portrait) {
+  /*for-extremely-small-phone-portrait-only*/
+    .video-screen {
+      font-size: 0.8rem;
+    }
+    .row {
+      padding-left: 2%;
+      padding-right: 2%;
+    }
+    .col-12 {
+      padding-left: 2%;
+      padding-right: 2%;
+    }
   }
-  .blurred-text {
-    text-shadow: 0 0 0.09rem #d8d8d8;
-  }
-}
-@media only screen and (max-width: 700px) {
-  .video-screen {
-    font-size: 0.9rem;
-  }
-  .blurred-text {
-    text-shadow: 0 0 0.09rem #d8d8d8;
-  }
-  .loop-text {
-    top: 55%;
-  }
-}
 @media only screen and (min-width: 700px) {
   .loop-text {
     top: 43%;
