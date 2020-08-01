@@ -223,7 +223,7 @@ function playSilentLoop() {
     )
   }, 1000); */
   $('.video-screen').html(
-    `<div class="loop-text">
+    `<div class="loop-text blurred-text">
       <h1 class="title">revuer</h1>
       <p id="welcome-text-1" style="display: none;">Welcome to revuer</p>
       <p id="welcome-text-2" style="display: none;">Find movies you've watched</p>

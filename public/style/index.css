@@ -74,7 +74,7 @@ input {
 .loop-text {
   z-index: 1;
   height: 100px;
-  color: #e2e2e2;
+  color: #d8d8d8;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -85,7 +85,7 @@ input {
 }
 .video-text {
   z-index: 1;
-  color: #dfdfdf;
+  color: #d8d8d8;
   position: absolute;
   top: 46%;
   transform: translateY(-50%);
@@ -104,6 +104,10 @@ input {
 }
 .video-text a, .loop-text a {
   color: inherit;
+}
+.blurred-text {
+  color: transparent;
+  text-shadow: 0 0 0.16rem #d8d8d8;
 }
 .dynamic-buttons {
   position: relative;
@@ -814,17 +818,26 @@ button:active {
 @media only screen and (max-height: 420px) and (orientation: landscape) {
 /*for-small-phone-landscape-only*/
   .video-screen {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+  .blurred-text {
+    text-shadow: 0 0 0.09rem #d8d8d8;
   }
 }
 @media only screen and (max-width: 700px) {
   .video-screen {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+  .blurred-text {
+    text-shadow: 0 0 0.09rem #d8d8d8;
+  }
+  .loop-text {
+    top: 55%;
   }
 }
 @media only screen and (min-width: 700px) {
   .loop-text {
-    top: 36%;
+    top: 43%;
   }
 }
 @media only screen and (min-width: 700px) and (max-width: 900px) {
