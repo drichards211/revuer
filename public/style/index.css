@@ -56,7 +56,7 @@ input {
   background-color: black;
   -webkit-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, 0.75);
   -moz-box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
-  box-shadow: 0px 0px 18px 0px rgba(255, 255, 240, .75);
+  box-shadow: 0px 0px 13px 0px rgb(211 202 162);
   font-family: 'Silentina', serif;
   font-size: 1.9rem;
   font-weight: 600; 
@@ -74,9 +74,9 @@ input {
 .loop-text {
   z-index: 1;
   height: 100px;
-  color: #dfdfdf;
+  color: #d8d8d8;
   position: absolute;
-  top: 46%;
+  top: 50%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
@@ -85,7 +85,7 @@ input {
 }
 .video-text {
   z-index: 1;
-  color: #dfdfdf;
+  color: #d8d8d8;
   position: absolute;
   top: 46%;
   transform: translateY(-50%);
@@ -105,6 +105,14 @@ input {
 .video-text a, .loop-text a {
   color: inherit;
 }
+.blurred-text {
+  color: transparent;
+  text-shadow: 0 0 0.13rem #d8d8d8;
+}
+.blurred-more {
+  color: transparent;
+  text-shadow: 0 0 0.16rem #d8d8d8;
+}
 .dynamic-buttons {
   position: relative;
   font-family: "Bebas Neue", sans-serif;
@@ -121,6 +129,7 @@ input {
   font-weight: bold;
   text-align: center;
   background-color: black;
+  z-index: +1;
 }
 nav {
   color: white;
@@ -480,8 +489,10 @@ button:active {
   
 }
 .movie-find-box {
-  margin-top: 8vh;
-  position: relative;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 100%;
 }
@@ -589,8 +600,12 @@ button:active {
   text-overflow: ellipsis;
 }
 .movie-list {
+  width: 100%;
   max-width: 600px;
-  margin-top: 8vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -800,8 +815,37 @@ button:active {
 }
 
 /* SITE-WIDE VIEWPORT RESPONSE ========================== */
+@media only screen and (max-height: 420px) and (orientation: landscape) {
+/*for-small-phone-landscape-only*/
+  .video-screen {
+    font-size: 1rem;
+  }
+  .blurred-text {
+    text-shadow: 0 0 0.08rem #d8d8d8;
+  }
+  .blurred-more {
+    text-shadow: 0 0 0.095rem #d8d8d8;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .video-screen {
+    font-size: 1rem;
+  }
+  .blurred-text {
+    text-shadow: 0 0 0.08rem #d8d8d8;
+  }
+  .blurred-more {
+    text-shadow: 0 0 0.095rem #d8d8d8;
+  }
+  .loop-text {
+    top: 55%;
+  }
+}
 @media only screen and (max-width: 400px) and (orientation: portrait) {
 /*for-small-phone-portrait-only*/
+  .video-screen {
+    font-size: 1rem;
+  }
   .row {
     padding-left: 2%;
     padding-right: 2%;
@@ -811,20 +855,23 @@ button:active {
     padding-right: 2%;
   }
 }
-@media only screen and (max-height: 420px) and (orientation: landscape) {
-/*for-small-phone-landscape-only*/
-  .video-screen {
-    font-size: 1rem;
+@media only screen and (max-width: 360px) and (orientation: portrait) {
+  /*for-extremely-small-phone-portrait-only*/
+    .video-screen {
+      font-size: 0.8rem;
+    }
+    .row {
+      padding-left: 2%;
+      padding-right: 2%;
+    }
+    .col-12 {
+      padding-left: 2%;
+      padding-right: 2%;
+    }
   }
-}
-@media only screen and (max-width: 700px) {
-  .video-screen {
-    font-size: 1rem;
-  }
-}
 @media only screen and (min-width: 700px) {
   .loop-text {
-    top: 36%;
+    top: 43%;
   }
 }
 @media only screen and (min-width: 700px) and (max-width: 900px) {

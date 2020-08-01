@@ -157,11 +157,11 @@ function aboutRevuer() {
   emptyTheContainers()
   /* $('.dynamic-buttons').empty() */
   $('.video-screen').removeClass('hidden').html(
-    /* `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
     <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-    </video> */
-    `<div class="about-revuer video-text">
-      <h2>About revuer</h2>
+    </video>
+    <div class="about-revuer video-text blurred-text">
+      <h2 class="blurred-more">About revuer</h2>
       <p>This is placeholder text about revuer</p>
     </div>`
   )
@@ -174,8 +174,7 @@ function updateDOMTest() {
     `<p>This is new text rendered by index.js</p>`)
 }
 
-// Deprecated: Movie screen is being discontinued in favor of projecting text
-// directly on the back wall.
+// Testing to see if this feature stays or goes:
 function playCountdown() {
   console.log('playCountdown() ran')
   $('.video-screen').html(
@@ -186,7 +185,7 @@ function playCountdown() {
   let playPromise = document.querySelector('#film-leader').play()
   if (playPromise !== undefined) {
   // Browser supports media playback promises:
-  console.log('Browser supports media playback promises:')
+    console.log('Browser supports media playback promises:')
     playPromise.then(function() {
     // Automatic playback STARTED:
       console.log('Automatic playback STARTED:')
@@ -209,16 +208,16 @@ function playCountdown() {
 
 function playSilentLoop() {
   console.log('playSilentLoop() ran')
-  /*setTimeout(function() {
-      $('.video-screen').append(
-      `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
-      <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
-      </video>`
-    )
-  }, 1000); */
+  setTimeout(function() {
+    $('.video-screen').append(
+    `<video id="silent-loop" autoplay muted id="film-leader" width="100%" height="auto" playsinline="" loop="" poster="/image/silent-film-loop-480.jpg"> 
+    <source src="/image/silent-film-loop-480.mp4" type="video/mp4">
+    </video>`
+  )
+}, 1000);
   $('.video-screen').html(
-    `<div class="loop-text">
-      <h1 class="title">revuer</h1>
+    `<div class="loop-text blurred-text">
+      <h1 class="title blurred-more">revuer</h1>
       <p id="welcome-text-1" style="display: none;">Welcome to revuer</p>
       <p id="welcome-text-2" style="display: none;">Find movies you've watched</p>
       <p id="welcome-text-3" style="display: none;">Add reviews, ratings, and media</p> 
@@ -230,7 +229,7 @@ function playSilentLoop() {
   $('.title').addClass('hidden')
   setTimeout(function() {
     $('.title').fadeIn(3000)
-  }, 0);
+  }, 1000);
   setTimeout(function() { 
     /* $('.video-wrapper').removeClass('maintain-size') */
     textAnimate = true
@@ -289,17 +288,17 @@ function manageWindowResize() {
   console.log("manageWindowResize() running")
 // set initial values: 
   console.log("setting initial theater size") 
-  let initialVideoWrapperWidth = $('.video-wrapper').css('width')
+  let initialVideoScreenWidth = $('.video-screen').css('width')
   let mediaQuery = window.matchMedia("(max-width: 500px)")
   let initialFilmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
-  /* $('.video-screen').css({'height': `calc(${initialVideoWrapperWidth} * .5625)`}) */
+  $('.video-screen').css({'height': `calc(${initialVideoScreenWidth} * .5620)`})
   $('.film-button-wrapper').css({'width': `calc(${initialFilmButtonWidth} * 18)`,'transform': `translateX(calc(((${initialFilmButtonWidth} * 18) - 100vw)* -.5))`})
 // Update values if window resized:
   window.onresize = function() {
     console.log("Window size changed... resizing theater")
-    let videoWrapperWidth = $('.video-wrapper').css('width')
+    let videoScreenWidth = $('.video-screen').css('width')
     let filmButtonWidth = (mediaQuery.matches) ? "33vw" : "12rem"
-    /* $('.video-screen').css({'height': `calc(${videoWrapperWidth} * .5625)`}) */
+    $('.video-screen').css({'height': `calc(${videoScreenWidth} * .5620)`})
     $('.film-button-wrapper').css({'width': `calc(${filmButtonWidth} * 18)`, 'transform': `translateX(calc(((${filmButtonWidth} * 18) - 100vw)* -.5))`})
   }
 }
@@ -335,7 +334,6 @@ function hideChairs() {
     }
   })
   // Restore chair visibility if viewport resized or rotated:
-  /* window.addEventListener('orientationchange', showChairs) */
   window.addEventListener('resize', showChairs)
 }
 
@@ -366,5 +364,5 @@ $(function() {
   handleUserNav()
   manageWindowResize()
   hideChairs()
-  playSilentLoop()
+  playCountdown()
 })
