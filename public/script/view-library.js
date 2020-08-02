@@ -31,6 +31,10 @@ async function viewLibrary(a, b, c) {
   await updateLibraryResults()
   // Iterate through array and display each result:
   if (libraryResults.length > 0) {
+    if (libraryResults.length > 10) {
+    // disable absolute position of .movie-list if more than 10 movies:
+      $(".movie-list").addClass("absolutelyNot")
+    }
     for (let i = 0; i < libraryResults.length; i++) {
       $('.movie-list').append(
         `<button id="movie-detail-${i}" class="movie-button">
@@ -44,15 +48,6 @@ async function viewLibrary(a, b, c) {
         } 
       })
     }
-    /* if (libraryResults.length < 10) {
-      for (let i = 10 - libraryResults.length; i < 10; i++) {
-        $('.movie-list').append(
-          `<div class="movie-button-spacer">
-            <span class="movie-title">&nbsp;</span>
-          </div>`
-        )
-      }
-    } */
     $('.movie-list').append(
       `<div class="movie-button-spacer">
         <span class="movie-title">&nbsp;</span>
