@@ -45,6 +45,7 @@ Housekeeping:
   * [ ] Shrink all images to web size using tinypng or similar.
      
 Troubleshooting:
+  * [ ] Window orientation change now causes complete app-reload in Chrome devtools device emulator, Chrome version 86.0.4240.75. Error appears to be devtools-specific.
   * [X] In the movie search textarea, trigger the submit button when the user presses Enter.
   * [X] Chairs don't always center correctly on initial page load in Chrome if devTools turned off.
   * [X] '#movie-not-here' button doesn't work on renderMoreApiResults().
